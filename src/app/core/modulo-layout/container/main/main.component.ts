@@ -18,18 +18,18 @@ export class MainComponent implements OnInit {
   listaAhorros: any = [];
 
   listaPagos = [
-    { icono: "servicios", titulo: "Pago de servicios", url: "" },
-    { icono: "celular", titulo: "Recargas de celular", url: "" },
-    { icono: "Tarjeta", titulo: "Pago de tarjetas a otros bancos", url: "" },
-    { icono: "persona1", titulo: "Pago de créditos propios", url: "" },
-    { icono: "personas", titulo: "Pago de créditos a terceros", url: "" },
+    { icono: "servicios", titulo: "Pago de servicios", url: "/main/pagos/servicios" },
+    { icono: "celular", titulo: "Recargas de celular", url: "/main/pagos/recargas" },
+    { icono: "Tarjeta", titulo: "Pago de tarjetas a otros bancos", url: "/main/pagos/tarjeta-credito" },
+    { icono: "persona1", titulo: "Pago de créditos propios", url: "/main/pagos/creditos-propios" },
+    { icono: "personas", titulo: "Pago de créditos a terceros", url: "/main/pagos/creditos-terceros" },
   ];
 
   listaTansf = [
     { icono: "persona1", titulo: "A cuentas propias", url: "/main/transferencias/cuentas-propias" },
     { icono: "personas", titulo: "A cuentas de terceros", url: "/main/transferencias/cuentas-terceros" },
-    { icono: "banco", titulo: "A otros bancos", url: "" },
-    { icono: "dinero", titulo: "Envíos de giros", url: "" },
+    { icono: "banco", titulo: "A otros bancos", url: "/main/transferencias/cuentas-otros-bancos" },
+    { icono: "dinero", titulo: "Envíos de giros", url: "/main/transferencias/enviar-giro" },
   ];
 
 
