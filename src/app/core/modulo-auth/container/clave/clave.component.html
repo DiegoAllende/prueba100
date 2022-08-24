@@ -1,0 +1,13 @@
+<section class="auth-clave">
+  <div class="auth-clave-titulo">
+    <label class="title3-sec">Sello de seguridad</label>
+    <app-sello-icon [iconNombre]="iconNombre" tamanio="xs"></app-sello-icon>
+  </div>
+  <app-pad-numerico [valueDigits]="6" (valueCod)="vlidarClave($event)" title="Ingresa tu clave de internet de 6 dígitos"></app-pad-numerico>
+  <div>
+    <button id="btn-login-con-tarjeta" mat-raised-button class="btn-principal w-100" (click)="ingresarClave()">Ingresar</button>
+  </div>
+  <div class="sub-link">
+    <span (click)="btnOlvideCalve()">Olvidé mi clave</span>
+  </div>
+</section>

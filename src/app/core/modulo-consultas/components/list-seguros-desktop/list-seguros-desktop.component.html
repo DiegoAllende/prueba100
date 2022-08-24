@@ -1,0 +1,25 @@
+<div class="list-desktop-container">
+    <div *ngFor="let seguro of seguros; let i = index">
+      <div class="list-desktop-container-header" (click)="toggle(i)" [ngStyle]="{'pointer-events':seguro.active?'none':'auto'}" >
+        <div  [ngClass]="seguro.active === true ? 'content-header-active' : 'content-header-desktop'">
+            <app-icon-escudo-seguro [color]="'red'" size="24"></app-icon-escudo-seguro>
+            <div>
+              <span>{{seguro.title}}</span>
+              <p [ngStyle]="seguro.active ? { 'display': 'block' } : {'display':'none'}" >plan -1</p>
+            </div>
+        </div>
+      </div>
+      <div
+        class="list-desktop-container-body"
+        #bodyDesktop
+        [style.height.px]="seguro.active === true ? bodyDesktop.scrollHeight : 0"
+      >
+        <div class="content-body">
+            <div class="content-body-header-active">
+                <span class="content-body-header-active-title">nro de seguro</span>
+                <p class="content-body-header-active-value">{{seguro.numero}}</p>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>

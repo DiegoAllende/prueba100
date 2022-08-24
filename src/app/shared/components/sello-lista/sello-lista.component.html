@@ -1,0 +1,9 @@
+<section class="sello-lista">
+  <div class="sello-lista-main">
+    <ng-container *ngFor="let item of listaSellos">
+      <div class="sello-lista-main-item" (click)="seleccionarSello(item)">
+        <app-sello-icon [iconNombre]="item.nombre" [check]="item.check?'click-select':''" tamanio="sm"></app-sello-icon>
+      </div>
+    </ng-container>
+  </div>
+</section>

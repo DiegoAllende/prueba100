@@ -1,0 +1,46 @@
+.information-insurance-container{
+    &-nro{
+        font-size: 20px;
+        color: #C6C6C6;
+        font-weight: 700;
+    }
+    &-value{
+        padding-left: 10px;
+        color: #565656;
+        font-weight: 700;
+        font-size: 20px;
+    }
+
+    &-content{
+        display: grid;
+        margin-top: 10px;
+        gap: 10px;
+        grid-template-columns: repeat(2,1fr);
+        @media screen and(min-width:780px) {
+            margin-top: 33px;
+            gap: 20px;
+        }
+        &-text{
+            font-size: 14px;
+            font-weight: 400;
+            @media screen and(min-width:780px) {
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 23.44px;
+                letter-spacing: 0.25px;
+            }
+        }
+
+        &-text-end{
+            font-size: 14px;
+            text-align: end;
+            font-weight: 400;
+            @media screen and(min-width:780px) {
+                font-weight: 500;
+                font-size: 20px;
+                line-height: 23.44px;
+                letter-spacing: 0.25px;
+            }
+        }
+    }
+}

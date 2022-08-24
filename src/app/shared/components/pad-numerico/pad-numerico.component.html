@@ -1,0 +1,16 @@
+<div class="container-pad-numerico">
+    <div class="container-input">
+        <label class="label-input">{{title}}</label>
+        <div class="content-input">
+            <app-icon-lock-square></app-icon-lock-square>
+            <input class="value-input" [(ngModel)]="valueInput" type="password" [disabled]="true"/>
+        </div>
+    </div>
+    <div class="container-block">
+        <div class="content-block">
+            <div *ngFor="let item of listNumbers" (click)="getValueSelected(item)" class="block-number">{{item}}</div>
+            <app-icon-borrar class="block-number btn-del" (click)="deleteLastInput()"></app-icon-borrar>
+            <app-icon-delete size="20" class="block-number btn-all" (click)="deleteAllInput()"></app-icon-delete>
+        </div>
+    </div>
+</div>

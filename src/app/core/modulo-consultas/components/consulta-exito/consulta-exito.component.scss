@@ -1,0 +1,31 @@
+@import "./../../../../../assets/sass/variables";
+
+.main-screen{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  h3{
+    font-size: $size-titulo1;
+    font-weight: bold;
+    color: $color-texto;
+    margin: 0;
+    text-align: center;
+    padding-bottom: 3.5rem;
+  }
+
+  img{
+    margin-bottom: 4rem;
+  }
+  .btn-pri-out{
+    width: 26%;
+    margin-top: 2.5rem;
+  }
+  .btn-principal{
+    width: 36%;
+  }
+}
+@media screen and(max-width: 760px){
+  .main-screen{
+  }
+}

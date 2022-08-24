@@ -1,0 +1,16 @@
+<div class="information-insurance-container">
+    <p class="title3-pri" style="margin-bottom: 33px;">{{seguro.title}}</p>
+    <span class="information-insurance-container-nro">Nro. de seguro:</span><span class="information-insurance-container-value">{{seguro.numero}}</span>
+    <div class="information-insurance-container-content">
+        <span class="information-insurance-container-content-text">Último pago realizado</span>
+        <span class="information-insurance-container-content-text-end">11/07/2020</span>
+        <span class="information-insurance-container-content-text">Vencimiento próximo pago</span>
+        <span class="information-insurance-container-content-text-end">10/08/2022</span>
+        <span class="information-insurance-container-content-text">Prima mensual</span>
+        <span class="information-insurance-container-content-text-end">S/ 3.50</span>
+        <span class="information-insurance-container-content-text">Nro. de coutas pagadas</span>
+        <span class="information-insurance-container-content-text-end">19/20</span>
+    </div>
+    <br>
+    <app-beneficiarios-seguros [seguro]="seguro"></app-beneficiarios-seguros>
+</div>

@@ -1,0 +1,13 @@
+.auth-clave {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &-titulo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #C6C6C6;
+  }
+}

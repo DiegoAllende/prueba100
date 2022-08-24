@@ -1,0 +1,53 @@
+<div class="main-header-container">
+    <div class="main-header-container-up">
+        <!-- <mat-icon class="main-header-container-up-icon" matSuffix (click)="changeShowMenu()">menu</mat-icon> -->
+        <img class="main-header-container-up-icon" src="assets/icons/menu.svg" (click)="changeShowMenu()" alt="">
+    </div>  
+    <div class="main-header-container-down">
+        <div class="main-header-container-down-logo">
+            <img  src="assets/icons/logo-caja-trujillo.svg" alt="">
+        </div>
+        <div class="main-header-container-down-menu">
+            <h4 class="main-header-container-down-title">HOME BANKING</h4>
+            <div  class="main-menu-desktop-container">
+              <app-main-menu-desktop (selected)="changeSelected($event)" (close)="closeAll($event)" [list]="data"></app-main-menu-desktop>    
+            </div>
+            <button class="btn-close-sesion">
+              <!-- <mat-icon class="btn-close-sesion-icon d-flex justify-content-center align-items-center" matSuffix>power_settings_new</mat-icon> -->
+              <app-icon-power class="btn-close-sesion-icon" color="white" size="24"></app-icon-power> 
+              Cerrar Sesión
+            </button>
+        </div>
+    </div>
+    
+</div>
+
+<div *ngIf="showMenu" class="main-container-menu-mobile" (click)="closeMenu()">
+</div>
+<div  class="main-menu-mobile" [class.main-menu-mobile-open]="showMenu">
+    <div class="d-flex justify-content-end px-2 pt-2">
+      <!-- <mat-icon class="text-white" style="cursor: pointer;font-size: 25px;font-weight: 700;" (click)="closeMenu()">close</mat-icon> -->
+      <app-icon-close color="white" size="20" (click)="closeMenu()" style="cursor: pointer;font-size: 25px;font-weight: 700;"></app-icon-close>
+    </div>
+    <ul id="accordion" class="accordion-mobile" >
+        <li *ngFor="let menu of data; let i = index"
+        style="cursor: pointer;"
+          [class.active]="menu.active">
+          <div (click)="toggle(i)" class="d-flex py-3 px-4 align-items-center menu-mobile">
+            {{ menu.title }}   
+            <!-- <mat-icon matSuffix>{{menu.icon}}</mat-icon>    -->
+            <app-icon-flecha-abajo color="white" size="15" style="padding-left: 10px;" *ngIf="menu.items"></app-icon-flecha-abajo>
+          </div>
+          <ul class="submenu-mobile px-4" #submenu 
+          [class.active-body]="menu.active"
+            [style.height.px]="menu.active ? submenu.scrollHeight : 0">
+            <li *ngFor="let submenu of menu.items" class="d-flex align-items-center cursor-pointer" style="padding: 0px;">
+              <!-- <mat-icon style="font-size: 17px;" class="d-flex justify-content-center align-items-center" matSuffix>{{submenu.icon}}</mat-icon> -->
+              <img [src]="submenu.icon" alt="">
+              <a routerLink={{submenu.ruta}} (click)="closeMenu()" (click)="closeSubmenu()">{{ submenu.subtitle }}</a>
+            </li>
+          </ul>
+        </li>
+        
+      </ul>     
+</div>

@@ -1,0 +1,75 @@
+<div class="inform-credito">
+  <div class="inform-credito-titulo">
+    <label class="title3-pri">{{creditoIn.title}}</label>
+  </div>
+
+  <div class="inform-credito-subtitulo">
+    <label class="color-desac">Nro. de crédito:</label>
+    <label>{{creditoIn.numero}}</label>
+  </div>
+
+  <div class="inform-credito-main">
+    <div class="inform-credito-main-fila">
+      <label>Fecha de desembolso</label>
+      <label>11/07/2020</label>
+    </div>
+    <div class="inform-credito-main-fila">
+      <label>Monto desembolsado</label>
+      <label>S/60,500.00</label>
+    </div>
+    <div class="inform-credito-main-fila">
+      <label>Nro. de cuotas aprobadas</label>
+      <label>59</label>
+    </div>
+    <div class="inform-credito-main-fila">
+      <label>Nro. de cuotas pagadas</label>
+      <label>19/59</label>
+    </div>
+  </div>
+
+  <div class="inform-credito-tabla">
+    <mat-accordion>
+      <mat-expansion-panel [expanded]="true">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Próximos vencimientos</mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-container *ngFor="let item of [1,1,1]">
+          <div class="inform-credito-tabla-content inform-credito-tabla-content-ven">
+            <div class="inform-credito-tabla-content-datos">
+              <label>Vigente 20/08/2021</label>
+              <div class="inform-credito-tabla-content-datos-sub">
+                <label class="color-desac">Nro. de cuota: 20</label>
+                <label class="color-desac">Días de atraso: 0</label>
+              </div>
+            </div>
+            <div class="inform-credito-tabla-content-valor">
+              <label>S/1,432.85</label>
+            </div>
+          </div>
+          <hr>
+        </ng-container>
+      </mat-expansion-panel>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Últimos movimientos</mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-container *ngFor="let item of [1,1,1]">
+          <div class="inform-credito-tabla-content inform-credito-tabla-content-mov">
+            <div class="inform-credito-tabla-content-datos">
+              <label>Fecha de pago 20/08/2021</label>
+              <div class="inform-credito-tabla-content-datos-sub">
+                <label class="color-desac">Nro. de cuota: 19</label>
+                <label class="color-desac">Días de atraso: 0</label>
+              </div>
+              <label>Monto pagado</label>
+            </div>
+            <div class="inform-credito-tabla-content-valor">
+              <label>S/1,432.85</label>
+            </div>
+          </div>
+          <hr>
+        </ng-container>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<app-plantilla-info-simple>
+  <ng-container contentTitulo>
+    <app-icon-transferencia size="24"></app-icon-transferencia>
+    <label class="title2-pri">Transferencias</label>
+  </ng-container>
+
+  <ng-container contentCard>
+    <app-icon-transferencia size="24"></app-icon-transferencia>
+    <div>
+      <label class="title3-sec mb-1">A cuentas propias</label>
+      <label class="subtitle1-secN">Ingresa los datos y completa las opciones para continuar</label>
+    </div>
+  </ng-container>
+
+  <ng-container contentMain>
+    <ng-container [ngTemplateOutlet]="contentTp"></ng-container>
+  </ng-container>
+
+  <ng-container contentAction>
+    <ng-container [ngTemplateOutlet]="actionsTp"></ng-container>
+  </ng-container>
+
+</app-plantilla-info-simple>
+
+<!-- TEMPLATES -->
+<ng-template #contentTp>
+  <mat-stepper labelPosition="bottom" linear [selectedIndex]="stepIndex">
+
+    <mat-step label="Datos">
+      <p>DATOS.</p>
+    </mat-step>
+
+    <mat-step label="Transferencia" [completed]="stepIndex === 0 ? false: true">
+      <p>TRANSFERENCIA.</p>
+    </mat-step>
+
+    <mat-step label="Resúmen">
+      <p>RESUMEN</p>
+    </mat-step>
+
+  </mat-stepper>
+</ng-template>
+
+<ng-template #actionsTp>
+  <button mat-stroked-button color="primary" class="btn-pri-out" *ngIf="stepIndex !== 2"
+    (click)="btnRegresar()">Regresar</button>
+  <button mat-raised-button class="btn-principal" (click)="btnContinuar()">{{stepIndex !== 2 ? 'Continuar': 'Ir a
+    transferencias'}}</button>
+</ng-template>

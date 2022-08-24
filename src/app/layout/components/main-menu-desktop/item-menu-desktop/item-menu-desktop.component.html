@@ -1,0 +1,13 @@
+
+<mat-menu class="list-item-container" (close)="closeMenu()"  #toggleMenu  #childMenu="matMenu" [overlapTrigger]="false">
+    <ul class="list-item-content">
+        <li *ngFor="let child of items" routerLink={{child.ruta}}  routerLinkActive="router-link-active" >
+                <a class="item-list" *ngIf="!child.children || child.children.length === 0">
+                  <div mat-menu-item>
+                    <img [src]="child.icon" alt="">
+                    <span class="item-list-subtitle">{{ child.subtitle }}</span>
+                  </div>
+                </a>
+        </li>
+    </ul>
+  </mat-menu>

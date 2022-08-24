@@ -1,0 +1,10 @@
+<section class="sello-confir">
+  <p>¿Tú sello de seguridad es correcto?</p>
+  <div>
+    <app-sello-icon [iconNombre]="iconNombre" tamanio="sm"></app-sello-icon>
+  </div>
+  <div class="sello-confir-buttons">
+    <button mat-raised-button class="btn-principal" (click)="btnRespuesta(true)">Si</button>
+    <button mat-raised-button class="btn-secundario" (click)="btnRespuesta(false)">No</button>
+  </div>
+</section>

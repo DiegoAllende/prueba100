@@ -1,0 +1,34 @@
+<div class="list-mobile-container">
+    <div *ngFor="let seguro of seguros; let i = index" >
+      <div class="list-mobile-container-header" (click)="toggle(i)" [ngStyle]="{'pointer-events':seguro.active?'none':'auto'}">
+        <div [ngClass]="seguro.active === true ? 'content-header-active' : 'content-header'">
+            <div [ngClass]="seguro.active === true ? 'content-header-active-content' : 'content-header-content'">
+              <app-icon-escudo-seguro  [color]="'red'" size="30"></app-icon-escudo-seguro>
+              <div class="content-header-content-center">
+                <span class="content-header-content-center-title">{{seguro.title}}</span>
+                <p [ngStyle]="seguro.active ? { 'display': 'block' } : {'display':'none'}" class="content-header-center-content-subtitle">plan -1</p>
+              </div>
+            </div>
+            <div [ngStyle]="!seguro.active ? { 'display': 'block' } : {'display':'none'}">
+              <app-icon-arrow-right  [color]="'red'" size="18"></app-icon-arrow-right>
+            </div>
+        </div>
+      </div>
+      <div
+      [ngClass]="seguro.active === true ? 'list-mobile-container-body-active' : 'list-mobile-container-body'"
+      >
+        <div class="content-body">
+            <div class="content-body-header">
+                <span class="content-body-header-title">nro de seguro</span>
+                <p class="content-body-header-value">{{seguro.numero}}</p>
+            </div>
+            <div class="content-body-information">
+              <div class="information-insurance-container">
+                <app-informacion-seguros [seguro]="seguro"></app-informacion-seguros>
+            </div>
+            </div>
+            <div>
+        </div>
+      </div>
+    </div>
+  </div>

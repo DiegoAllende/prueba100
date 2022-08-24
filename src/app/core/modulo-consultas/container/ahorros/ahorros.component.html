@@ -1,0 +1,70 @@
+<app-plantilla-info-simple>
+
+  <ng-container contentTitulo>
+    <app-icon-billetera size="24"></app-icon-billetera>
+    <label class="title2-pri">Ahorros</label>
+  </ng-container>
+
+  <ng-container contentCard>
+    <app-icon-billetera size="24"></app-icon-billetera>
+    <div>
+      <label class="title3-sec mb-2">Ahorro Sueldo en soles</label>
+      <label class="subtitle1-secN">Nro. de cuenta: 13243453454</label>
+      <label class="subtitle1-secN mb-2">Código Interbancario (CCI): 156729403782</label>
+      <label class="title3-sec">S/ 4,209.15</label>
+      <label class="subtitle1-secN mb-2">Saldo contable</label>
+      <label class="title3-sec">S/4,209.15</label>
+      <label class="subtitle1-secN">Saldo disponible</label>
+    </div>
+  </ng-container>
+
+  <ng-container contentMain>
+    <ng-container *ngIf="numPaso === PASOS.INI">
+      <div class="movimientos">
+        <div class="movimientos-titulo">
+          <label class="title3-pri">Mis movimientos</label>
+        </div>
+
+        <div class="movimientos-container">
+          <div class="movimientos-container-filters-pdf">
+            <label class="subtitle2-sec">Estado de cuenta :</label>
+            <div class="movimientos-container-filters-pdf-content ">
+              <div class="movimientos-container-filters-pdf-filter">
+                <mat-form-field appearance="outline" class="w-100">
+                  <mat-select [(ngModel)]="yearPdf" required placeholder="Mes/Año">
+                    <mat-option *ngFor="let date of listDates" [value]="date.stringMuestra">{{date.stringMuestra | titlecase}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <button mat-stroked-button class="btn2-pri movimientos-container-filters-pdf-btn">Ver PDF</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="movimientos-tabla">
+          <div class="movimientos-tabla-header">
+            <span class="subtitle3-pri movimientos-tabla-header-operation">Operación</span>
+            <span class="subtitle3-pri movimientos-tabla-header-date-desktop">Fecha</span>
+            <span class="subtitle3-pri movimientos-tabla-header-mounth-desktop">Monto</span>
+            <span class="subtitle3-pri movimientos-tabla-header-date">Fecha/monto</span>
+          </div>
+          <div class="movimientos-tabla-body">
+            <app-acordeon-movimiento *ngFor="let item of [1,2,3,4]" [item]="item"></app-acordeon-movimiento>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="numPaso === PASOS.FIN">
+      <app-cheques-retenciones></app-cheques-retenciones>
+    </ng-container>
+
+  </ng-container>
+
+  <ng-container contentAction>
+    <button mat-stroked-button color="primary" class="btn-pri-out" (click)="btnRegresar()">Regresar</button>
+    <button mat-raised-button class="btn-principal" (click)="btnChequesRet()" *ngIf="numPaso === PASOS.INI">Cheques y
+      retenciones</button>
+  </ng-container>
+
+</app-plantilla-info-simple>

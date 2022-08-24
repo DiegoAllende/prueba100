@@ -1,0 +1,111 @@
+@import "breakpoint";
+
+.layout-main{
+    .top{
+      padding-top: 2.5rem;
+      padding-left: 5rem;
+      padding-right: 5rem;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      border-width: 0px 0px 1px 0px;
+      border-style: solid;
+      border-color: #C6C6C6;
+      h2{
+        font-weight: 400;
+        font-size: 30px;
+      }
+      .right{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        h3{
+          font-weight: 400;
+          font-size: 20px;
+          letter-spacing: 0.25px;
+          padding-right: 1rem;
+        }
+        .divisor{
+          color: #F90000;
+          font-size: 40px;
+          font-weight: 300;
+          padding-bottom: 1rem;
+          padding-right: 1rem;
+        }
+        h4{
+          font-weight: 700;
+          font-size: 20px;
+          letter-spacing: 0.25px;
+        }
+        strong{
+          font-weight: 400;
+          font-size: 20px;
+          letter-spacing: 0.25px;
+        }
+      }
+    }
+}
+
+.layout-main {
+  min-height: 100vh;
+    &-main {
+      padding: 50px 80px;
+    }
+}
+
+@include media-down(xl) {
+  .layout-main {
+    &-main {
+      padding: 40px 50px;
+    }
+  }
+}
+
+@include media-down(lg) {
+  .layout-main {
+    &-main {
+      padding: 30px;
+    }
+  }
+}
+
+@media screen and(max-width:780px) {
+    .layout-main{
+        .top{
+          margin-left: 1.3rem;
+          margin-right: 1.3rem;
+          margin-top: 20px;
+          padding: 0;
+          flex-direction: column;
+          align-items: flex-start;
+          border-width: 1px 1px 1px 1px;
+          box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+          padding-top: 1rem;
+          padding-bottom: 1rem;
+          padding-left: .6rem;
+          padding-right: .6rem;
+          h2{
+            font-size: 24px;
+          }
+          .right{
+            h3{
+              display: none;
+            }
+            .divisor{
+              display: none;
+            }
+            h4{
+              font-size: 14px;
+            }
+            br{
+              display: none;
+            }
+            strong{
+              padding-left: .6rem;
+              font-size: 14px;
+            }
+          }
+        }
+    }
+}

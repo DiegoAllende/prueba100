@@ -1,0 +1,56 @@
+<app-plantilla-info-compleja *ngIf="isCredito else sincontentTp">
+
+  <ng-container contentTitulo>
+    <app-icon-credito size="24"></app-icon-credito>
+    <label class="title2-pri">Créditos</label>
+  </ng-container>
+
+  <ng-container contentMain>
+    <ng-container *ngFor="let item of listCreditos">
+      <div class="ptl-infocom-main-content" [ngClass]="item.active ? 'active': ''">
+        <div class="ptl-infocom-main-content-card" (click)="btnCard(item)">
+          <!-- Colocar contenido del card -->
+          <div class="ptl-infocom-main-content-card-content">
+            <app-icon-credito size="24"></app-icon-credito>
+            <div class="ptl-infocom-main-content-card-content-info">
+              <span class="title3-sec">{{item.title}}</span>
+              <div [ngClass]="item.active ? 'tran-expand-active' : 'tran-expand'">
+                <div *ngIf="item.active">
+                  <label class="subtitle1-sec mb-2">{{item.numero}}</label>
+                  <label class="subtitle1-secN">Saldo Capital</label>
+                  <label class="title3-sec">S/ {{item.saldo}}</label>
+                </div>
+              </div>
+            </div>
+            <div class="ptl-infocom-main-content-card-content-flecha">
+              <app-icon-flecha-derecha *ngIf="!item.active" size="18"></app-icon-flecha-derecha>
+            </div>
+          </div>
+        </div>
+        <div class="ptl-infocom-main-content-main">
+          <div class="ptl-infocom-main-content-main-info">
+            <!-- Colocar informacion -->
+            <app-informacion-creditos [creditoIn]="item"></app-informacion-creditos>
+            <div class="ptl-infocom-main-content-main-info-actions">
+              <!-- Colocar botones -->
+              <ng-container [ngTemplateOutlet]="actionsTp"></ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+</app-plantilla-info-compleja>
+
+<!-- TEMPLATES -->
+<ng-template #sincontentTp>
+  <app-consulta-exito [Titulo]="'Por ahora no dispones de créditos vigentes'"
+    [Icon]="'assets/icons/credito2.svg'" [btn_1]="'Solicitar un nuevo credito'"
+    [btn_2]="'En otro momento'"></app-consulta-exito>
+</ng-template>
+
+<ng-template #actionsTp>
+  <button mat-stroked-button color="primary" class="btn-pri-out" (click)="btnRegresar()">Regresar</button>
+  <button mat-raised-button class="btn-principal" (click)="btnPagar()">Pagar</button>
+</ng-template>

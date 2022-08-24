@@ -1,0 +1,104 @@
+.container-pad-numerico{
+
+    .container-input{
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 30px 0;
+
+        .label-input{
+            text-align: left;
+            width: 100%;
+            font-weight: 700;
+            font-size: 20px;
+            line-height: 24px;
+            margin-bottom: 29px;
+        }
+        .content-input{
+            border-bottom: 1px solid red;
+            display: flex;
+            width: 100%;
+            gap: 10px;
+            align-items: center;
+            
+            .value-input{
+                letter-spacing: 10px;
+                background-color: white;
+                border: none;
+                padding: 5px 0;
+                font-size: 30px;
+                width: 90%;
+            }
+        }
+
+    }
+
+    .container-block{
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        .content-block{
+            display: grid;
+            grid-template-columns: repeat(4,57px);
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            gap:10px;
+            @media screen and (min-width: 780px){
+                grid-template-columns: repeat(6,57px);
+            }
+
+            .block-number{
+                background-color: #ededed;
+                width: 57px;
+                height: 57px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                border-radius: 5px;
+                font-weight: 600;
+                @media screen and (min-width: 780px){
+                    width: 57px;
+                    height: 57px;
+                }
+            }
+
+            .btn-del{
+                height: 57px;
+                width:57px;
+                background-color: #ededed;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                font-weight: 600;
+                color: red;
+                grid-row: 2/3;
+                grid-column: 4/5;
+                @media screen and (min-width: 780px){
+                    grid-row: 1/2;
+                    grid-column: 6/7;
+                    height: 57px;
+                    width: 57px;
+                }
+
+            }
+            .btn-all{
+                height: 57px;
+                width:57px;
+                background-color: #ededed;
+                border: none;
+                cursor: pointer;
+                border-radius: 5px;
+                font-weight: 600;
+                color: red;
+                @media screen and (min-width: 780px){
+                    height: 57px;
+                    width: 57px;
+                }
+
+            }
+        }
+    }
+}
+

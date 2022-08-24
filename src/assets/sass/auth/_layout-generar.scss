@@ -1,0 +1,35 @@
+.layout-generar {
+  // background-color: orange;
+  min-height: 100%;
+  width: 100%;
+  &-main {
+    padding: 80px 190px;
+  }
+}
+
+@include media-down(xl) {
+  .layout-generar {
+    // background-color: blue;
+    &-main {
+      padding: 80px 150px;
+    }
+  }
+}
+
+@include media-down(lg) {
+  .layout-generar {
+    // background-color: yellow;
+    &-main {
+      padding: 50px 100px;
+    }
+  }
+}
+
+@include media-down(md) {
+  .layout-generar {
+    // background-color: gray;
+    &-main {
+      padding: 30px 30px;
+    }
+  }
+}

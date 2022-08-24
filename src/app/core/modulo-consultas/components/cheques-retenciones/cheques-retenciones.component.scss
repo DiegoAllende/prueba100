@@ -1,0 +1,165 @@
+:host{
+    width: 100%;
+    @media screen and(min-width: 780px){
+        width: 70%;
+    }
+}
+
+.cheques-container{
+    margin-top: 30px;
+    width: 100%;
+    @media screen and(min-width: 780px){
+        margin-top: 0px;
+        // border: 1px solid #F90000;
+        padding: 30px;
+    }
+
+    &-title{
+        font-size: 16px;
+        font-weight: 700;
+        color: #F90000;
+    }
+
+    &-content{
+        width: 100%;
+        &-header{
+            background-color: #FEEEEE;
+            display: flex;
+            border-bottom: 1px solid #F90000;;
+            &-operation{
+                width: 33.3%;
+                font-size: 12px;
+                font-weight: 700;
+                color: #F90000;
+                padding: 12px 12px;
+                @media screen and(min-width: 780px){
+                    width: 25%;
+                }
+
+            }
+            &-dates{
+                width: 33.3%;
+                font-size: 12px;
+                font-weight: 700;
+                color: #F90000;
+                padding: 12px 12px;
+                @media screen and(min-width: 780px){
+                    display: none;
+                }
+            }
+            &-date-desktop{
+                display: none;
+                @media screen and(min-width: 780px){
+                    display: block;
+                    width: 25%;
+                    font-size: 12px;
+                    font-weight: 700;
+                    color: #F90000;
+                    padding: 12px 12px;
+                    padding-left: 0px;
+                }
+            }
+            &-mount-desktop{
+                display: none;
+                @media screen and(min-width: 780px){
+                    display: block;
+                    width: 25%;
+                    font-size: 12px;
+                    font-weight: 700;
+                    color: #F90000;
+                    padding: 12px 12px;
+                    padding-left: 0px;
+                }
+            }
+            &-ref{
+                width: 33.3%;
+                font-size: 12px;
+                font-weight: 700;
+                color: #F90000;
+                padding: 12px 12px;
+                @media screen and(min-width: 780px){
+                    width: 25%;
+                    // padding-left: 0px;
+                }
+                
+            }
+        }
+
+        &-body{
+            &-item{
+                display: flex;
+                align-items: center;
+                border-bottom: 1px solid #EDEDED;;
+                &-name{
+                    padding: 12px 12px;
+                    width: 33.3%;
+                    font-size: 14px;
+                    font-weight: 400;
+                    @media screen and(min-width: 780px){
+                        width: 25%;
+                    }
+                }
+                &-dates{
+                    padding: 12px 12px;
+                    width: 33.3%;
+                    display: flex;
+                    flex-direction: column;
+                    font-size: 14px;
+                    font-weight: 400;
+                    @media screen and(min-width: 780px){
+                        display: none;
+                    }
+                }
+                &-date-desktop{
+                    display: none;
+                    @media screen and(min-width: 780px){
+                        display: block;
+                        width: 25%;
+                    }
+                }
+                &-mount-desktop{
+                    display: none;
+                    @media screen and(min-width: 780px){
+                        display: block;
+                        width: 25%;
+                    }
+                }
+                &-ref{
+                    padding: 12px 12px;
+                    width: 33.3%;
+                    font-size: 14px;
+                    font-weight: 400;
+                    @media screen and(min-width: 780px){
+                        width: 25%;
+                    }
+                }
+            }
+        }
+    }
+
+    
+}
+
+.cheques-regresar{
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    @media screen and(min-width: 780px){
+        justify-content: start;
+    }
+    &-btn{
+        padding: 10px 20px;
+        color: #F90000;
+        border: 2px solid #F90000;
+        border-radius: 12px;
+        width: 80%;
+        font-weight: 700;
+        background-color: white;
+        font-size: 18px;
+        margin-bottom: 30px;
+        @media screen and(min-width: 780px){
+            width: 25%;
+        }
+    }
+    
+}

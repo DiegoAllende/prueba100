@@ -1,0 +1,21 @@
+.main-menu-desktop{
+    display: flex;
+    list-style: none;
+    color: white;
+    font-weight: 700;
+    margin: 0px;
+    gap: 25px;
+    align-items: center;
+  }
+  .desktop-menu-item{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 10px 6px;
+    border-bottom: 3px solid red;
+    font-size: 24px;
+  }
+  .active{
+    background-color: #E60101;
+    border-bottom: 3px solid #FFD505;
+  }

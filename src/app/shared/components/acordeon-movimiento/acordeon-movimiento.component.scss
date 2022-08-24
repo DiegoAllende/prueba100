@@ -1,0 +1,150 @@
+.accordion {
+    width: 100%;
+    background: #fff;
+    border-radius: 4px;
+  }
+
+  .content-header{
+    display: flex;
+    padding-right: 10%;
+    position: relative;
+    width: 100%;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    font-weight: 400;
+    font-size: 14px;
+    align-items: center;
+    @media screen and(min-width: 780px){
+      font-size: 12px;
+      padding-top: 23px;
+      padding-bottom: 23px;
+    }
+    
+  }
+
+  .title-header{
+    width: 50%;
+    margin: 0px;
+    @media screen and (min-width: 780px){
+        width: 40%;
+    }
+  }
+
+  .date-mount-header{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    text-align: end;
+    @media screen and (min-width: 780px){
+        flex-direction: row;
+        width: 60%;
+    }
+  }
+
+  .mount-header{
+    font-weight: 600;
+  }
+
+  @media screen and (min-width: 780px){
+    .date-header{
+        width: 50%;
+        text-align: center;
+    }
+    .mount-header{
+        width: 50%;
+    }
+  }
+
+  .icon-header{
+    position: absolute;
+    right: 2%;
+    top: 30%;
+
+    @media screen and(min-width: 780px){
+      top: 30%;
+    }
+  }
+
+  .content-body{
+    margin-top: 13px;
+    padding-right: 10%;
+    font-size: 14px;
+    font-weight: 400;
+    @media screen and(min-width: 780px){
+      font-size: 12px;
+    }
+  }
+
+  .title-detalle{
+    font-weight: 700;
+    font-size: 14px;
+    margin: 0px;
+  }
+
+  .content-detalle{
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    row-gap: 11px;
+    margin-bottom: 10px;
+    @media screen and (min-width: 780px){
+        display: grid;
+        grid-template-columns: 40% 30% 30%;
+        row-gap: 6px;
+        margin-bottom: 5px;
+    }
+  }
+
+  .dates-body{
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    @media screen and (min-width: 780px){
+        display: block;
+    }
+  }
+
+  .date-desktop{
+    display: none;
+    @media screen and (min-width: 780px){
+        display: block;
+        text-align: center;
+    }
+  }
+
+  .date-mobile{
+    display: block;
+    @media screen and (min-width: 780px){
+        display: none;
+    }
+
+  }
+
+  .referencia{
+    @media screen and (min-width: 780px){
+        grid-row: 3/4;
+        grid-column: 3/4;
+        text-align: end;
+    }
+
+   
+    
+  }
+  
+  .accordion .menu {
+    position: relative;
+    color: #4d4d4d;
+    font-weight: bold;
+    border-bottom: 1px solid #EDEDED;
+    cursor: pointer;
+    transition: all 0.4s ease;
+  }
+  
+  .submenu {
+    height: 0;
+    overflow: hidden;
+    font-size: 14px;
+    border-bottom: 1px solid #EDEDED;
+    transition: height 0.4s ease;
+  }
+  

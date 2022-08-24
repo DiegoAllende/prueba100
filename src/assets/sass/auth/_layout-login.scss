@@ -1,0 +1,96 @@
+.layout-login-bg {
+  display: flex;
+  min-height: 100%;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.layout-login {
+  display: flex;
+  min-height: 100vh;
+
+  &-fig {
+    width: 50%;
+    background-color: $color-principal1;
+  }
+
+  &-form {
+    width: 50%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    header {
+      display: none;
+    }
+
+    &-main {
+      flex: 1;
+      padding: 100px 100px 20px 100px;
+
+      &-titulo {
+        margin-bottom: 24px;
+      }
+    }
+
+    footer {
+      padding: 20px 100px 40px 100px;
+    }
+  }
+}
+
+@include media-down(xl) {
+  .layout-login {
+    &-form {
+      &-main {
+        padding: 100px 50px 20px 50px;
+      }
+
+      footer {
+        padding: 20px 50px 40px 50px;
+      }
+    }
+  }
+}
+
+@include media-down(lg) {
+  .layout-login {
+    &-form {
+      &-main {
+        padding: 100px 40px 20px 40px;
+      }
+
+      footer {
+        padding: 20px 40px 40px 40px;
+      }
+    }
+  }
+}
+
+@include media-down(md) {
+  .layout-login {
+    &-fig {
+      display: none;
+    }
+
+    &-form {
+      header {
+        display: block;
+      }
+
+      width: 100%;
+
+      &-main {
+        padding: 30px 30px;
+      }
+
+      footer {
+        padding: 30px 30px;
+      }
+    }
+  }
+}

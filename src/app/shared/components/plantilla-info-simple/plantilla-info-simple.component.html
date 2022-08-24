@@ -1,0 +1,27 @@
+<section class="ptl-infosimple">
+  <!-- TITULO -->
+  <div class="ptl-infosimple-titulo">
+    <ng-content select="[contentTitulo]"></ng-content>
+  </div>
+  <!-- MAIN -->
+  <div class="ptl-infosimple-main">
+    <!-- CARD -->
+    <div class="ptl-infosimple-main-content1">
+      <div class="ptl-infosimple-main-content1-card">
+        <ng-content select="[contentCard]"></ng-content>
+      </div>
+    </div>
+    <!-- CONTENIDO -->
+    <div class="ptl-infosimple-main-content2">
+      <!-- CONTENIDO -MAIN -->
+      <div class="ptl-infosimple-main-content2-main">
+        <ng-content select="[contentMain]"></ng-content>
+      </div>
+      <!-- CONTENIDO - BOTONES -->
+      <div class="ptl-infosimple-main-content2-action">
+        <ng-content select="[contentAction]"></ng-content>
+      </div>
+    </div>
+  </div>
+
+</section>

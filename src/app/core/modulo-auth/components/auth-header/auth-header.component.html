@@ -1,0 +1,16 @@
+<div [ngClass]="{'header-container-login': typeDesign === 1, 'header-container-generar': typeDesign === 2}">
+    <div class="header-container-logo">
+        <img src="assets/icons/logo-caja-trujillo.svg" alt="">
+    </div>
+    <div *ngIf="typeDesign === 2" class="header-container-down">
+        <p  class="header-container-title">HOME BANKING</p>
+        <div class="header-container-sello">
+            <span>Sello de seguridad</span>
+            <div class="header-container-content-sello">
+                <img src="assets/icons/Shape.svg" alt="">
+            </div>
+
+        </div>
+    </div>
+
+</div>

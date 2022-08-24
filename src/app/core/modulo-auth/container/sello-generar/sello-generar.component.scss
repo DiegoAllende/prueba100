@@ -1,0 +1,29 @@
+.sello-generar {
+  &-titulo {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 35px;
+  }
+
+  &-subtitulo {
+    margin-bottom: 45px;
+    text-align: justify;
+  }
+
+  &-main {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+  }
+
+  &-accion {
+    display: flex;
+    justify-content: center;
+    gap: 30px; 
+    flex-wrap: wrap;
+    button {
+      min-width: 260px;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+.input-tarjeta {
+    // display: flex;
+    width: 100%;
+
+    &-pin {
+        display: flex;
+        gap: 10px;
+        letter-spacing: 2px;
+    }
+
+    input {
+        letter-spacing: 2px;
+    }
+}

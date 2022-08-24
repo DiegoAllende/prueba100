@@ -1,0 +1,26 @@
+<section>
+  <!-- Fondo -->
+  <div class="layout-login-bg">
+    <div class="layout-login-fig"></div>
+    <div class="layout-login-form"></div>
+  </div>
+  <!-- Contenido -->
+  <div class="container-ct layout-login">
+      <div class="layout-login-fig">
+        <app-left-info></app-left-info>
+      </div>
+      <div class="layout-login-form">
+        <!-- <app-contador [tiempoSeg]="tiempoSesion" [mensaje]="mensajeTime"></app-contador> -->
+        <header>
+          <app-auth-header [typeDesign]="1"></app-auth-header>
+        </header>
+        <section class="layout-login-form-main">
+          <label class="title1-pri layout-login-form-main-titulo">Acceso a personas</label>
+          <router-outlet></router-outlet>
+        </section>
+        <footer>
+          <app-auth-footer></app-auth-footer>
+        </footer>
+      </div>
+  </div>
+</section>

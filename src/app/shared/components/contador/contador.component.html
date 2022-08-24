@@ -1,0 +1,6 @@
+<div class="content-contador" [class.text-white]="type === 2" [class.position-fixed]="type === 2">
+  <!-- <mat-icon>access_time</mat-icon> -->
+  <app-icon-reloj color="white" size="20"></app-icon-reloj>
+  <span class="d-none d-md-block ms-1">{{mensaje}} en {{tiempoAux}} segundos</span>
+  <span class="d-md-none d-block ms-1">{{tiempoAux}} segundos</span>
+</div>

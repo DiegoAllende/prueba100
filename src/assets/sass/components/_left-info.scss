@@ -1,0 +1,24 @@
+.left-info{
+  &__main{
+    color: white;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: $color-principal1;
+    header{
+      padding-top: 2rem;
+      padding-left: 2rem;
+      .logo{
+        width: 36%;
+      }
+    }
+    footer{
+      z-index: 1;
+      .content{
+        width: 111%;
+      }
+    }
+  }
+
+}

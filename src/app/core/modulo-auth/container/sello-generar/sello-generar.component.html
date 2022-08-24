@@ -1,0 +1,50 @@
+<section class="sello-generar">
+  <ng-container *ngIf="numeroPaso !== PASOS.FIN">
+    <div class="sello-generar-titulo">
+      <app-icon-sello-de-seguridad size="24"></app-icon-sello-de-seguridad>
+      <label class="title2-pri">Selecciona tu sello de seguridad</label>
+    </div>
+  </ng-container>
+
+  <!-- Selecionar Sello -->
+  <ng-container *ngIf="numeroPaso === PASOS.INI">
+    <div class="sello-generar-subtitulo">
+      <label class="title3-sec">Para garantizar que tus operaciones se realicen con total seguridad debes elegir una de
+        las figuras mostradas como tu sello personal.</label>
+    </div>
+    <div class="sello-generar-main">
+      <app-sello-lista [listaSellos]="listaSellos" (valueSello)="valueSello($event)"></app-sello-lista>
+    </div>
+    <div class="sello-generar-accion">
+      <button mat-raised-button color="primary" class="btn-principal" [disabled]="!selloIn"
+        (click)="btnAceptarSello()">Aceptar</button>
+    </div>
+  </ng-container>
+
+  <!-- Confirmar Sello -->
+  <ng-container *ngIf="numeroPaso === PASOS.DOS">
+    <div class="sello-generar-subtitulo text-center">
+      <label class="title3-sec">Tu sello de seguridad fue asignado.</label>
+    </div>
+    <div class="sello-generar-main">
+      <app-sello-icon [iconNombre]="selloIn.nombre" tamanio="lg"></app-sello-icon>
+    </div>
+    <div class="sello-generar-subtitulo text-center">
+      <label class="subtitle1-sec">Desde ahora, al realizar tus operaciones por nuestro <span class="color-pri">Canal de
+          Home Banking</span> debes
+        verificar que tu <span class="color-pri">Sello de seguridad</span> corresponda al que seleccionaste; caso
+        contrario cierra la ventana y
+        comunícate con nuestro <span class="color-pri">Call Center al (044) 471000.</span></label>
+    </div>
+    <div class="sello-generar-accion">
+      <button mat-stroked-button color="primary" class="btn-pri-out" (click)="btnRegresar()">Regresar</button>
+      <button mat-raised-button color="primary" class="btn-principal" (click)="btnSiguiente()">Siguiente</button>
+    </div>
+  </ng-container>
+
+  <ng-container *ngIf="numeroPaso === PASOS.FIN">
+    <app-pantalla-exito [Titulo]="'Sello de seguridad generado con éxito'"
+      [Icon]="'./../../../../../assets/icons/SelloDeSeguridad.svg'"
+      [Mensaje]="'Ahora ya puedes ingresar a tu banca por internet con tu sello'"></app-pantalla-exito>
+  </ng-container>
+</section>

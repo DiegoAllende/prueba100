@@ -1,0 +1,34 @@
+.sello-lista {
+  max-width: 800px;
+  margin: 0 auto;
+
+  &-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    text-align: center;
+
+    &-item {
+      cursor: pointer;
+      position: relative;
+    }
+  }
+}
+
+@include media-down(lg) {
+  .sello-lista {
+    &-main {
+      gap: 30px;
+    }
+  }
+}
+
+@include media-down(md) {
+  .sello-lista {
+    &-main {
+      gap: 20px;
+    }
+  }
+}

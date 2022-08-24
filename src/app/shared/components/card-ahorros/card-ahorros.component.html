@@ -1,0 +1,13 @@
+<div class="card-ahorros">
+  <div class="icono">
+    <img class="img-top" [src]="iconoEnd" alt="">
+  </div>
+  <div class="card-ahorros-info">
+    <span class="card-ahorros-info-titulo">{{titulo}}</span>
+    <span *ngIf="monto" class="card-ahorros-info-monto">{{monto}}</span>
+    <span *ngIf="subTitulo" class="card-ahorros-info-subtitulo">{{subTitulo}}</span>
+  </div>
+  <div class="card-ahorros-flecha">
+    <app-icon-flecha-derecha size="18"></app-icon-flecha-derecha>
+  </div>
+</div>

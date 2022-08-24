@@ -1,0 +1,18 @@
+
+<ul class="main-menu-desktop">
+<li *ngFor="let item of list;let i = index" [ngStyle]="item.title === 'Cerrar Sesion' ? {'display': 'none'} : {'display':'block'}"  >
+    <span *ngIf="item.items && item.items.length > 0"  >
+      <div  [matMenuTriggerFor]="menu.childMenu" class="desktop-menu-item"   [class.active]="item.active" (click)="toggle(i)">
+        {{ item.title }}
+        <!-- <mat-icon style="font-size: 40px; height: 40px;width: 40px;" matSuffix>keyboard_arrow_down</mat-icon> -->
+        <app-icon-flecha-abajo color="white" size="15" style="padding-left: 10px;"></app-icon-flecha-abajo>
+      </div>
+      <app-item-menu-desktop (close)="closeMenu($event)" #menu [items]="item.items"></app-item-menu-desktop>
+    </span>
+    <span *ngIf="!item.items || item.items.length === 0">
+      <div color="primary" class="desktop-menu-item" [class.active]="item.active" (click)="toggle(i)">
+        {{ item.title }}
+      </div>
+    </span>
+</li>
+</ul>
