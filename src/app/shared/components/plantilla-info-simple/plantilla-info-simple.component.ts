@@ -1,4 +1,4 @@
-import { Component, ContentChild, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-plantilla-info-simple',
@@ -6,11 +6,12 @@ import { Component, ContentChild, Input, OnInit, TemplateRef } from '@angular/co
 })
 export class PlantillaInfoSimpleComponent implements OnInit {
   @Input() ocultarCard: boolean = false;
-
-  constructor() { }
+  constructor() {
+    console.log("plantilla info constr");
+  }
 
   ngOnInit(): void {
-    console.log("ocultarCard", this.ocultarCard);
+    console.log("plantilla info");
   }
 
 }

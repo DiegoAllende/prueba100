@@ -50,6 +50,7 @@ import { AgregarFavoritoComponent } from './components/agregar-favorito/agregar-
 import { ClaveSmsComponent } from './components/clave-sms/clave-sms.component';
 import { IconReloadComponent } from './components/icons/icon-reload/icon-reload.component';
 import { ProcesoExitosoComponent } from './components/proceso-exitoso/proceso-exitoso.component';
+import { CardSegundoPasoComponent } from './components/card-segundo-paso/card-segundo-paso.component';
 import { SelectCuentasComponent } from './components/formulario/select-cuentas/select-cuentas.component';
 
 
@@ -100,6 +101,7 @@ import { SelectCuentasComponent } from './components/formulario/select-cuentas/s
     ClaveSmsComponent,
     IconReloadComponent,
     ProcesoExitosoComponent,
+    CardSegundoPasoComponent,
     SelectCuentasComponent,
   ],
   imports: [
@@ -159,6 +161,7 @@ import { SelectCuentasComponent } from './components/formulario/select-cuentas/s
     ClaveSmsComponent,
     IconReloadComponent,
     ProcesoExitosoComponent,
+    CardSegundoPasoComponent,
     SelectCuentasComponent
   ]
 })

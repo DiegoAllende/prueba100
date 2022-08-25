@@ -1,0 +1,49 @@
+
+@import 'variables';
+.card-segundo-paso-container{
+    border: 1px solid #C6C6C6;
+    border-radius: 4px;
+    padding: 18px 15px;
+    &-title{
+        color: $color-primario;
+        font-size: 16px;
+        font-weight: 700;
+        @media screen and(min-width:768px) {
+            font-size: 20px;
+        }
+    }
+    &-content{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        &-item{
+            font-size: 18px;
+            width: 100%;
+            display: flex;
+            font-size: 16px;
+            font-weight: 400;
+            justify-content: space-between;
+            gap: 10px;
+            @media screen and(min-width:768px) {
+                font-size: 18px;
+            }
+        }
+    }
+}
+
+.title-red{
+    color: red;
+    font-size: 16px;
+    font-weight: 700;
+    @media screen and(min-width:768px) {
+        font-size: 20px;
+    }
+}
+
+.mount-total{
+    font-size: 24px;
+    font-weight: 700;
+    @media screen and(min-width:768px) {
+        font-size: 30px;
+    }
+}

@@ -13,13 +13,13 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
     }
   ]
 })
-export class SelectCuentasComponent implements OnInit, ControlValueAccessor {
+export class SelectCuentasComponent implements ControlValueAccessor {
   @Input() lista: {
     id: string,
     cuenta: string,
     numero: string,
     monto: string,
-    mostrar: string,
+    mostrar: string
   }[] = [];
 
   labelSelect = "Seleccione";
@@ -51,9 +51,6 @@ export class SelectCuentasComponent implements OnInit, ControlValueAccessor {
     this.currentValue = value;
     this.onChange(this.currentValue);
   }
-
-
-  ngOnInit(): void {}
 
   changeSelect(val: any) {
     this.labelSelect = this.lista.find(x => x.id === val.value)?.cuenta || "";

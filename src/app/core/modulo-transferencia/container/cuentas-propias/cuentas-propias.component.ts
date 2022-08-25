@@ -55,4 +55,29 @@ export class CuentasPropiasComponent implements OnInit {
     }
   }
 
+  //ADECUAR FORMATO DE ARRAY DEPENDIENDO LOS CARD DE SU VISTA
+  // listItemsSecondStep= [
+  //   {
+  //     title: "Activar notificaciones", value:"",
+  //     subtitles: [
+  //       {subtitle: "Ahorro Sueldo  156729403782 - Soles", value: ""},
+  //       {subtitle: "", value: ""},
+  //     ]
+  //   },
+  //   {
+  //     title: "Canales de notificación", subtitles: [
+  //       {subtitle: "Compras en comercios (POS)", value: "SI"},
+  //       {subtitle: "Compras en comercios (POS) nacional", value: "SI"},
+  //       {subtitle: "Compras en comercios (POS) nacional", value: "SI",},
+  //     ]
+  //   },
+  //   {
+  //     title:"",subtitles:[
+  //       {subtitle: "Compras en comercios (POS)", value: "S/1278"},
+  //       {subtitle: "Compras en comercios (POS)", value: "S/1278"},
+  //       {subtitle: "Monto total a pagar", value: "S/5003",monto:true},
+  //     ]
+  //   }
+  // ];
+
 }

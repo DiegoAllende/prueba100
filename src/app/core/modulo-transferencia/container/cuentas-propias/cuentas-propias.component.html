@@ -59,14 +59,12 @@
         </div>
       </section>
     </mat-step>
-
     <mat-step label="Transferencia" [completed]="stepIndex === 0 ? false: true">
       <p>TRANSFERENCIA.</p>
     </mat-step>
 
     <mat-step label="Resúmen">
-      <app-proceso-exitoso [icono]="'transferencia'" [titulo]="'¡Tu transferencia se realizó con éxito!'"
-        [numOp]="'56054'" [dataArray]="[
+      <app-proceso-exitoso [icono]="'transferencia'" [titulo]="'¡Tu transferencia se realizó con éxito!'" [numOp]="'56054'" [dataArray]="[
       {
         title: 'Fecha y Hora',
         data: '20/12/2017 10:50'
