@@ -1,0 +1,12 @@
+.cuenta-ahorro {
+    display: flex;
+    gap: 6%;
+    flex-wrap: wrap;
+    align-items: flex-end;
+
+    &-item {
+        flex-basis: calc(50% - 3%);
+        align-self: flex-end;
+    }
+
+}

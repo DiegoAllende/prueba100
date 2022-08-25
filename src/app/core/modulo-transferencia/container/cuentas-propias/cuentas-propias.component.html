@@ -27,7 +27,98 @@
   <mat-stepper labelPosition="bottom" linear [selectedIndex]="stepIndex">
 
     <mat-step label="Datos">
-      <p>DATOS.</p>
+      <section>
+        <div class="row">
+          <div class="col-12 col-md-6 select-cuenta mb-4">
+            <label class="label-pri mb-2">Cuenta origen:</label>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <mat-label>{{labelSelect1}}</mat-label>
+              <mat-select (selectionChange)="changeSelect($event)" [(ngModel)]="values.cuentaOrigen">
+                <mat-option *ngFor="let item of listaCuentas" [value]="item.id">{{item.mostrar}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-md-6 select-cuenta mb-4">
+            <label class="label-pri mb-2">Cuenta destino:</label>
+            <mat-form-field appearance="fill" floatLabel="always">
+              <mat-label>{{labelSelect2}}</mat-label>
+              <mat-select (selectionChange)="changeSelect2($event)" [(ngModel)]="values.cuentaDestino">
+                <mat-option *ngFor="let item of listaCuentas" [value]="item.id">{{item.mostrar}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="col-12 col-md-6">
+            <label class="label-secN">Moneda</label>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-select [(ngModel)]="values.moneda">
+                <mat-option value="1">Soles</mat-option>
+                <mat-option value="2">Dolares</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-12 col-md-6">
+            <!-- <app-alerta mensaje="qweqe qwrew werw wtert erte tret tret ert retre tretrete ertretreterrtretr etretre ertre" tipo="warn"></app-alerta> -->
+            <label class="label-secN">Monto a transferir</label>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <input matInput autocomplete="off">
+            </mat-form-field>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- <hr>
+      <hr>
+      <hr> -->
+      <!-- <section class="cuenta-ahorro">
+        <div class="cuenta-ahorro-item">
+          <label class="label-pri">Cuenta origen:</label>
+          <mat-form-field appearance="fill" floatLabel="always" style="width: 100%;">
+            <mat-label>{{labelSelect1}}</mat-label>
+            <mat-select (selectionChange)="changeSelect($event)">
+              <mat-option *ngFor="let item of listaCuentas" [value]="item">{{item.mostrar}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="cuenta-ahorro-item">
+          <label class="label-pri">Cuenta destino:</label>
+          <mat-form-field appearance="fill" floatLabel="always" style="width: 100%;">
+            <mat-label>{{labelSelect2}}</mat-label>
+            <mat-select (selectionChange)="changeSelect2($event)">
+              <mat-option *ngFor="let item of listaCuentas" [value]="item">{{item.mostrar}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+
+        <div class="cuenta-ahorro-item">
+          <label class="label-secN">Moneda</label>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-select>
+                <mat-option value="1">Soles</mat-option>
+                <mat-option value="2">Dolares</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="cuenta-ahorro-item">
+          <app-alerta mensaje="qweqe qwrew werw rtret" tipo="warn"></app-alerta>
+        </div>
+
+        <div class="cuenta-ahorro-item">
+          <label class="label-secN">Moneda</label>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-select>
+                <mat-option value="1">Soles</mat-option>
+                <mat-option value="2">Dolares</mat-option>
+              </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="cuenta-ahorro-item">
+          <button mat-raised-button class="btn-principal">Ver Pdf</button>
+        </div>
+
+      </section> -->
     </mat-step>
 
     <mat-step label="Transferencia" [completed]="stepIndex === 0 ? false: true">

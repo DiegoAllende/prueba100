@@ -7,6 +7,7 @@ import { CuentasTercerosComponent } from './container/cuentas-terceros/cuentas-t
 import { SharedModule } from '@shared/shared.module';
 import { CuentasOtroBancoComponent } from './container/cuentas-otro-banco/cuentas-otro-banco.component';
 import { EnviarGiroComponent } from './container/enviar-giro/enviar-giro.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { EnviarGiroComponent } from './container/enviar-giro/enviar-giro.compone
   imports: [
     CommonModule,
     ModuloTransferenciaRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,
   ]
 })
 export class ModuloTransferenciaModule { }

@@ -56,6 +56,10 @@
 
 // Estilo para el Stepper de material
 mat-stepper {
+  .mat-horizontal-content-container {
+    padding: 0px;
+  }
+
   .mat-step-header {
     pointer-events: none;
 
@@ -119,10 +123,21 @@ mat-stepper {
 }
 
 // FORM FIELD
-.mat-form-field-appearance-fill {
+.mat-form-field-appearance-fill,
+.mat-form-field-appearance-outline {
   .mat-form-field-flex {
     background-color: transparent;
-    font-size: $size-form;
+    .mat-form-field-outline {
+      color: $color-desactivado;
+    }
+    .mat-select, .mat-input-element {
+      font-size: $size-form;
+
+      @include media-down(md) {
+        font-size: 16px;
+
+      }
+    }
   }
 
   .mat-form-field-underline::before {
@@ -152,6 +167,26 @@ mat-stepper {
     .mat-select-value {
       color: $color-principal1;
       font-weight: 600;
+    }
+  }
+}
+
+.select-cuenta {
+  .mat-form-field-appearance-fill {
+    width: 100%;
+
+    .mat-form-field-wrapper {
+      padding-bottom: 0px;
+      border: 1px solid $color-desactivado;
+      border-radius: 4px;
+
+      .mat-form-field-label {
+        font-size: 16px;
+      }
+
+      .mat-form-field-underline {
+        display: none;
+      }
     }
   }
 }
