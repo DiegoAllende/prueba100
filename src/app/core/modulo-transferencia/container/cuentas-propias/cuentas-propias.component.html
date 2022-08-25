@@ -1,4 +1,4 @@
-<app-plantilla-info-simple>
+<app-plantilla-info-simple [ocultarCard]="ocultarCard">
   <ng-container contentTitulo>
     <app-icon-transferencia size="24"></app-icon-transferencia>
     <label class="title2-pri">Transferencias</label>
@@ -16,6 +16,10 @@
     <ng-container [ngTemplateOutlet]="contentTp"></ng-container>
   </ng-container>
 
+  <ng-container contentFavorito *ngIf="stepIndex === 2">
+    <app-agregar-favorito></app-agregar-favorito>
+  </ng-container>
+
   <ng-container contentAction>
     <ng-container [ngTemplateOutlet]="actionsTp"></ng-container>
   </ng-container>
@@ -27,24 +31,14 @@
   <mat-stepper labelPosition="bottom" linear [selectedIndex]="stepIndex">
     <mat-step label="Datos">
       <section>
-        <div class="row">
-          <div class="col-12 col-md-6 select-cuenta mb-4">
+        <div class="row" style="align-items: flex-end;">
+          <div class="col-12 col-md-6 mb-4">
             <label class="label-pri mb-2">Cuenta origen:</label>
-            <mat-form-field appearance="fill" floatLabel="always">
-              <mat-label>{{labelSelect1}}</mat-label>
-              <mat-select (selectionChange)="changeSelect($event)" [(ngModel)]="values.cuentaOrigen">
-                <mat-option *ngFor="let item of listaCuentas" [value]="item.id">{{item.mostrar}}</mat-option>
-              </mat-select>
-            </mat-form-field>
+            <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaOrigen"></select-cuentas>
           </div>
           <div class="col-12 col-md-6 select-cuenta mb-4">
             <label class="label-pri mb-2">Cuenta destino:</label>
-            <mat-form-field appearance="fill" floatLabel="always">
-              <mat-label>{{labelSelect2}}</mat-label>
-              <mat-select (selectionChange)="changeSelect2($event)" [(ngModel)]="values.cuentaDestino">
-                <mat-option *ngFor="let item of listaCuentas" [value]="item.id">{{item.mostrar}}</mat-option>
-              </mat-select>
-            </mat-form-field>
+            <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaDestino"></select-cuentas>
           </div>
 
           <div class="col-12 col-md-6">
@@ -59,12 +53,10 @@
           <div class="col-12 col-md-6">
             <label class="label-secN">Monto a transferir</label>
             <mat-form-field appearance="outline" style="width: 100%;">
-              <input matInput autocomplete="off">
+              <input matInput autocomplete="off" [(ngModel)]="values.monto">
             </mat-form-field>
           </div>
-
         </div>
-
       </section>
     </mat-step>
 
@@ -73,7 +65,8 @@
     </mat-step>
 
     <mat-step label="Resúmen">
-      <app-proceso-exitoso [icono]="'transferencia'" [titulo]="'¡Tu transferencia se realizó con éxito!'" [numOp]="'56054'" [dataArray]="[
+      <app-proceso-exitoso [icono]="'transferencia'" [titulo]="'¡Tu transferencia se realizó con éxito!'"
+        [numOp]="'56054'" [dataArray]="[
       {
         title: 'Fecha y Hora',
         data: '20/12/2017 10:50'

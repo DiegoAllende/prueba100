@@ -1,21 +1,16 @@
 <div class="agregar-favorito-container">
-    <div class="agregar-favorito-container-content-nombre">
-        <div class="agregar-favorito-container-content-nombre-title">
-            <app-icon-estrella width="24" height="24" color="red"></app-icon-estrella>
-            <span class="agregar-favorito-container-content-nombre-title-text">Agregara a favoritos</span>
-        </div>
-        <mat-form-field class="agregar-favorito-container-content-nombre-input" appearance="outline">
-            <!-- <mat-label>Email</mat-label> -->
-            <input type="text" matInput
-                   placeholder="Agrega un nombre a la operacion"
-                   class="agregar-favorito-container-content-nombre-input-text">
-        </mat-form-field>
-
+  <div class="agregar-favorito-container-content-nombre">
+    <div class="agregar-favorito-container-content-nombre-title">
+      <app-icon-estrella width="24" height="24" color="red"></app-icon-estrella>
+      <span class="agregar-favorito-container-content-nombre-title-text">Agregar a favoritos</span>
     </div>
-    
-    <div class="agregar-favorito-container-boton"  >
-        <button class="btn-pri-out">Guardar favorito</button>
-    </div>
-    
+    <mat-form-field class="agregar-favorito-container-content-nombre-input" appearance="outline">
+      <input matInput autocomplete="off" placeholder="Agrega un nombre a la operación"
+        class="agregar-favorito-container-content-nombre-input-text">
+    </mat-form-field>
+  </div>
 
+  <div class="agregar-favorito-container-boton">
+    <button mat-stroked-button color="primary" class="btn-pri-out">Guardar favorito</button>
+  </div>
 </div>

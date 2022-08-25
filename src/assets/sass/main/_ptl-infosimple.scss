@@ -40,7 +40,40 @@
         display: flex;
         gap: 20px;
         justify-content: center;
+        align-items: flex-end;
 
+        &-botones {
+          display: flex;
+          gap: 20px;
+          justify-content: center;
+        }
+      }
+    }
+
+    &-content2.ocultar {
+      padding-left: 200px;
+      padding-right: 200px;
+    }
+  }
+}
+
+@include media-down(xl) {
+  .ptl-infosimple {
+    &-main {
+      &-content2.ocultar {
+        padding-left: 120px;
+        padding-right: 120px;
+      }
+    }
+  }
+}
+
+@include media-down(lg) {
+  .ptl-infosimple {
+    &-main {
+      &-content2.ocultar {
+        padding-left: 25px;
+        padding-right: 25px;
       }
     }
   }
@@ -62,6 +95,10 @@
         padding: 0px;
 
       }
+
+      &-content2.ocultar {
+        padding: 0px;
+      }
     }
   }
 }
@@ -71,7 +108,12 @@
     &-main {
       &-content2 {
         &-action {
-          flex-direction: column-reverse;
+          flex-direction: column;
+          align-items: stretch;
+
+          &-botones {
+            flex-direction: column-reverse;
+          }
         }
       }
     }

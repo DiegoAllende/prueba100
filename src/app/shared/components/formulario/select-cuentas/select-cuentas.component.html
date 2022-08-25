@@ -1,0 +1,8 @@
+<div class="select-cuenta">
+  <mat-form-field appearance="fill" floatLabel="always">
+    <mat-label>{{labelSelect}}</mat-label>
+    <mat-select (selectionChange)="changeSelect($event)" [(ngModel)]="currentValue">
+      <mat-option *ngFor="let item of lista" [value]="item?.id">{{item?.mostrar}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

@@ -7,9 +7,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./cuentas-propias.component.scss']
 })
 export class CuentasPropiasComponent implements OnInit {
-  labelSelect1 = "Ahorro Sueldo";
-  labelSelect2 = "Ahorro Total Disponibilidad";
-
   listaCuentas = [
     { id: "1", cuenta: "Ahorro Sueldo", numero: "156729403782", monto: "2,357.16", mostrar: "156729403782 - S/1,357.16 " },
     { id: "2", cuenta: "Ahorro Total Disponibilidad", numero: "156729403782", monto: "5,357.16", mostrar: "156729403782 - S/58.50" },
@@ -19,7 +16,10 @@ export class CuentasPropiasComponent implements OnInit {
     cuentaOrigen: "1",
     cuentaDestino: "2",
     moneda: "1",
+    monto: "",
   }
+
+  ocultarCard: boolean = false;
 
   constructor(
     private router: Router
@@ -27,14 +27,6 @@ export class CuentasPropiasComponent implements OnInit {
 
   ngOnInit(): void {
     console.log("cuenta propia init");
-  }
-
-  changeSelect(val: any) {
-    this.labelSelect1 = this.listaCuentas.find(x => x.id === val.value)?.cuenta || "";
-  }
-
-  changeSelect2(val: any) {
-    this.labelSelect2 = this.listaCuentas.find(x => x.id === val.value)?.cuenta || "";
   }
 
   stepIndex = 0;
@@ -56,6 +48,10 @@ export class CuentasPropiasComponent implements OnInit {
       this.stepIndex++;
     } else {
       this.router.navigate(["/main"]);
+    }
+
+    if(this.stepIndex === 2) {
+      this.ocultarCard = true;
     }
   }
 

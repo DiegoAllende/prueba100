@@ -6,20 +6,25 @@
   <!-- MAIN -->
   <div class="ptl-infosimple-main">
     <!-- CARD -->
-    <div class="ptl-infosimple-main-content1">
+    <div class="ptl-infosimple-main-content1" *ngIf="!ocultarCard">
       <div class="ptl-infosimple-main-content1-card">
         <ng-content select="[contentCard]"></ng-content>
       </div>
     </div>
     <!-- CONTENIDO -->
-    <div class="ptl-infosimple-main-content2">
+    <div class="ptl-infosimple-main-content2 " [ngClass]="ocultarCard ? 'ocultar' : ''">
       <!-- CONTENIDO -MAIN -->
       <div class="ptl-infosimple-main-content2-main">
         <ng-content select="[contentMain]"></ng-content>
       </div>
       <!-- CONTENIDO - BOTONES -->
       <div class="ptl-infosimple-main-content2-action">
-        <ng-content select="[contentAction]"></ng-content>
+        <div class="ptl-infosimple-main-content2-action-favorito">
+          <ng-content select="[contentFavorito]"></ng-content>
+        </div>
+        <div class="ptl-infosimple-main-content2-action-botones">
+          <ng-content select="[contentAction]"></ng-content>
+        </div>
       </div>
     </div>
   </div>

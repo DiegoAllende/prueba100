@@ -50,6 +50,7 @@ import { AgregarFavoritoComponent } from './components/agregar-favorito/agregar-
 import { ClaveSmsComponent } from './components/clave-sms/clave-sms.component';
 import { IconReloadComponent } from './components/icons/icon-reload/icon-reload.component';
 import { ProcesoExitosoComponent } from './components/proceso-exitoso/proceso-exitoso.component';
+import { SelectCuentasComponent } from './components/formulario/select-cuentas/select-cuentas.component';
 
 
 @NgModule({
@@ -99,6 +100,7 @@ import { ProcesoExitosoComponent } from './components/proceso-exitoso/proceso-ex
     ClaveSmsComponent,
     IconReloadComponent,
     ProcesoExitosoComponent,
+    SelectCuentasComponent,
   ],
   imports: [
     CommonModule,
@@ -156,7 +158,8 @@ import { ProcesoExitosoComponent } from './components/proceso-exitoso/proceso-ex
     AgregarFavoritoComponent,
     ClaveSmsComponent,
     IconReloadComponent,
-    ProcesoExitosoComponent
+    ProcesoExitosoComponent,
+    SelectCuentasComponent
   ]
 })
 export class SharedModule { }

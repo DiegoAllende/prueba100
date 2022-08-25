@@ -1,73 +1,75 @@
-@import '../../../../assets/sass/variables';
+@import 'variables';
 
-.agregar-favorito-container{
-    margin-top: 30px;
-    display: flex;
-    flex-direction: column;
+.agregar-favorito-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  @media screen and(min-width:768px) {
+    flex-direction: row;
     width: 100%;
+    align-items: flex-end;
+    gap: 10px;
+  }
+
+  &-content-nombre {
+    width: 100%;
+
     @media screen and(min-width:768px) {
-        flex-direction: row;
+      width: 100%;
+    }
+
+    &-title {
+      display: flex;
+      align-items: center;
+      color: $color-primario;
+      font-size: $size-titulo3;
+      font-weight: 700;
+      line-height: 24px;
+
+      &-text {
+        margin-left: 15px;
+      }
+    }
+
+    &-input {
+      margin-top: 9px;
+      width: 100%;
+
+      &-text {
+        margin: 0px;
+      }
+    }
+
+  }
+
+  &-boton {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+
+    @media screen and(min-width:768px) {
+      width: 50%;
+      margin-top: 0px;
+    }
+
+    button {
+      width: 100%;
+
+      @media screen and(min-width:768px) {
         width: 100%;
-        align-items: flex-end;
-        gap: 10px;
+      }
     }
-
-    &-content-nombre{
-        @media screen and(min-width:768px) {
-            width: 50%;
-        }
-
-        &-title{
-            display: flex;
-            align-items: center;
-            color: $color-primario;
-            font-size: $size-titulo3;
-            font-weight: 700;
-            line-height: 24px;
-            
-            &-text{
-                margin-left: 15px;
-            }
-        }
-    
-        &-input{
-            margin-top: 9px;
-            width: 100%;
-
-            &-text{
-                margin: 0px;
-            }
-        }
-
-    }
-
-    &-boton{
-        margin-top: 25px;
-        display: flex;
-        justify-content: center;
-
-
-        @media screen and(min-width:768px) {
-            width: 50%;
-            margin-top: 0px;
-            margin-bottom: 3px;
-        }
-
-        button{
-            width: 80%;
-            @media screen and(min-width:768px){
-                width: 100%;
-            }
-        }
-    }
+  }
 }
 
 //ESTE NG-DEEP SOLO AFECTARA A ESTILOS DENTRO DE ESTE COMPONENTE Y SUS HIJOS
 :host ::ng-deep.mat-form-field-wrapper {
-    padding: 0px;
+  padding: 0px;
+  margin: 0px;
 }
 
-:host ::ng-deep.mat-form-field-infix{
-    border-top: none;
-    padding: 19px 10px;
+:host ::ng-deep.mat-form-field-infix {
+  border-top: none;
+  padding: 19px 10px;
 }
