@@ -1,0 +1,65 @@
+@import '../../../../assets/sass/variables';
+
+.clave-sms-container{
+    display: flex;
+    flex-direction: row;
+    @media screen and(min-width:768px) {
+        align-items: center;
+        justify-content: space-between;
+        
+    }
+    
+
+    &-title{
+        width: 40%;
+        margin-top: 10px;
+        font-size: $size-sub-titulo2;
+        font-weight: 700;
+        line-height: 24px;
+        @media screen and(min-width:768px) {
+            width: 25%;
+        }
+    }
+
+    &-content{
+        width: 60%;
+
+        @media screen and(min-width:768px) {
+            display: flex;
+            align-items: center;
+            width: 70%;
+            justify-content: space-between;
+        }
+
+        &-field{
+            width: 100%;
+            
+            &-input{
+                margin: 0px;
+            }
+            @media screen and(min-width:768px) {
+                width: 35%;
+            }
+
+        }
+        &-reload{
+
+            @media screen and(min-width:768px) {
+                width: 55%;
+            }
+            
+            &-text{
+                color: $color-primario;
+                font-size: $size-sub-titulo2;
+                font-weight: 700;
+                border-bottom: 1px solid $color-primario;
+                
+            }
+        }
+    }
+}
+
+
+:host ::ng-deep.mat-form-field-wrapper {
+  padding: 0;
+}

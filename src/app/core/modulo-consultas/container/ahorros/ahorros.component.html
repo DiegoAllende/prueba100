@@ -31,12 +31,12 @@
             <div class="movimientos-container-filters-pdf-content ">
               <div class="movimientos-container-filters-pdf-filter">
                 <mat-form-field appearance="outline" class="w-100">
-                  <mat-select [(ngModel)]="yearPdf" required placeholder="Mes/Año">
-                    <mat-option *ngFor="let date of listDates" [value]="date.stringMuestra">{{date.stringMuestra | titlecase}}</mat-option>
-                  </mat-select>
+                    <mat-select [(ngModel)]="yearPdf" required placeholder="Mes/Año">
+                      <mat-option *ngFor="let date of listDates" [value]="date.stringMuestra">{{date.stringMuestra | titlecase}}</mat-option>
+                    </mat-select>
                 </mat-form-field>
               </div>
-              <button mat-stroked-button class="btn2-pri movimientos-container-filters-pdf-btn">Ver PDF</button>
+              <button mat-stroked-button class="btn-principal movimientos-container-filters-pdf-btn">Ver PDF</button>
             </div>
           </div>
         </div>

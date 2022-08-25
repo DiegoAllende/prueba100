@@ -1,0 +1,13 @@
+<div class="main">
+    <img [src]="iconoEnd" alt="">
+    <h1 class="title">{{titulo}}</h1>
+    <h2 class="subtitle">Tú número de operación es <strong class="op_num">#{{numOp}}</strong>. Se envío la constancia a tu correo electrónico</h2>
+    <div class="details_content">
+        <div class="left-titles">
+            <p *ngFor="let data of dataTransaccion">{{data.title}}</p>
+        </div>
+        <div class="right-content">
+            <p *ngFor="let data of dataTransaccion">{{data.data}}</p>
+        </div>
+    </div>
+</div>

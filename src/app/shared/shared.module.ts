@@ -47,6 +47,9 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { IconCloseComponent } from './components/icons/icon-close/icon-close.component';
 import { IconEstrellaComponent } from './components/icons/icon-estrella/icon-estrella.component';
 import { AgregarFavoritoComponent } from './components/agregar-favorito/agregar-favorito.component';
+import { ClaveSmsComponent } from './components/clave-sms/clave-sms.component';
+import { IconReloadComponent } from './components/icons/icon-reload/icon-reload.component';
+import { ProcesoExitosoComponent } from './components/proceso-exitoso/proceso-exitoso.component';
 
 
 @NgModule({
@@ -93,6 +96,9 @@ import { AgregarFavoritoComponent } from './components/agregar-favorito/agregar-
     IconCloseComponent,
     IconEstrellaComponent,
     AgregarFavoritoComponent,
+    ClaveSmsComponent,
+    IconReloadComponent,
+    ProcesoExitosoComponent,
   ],
   imports: [
     CommonModule,
@@ -147,7 +153,10 @@ import { AgregarFavoritoComponent } from './components/agregar-favorito/agregar-
     LoaderComponent,
     IconCloseComponent,
     IconEstrellaComponent,
-    AgregarFavoritoComponent
+    AgregarFavoritoComponent,
+    ClaveSmsComponent,
+    IconReloadComponent,
+    ProcesoExitosoComponent
   ]
 })
 export class SharedModule { }
