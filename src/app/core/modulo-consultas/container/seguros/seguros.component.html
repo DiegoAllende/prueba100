@@ -31,7 +31,12 @@
           <div class="ptl-infocom-main-content-main-info">
             <app-informacion-seguros [seguro]="item"></app-informacion-seguros>
             <div class="ptl-infocom-main-content-main-info-actions">
-              <ng-container [ngTemplateOutlet]="actionsTp"></ng-container>
+              <div class="ptl-infocom-main-content-main-info-actions-favorito">
+                
+              </div>
+              <div class="ptl-infocom-main-content-main-info-actions-botones">
+                <ng-container [ngTemplateOutlet]="actionsTp"></ng-container>
+              </div>
             </div>
           </div>
         </div>

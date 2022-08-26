@@ -1,1 +1,169 @@
-<p>cuentas-otro-banco works!</p>
+<app-plantilla-info-compleja [ocultarCard]="ocultarCard">
+
+  <ng-container contentTitulo>
+    <app-icon-transferencia size="24"></app-icon-transferencia>
+    <label class="title2-pri">Transferencias</label>
+  </ng-container>
+
+  <ng-container contentMain>
+    <ng-container *ngFor="let item of listCreditosOtroBanco">
+      <div class="ptl-infocom-main-content" [ngClass]="item.active ? 'active': ''">
+        <div class="ptl-infocom-main-content-card" (click)="btnCard(item)" >
+          <!-- Colocar contenido del card -->
+          <div class="ptl-infocom-main-content-card-content">
+            <app-icon-banco size="24"></app-icon-banco>
+            <div class="ptl-infocom-main-content-card-content-info">
+              <span class="title3-sec">{{item.title}}</span>
+              <div [ngClass]="item.active ? 'tran-expand-active' : 'tran-expand'">
+                <div *ngIf="item.active">
+                  <label class="subtitle1-secN">{{item.subtitle}}</label>
+                </div>
+              </div>
+            </div>
+            <div class="ptl-infocom-main-content-card-content-flecha">
+              <app-icon-flecha-derecha *ngIf="!item.active" size="18"></app-icon-flecha-derecha>
+            </div>
+          </div>
+        </div>
+        <div class="ptl-infocom-main-content-main">
+          <div class="ptl-infocom-main-content-main-info">
+            <!-- Colocar informacion -->
+            <ng-container *ngIf="item.id === 1">
+              <ng-container [ngTemplateOutlet]="contentTpDiferido"></ng-container>
+            </ng-container>
+            <ng-container *ngIf="item.id === 2">
+              <ng-container [ngTemplateOutlet]="contentTpInmediata"></ng-container>
+            </ng-container>
+            <div class="ptl-infocom-main-content-main-info-actions">
+              <!-- Colocar botones -->
+              <div class="ptl-infocom-main-content-main-info-actions-favorito">
+                <ng-container *ngIf="stepIndex === 2">
+                  <app-agregar-favorito></app-agregar-favorito>
+                </ng-container>
+              </div>
+              <div class="ptl-infocom-main-content-main-info-actions-botones">
+                <ng-container [ngTemplateOutlet]="actionsTpDiferido"></ng-container>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
+
+</app-plantilla-info-compleja>
+
+<!-- TEMPLATES BOTONES-->
+<ng-template #actionsTpDiferido>
+  <button mat-stroked-button color="primary" class="btn-pri-out" *ngIf="stepIndex !== 2"
+    (click)="btnRegresar()">Regresar</button>
+  <button mat-raised-button class="btn-principal" (click)="btnContinuar()">
+    {{stepIndex !== 2 ? 'Continuar': 'Ir a transferencias'}}</button>
+</ng-template>
+
+<!-- TEMPLATES DIREDIRO-->
+<ng-template #contentTpDiferido>
+  <mat-stepper labelPosition="bottom" linear [selectedIndex]="stepIndex">
+    <mat-step label="Datos">
+      <section>
+        <div class="row" style="align-items: flex-end;">
+          <div class="col-12 col-md-6">
+            <label class="label-pri mb-2">Cuenta origen:</label>
+            <select-cuentas [lista]="listaCuentas" [(ngModel)]="valuesDiferido.cuentaOrigen"></select-cuentas>
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="label-pri mb-2">Tipos:</label>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-select [(ngModel)]="valuesDiferido.tipo">
+                <mat-option value="1">TIN Cero</mat-option>
+                <mat-option value="2">TIN Uno</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="col-6">
+            <label class="label-pri mb-2">Cuenta destino (CCI):</label>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <input matInput autocomplete="off" [(ngModel)]="valuesDiferido.cuentaDestino">
+            </mat-form-field>
+          </div>
+
+          <div class="col-6 pb-2">
+            <app-alerta mensaje="Banco destino: BBVA Continental " tipo="error"></app-alerta>
+          </div>
+
+          <div class="col-6">
+            <label class="label-secN mb-2">Moneda</label>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-select [(ngModel)]="valuesDiferido.moneda">
+                <mat-option value="1">Soles</mat-option>
+                <mat-option value="2">Dolares</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <label class="label-secN mb-2">Monto a transferir</label>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <input matInput autocomplete="off" [(ngModel)]="valuesDiferido.monto">
+            </mat-form-field>
+          </div>
+        </div>
+      </section>
+    </mat-step>
+    <mat-step label="Transferencia" [completed]="stepIndex === 0 ? false: true">
+
+    </mat-step>
+    <mat-step label="Resúmen">
+
+    </mat-step>
+
+  </mat-stepper>
+</ng-template>
+
+<!-- TEMPLATES INMEDIATA-->
+<ng-template #contentTpInmediata>
+  <mat-stepper labelPosition="bottom" linear [selectedIndex]="stepIndex">
+    <mat-step label="Datos">
+      <section>
+        <div class="row" style="align-items: flex-end;">
+          <div class="col-12 col-md-6">
+            <label class="label-pri mb-2">Cuenta origen 22:</label>
+            <select-cuentas [lista]="listaCuentas" [(ngModel)]="valuesInmediata.cuentaOrigen"></select-cuentas>
+          </div>
+          <div class="col-12 col-md-6">
+            <label class="label-pri mb-2">Tipos 22:</label>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-select [(ngModel)]="valuesInmediata.tipo">
+                <mat-option value="1">TIN Cero</mat-option>
+                <mat-option value="2">TIN Uno</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="col-6">
+            <label class="label-secN">Moneda</label>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-select [(ngModel)]="valuesInmediata.moneda">
+                <mat-option value="1">Soles</mat-option>
+                <mat-option value="2">Dolares</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-6">
+            <label class="label-secN">Monto a transferir</label>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <input matInput autocomplete="off" [(ngModel)]="valuesInmediata.monto">
+            </mat-form-field>
+          </div>
+        </div>
+      </section>
+    </mat-step>
+    <mat-step label="Transferencia" [completed]="stepIndex === 0 ? false: true">
+
+    </mat-step>
+    <mat-step label="Resúmen">
+
+    </mat-step>
+
+  </mat-stepper>
+</ng-template>

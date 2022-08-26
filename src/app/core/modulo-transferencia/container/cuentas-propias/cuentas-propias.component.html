@@ -32,11 +32,11 @@
     <mat-step label="Datos">
       <section>
         <div class="row" style="align-items: flex-end;">
-          <div class="col-12 col-md-6 mb-4">
+          <div class="col-12 col-md-6">
             <label class="label-pri mb-2">Cuenta origen:</label>
             <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaOrigen"></select-cuentas>
           </div>
-          <div class="col-12 col-md-6 select-cuenta mb-4">
+          <div class="col-12 col-md-6">
             <label class="label-pri mb-2">Cuenta destino:</label>
             <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaDestino"></select-cuentas>
           </div>
@@ -60,21 +60,11 @@
       </section>
     </mat-step>
     <mat-step label="Transferencia" [completed]="stepIndex === 0 ? false: true">
-      <p>TRANSFERENCIA.</p>
-      <!-- LLAMADO LISTA DE CARD DEPENDIENDO EL FLUJO MODIFICAR EL ARRAY QUE LO LLENA EN EL TS -->
-        <!-- <app-detalle-segundo-paso  [listItemsSecondStep]="listItemsSecondStep"></app-detalle-segundo-paso> -->
+      <app-detalle-segundo-paso [listItemsSecondStep]="detalleDos"></app-detalle-segundo-paso>
     </mat-step>
     <mat-step label="Resúmen">
-      <app-detalle-tercer-paso [icono]="'transferencia'" [titulo]="'¡Tu transferencia se realizó con éxito!'" [numOp]="'56054'" [dataArray]="[
-      {
-        title: 'Fecha y Hora',
-        data: '20/12/2017 10:50'
-      },
-      {
-        title: 'Modalidad',
-        data: 'Inmediata'
-      }
-    ]"></app-detalle-tercer-paso>
+      <app-detalle-tercer-paso icono="transferencia" titulo="'¡Tu transferencia se realizó con éxito!'"
+        [numOp]="'56054'" [dataArray]="detalleTres"></app-detalle-tercer-paso>
     </mat-step>
 
   </mat-stepper>

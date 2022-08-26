@@ -2,7 +2,7 @@
   <div class="ptl-infocom-titulo">
     <ng-content select="[contentTitulo]"></ng-content>
   </div>
-  <section class="ptl-infocom-main">
+  <section class="ptl-infocom-main" [ngClass]="ocultarCard ? 'ocultarcard': ''">
     <ng-content select="[contentMain]"></ng-content>
   </section>
   <section class="ptl-infocom-foot">

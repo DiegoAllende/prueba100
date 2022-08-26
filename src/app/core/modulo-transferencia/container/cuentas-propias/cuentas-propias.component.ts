@@ -7,6 +7,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./cuentas-propias.component.scss']
 })
 export class CuentasPropiasComponent implements OnInit {
+  ocultarCard: boolean = false;
+  stepIndex = 0;
+
   listaCuentas = [
     { id: "1", cuenta: "Ahorro Sueldo", numero: "156729403782", monto: "2,357.16", mostrar: "156729403782 - S/1,357.16 " },
     { id: "2", cuenta: "Ahorro Total Disponibilidad", numero: "156729403782", monto: "5,357.16", mostrar: "156729403782 - S/58.50" },
@@ -19,8 +22,6 @@ export class CuentasPropiasComponent implements OnInit {
     monto: "",
   }
 
-  ocultarCard: boolean = false;
-
   constructor(
     private router: Router
   ) { }
@@ -28,10 +29,6 @@ export class CuentasPropiasComponent implements OnInit {
   ngOnInit(): void {
     console.log("cuenta propia init");
   }
-
-  stepIndex = 0;
-  stepComplete: boolean = false;
-  isEditable: boolean = true;
 
   btnRegresar() {
     console.log("regresar");
@@ -50,34 +47,54 @@ export class CuentasPropiasComponent implements OnInit {
       this.router.navigate(["/main"]);
     }
 
-    if(this.stepIndex === 2) {
+    if (this.stepIndex === 2) {
       this.ocultarCard = true;
     }
   }
 
-  // ADECUAR FORMATO DE ARRAY DEPENDIENDO LOS CARD DE SU VISTA
-  // listItemsSecondStep= [
-  //   {
-  //     title: "Activar notificaciones", value:"",
-  //     subtitles: [
-  //       {subtitle: "Ahorro Sueldo  156729403782 - Soles", value: ""},
-  //       {subtitle: "", value: ""},
-  //     ]
-  //   },
-  //   {
-  //     title: "Canales de notificación", subtitles: [
-  //       {subtitle: "Compras en comercios (POS)", value: "SI"},
-  //       {subtitle: "Compras en comercios (POS) nacional", value: "SI"},
-  //       {subtitle: "Compras en comercios (POS) nacional", value: "SI",},
-  //     ]
-  //   },
-  //   {
-  //     title:"",subtitles:[
-  //       {subtitle: "Compras en comercios (POS)", value: "S/1278"},
-  //       {subtitle: "Compras en comercios (POS)", value: "S/1278"},
-  //       {subtitle: "Monto total a pagar", value: "S/5003",diferent:true},
-  //     ]
-  //   }
-  // ];
+  detalleDos = [
+    {
+      title: "Cuenta origen", value: "",
+      subtitles: [
+        { subtitle: " Ahorro Sueldo  156729403782 - Soles ", value: "" },
+      ]
+    },
+    {
+      title: "Cuenta destino", subtitles: [
+        { subtitle: " Ahorro Total Disponibilidad  156729403782 - Soles ", value: "" },
+      ]
+    },
+    {
+      title: "", subtitles: [
+        { subtitle: "Monto a transferir", value: "S/100.00", diferent: true },
+      ]
+    }
+  ];
+
+  detalleTres = [
+    {
+      title: 'Fecha y Hora',
+      data: '05/04/2019  11:35:10'
+    },
+    {
+      title: 'Tipo de transferencia',
+      data: 'A cuentas propias'
+    },
+    {
+      title: 'Cuenta origen',
+      data: ' Ahorro Sueldo  156729403782 - Soles'
+    },
+    {
+      title: 'Cuenta destino',
+      data: ' Ahorro Total Disponibilidad  156729403782 - Soles'
+    },
+    {
+      title: 'Monto abonado',
+      data: '1S/100.00'
+    },
+    {
+      title: 'Monto cargado',
+      data: 'S/100.00'
+    }];
 
 }

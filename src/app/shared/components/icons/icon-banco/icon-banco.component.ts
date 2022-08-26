@@ -11,7 +11,7 @@ export class IconBancoComponent implements OnInit {
   @Input() size: string;
 
   constructor() {
-    this.color = '#565656'
+    this.color = '#F90000'
     this.size = '24'
   }
 
