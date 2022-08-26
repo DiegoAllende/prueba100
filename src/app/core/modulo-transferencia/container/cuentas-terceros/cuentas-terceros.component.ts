@@ -50,6 +50,32 @@ export class CuentasTercerosComponent implements OnInit {
     }
   ];
 
+  dataResult= [
+    {
+      title: 'Fecha y Hora',
+      data: '05/04/2019  11:35:10'
+    },
+    {
+      title: 'Tipo de transferencia',
+      data: 'A cuentas propias'
+    },
+    {
+      title: 'Cuenta origen',
+      data: ' Ahorro Sueldo  156729403782 - Soles '
+    },
+    {
+      title: 'Cuenta destino',
+      data: ' Ahorro Total Disponibilidad  156729403782 - Soles '
+    },
+    {
+      title: 'Monto abonado',
+      data: '1S/100.00'
+    },
+    {
+      title: 'Monto cargado',
+      data: 'S/100.00'
+    }]
+
   constructor(
     private router: Router
   ) { }
