@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-proceso-exitoso',
-  templateUrl: './proceso-exitoso.component.html',
-  styleUrls: ['./proceso-exitoso.component.scss']
+  selector: 'app-detalle-tercer-paso',
+  templateUrl: './detalle-tercer-paso.component.html',
+  styleUrls: ['./detalle-tercer-paso.component.scss']
 })
-export class ProcesoExitosoComponent implements OnInit {
+export class DetalleTercerPasoComponent implements OnInit {
 
   @Input() icono: string = "";
   @Input() titulo: string = "";

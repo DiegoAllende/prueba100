@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-creditos-propios',
   templateUrl: './creditos-propios.component.html',
@@ -7,9 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreditosPropiosComponent implements OnInit {
 
-  constructor() { }
-
   ngOnInit(): void {
+      console.log('CreditosPropiosComponent');
   }
-
 }

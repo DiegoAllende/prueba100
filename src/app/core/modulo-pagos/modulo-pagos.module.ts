@@ -8,6 +8,7 @@ import { CreditosTercerosComponent } from './container/creditos-terceros/credito
 import { TarjetaCreditoComponent } from './container/tarjeta-credito/tarjeta-credito.component';
 import { PagoServiciosComponent } from './container/pago-servicios/pago-servicios.component';
 import { RecargasCelularComponent } from './container/recargas-celular/recargas-celular.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { RecargasCelularComponent } from './container/recargas-celular/recargas-
     CommonModule,
     ModuloPagosRoutingModule,
     SharedModule,
+    FormsModule
   ]
 })
 export class ModuloPagosModule { }

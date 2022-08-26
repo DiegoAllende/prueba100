@@ -1,0 +1,11 @@
+<div class="detalle-segundo-paso-container">
+<div class="detalle-segundo-paso-container-card" *ngFor="let item of listItemsSecondStep">
+    <span class="detalle-segundo-paso-container-card-title">{{item.title}}</span>
+    <div class="detalle-segundo-paso-container-card-content">
+        <div *ngFor="let subtitle of item.subtitles" class="detalle-segundo-paso-container-card-content-item">
+            <span class="detalle-segundo-paso-container-card-content-item-subtitle" [ngClass]="{'title-red': !item.title && subtitle.diferent}">{{subtitle.subtitle}}</span>
+            <span class="detalle-segundo-paso-container-card-content-item-value" [ngClass]="{'mount-total': !item.title && subtitle.diferent}">{{subtitle.value}}</span>
+        </div>
+    </div>
+</div>
+</div>

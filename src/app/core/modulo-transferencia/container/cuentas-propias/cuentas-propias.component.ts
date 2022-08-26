@@ -55,7 +55,7 @@ export class CuentasPropiasComponent implements OnInit {
     }
   }
 
-  //ADECUAR FORMATO DE ARRAY DEPENDIENDO LOS CARD DE SU VISTA
+  // ADECUAR FORMATO DE ARRAY DEPENDIENDO LOS CARD DE SU VISTA
   // listItemsSecondStep= [
   //   {
   //     title: "Activar notificaciones", value:"",
@@ -75,7 +75,7 @@ export class CuentasPropiasComponent implements OnInit {
   //     title:"",subtitles:[
   //       {subtitle: "Compras en comercios (POS)", value: "S/1278"},
   //       {subtitle: "Compras en comercios (POS)", value: "S/1278"},
-  //       {subtitle: "Monto total a pagar", value: "S/5003",monto:true},
+  //       {subtitle: "Monto total a pagar", value: "S/5003",diferent:true},
   //     ]
   //   }
   // ];

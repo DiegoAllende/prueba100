@@ -1,15 +1,15 @@
-@import '../../../../assets/sass/variables';
+@import 'variables';
 
 .clave-sms-container{
     display: flex;
     flex-direction: row;
+    padding: 20px 0px;
     @media screen and(min-width:768px) {
         align-items: center;
         justify-content: space-between;
+        padding: 20px 0px;
         
     }
-    
-
     &-title{
         width: 40%;
         margin-top: 10px;
@@ -18,15 +18,17 @@
         line-height: 24px;
         @media screen and(min-width:768px) {
             width: 25%;
+            margin-top: 0px;
         }
     }
 
     &-content{
         width: 60%;
-
+        
         @media screen and(min-width:768px) {
             display: flex;
             align-items: center;
+            gap: 30px;
             width: 70%;
             justify-content: space-between;
         }
@@ -34,16 +36,18 @@
         &-field{
             width: 100%;
             
+            
             &-input{
                 margin: 0px;
             }
             @media screen and(min-width:768px) {
                 width: 35%;
+                flex-grow: 1;
             }
 
         }
         &-reload{
-
+            
             @media screen and(min-width:768px) {
                 width: 55%;
             }

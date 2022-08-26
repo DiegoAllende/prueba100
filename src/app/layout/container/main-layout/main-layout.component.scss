@@ -69,6 +69,13 @@
     }
   }
 }
+@include media-down(md) {
+  .layout-main {
+    &-main {
+      padding: 25px;
+    }
+  }
+}
 
 @media screen and(max-width:780px) {
     .layout-main{

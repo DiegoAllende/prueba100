@@ -1,9 +1,0 @@
-<div class="card-segundo-paso-container">
-    <span class="card-segundo-paso-container-title">{{item.title}}</span>
-    <div class="card-segundo-paso-container-content">
-        <div *ngFor="let subtitle of item.subtitles" class="card-segundo-paso-container-content-item">
-            <span class="card-segundo-paso-container-content-item-subtitle" [ngClass]="{'title-red': !item.title && subtitle.monto}">{{subtitle.subtitle}}</span>
-            <span class="card-segundo-paso-container-content-item-value" [ngClass]="{'mount-total': !item.title && subtitle.monto}">{{subtitle.value}}</span>
-        </div>
-    </div>
-</div>

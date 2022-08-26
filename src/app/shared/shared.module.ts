@@ -49,9 +49,9 @@ import { IconEstrellaComponent } from './components/icons/icon-estrella/icon-est
 import { AgregarFavoritoComponent } from './components/agregar-favorito/agregar-favorito.component';
 import { ClaveSmsComponent } from './components/clave-sms/clave-sms.component';
 import { IconReloadComponent } from './components/icons/icon-reload/icon-reload.component';
-import { ProcesoExitosoComponent } from './components/proceso-exitoso/proceso-exitoso.component';
-import { CardSegundoPasoComponent } from './components/card-segundo-paso/card-segundo-paso.component';
+import { DetalleSegundoPasoComponent } from './components/detalle-segundo-paso/detalle-segundo-paso.component';
 import { SelectCuentasComponent } from './components/formulario/select-cuentas/select-cuentas.component';
+import { DetalleTercerPasoComponent } from './components/detalle-tercer-paso/detalle-tercer-paso.component';
 
 
 @NgModule({
@@ -100,8 +100,8 @@ import { SelectCuentasComponent } from './components/formulario/select-cuentas/s
     AgregarFavoritoComponent,
     ClaveSmsComponent,
     IconReloadComponent,
-    ProcesoExitosoComponent,
-    CardSegundoPasoComponent,
+    DetalleTercerPasoComponent,
+    DetalleSegundoPasoComponent,
     SelectCuentasComponent,
   ],
   imports: [
@@ -160,9 +160,9 @@ import { SelectCuentasComponent } from './components/formulario/select-cuentas/s
     AgregarFavoritoComponent,
     ClaveSmsComponent,
     IconReloadComponent,
-    ProcesoExitosoComponent,
-    CardSegundoPasoComponent,
-    SelectCuentasComponent
+    DetalleSegundoPasoComponent,
+    SelectCuentasComponent,
+    DetalleTercerPasoComponent
   ]
 })
 export class SharedModule { }

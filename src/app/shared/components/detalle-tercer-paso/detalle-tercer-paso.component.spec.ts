@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CardSegundoPasoComponent } from './card-segundo-paso.component';
+import { DetalleTercerPasoComponent } from './detalle-tercer-paso.component';
 
-describe('CardSegundoPasoComponent', () => {
-  let component: CardSegundoPasoComponent;
-  let fixture: ComponentFixture<CardSegundoPasoComponent>;
+describe('ProcesoExitosoComponent', () => {
+  let component: DetalleTercerPasoComponent;
+  let fixture: ComponentFixture<DetalleTercerPasoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CardSegundoPasoComponent ]
+      declarations: [ DetalleTercerPasoComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CardSegundoPasoComponent);
+    fixture = TestBed.createComponent(DetalleTercerPasoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

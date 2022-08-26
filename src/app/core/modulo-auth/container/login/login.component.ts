@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
   }
 
   ingresarSin(data: any) {
-    this.router.navigate(["main/consultas/ahorros"]);
+    this.router.navigate(["main"]);
   }
 
 }

@@ -1,0 +1,85 @@
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    img{
+        width: 80px;
+    }
+    .title{
+        margin-top: 2rem;
+        font-weight: 700;
+        font-size: 20px;
+        text-align: center;
+        color: #565656;
+    }
+    .subtitle{
+        font-weight: 400;
+        font-size: 18px;
+        color: #565656;
+        .op_num{
+            font-weight: 700;
+        }
+    }
+    .details_content{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid #C6C6C6;
+        border-radius: 4px;
+        padding: 1.5rem 1rem 1.5rem 1rem;
+        .item{
+            display: grid;
+            grid-template-columns: 40% 40%;
+            grid-template-rows: 1fr;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid #EDEDED;
+            margin-bottom: 1.5rem;
+            .left-titles{
+                text-align: left;
+                font-weight: 400;
+                font-size: 16px;
+                letter-spacing: 0.25px;
+                color: #565656;
+            }
+            .right-content{
+                text-align: left;
+                font-weight: 400;
+                font-size: 16px;
+                letter-spacing: 0.25px;
+                color: #565656;
+            }
+        }
+    }
+}
+@media screen and (max-width:768px){
+    .main{
+        img{
+            width: 40px;
+        }
+        .title{
+            margin-top: .2rem;
+            margin-bottom: .3rem;
+            font-size: 18px;
+        }
+        .subtitle{
+            text-align: center;
+            font-size: 14px;
+        }
+        .details_content{
+            width: 100%;
+            padding: 1rem 0;
+            grid-template-columns: 50% 50%;
+            .item{
+                margin-bottom: .8rem;
+                .left-titles,.right-content{
+                    font-size: 14px;
+
+                }
+            }
+        }
+    }
+}

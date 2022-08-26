@@ -41,7 +41,7 @@
             <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaDestino"></select-cuentas>
           </div>
 
-          <div class="col-12 col-md-6">
+          <div class="col-6">
             <label class="label-secN">Moneda</label>
             <mat-form-field appearance="outline" style="width: 100%;">
               <mat-select [(ngModel)]="values.moneda">
@@ -50,7 +50,7 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div class="col-12 col-md-6">
+          <div class="col-6">
             <label class="label-secN">Monto a transferir</label>
             <mat-form-field appearance="outline" style="width: 100%;">
               <input matInput autocomplete="off" [(ngModel)]="values.monto">
@@ -61,10 +61,11 @@
     </mat-step>
     <mat-step label="Transferencia" [completed]="stepIndex === 0 ? false: true">
       <p>TRANSFERENCIA.</p>
+      <!-- LLAMADO LISTA DE CARD DEPENDIENDO EL FLUJO MODIFICAR EL ARRAY QUE LO LLENA EN EL TS -->
+        <!-- <app-detalle-segundo-paso  [listItemsSecondStep]="listItemsSecondStep"></app-detalle-segundo-paso> -->
     </mat-step>
-
     <mat-step label="Resúmen">
-      <app-proceso-exitoso [icono]="'transferencia'" [titulo]="'¡Tu transferencia se realizó con éxito!'" [numOp]="'56054'" [dataArray]="[
+      <app-detalle-tercer-paso [icono]="'transferencia'" [titulo]="'¡Tu transferencia se realizó con éxito!'" [numOp]="'56054'" [dataArray]="[
       {
         title: 'Fecha y Hora',
         data: '20/12/2017 10:50'
@@ -73,7 +74,7 @@
         title: 'Modalidad',
         data: 'Inmediata'
       }
-    ]"></app-proceso-exitoso>
+    ]"></app-detalle-tercer-paso>
     </mat-step>
 
   </mat-stepper>
