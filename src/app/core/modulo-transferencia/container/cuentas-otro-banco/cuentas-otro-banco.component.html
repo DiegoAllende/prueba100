@@ -8,7 +8,7 @@
   <ng-container contentMain>
     <ng-container *ngFor="let item of listCreditosOtroBanco">
       <div class="ptl-infocom-main-content" [ngClass]="item.active ? 'active': ''">
-        <div class="ptl-infocom-main-content-card" (click)="btnCard(item)" >
+        <div class="ptl-infocom-main-content-card" (click)="btnCard(item)">
           <!-- Colocar contenido del card -->
           <div class="ptl-infocom-main-content-card-content">
             <app-icon-banco size="24"></app-icon-banco>

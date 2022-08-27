@@ -32,25 +32,27 @@
     <mat-step label="Datos">
       <section>
         <div class="row" style="align-items: flex-end;">
-          <div class="col-12 col-md-6 mb-4">
+          <div class="col-12 col-md-6">
             <label class="label-pri mb-2">Cuenta origen:</label>
             <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaOrigen"></select-cuentas>
           </div>
-          <div class="col-12 col-md-6 select-cuenta mb-4">
+          <div class="col-12 col-md-6">
             <label class="label-pri mb-2">Banco destino:</label>
-            <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaDestino"></select-cuentas>
+            <mat-form-field appearance="outline" style="width: 100%;">
+              <mat-select [(ngModel)]="values.moneda">
+                <mat-option value="1">Banco Falabella</mat-option>
+                <mat-option value="2">Banco Ripley</mat-option>
+              </mat-select>
+            </mat-form-field>
           </div>
-          <div class="col-12 col-md-6 mb-4">
+          <div class="col-12 col-md-6 mb-2">
             <label class="label-pri mb-2">Nro. de tarjeta de crédito</label>
             <mat-form-field appearance="outline" style="width: 100%;">
               <input matInput autocomplete="off" [(ngModel)]="values.monto">
             </mat-form-field>
           </div>
           <div class="col-12 col-md-6 mb-4">
-            <!-- <label class="label-secN">Monto a transferir</label>
-            <mat-form-field appearance="outline" style="width: 50%;">
-              <input matInput autocomplete="off" [(ngModel)]="values.monto">
-            </mat-form-field> -->
+            
           </div>
 
           <div class="col-12 col-md-6">
@@ -82,6 +84,7 @@
     </mat-step>
 
   </mat-stepper>
+  <app-alerta [mensaje]="'Debes ingresar todos los digitos de tu CCI'" [tipo]="'error'"></app-alerta>
 </ng-template>
 
 <ng-template #actionsTp>
@@ -89,3 +92,4 @@
     (click)="btnRegresar()">Regresar</button>
   <button mat-raised-button class="btn-principal" (click)="btnContinuar()">{{stepIndex !== 2 ? 'Continuar': 'Ir atransferencias'}}</button>
 </ng-template>
+

@@ -10,6 +10,7 @@
     <ng-container *ngFor="let item of seguros">
       <div class="ptl-infocom-main-content" [ngClass]="item.active ? 'active': ''">
         <div class="ptl-infocom-main-content-card" (click)="btnCard(item)">
+          <!-- Colocar contenido del card -->
           <div class="ptl-infocom-main-content-card-content">
             <app-icon-escudo-seguro size="24"></app-icon-escudo-seguro>
             <div class="ptl-infocom-main-content-card-content-info">
@@ -29,8 +30,10 @@
         </div>
         <div class="ptl-infocom-main-content-main">
           <div class="ptl-infocom-main-content-main-info">
+            <!-- Colocar informacion -->
             <app-informacion-seguros [seguro]="item"></app-informacion-seguros>
             <div class="ptl-infocom-main-content-main-info-actions">
+              <!-- Colocar botones -->
               <div class="ptl-infocom-main-content-main-info-actions-favorito">
                 
               </div>

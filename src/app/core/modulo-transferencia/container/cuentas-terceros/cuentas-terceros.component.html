@@ -1,4 +1,4 @@
-<app-plantilla-info-simple>
+<app-plantilla-info-simple [ocultarCard]="ocultarCard">
     <ng-container contentTitulo>
       <app-icon-transferencia size="24"></app-icon-transferencia>
       <label class="title2-pri">Transferencias</label>
@@ -33,21 +33,11 @@
           <div class="row">
             <div class="col-12 col-md-6 select-cuenta mb-4">
               <label class="label-pri mb-2">Cuenta origen:</label>
-              <mat-form-field appearance="fill" floatLabel="always">
-                <mat-label>{{labelSelect1}}</mat-label>
-                <mat-select (selectionChange)="changeSelect($event)" [(ngModel)]="values.cuentaOrigen">
-                  <mat-option *ngFor="let item of listaCuentas" [value]="item.id">{{item.mostrar}}</mat-option>
-                </mat-select>
-              </mat-form-field>
+              <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaOrigen"></select-cuentas>
             </div>
             <div class="col-12 col-md-6 select-cuenta mb-4">
               <label class="label-pri mb-2">Cuenta destino:</label>
-              <mat-form-field appearance="fill" floatLabel="always">
-                <mat-label>{{labelSelect2}}</mat-label>
-                <mat-select (selectionChange)="changeSelect2($event)" [(ngModel)]="values.cuentaDestino">
-                  <mat-option *ngFor="let item of listaCuentas" [value]="item.id">{{item.mostrar}}</mat-option>
-                </mat-select>
-              </mat-form-field>
+              <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaDestino"></select-cuentas>
             </div>
   
             <div class="col-6 ">
@@ -71,7 +61,6 @@
         </section>
       </mat-step>
       <mat-step label="Transferencia" [completed]="stepIndex === 0 ? false: true">
-        <p>TRANSFERENCIA.</p>
         <app-detalle-segundo-paso  [listItemsSecondStep]="listItemsSecondStep"></app-detalle-segundo-paso>
         <app-pad-numerico title="Ingresa tu clave de 6 dígitos" [valueDigits]="6"></app-pad-numerico>
         <app-clave-sms></app-clave-sms>

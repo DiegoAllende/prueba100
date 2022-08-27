@@ -43,12 +43,12 @@ export class CuentasOtroBancoComponent implements OnInit {
   }
 
   btnCard(item: any) {
-    this.listCreditosOtroBanco.forEach((x:any) => x.active = false);
+    this.listCreditosOtroBanco.forEach((x: any) => x.active = false);
     item.active = true;
     this.stepIndex = 0;
     this.numCard = item.id;
     console.log("numCard: ", this.numCard);
-    
+
   }
 
   btnRegresar() {

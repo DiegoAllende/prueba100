@@ -16,24 +16,31 @@ export class TarjetaCreditoComponent implements OnInit {
 
   listItemsSecondStep= [
     {
-      title: "Activar notificaciones", value:"",
+      title: "Cuenta Origen", value:"",
       subtitles: [
         {subtitle: "Ahorro Sueldo  156729403782 - Soles", value: ""},
-        {subtitle: "", value: ""},
       ]
     },
     {
-      title: "Canales de notificación", subtitles: [
-        {subtitle: "Compras en comercios (POS)", value: "SI"},
-        {subtitle: "Compras en comercios (POS) nacional", value: "SI"},
-        {subtitle: "Compras en comercios (POS) nacional", value: "SI",},
+      title: "Titular de la tarjeta", subtitles: [
+        {subtitle: "Mendoza Martell Edith lizeth"},
+      ]
+    },
+    {
+      title: "Nro. de tarjeta de crédito", subtitles: [
+        {subtitle: "1567294037821357"},
+      ]
+    },
+    {
+      title: "Banco destino", subtitles: [
+        {subtitle: "Banco Falabella"},
       ]
     },
     {
       title:"",subtitles:[
-        {subtitle: "Compras en comercios (POS)", value: "S/1278"},
-        {subtitle: "Compras en comercios (POS)", value: "S/1278"},
-        {subtitle: "Monto total a pagar", value: "S/5003",monto:true, diferent: true},
+        {subtitle: "Monto a transferir", value: "S/120.00"},
+        {subtitle: "Comisión", value: "S/6.60"},
+        {subtitle: "Monto total a transferir", value: "S/126.60",monto:true, diferent: true},
       ]
     }
   ];
