@@ -4,16 +4,25 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
+  HttpErrorResponse
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
+import { ErrorRespModel } from '@shared/models/generico/http.model';
 
 @Injectable()
 export class TokenAuthInterceptor implements HttpInterceptor {
+  errorOut: ErrorRespModel = {
+    intCodigo: 0,
+    strDescripcion: "",
+    strAdicional: ""
+  }
 
   constructor(private cookieService: CookieService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    console.log("inter-token");
+    
     const token = this.cookieService.get('token_access');
     if (token) {
       request = request.clone({
@@ -23,6 +32,25 @@ export class TokenAuthInterceptor implements HttpInterceptor {
       });
       console.log('TokenAuthInterceptor: ', token);
     }
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError((error) => {
+        console.log("interceptor-error: ", error);
+        return throwError(() => this.handelError(error));
+      })
+    );
+  }
+  
+  handelError(error: HttpErrorResponse) {
+    if(error.status === 0) {
+      this.errorOut.intCodigo = error.status;
+      this.errorOut.strDescripcion = error.error + " - Error Desconocido";
+      this.errorOut.strAdicional = error.message;
+    } else {
+      this.errorOut.intCodigo = error.status;
+      this.errorOut.strDescripcion = error.error;
+      this.errorOut.strAdicional = error.message;
+    }
+
+    return this.errorOut;
   }
 }

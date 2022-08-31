@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { SharedRoutingModule } from './shared-routing.module';
 import { MaterialModule } from './material/material.module';
 import { PadNumericoComponent } from './components/pad-numerico/pad-numerico.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RecaptchaComponent } from '../core/modulo-auth/components/recaptcha/recaptcha.component';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { CardAhorrosComponent } from './components/card-ahorros/card-ahorros.component';
@@ -109,11 +109,14 @@ import { DetalleTercerPasoComponent } from './components/detalle-tercer-paso/det
     SharedRoutingModule,
     MaterialModule,
     FormsModule,
+    ReactiveFormsModule,
     RecaptchaFormsModule,
     RecaptchaModule,
   ],
   exports: [
     MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
     PadNumericoComponent,
     RecaptchaComponent,
     RecaptchaFormsModule,

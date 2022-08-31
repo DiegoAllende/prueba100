@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 
 import { ModuloLayoutRoutingModule } from './modulo-layout-routing.module';
 import { MainComponent } from './container/main/main.component';
-import { MaterialModule } from 'src/app/shared/material/material.module';
 import { SharedModule } from 'src/app/shared/shared.module';
 
 
@@ -14,7 +13,6 @@ import { SharedModule } from 'src/app/shared/shared.module';
   imports: [
     CommonModule,
     ModuloLayoutRoutingModule,
-    MaterialModule,
     SharedModule
   ]
 })

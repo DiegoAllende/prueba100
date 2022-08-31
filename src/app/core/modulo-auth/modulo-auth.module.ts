@@ -5,7 +5,6 @@ import { ModuloAuthRoutingModule } from './modulo-auth-routing.module';
 import { ConTarjetaComponent } from './components/con-tarjeta/con-tarjeta.component';
 import { LoginComponent } from './container/login/login.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { SinTarjetaComponent } from './components/sin-tarjeta/sin-tarjeta.component';
 import { LoginLayoutComponent } from './layout/login-layout/login-layout.component';
 import { GenerarLayoutComponent } from './layout/generar-layout/generar-layout.component';
@@ -44,9 +43,7 @@ import { InputDocumentoComponent } from './components/input-documento/input-docu
   imports: [
     CommonModule,
     ModuloAuthRoutingModule,
-    FormsModule,
     SharedModule,
-    ReactiveFormsModule
   ],
   exports: [
     LoginComponent,

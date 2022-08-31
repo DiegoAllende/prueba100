@@ -24,49 +24,59 @@
     <ng-container [ngTemplateOutlet]="actionsTp"></ng-container>
   </ng-container>
 
+  <ng-container contentAlerts>
+    <app-alerta [mensaje]="mensajesValid" tipo="error"></app-alerta>
+  </ng-container>
+
 </app-plantilla-info-simple>
 
 <!-- TEMPLATES -->
 <ng-template #contentTp>
   <mat-stepper labelPosition="bottom" linear [selectedIndex]="stepIndex">
     <mat-step label="Datos">
-      <section>
-        <div class="row" style="align-items: flex-end;">
-          <div class="col-12 col-md-6">
-            <label class="label-pri mb-2">Cuenta origen:</label>
-            <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaOrigen"></select-cuentas>
+      <ng-template matStepContent>
+        <section>
+          <div class="row" style="align-items: flex-end;">
+            <div class="col-12 col-sm-6">
+              <label class="label-pri mb-2">Cuenta origen:</label>
+              <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaOrigen"></select-cuentas>
+            </div>
+            <div class="col-12 col-sm-6">
+              <label class="label-pri mb-2">Cuenta destino:</label>
+              <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaDestino"></select-cuentas>
+            </div>
+  
+            <div class="col-6">
+              <label class="label-secN">Moneda</label>
+              <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-select [(ngModel)]="values.moneda">
+                  <mat-option value="1">Soles</mat-option>
+                  <mat-option value="2">Dolares</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="col-6">
+              <label class="label-secN">Monto a transferir</label>
+              <mat-form-field appearance="outline" style="width: 100%;">
+                <input matInput autocomplete="off" [(ngModel)]="values.monto">
+              </mat-form-field>
+            </div>
           </div>
-          <div class="col-12 col-md-6">
-            <label class="label-pri mb-2">Cuenta destino:</label>
-            <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaDestino"></select-cuentas>
-          </div>
-
-          <div class="col-6">
-            <label class="label-secN">Moneda</label>
-            <mat-form-field appearance="outline" style="width: 100%;">
-              <mat-select [(ngModel)]="values.moneda">
-                <mat-option value="1">Soles</mat-option>
-                <mat-option value="2">Dolares</mat-option>
-              </mat-select>
-            </mat-form-field>
-          </div>
-          <div class="col-6">
-            <label class="label-secN">Monto a transferir</label>
-            <mat-form-field appearance="outline" style="width: 100%;">
-              <input matInput autocomplete="off" [(ngModel)]="values.monto">
-            </mat-form-field>
-          </div>
-        </div>
-      </section>
+        </section>
+      </ng-template>
     </mat-step>
 
     <mat-step label="Transferencia" [completed]="stepIndex === 0 ? false: true">
-      <app-detalle-segundo-paso [listItemsSecondStep]="detalleDos"></app-detalle-segundo-paso>
+      <ng-template matStepContent>
+        <app-detalle-segundo-paso [listItemsSecondStep]="detalleDos"></app-detalle-segundo-paso>
+      </ng-template>
     </mat-step>
     
     <mat-step label="Resúmen">
-      <app-detalle-tercer-paso icono="transferencia" titulo="'¡Tu transferencia se realizó con éxito!'"
-        [numOp]="'56054'" [dataArray]="detalleTres"></app-detalle-tercer-paso>
+      <ng-template matStepContent>
+        <app-detalle-tercer-paso icono="transferencia" titulo="'¡Tu transferencia se realizó con éxito!'"
+          [numOp]="'56054'" [dataArray]="detalleTres"></app-detalle-tercer-paso>
+      </ng-template>
     </mat-step>
 
   </mat-stepper>

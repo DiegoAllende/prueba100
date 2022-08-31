@@ -22,7 +22,10 @@ export class AlertaComponent implements OnInit {
     {tipo: "error", nombre:"assets/icons/error-triangle.svg"},
   ];
 
-  constructor() {}
+  constructor() {
+    console.log("alerta contructor.");
+    
+  }
 
   ngOnInit(): void {
     this.iconVal = this.ArrayIcons.find(i => i.tipo === this.tipo) || {tipo: "", nombre:""};

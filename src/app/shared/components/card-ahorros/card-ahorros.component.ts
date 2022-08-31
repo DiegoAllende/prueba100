@@ -15,7 +15,6 @@ export class CardAhorrosComponent implements OnInit {
 
   ngOnInit(): void {
     this.iconoEnd = this.iconoEnd + this.icono + ".svg";
-    console.log('ngOnInit card-ahorros')
   }
 
 }

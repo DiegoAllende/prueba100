@@ -48,6 +48,10 @@
           justify-content: center;
         }
       }
+
+      &-alerts {
+        margin-top: 30px;
+      }
     }
 
     &-content2.ocultar {
@@ -93,6 +97,10 @@
         width: 100%;
         border: none;
         padding: 0px;
+
+        &-alerts {
+          margin-top: 20px;
+        }
 
       }
 

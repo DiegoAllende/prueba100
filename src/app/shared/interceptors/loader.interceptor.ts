@@ -10,21 +10,26 @@ import { LoaderService } from '@shared/services/loader.service';
 
 @Injectable()
 export class LoaderInterceptor implements HttpInterceptor {
+  contReq = 0;
 
   constructor(
     public loaderService: LoaderService
-  ) {}
+  ) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    this.contReq++;
+
     this.loaderService.isLoading.next(true);
     document.body.style.overflow = 'hidden'
 
     return next.handle(request).pipe(
       finalize(
         () => {
-          console.log('finalize');
-          this.loaderService.isLoading.next(false);
-          document.body.style.overflow = 'auto'
+          this.contReq--;
+          if (this.contReq === 0) {
+            this.loaderService.isLoading.next(false);
+            document.body.style.overflow = 'auto'
+          }
         }
       )
     );

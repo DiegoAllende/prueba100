@@ -9,11 +9,11 @@
     <app-icon-billetera size="24"></app-icon-billetera>
     <div>
       <label class="title3-sec mb-2">Ahorro Sueldo en soles</label>
-      <label class="subtitle1-secN">Nro. de cuenta: 13243453454</label>
-      <label class="subtitle1-secN mb-2">Código Interbancario (CCI): 156729403782</label>
-      <label class="title3-sec">S/ 4,209.15</label>
+      <label class="subtitle1-secN">Nro. de cuenta: {{cuenta?.numCuenta}}</label>
+      <label class="subtitle1-secN mb-2">Código Interbancario (CCI): {{cuenta?.numCCI}}</label>
+      <label class="title3-sec">{{cuenta?.saldoContable}}</label>
       <label class="subtitle1-secN mb-2">Saldo contable</label>
-      <label class="title3-sec">S/4,209.15</label>
+      <label class="title3-sec">{{cuenta?.saldoDisponible}}</label>
       <label class="subtitle1-secN">Saldo disponible</label>
     </div>
   </ng-container>
@@ -31,12 +31,12 @@
             <div class="movimientos-container-filters-pdf-content ">
               <div class="movimientos-container-filters-pdf-filter">
                 <mat-form-field appearance="outline" class="w-100">
-                    <mat-select [(ngModel)]="yearPdf" required placeholder="Mes/Año">
+                    <mat-select [(ngModel)]="yearPdf" placeholder="Mes/Año">
                       <mat-option *ngFor="let date of listDates" [value]="date.stringMuestra">{{date.stringMuestra | titlecase}}</mat-option>
                     </mat-select>
                 </mat-form-field>
               </div>
-              <button mat-stroked-button class="btn-principal movimientos-container-filters-pdf-btn">Ver PDF</button>
+              <button mat-stroked-button class="btn-principal movimientos-container-filters-pdf-btn" (click)="btnVerPdf()">Ver PDF</button>
             </div>
           </div>
         </div>

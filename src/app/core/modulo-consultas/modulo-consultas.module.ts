@@ -6,7 +6,6 @@ import { ConsultasLayoutComponent } from './layout/consultas-layout/consultas-la
 import { AhorrosComponent } from './container/ahorros/ahorros.component';
 import { CreditosComponent } from './container/creditos/creditos.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { FormsModule } from '@angular/forms';
 import { ChequesRetencionesComponent } from './components/cheques-retenciones/cheques-retenciones.component';
 import { SegurosComponent } from './container/seguros/seguros.component';
 import { ListSegurosMobileComponent } from './components/list-seguros-mobile/list-seguros-mobile.component';
@@ -35,7 +34,6 @@ import { InformacionCreditosComponent } from './components/informacion-creditos/
     CommonModule,
     ModuloConsultasRoutingModule,
     SharedModule,
-    FormsModule
   ]
 })
 export class ModuloConsultasModule { }

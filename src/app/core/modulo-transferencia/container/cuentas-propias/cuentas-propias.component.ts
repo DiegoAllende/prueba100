@@ -20,7 +20,9 @@ export class CuentasPropiasComponent implements OnInit {
     cuentaDestino: "2",
     moneda: "1",
     monto: "",
-  }
+  };
+
+  mensajesValid: string = "La cuenta origen no posee saldo suficiente para realizar esta transacción";
 
   constructor(
     private router: Router

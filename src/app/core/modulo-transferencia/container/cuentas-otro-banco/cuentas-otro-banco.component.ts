@@ -22,16 +22,20 @@ export class CuentasOtroBancoComponent implements OnInit {
     tipo: "1",
     moneda: "1",
     monto: "",
+    titular: null,
+    beneficiario: "",
   }
 
   valuesInmediata = {
     cuentaOrigen: "1",
+    cuentaDestino: "",
     tipo: "1",
     moneda: "1",
     monto: "",
   }
 
   listCreditosOtroBanco: any = [];
+  mensajesValid: string = "Asegurate de ingresar todos los digitos del codigo recibido por SMS";
 
   constructor(
     private router: Router
@@ -89,5 +93,72 @@ export class CuentasOtroBancoComponent implements OnInit {
       }
     ]
   }
+
+  detalleDos = [
+    {
+      title: "Cuenta origen", value: "",
+      subtitles: [
+        { subtitle: "Ahorro Sueldo  156729403782 - Soles", value: "" },
+      ]
+    },
+    {
+      title: "Tipo de transferencia", subtitles: [
+        { subtitle: "TIN Cero", value: "" },
+      ]
+    },
+    {
+      title: "Cuenta destino (CCI)", subtitles: [
+        { subtitle: "Ahorro Total Disponibilidad  156729403782 - Soles", value: "" },
+      ]
+    },
+    {
+      title: "Titular cuenta destino", subtitles: [
+        { subtitle: "Mendoza Martell Edith lizeth", value: "" },
+      ]
+    },
+    {
+      title: "", subtitles: [
+        { subtitle: "Monto a transferir", value: "S/100.00", diferent: true },
+      ]
+    }
+  ];
+
+  detalleTres = [
+    {
+      title: 'Fecha y Hora',
+      data: '05/04/2019  11:35:10'
+    },
+    {
+      title: 'Modalidad',
+      data: 'Diferida a otros bancos'
+    },
+    {
+      title: 'Cuenta origen',
+      data: ' Ahorro Sueldo  156729403782 - Soles'
+    },
+    {
+      title: 'Tipo de transferencia',
+      data: 'TIN Cero'
+    },
+    {
+      title: 'Cuenta destino CCI Soles',
+      data: ' 156729403782456778'
+    },
+    {
+      title: 'Titular cta. destino',
+      data: ' Mendoza Martell Edith lizeth'
+    },
+    {
+      title: 'Banco destino',
+      data: ' BBVA Continental'
+    },
+    {
+      title: 'Monto abonado',
+      data: '1S/100.00'
+    },
+    {
+      title: 'Monto cargado',
+      data: 'S/100.00'
+    }];
 
 }
