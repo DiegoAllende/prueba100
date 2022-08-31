@@ -195,3 +195,18 @@ mat-stepper {
     }
   }
 }
+
+.checkbox-coutas-pagos{
+  width: 100%;
+  .mat-checkbox-layout{
+        width: 100%;
+        .mat-checkbox-label{
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+  }
+  .mat-ripple{
+    display: none;
+  } 
+}

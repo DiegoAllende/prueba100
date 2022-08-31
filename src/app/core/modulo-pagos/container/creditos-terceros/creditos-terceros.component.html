@@ -1,1 +1,119 @@
-<p>creditos-terceros works!</p>
+<app-plantilla-info-simple [ocultarCard]="ocultarCard">
+    <ng-container contentTitulo>
+      <app-icon-transferencia size="24"></app-icon-transferencia>
+      <label class="title2-pri">Pagos</label>
+    </ng-container>
+  
+    <ng-container contentCard>
+      <app-icon-transferencia size="24"></app-icon-transferencia>
+      <div>
+        <label class="title3-sec mb-1">Pago de créditos a terceros</label>
+        <label class="subtitle1-secN">Ingresa los datos y completa las opciones para continuar</label>
+      </div>
+    </ng-container>
+  
+    <ng-container contentMain>
+      <ng-container [ngTemplateOutlet]="contentTp"></ng-container>
+    </ng-container>
+
+    <ng-container contentFavorito *ngIf="stepIndex === 2">
+      <app-agregar-favorito></app-agregar-favorito>
+    </ng-container>
+  
+    <ng-container contentAction>
+      <ng-container [ngTemplateOutlet]="actionsTp"></ng-container>
+    </ng-container>
+  </app-plantilla-info-simple>
+  
+  <!-- TEMPLATES -->
+  <ng-template #contentTp>
+    <mat-stepper labelPosition="bottom" linear [selectedIndex]="stepIndex">
+      <mat-step label="Datos">
+        <section>
+          <div class="row">
+            <div class="col-12 col-md-6 ">
+              <label class="label-pri mb-2">Cuenta origen:</label>
+              <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaOrigen"></select-cuentas>
+            </div>
+            <div class="col-12 col-md-6 ">
+              <label class="label-pri mb-1">Crédito:</label>
+              <mat-form-field appearance="outline" style="width: 100%;">
+                <input matInput autocomplete="off" [(ngModel)]="values.nroCredito">
+              </mat-form-field>
+            </div>
+            <mat-radio-group [(ngModel)]="radioSelected" (ngModelChange)="radioTipoChange()" name="radioSelected"  class="col-12 d-flex flex-column flex-md-row" >
+                <mat-radio-button class="col-12 col-md-6" color="primary" [value]="true">Pago por cuotas</mat-radio-button>
+                <mat-radio-button class="col-12 col-md-6 mt-4 mt-md-0 px-md-3" color="primary" [value]="false">Pago parcial</mat-radio-button>
+            </mat-radio-group>
+            <div *ngIf="radioSelected;else parcial" class="mt-2">
+              <form [formGroup]="formCheck"  >
+                <ul class="list-cuotas">
+                  <li  *ngFor="let couta of coutas" >
+                    <mat-checkbox 
+                                  [color]="couta.color"
+                                  class="checkbox-coutas-pagos"
+                                  (change)="getValue($event)"
+                                  [value]="couta.name"
+                                  >
+                      <div class="list-cuotas-item-left">
+                        <p class="list-cuotas-item-left-title">{{couta.name}}</p>
+                        <p class="list-cuotas-item-left-subtitle">{{couta.subtitle}}</p>
+                      </div>
+                      <span class="list-cuotas-item-right-mount">
+                        S/ 1323.00
+                     </span>
+                    </mat-checkbox>    
+                  </li>
+                  <div class="list-cuotas-total">
+                    <span>Total a pagar: </span>
+                    <span>S/1,538.30</span>
+                  </div>
+                </ul>
+              </form>
+            </div>
+            <ng-template #parcial>
+              <section class="mt-2" >
+              <app-alerta mensaje="Monto máximo" subMensaje="S/3,076.60" tipo="amount" [textCenter]="true"></app-alerta>
+                <div class="row" style="align-items: flex-end;">
+                  <div class="col-6" >
+                    <label style="color: #EDEDED;">Moneda</label>
+                    <mat-form-field appearance="outline" style="width: 100%;" >
+                      <mat-select [(ngModel)]="values.moneda" [disabled]="true">
+                        <mat-option value="1">Soles</mat-option>
+                        <mat-option value="2">Dolares</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                  <div class="col-6">
+                    <label>Monto a transferir</label>
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                      <input matInput autocomplete="off" [(ngModel)]="values.monto">
+                    </mat-form-field>
+                  </div>
+                </div>
+              <app-alerta mensaje="Este pago NO se considerará, como pago anticipado, se realizará cuota por cuota" tipo="warn"></app-alerta>
+            </section>
+            </ng-template>
+          </div>
+        </section>
+      </mat-step>
+
+      <mat-step label="Transferencia" [completed]="stepIndex === 0 ? false: true">
+        <app-detalle-segundo-paso  [listItemsSecondStep]="listItemsSecondStep"></app-detalle-segundo-paso>
+        <app-pad-numerico title="Ingresa tu clave de 6 dígitos" [valueDigits]="6"></app-pad-numerico>
+        <app-clave-sms></app-clave-sms>
+      </mat-step>
+  
+      <mat-step label="Resúmen">
+        <app-detalle-tercer-paso [icono]="'pagos'" [titulo]="'¡Tu transferencia se realizó con éxito!'" [numOp]="'#123456'" [dataArray]="dataResult"></app-detalle-tercer-paso>
+      </mat-step>
+  
+    </mat-stepper>
+  </ng-template>
+  
+  <ng-template #actionsTp>
+    <button mat-stroked-button color="primary" class="btn-pri-out" *ngIf="stepIndex !== 2"
+      (click)="btnRegresar()">Regresar</button>
+    <button mat-raised-button class="btn-principal" (click)="btnContinuar()">{{stepIndex !== 2 ? 'Continuar': 'Ir a
+      transferencias'}}</button>
+  </ng-template>

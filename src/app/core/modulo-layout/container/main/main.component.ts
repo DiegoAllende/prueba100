@@ -30,7 +30,7 @@ export class MainComponent implements OnInit {
   getListAhorros() {
     this.cuentasService.getCuentasClienteListar().subscribe(resp => {
       this.listaAhorros = adapterListaCuentas(resp);
-    });
+    }, error => console.log("**error**: ", error));
   }
 
   getListPagos() {

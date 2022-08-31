@@ -8,5 +8,5 @@ export const PATH_2 = {
   SELLO: `${PATH.AUTH}/sello`,
   CLAVE: `${PATH.AUTH}/clave`,
   MAIN: `${PATH.MAIN}/`,
-  
+
 }

@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { CuentaClienteModel, CuentaModel, CuentaMovimientoModel, CuentaRetencionModel, EstadoCuentaModel } from '@shared/models/consultas/consultas.model';
 import { ResponseModel, TraceCMACTModel } from '@shared/models/generico/http.model';
-import { map } from 'rxjs';
+import { map, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -12,39 +12,49 @@ export class CuentasService {
   constructor(private http: HttpClient) { }
 
   getCuentasClienteListar() {
-    return this.http.get<ResponseModel<CuentaClienteModel[]>>('https://animechan.vercel.app/api/random').pipe(
-      map(x => this.RESP_CUENTAS_CLIENTE)
-    );
+    // return this.http.get<ResponseModel<CuentaClienteModel[]>>('https://animechan.vercel.app/api/random').pipe(
+    //   map(x => this.RESP_CUENTAS_CLIENTE)
+    // );
+
+    return of(this.RESP_CUENTAS_CLIENTE);
   }
 
   getCuentaDatosObtener(params: any) {
     const paramsOut = { ...params, pobjTrace: this.trace };
 
     const aux = Number(paramsOut.pstrCodCta) - 1;
-    return this.http.get<ResponseModel<CuentaModel>>('https://animechan.vercel.app/api/random2').pipe(
-      map(x => this.RESP_CUENTA_DATOS[aux])
-    );
+    // return this.http.get<ResponseModel<CuentaModel>>('https://animechan.vercel.app/api/random').pipe(
+    //   map(x => this.RESP_CUENTA_DATOS[aux])
+    // );
+
+    return of(this.RESP_CUENTA_DATOS[aux]);
   }
 
   getCuentaMovimientosListar(params: any) {
     const paramsOut = { ...params, pobjTrace: this.trace };
-    return this.http.get<ResponseModel<CuentaMovimientoModel>>('https://animechan.vercel.app/api/random').pipe(
-      map(x => this.RESP_MOV)
-    );
+    // return this.http.get<ResponseModel<CuentaMovimientoModel>>('https://animechan.vercel.app/api/random').pipe(
+    //   map(x => this.RESP_MOV)
+    // );
+
+    return of(this.RESP_MOV);
   }
 
   getCuentaRetencionesListar(params: any) {
     const paramsOut = { ...params, pobjTrace: this.trace };
-    return this.http.get<ResponseModel<CuentaRetencionModel>>('https://animechan.vercel.app/api/random').pipe(
-      map(x => this.RESP_RETENCIONES)
-    );
+    // return this.http.get<ResponseModel<CuentaRetencionModel>>('https://animechan.vercel.app/api/random').pipe(
+    //   map(x => this.RESP_RETENCIONES)
+    // );
+
+    return of(this.RESP_RETENCIONES);
   }
 
   getEstadoCuentaObtener(params: any) {
     const paramsOut = { ...params, pobjTrace: this.trace };
-    return this.http.get<ResponseModel<EstadoCuentaModel>>('https://animechan.vercel.app/api/random').pipe(
-      map(x => this.RESP_ESTADO_CUENTA)
-    );
+    // return this.http.get<ResponseModel<EstadoCuentaModel>>('https://animechan.vercel.app/api/random').pipe(
+    //   map(x => this.RESP_ESTADO_CUENTA)
+    // );
+
+    return of(this.RESP_ESTADO_CUENTA);
   }
 
   trace: TraceCMACTModel = {

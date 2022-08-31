@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CuentasService } from '@shared/services/cuentas.service';
 import { PASOS } from '@utils/constantes';
 import * as moment from 'moment';
-import { combineLatest } from 'rxjs';
 import { adapterDatosCuenta } from '../../models-adapter/ahorro.adapter';
 import { CuentaDatos } from '../../models/cuenta-datos.model';
 

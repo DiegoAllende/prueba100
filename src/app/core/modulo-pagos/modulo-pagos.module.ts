@@ -22,6 +22,6 @@ import { RecargasCelularComponent } from './container/recargas-celular/recargas-
     CommonModule,
     ModuloPagosRoutingModule,
     SharedModule,
-  ]
+  ],
 })
 export class ModuloPagosModule { }

@@ -1,0 +1,40 @@
+::ng-deep.mat-radio-ripple {
+    display: none;
+}
+
+.list-cuotas{
+    border: 1px solid #C6C6C6;
+    margin-top: 20px !important;
+    padding: 22px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border: 1px solid #C6C6C6;
+    list-style-type: none;
+    margin-top: 4px;
+    font-size: 14px;
+    @media screen and(min-width:768px) {
+      font-size: 16px;
+    }
+    &-item-left{
+      line-height: initial;
+      &-title{
+        margin: 0px;
+      }
+      &-subtitle{
+        margin: 0px;
+        font-weight: 700;
+      }
+    }
+    &-item-right-mount{
+      font-weight: 700;
+    }
+    &-total{
+      display: flex;
+      justify-content: space-between;
+      padding-left: 25px;
+      border-top: 1px solid #EDEDED;
+      padding-top: 15px;
+      font-weight: 700;
+    }
+}

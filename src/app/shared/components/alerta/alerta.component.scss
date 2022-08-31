@@ -8,9 +8,7 @@
   font-weight: 400;
   margin: 16px 0px;
   border: 2px solid;
-  border-radius: 10px;
-
-  
+  border-radius: 10px;  
 }
 
 .cj-alerta.success {
@@ -50,4 +48,29 @@
   .cj-alerta-icon {
     color: #F90000;
   }
+}
+
+.cj-alerta.amount {
+  background-color: #FEEEEE;
+  border-color: #F90000;
+  color: #F90000;
+  font-size: 16px;
+  @media screen and(min-width:768px) {
+      font-size: 20px;
+  }
+
+  .cj-alerta-icon {
+    color: #F90000;
+    height: 20px;
+    width: 20px;
+    @media screen and(min-width:768px) {
+      color: #F90000;
+      height: 30px;
+      width: 30px;
+    }
+  }
+}
+
+.font-700{
+  font-weight: 700;
 }
