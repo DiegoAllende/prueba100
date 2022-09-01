@@ -34,9 +34,15 @@ export class CreditosTercerosComponent implements OnInit {
 
   listaCuentas = [
     { id: "1", cuenta: "Ahorro Sueldo", numero: "156729403782", monto: "2,357.16", mostrar: "156729403782 - S/1,357.16 " },
-    { id: "2", cuenta: "Ahorro Total Disponibilidad", numero: "156729403782", monto: "5,357.16", mostrar: "156729403782 - S/58.50" },
+    { id: "3", cuenta: "Ahorro Total Disponibilidad", numero: "156729403782", monto: "5,357.16", mostrar: "156729403782 - S/58.50" },
   ];
 
+  empresas = [
+    {name:"Luz del Sur", id:"1"},
+    {name:"Sedapal", id:"2"},
+    {name:"Gas del norte", id:"3"},
+    {name:"Gas natural", id:"4"}
+  ]
   values = {
     cuentaOrigen: "1",
     nroCredito: "Nro. 103356729403782",

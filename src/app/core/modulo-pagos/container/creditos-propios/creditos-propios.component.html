@@ -1,1 +1,99 @@
-<p>Credito propio works!</p>
+<app-plantilla-info-simple [ocultarCard]="ocultarCard">
+    <ng-container contentTitulo>
+      <app-icon-pagos size="24"></app-icon-pagos>
+      <label class="title2-pri">Pagos</label>
+    </ng-container>
+
+    <ng-container contentCard>
+      <app-icon-tarjeta size="24"></app-icon-tarjeta>
+      <div>
+        <label class="title3-sec mb-1">Pago de créditos propios</label>
+        <label class="subtitle1-secN">Ingresa los datos y completa las opciones para continuar</label>
+      </div>
+    </ng-container>
+
+    <ng-container contentMain>
+      <ng-container [ngTemplateOutlet]="contentTp"></ng-container>
+    </ng-container>
+
+    <ng-container contentFavorito *ngIf="stepIndex === 2">
+      <app-agregar-favorito></app-agregar-favorito>
+    </ng-container>
+
+    <ng-container contentAction>
+      <ng-container [ngTemplateOutlet]="actionsTp"></ng-container>
+    </ng-container>
+
+  </app-plantilla-info-simple>
+
+  <!-- TEMPLATES -->
+  <ng-template #contentTp>
+    <mat-stepper labelPosition="bottom" linear [selectedIndex]="stepIndex">
+      <mat-step label="Datos">
+        <section>
+          <div class="row" style="align-items: flex-end;">
+            <div class="col-12 col-md-6">
+              <label class="label-pri mb-2">Cuenta origen:</label>
+              <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaOrigen"></select-cuentas>
+            </div>
+            <div class="col-12 col-md-6">
+                <label class="label-pri mb-2">Crédito:</label>
+                <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaOrigen"></select-cuentas>
+            </div>
+
+            <mat-radio-group [(ngModel)]="values.pagocuota">
+              <div class="row">
+                <div class="col-12 col-md-6 mb-4 mt-2">
+                  <mat-radio-button color="primary" [value]="true">Pago por cuotas</mat-radio-button>
+                </div>
+                <div class="col-12 col-md-6 mb-4 mt-2">
+                  <mat-radio-button color="primary" [value]="false">Pago parcial</mat-radio-button>
+                </div>
+              </div>
+            </mat-radio-group>
+          </div>
+          <div class="col-12 mb-4" *ngIf="values.pagocuota === true">
+            <app-lista-cuotas [dataArray]="dataArrayForCuotas" [total_cuenta]="'S/1,538.30'"></app-lista-cuotas>
+          </div>
+          <div class="row" *ngIf="values.pagocuota === false">
+            <app-alerta [mensaje]="'Monto máximo'" subMensaje="S/3,076.60" tipo="amount" [textCenter]="true"></app-alerta>
+              <div class="col-12 col-md-6 mb-4">
+                <label class="label-secN">Moneda</label>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                  <mat-select [disabled]="true" [(ngModel)]="values.moneda">
+                    <mat-option value="1">Soles</mat-option>
+                    <mat-option value="2">Dolares</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-12 col-md-6 mb-4">
+                <label class="label-secN">Monto</label>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                  <input matInput autocomplete="off" [(ngModel)]="values.monto">
+                </mat-form-field>
+              </div>
+              <div class="col-12">
+                <app-alerta [mensaje]="'Este pago NO se considerará, como pago anticipado, se realizará cuota por cuota'" [tipo]="'warn'"></app-alerta>
+              </div>
+            </div>
+
+        </section>
+      </mat-step>
+      <mat-step label="Transferencia" [completed]="stepIndex === 0 ? false: true">
+        <app-detalle-segundo-paso [listItemsSecondStep]="listItemsSecondStep"></app-detalle-segundo-paso>
+        <app-pad-numerico [valueDigits]="6" title="Ingresa una clave de 6 dígitos"></app-pad-numerico>
+        <app-clave-sms></app-clave-sms>
+      </mat-step>
+
+      <mat-step label="Resúmen">
+        <app-detalle-tercer-paso [icono]="'pagos'" [titulo]="'¡Tu pago se realizó con éxito!'" [numOp]="'123456'" [dataArray]="dataResult"></app-detalle-tercer-paso>
+      </mat-step>
+
+    </mat-stepper>
+  </ng-template>
+
+  <ng-template #actionsTp>
+    <button mat-stroked-button color="primary" class="btn-pri-out" *ngIf="stepIndex !== 2"
+      (click)="btnRegresar()">Regresar</button>
+    <button mat-raised-button class="btn-principal" (click)="btnContinuar()">{{stepIndex !== 2 ? 'Continuar': 'Ir atransferencias'}}</button>
+  </ng-template>

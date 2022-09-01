@@ -1,28 +1,24 @@
 <div class="cheques-container">
-    <h2 class="cheques-container-title">Cheques y retenciones</h2>
-    <div class="cheques-container-content">
-        <div class="cheques-container-content-header">
-            <span class="cheques-container-content-header-operation">Operacion</span>
-            <span class="cheques-container-content-header-dates">Fecha/Monto</span>
-            <span class="cheques-container-content-header-date-desktop">Fecha</span>
-            <span class="cheques-container-content-header-mount-desktop">Monto</span>
-            <span class="cheques-container-content-header-ref">Referencia</span>
-        </div>
-        <div class="cheques-container-content-body">
-            <div *ngFor="let item of [1,2,3,4]" class="cheques-container-content-body-item">
-                <span class="cheques-container-content-body-item-name">CHEQUE</span>
-                <div class="cheques-container-content-body-item-dates">
-                    <span>15/20/2015</span>
-                    <span>S/1.300.00</span>
-                </div>
-                <span class="cheques-container-content-body-item-date-desktop">15/20/2015</span>
-                <span class="cheques-container-content-body-item-mount-desktop">S/1,300.00</span>
-                <span class="cheques-container-content-body-item-ref">Agencia España</span>
-            </div>
-
-        </div>
-
+  <h2 class="cheques-container-title">Cheques y retenciones</h2>
+  <div class="cheques-container-content">
+    <div class="cheques-container-content-header">
+      <span class="cheques-container-content-header-operation">Operacion</span>
+      <span class="cheques-container-content-header-dates">Fecha/Monto</span>
+      <span class="cheques-container-content-header-date-desktop">Fecha</span>
+      <span class="cheques-container-content-header-mount-desktop">Monto</span>
+      <span class="cheques-container-content-header-ref">Referencia</span>
     </div>
-    
-    
+    <div class="cheques-container-content-body">
+      <div *ngFor="let item of lista" class="cheques-container-content-body-item">
+        <span class="cheques-container-content-body-item-name">{{item.operacion}}</span>
+        <div class="cheques-container-content-body-item-dates">
+          <span>{{item.fecha}}</span>
+          <span>{{item.desMonto}}</span>
+        </div>
+        <span class="cheques-container-content-body-item-date-desktop">{{item.fecha}}</span>
+        <span class="cheques-container-content-body-item-mount-desktop">{{item.desMonto}}</span>
+        <span class="cheques-container-content-body-item-ref">{{item.referencia}}</span>
+      </div>
+    </div>
+  </div>
 </div>

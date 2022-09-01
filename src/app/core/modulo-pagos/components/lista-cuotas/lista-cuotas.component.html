@@ -1,0 +1,17 @@
+<div class="main">
+  <div class="items">
+    <div class="selectores" >
+      <div class="item" *ngFor="let item of dataCuotas">
+        <mat-checkbox color="primary" class="checkbox" [disabled]="item.disable">
+          <h3 class="cuota">Cuota {{item.cuota_num}}<br><strong>Vcto. {{item.cuota_venc}}</strong></h3>
+        </mat-checkbox>
+        <p class="monto">{{item.cuota_monto}}</p>
+      </div>
+    </div>
+  </div>
+  <div class="divisor"></div>
+  <div class="total">
+    <h2>Total a pagar:</h2>
+    <p class="monto">{{total_cuenta}}</p>
+  </div>
+</div>

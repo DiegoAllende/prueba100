@@ -11,6 +11,7 @@ import { TokenAuthInterceptor } from '@shared/interceptors/token-auth.intercepto
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoaderInterceptor } from '@shared/interceptors/loader.interceptor';
+import { JwtDecoderService } from '@shared/services/jwt-decoder.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -45,7 +46,8 @@ import { LoaderInterceptor } from '@shared/interceptors/loader.interceptor';
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
       multi: true
-    }
+    },
+    JwtDecoderService
   ],
   bootstrap: [AppComponent]
 })

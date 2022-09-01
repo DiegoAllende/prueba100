@@ -52,6 +52,7 @@ import { IconReloadComponent } from './components/icons/icon-reload/icon-reload.
 import { DetalleSegundoPasoComponent } from './components/detalle-segundo-paso/detalle-segundo-paso.component';
 import { SelectCuentasComponent } from './components/formulario/select-cuentas/select-cuentas.component';
 import { DetalleTercerPasoComponent } from './components/detalle-tercer-paso/detalle-tercer-paso.component';
+import { SelectSearchEmpresasComponent } from './components/formulario/select-search-empresas/select-search-empresas.component';
 
 
 @NgModule({
@@ -103,6 +104,7 @@ import { DetalleTercerPasoComponent } from './components/detalle-tercer-paso/det
     DetalleTercerPasoComponent,
     DetalleSegundoPasoComponent,
     SelectCuentasComponent,
+    SelectSearchEmpresasComponent,
   ],
   imports: [
     CommonModule,
@@ -165,7 +167,8 @@ import { DetalleTercerPasoComponent } from './components/detalle-tercer-paso/det
     IconReloadComponent,
     DetalleSegundoPasoComponent,
     SelectCuentasComponent,
-    DetalleTercerPasoComponent
+    DetalleTercerPasoComponent,
+    SelectSearchEmpresasComponent
   ]
 })
 export class SharedModule { }

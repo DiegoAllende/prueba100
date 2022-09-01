@@ -210,3 +210,43 @@ mat-stepper {
     display: none;
   } 
 }
+
+.select-search-empresas {
+  .mat-form-field-appearance-fill {
+    width: 100%;
+    padding-bottom: 18.813px;
+    margin-bottom: 3.500px;
+    .mat-form-field-flex {
+      padding-top: 8.5px;
+    }
+    .mat-form-field-wrapper {
+      padding-bottom: 0px;
+      border: 1px solid $color-desactivado;
+      border-radius: 4px;
+
+      .mat-form-field-label {
+        font-size: 16px;
+      }
+
+      .mat-form-field-underline {
+        display: none;
+      }
+    }
+  }
+}
+
+.mat-select-panel{
+  .container-search{
+    .container-input{
+      padding: 15px 10px;
+      border: none;
+      outline: none;
+      width: 85%;
+    }
+    .container-img{
+      width: 15%;
+      padding:  15px;
+      cursor: pointer;
+    }
+  }
+}

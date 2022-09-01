@@ -4,7 +4,11 @@ import { CuentasService } from '@shared/services/cuentas.service';
 import { PASOS } from '@utils/constantes';
 import * as moment from 'moment';
 import { adapterDatosCuenta } from '../../models-adapter/ahorro.adapter';
+import { adapterMovimientos } from '../../models-adapter/movimientos.adapter';
+import { adapterRetenciones } from '../../models-adapter/retenciones.adapter';
 import { CuentaDatos } from '../../models/cuenta-datos.model';
+import { Movimientos } from '../../models/movimientos.model';
+import { Retenciones } from '../../models/retenciones.model';
 
 @Component({
   selector: 'app-ahorros',
@@ -14,6 +18,8 @@ import { CuentaDatos } from '../../models/cuenta-datos.model';
 export class AhorrosComponent implements OnInit {
   codigoCuenta = "";
   cuenta!: CuentaDatos;
+  listaRetenciones: Retenciones[] = [];
+  listaMovimientos: Movimientos[] = [];
 
   listDates!:any[]
   year:string = ''
@@ -43,7 +49,6 @@ export class AhorrosComponent implements OnInit {
   getDatosCuenta() {
     const params = {pstrCodPers: "4900127272", pstrCodCta: this.codigoCuenta};
     this.cuentasService.getCuentaDatosObtener(params).subscribe(resp => {
-      console.log("RespDatos: ", resp);
       this.cuenta = adapterDatosCuenta(resp);
     }, error => {
       console.log("**error**: ", error);
@@ -53,7 +58,7 @@ export class AhorrosComponent implements OnInit {
   getMovimientos() {
     const params = {pstrCodPers: "4900127272", pstrCodCta: this.codigoCuenta};
     this.cuentasService.getCuentaMovimientosListar(params).subscribe(resp => {
-      console.log("RespMov: ", resp);
+      this.listaMovimientos = adapterMovimientos(resp);
     }, error => {
       console.log("**error**: ", error);
     });
@@ -62,7 +67,7 @@ export class AhorrosComponent implements OnInit {
   getRetenciones() {
     const params = {pstrCodPers: "4900127272", pstrCodCta: this.codigoCuenta};
     this.cuentasService.getCuentaRetencionesListar(params).subscribe(resp => {
-      console.log("RespRet: ", resp);
+      this.listaRetenciones = adapterRetenciones(resp);
     }, error => {
       console.log("**error**: ", error);
     });

@@ -1,47 +1,39 @@
 <div id="accordion" class="accordion">
-    <div >
-      <div class="menu" (click)="toggle()">
-        <div class="content-header">
-            <p class="title-header">{{movimiento.nameOperation}}</p>
-            <div class="date-mount-header">
-                <span class="date-header">{{movimiento.date}}</span>
-                <span class="mount-header">{{movimiento.mount}}</span>
-            </div>
-            <div class="icon-header">
-                <!-- <mat-icon *ngIf="!movimiento.active">keyboard_arrow_down</mat-icon>
-                <mat-icon *ngIf="movimiento.active">keyboard_arrow_up</mat-icon> -->
-                <app-icon-flecha-abajo size="15" *ngIf="!movimiento.active"></app-icon-flecha-abajo>
-                <app-icon-flecha-arriba size="15" *ngIf="movimiento.active"></app-icon-flecha-arriba>
-            </div>
+  <div>
+    <div class="menu" (click)="toggle()">
+      <div class="content-header">
+        <p class="title-header">{{movimiento?.operacion}}</p>
+        <div class="date-mount-header">
+          <span class="date-header">{{movimiento?.fecha}}</span>
+          <span class="mount-header">{{movimiento?.desMonto}}</span>
+        </div>
+        <div class="icon-header">
+          <app-icon-flecha-abajo size="15" *ngIf="!movimiento?.active"></app-icon-flecha-abajo>
+          <app-icon-flecha-arriba size="15" *ngIf="movimiento?.active"></app-icon-flecha-arriba>
         </div>
       </div>
-      <div
-        class="submenu"
-        #body
-        [style.height.px]="movimiento.active ? body.scrollHeight : 0"
-      >
-        <div class="content-body">
-            <h5 class="title-detalle">Detalle de la operacion</h5>
-            <p>DEPOSITO EN VENTANILLA</p>
-            <div class="content-detalle">
-                <span> Fecha y hora de la peracion {{item}}</span>
-                <span class="date-desktop">15/05/2022</span>
-                <div class="dates-body">
-                    <span class="date-mobile">15/05/2022</span>
-                    <span>25:25:25</span>
-                </div>
-                <span>Fecha y hora del proceso</span>
-                <span class="date-desktop">15/05/2022</span>
-                <div class="dates-body">
-                    <span class="date-mobile">15/05/2022</span>
-                    <span>25:25:25</span>
-                </div>
-                <span>Referencia</span>
-                <span class="referencia">VRM MARKET LIMA PE</span>
-            </div>
+    </div>
+    <div class="submenu" #body [style.height.px]="movimiento?.active ? body.scrollHeight : 0">
+      <div class="content-body">
+        <h5 class="title-detalle">Detalle de la operacion</h5>
+        <p>DEPOSITO EN VENTANILLA</p>
+        <div class="content-detalle">
+          <span> Fecha y hora de la peracion</span>
+          <span class="date-desktop">15/05/2022</span>
+          <div class="dates-body">
+            <span class="date-mobile">15/05/2022</span>
+            <span>25:25:25</span>
+          </div>
+          <span>Fecha y hora del proceso</span>
+          <span class="date-desktop">15/05/2022</span>
+          <div class="dates-body">
+            <span class="date-mobile">15/05/2022</span>
+            <span>25:25:25</span>
+          </div>
+          <span>Referencia</span>
+          <span class="referencia">VRM MARKET LIMA PE</span>
         </div>
       </div>
     </div>
   </div>
-
- 
+</div>

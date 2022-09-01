@@ -1,15 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Retenciones } from '../../models/retenciones.model';
 
 @Component({
   selector: 'app-cheques-retenciones',
   templateUrl: './cheques-retenciones.component.html',
   styleUrls: ['./cheques-retenciones.component.scss']
 })
-export class ChequesRetencionesComponent implements OnInit {
+export class ChequesRetencionesComponent {
+  @Input() lista: Retenciones[];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
+    this.lista = [];
   }
 
 }

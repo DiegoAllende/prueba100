@@ -8,7 +8,7 @@ import { CreditosTercerosComponent } from './container/creditos-terceros/credito
 import { TarjetaCreditoComponent } from './container/tarjeta-credito/tarjeta-credito.component';
 import { PagoServiciosComponent } from './container/pago-servicios/pago-servicios.component';
 import { RecargasCelularComponent } from './container/recargas-celular/recargas-celular.component';
-
+import { ListaCuotasComponent } from './components/lista-cuotas/lista-cuotas.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,8 @@ import { RecargasCelularComponent } from './container/recargas-celular/recargas-
     CreditosTercerosComponent,
     TarjetaCreditoComponent,
     PagoServiciosComponent,
-    RecargasCelularComponent
+    RecargasCelularComponent,
+    ListaCuotasComponent
   ],
   imports: [
     CommonModule,

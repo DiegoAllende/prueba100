@@ -85,6 +85,14 @@ export class CuentasService {
       strSimbolo: "S/",
       strReferencia: "Expediente 7"
     },
+    {
+      dtmFecTran: "2019-01-06",
+      strNomOperacion: "RETENCIÓN",
+      decMonTran: 3500,
+      bytMoneda: 1,
+      strSimbolo: "S/",
+      strReferencia: "Agencia Sur"
+    },
   ];
 
   RESP_MOV: CuentaMovimientoModel[] = [

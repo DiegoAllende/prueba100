@@ -1,0 +1,13 @@
+<div class="select-search-empresas">
+    <mat-form-field appearance="fill">
+        <mat-select (selectionChange)="changeSelect($event)" [(ngModel)]="currentValue">
+            <div class="container-search" >
+                <input class="container-input" placeholder="buscar" [(ngModel)]="inputSearch"/> 
+                <img class="container-img" src="assets/icons/buscar.svg" (click)="getEmpresas()"/>
+            </div>
+          <mat-option *ngFor="let empresa of lista" [value]="empresa?.id">
+            {{empresa?.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+</div>
