@@ -7,4 +7,13 @@ export interface Movimientos {
   moneda: number;
   simbolo: string;
   active: boolean;
+  detalle: MovimientoDetalle;
+}
+
+export interface MovimientoDetalle {
+  fechaOperacion: string;
+  fechaProceso: string;
+  horaOperacion: string;
+  horaProceso: string;
+  referencia: string;
 }

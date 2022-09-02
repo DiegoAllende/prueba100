@@ -29,6 +29,24 @@ export interface CuentaClienteModel {
     decMonTran: number;
     bytMoneda: number;
     strSimbolo: string;
+    detDetalle: CuentaMovimientoDetalleModel
+  }
+
+  export interface CuentaMovimientoDetalleModel {
+    intNumTran: number;
+    dtmFecOpe: string;
+    dtmFecProc: string;
+    decMontoOri: number;
+    decITFOri: number;
+    bytMonedaOri: number;
+    strSimboloOri: string;
+    decMontoDest: number;
+    decComisionDest: number;
+    bytMonedaDest: number;
+    strSimboloDest: string;
+    strNumDocDest: string;
+    decTipCambio: number;
+    strReferencia: string;
   }
   
   export interface CuentaRetencionModel {

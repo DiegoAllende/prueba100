@@ -12,6 +12,13 @@ export const adapterMovimientos = (dataIn: CuentaMovimientoModel[]): Movimientos
       moneda: x.bytMoneda,
       simbolo: x.strSimbolo,
       active: false,
+      detalle: {
+        fechaOperacion: x.detDetalle.dtmFecOpe,
+        fechaProceso: x.detDetalle.dtmFecProc,
+        horaOperacion: "25:25:25",
+        horaProceso: "26:26:26",
+        referencia: x.detDetalle.strReferencia,
+      }
     }
   });
 }

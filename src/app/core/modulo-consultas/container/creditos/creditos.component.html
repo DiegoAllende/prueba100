@@ -6,24 +6,24 @@
   </ng-container>
 
   <ng-container contentMain>
-    <ng-container *ngFor="let item of listCreditos">
-      <div class="ptl-infocom-main-content" [ngClass]="item.active ? 'active': ''">
+    <ng-container *ngFor="let item of listCreditosAll">
+      <div class="ptl-infocom-main-content" [ngClass]="item.credito.active ? 'active': ''">
         <div class="ptl-infocom-main-content-card" (click)="btnCard(item)">
           <!-- Colocar contenido del card -->
           <div class="ptl-infocom-main-content-card-content">
             <app-icon-credito size="24"></app-icon-credito>
             <div class="ptl-infocom-main-content-card-content-info">
-              <span class="title3-sec">{{item.title}}</span>
-              <div [ngClass]="item.active ? 'tran-expand-active' : 'tran-expand'">
-                <div *ngIf="item.active">
-                  <label class="subtitle1-sec mb-2">{{item.numero}}</label>
+              <span class="title3-sec">{{item.credito.titulo}}</span>
+              <div [ngClass]="item.credito.active ? 'tran-expand-active' : 'tran-expand'">
+                <div *ngIf="item.credito.active">
+                  <label class="subtitle1-sec mb-2">{{item.credito.numCuenta}}</label>
                   <label class="subtitle1-secN">Saldo Capital</label>
-                  <label class="title3-sec">S/ {{item.saldo}}</label>
+                  <label class="title3-sec">S/ {{item.credito.desSaldoCapital}}</label>
                 </div>
               </div>
             </div>
             <div class="ptl-infocom-main-content-card-content-flecha">
-              <app-icon-flecha-derecha *ngIf="!item.active" size="18"></app-icon-flecha-derecha>
+              <app-icon-flecha-derecha *ngIf="!item.credito.active" size="18"></app-icon-flecha-derecha>
             </div>
           </div>
         </div>
@@ -33,9 +33,7 @@
             <app-informacion-creditos [creditoIn]="item"></app-informacion-creditos>
             <div class="ptl-infocom-main-content-main-info-actions">
               <!-- Colocar botones -->
-              <div class="ptl-infocom-main-content-main-info-actions-favorito">
-                
-              </div>
+              <div class="ptl-infocom-main-content-main-info-actions-favorito"></div>
               <div class="ptl-infocom-main-content-main-info-actions-botones">
                 <ng-container [ngTemplateOutlet]="actionsTp"></ng-container>
               </div>

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CreditosService } from '@shared/services/creditos.service';
+import { adapterCreditoDatos, adapterCreditosCliente } from '../../models-adapter/creditos.adapter';
+import { CreditoCliente, CreditoDatosAll } from '../../models/creditos.interface';
 
 @Component({
   selector: 'app-creditos',
@@ -8,10 +11,11 @@ import { Router } from '@angular/router';
 })
 export class CreditosComponent implements OnInit {
   isCredito: boolean = true;
-  listCreditos: any = [];
+  listCreditosAll: CreditoDatosAll[] = [];
 
   constructor(
-    private router:Router
+    private router: Router,
+    private creditosService: CreditosService,
   ) { }
 
   ngOnInit(): void {
@@ -19,27 +23,34 @@ export class CreditosComponent implements OnInit {
   }
 
   getCreditos() {
-    this.isCredito = true;
-
-    this.listCreditos = [
-      {
-        title: "Administrativo",
-        active: true,
-        numero: '44475847293',
-        saldo: "45,645.28",
-      },
-      {
-        title: "Gestion",
-        active: false,
-        numero: '553748374839',
-        saldo: "55,645.28",
+    const params = { pstrCodPers: "4900127272" };
+    this.creditosService.getCreditosClienteListar(params).subscribe(resp => {
+      this.listCreditosAll = adapterCreditosCliente(resp);
+      if (this.listCreditosAll.length === 0) {
+        this.isCredito = false;
+      } else {
+        const aux = this.listCreditosAll.find(y => y.credito.active);
+        if(aux) this.btnCard(aux);
       }
-    ]
+    }, error => {
+      console.log("**error**: ", error);
+    });
   }
 
-  btnCard(item: any) {
-    this.listCreditos.forEach((x:any) => x.active = false);
-    item.active = true;
+  getCreditoDatos(codCuenta: string) {
+    const params = { pstrCodPers: "4900127272", pstrCodCta: codCuenta };
+    return this.creditosService.getCreditosDatosObtener(params);
+  }
+
+  btnCard(item: CreditoDatosAll) {
+    this.listCreditosAll.forEach((x) => x.credito.active = false);
+    item.credito.active = true;
+
+    this.getCreditoDatos(item.credito.numCuenta).subscribe(resp => {
+      if (resp) item.datos = adapterCreditoDatos(resp);
+    }, error => {
+      console.log("**error**: ", error);
+    });
   }
 
   btnRegresar() {

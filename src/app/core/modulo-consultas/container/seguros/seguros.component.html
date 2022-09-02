@@ -7,31 +7,31 @@
   </ng-container>
 
   <ng-container contentMain>
-    <ng-container *ngFor="let item of seguros">
-      <div class="ptl-infocom-main-content" [ngClass]="item.active ? 'active': ''">
+    <ng-container *ngFor="let item of listaSegurosAll">
+      <div class="ptl-infocom-main-content" [ngClass]="item.seguro.active ? 'active': ''">
         <div class="ptl-infocom-main-content-card" (click)="btnCard(item)">
           <!-- Colocar contenido del card -->
           <div class="ptl-infocom-main-content-card-content">
             <app-icon-escudo-seguro size="24"></app-icon-escudo-seguro>
             <div class="ptl-infocom-main-content-card-content-info">
-              <span class="title3-sec">{{item.title}}</span>
-              <div [ngClass]="item.active ? 'tran-expand-active' : 'tran-expand'">
-                <div *ngIf="item.active">
-                  <label class="subtitle1-sec mb-3">plan -1</label>
+              <span class="title3-sec">{{item.seguro.titulo}}</span>
+              <div [ngClass]="item.seguro.active ? 'tran-expand-active' : 'tran-expand'">
+                <div *ngIf="item.seguro.active">
+                  <label class="subtitle1-sec mb-3">- plan {{item.seguro.plan}}</label>
                   <label class="subtitle1-secN">Nro. de seguro</label>
-                  <label class="title3-sec">{{item.numero}}</label>
+                  <label class="title3-sec">{{item.seguro.numSeguro}}</label>
                 </div>
               </div>
             </div>
             <div class="ptl-infocom-main-content-card-content-flecha">
-              <app-icon-flecha-derecha *ngIf="!item.active" size="18"></app-icon-flecha-derecha>
+              <app-icon-flecha-derecha *ngIf="!item.seguro.active" size="18"></app-icon-flecha-derecha>
             </div>
           </div>
         </div>
         <div class="ptl-infocom-main-content-main">
           <div class="ptl-infocom-main-content-main-info">
             <!-- Colocar informacion -->
-            <app-informacion-seguros [seguro]="item"></app-informacion-seguros>
+            <app-informacion-seguros [seguroIn]="item"></app-informacion-seguros>
             <div class="ptl-infocom-main-content-main-info-actions">
               <!-- Colocar botones -->
               <div class="ptl-infocom-main-content-main-info-actions-favorito">

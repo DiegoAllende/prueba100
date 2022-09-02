@@ -1,57 +1,26 @@
-<!-- <div id="beneficiarios-seguros-container" class="beneficiarios-seguros-container">
-      <div class="beneficiarios-seguros-container-header" (click)="openAcordeon()" >
-        <div class="beneficiarios-seguros-container-header-content">
-            <span class="beneficiarios-seguros-container-header-content-title">Beneficiario(s)</span>
-            <div >
-                <app-icon-flecha-abajo size="16" color="red" *ngIf="!showBeneficiarios"></app-icon-flecha-abajo>
-                <app-icon-flecha-arriba size="16" color="red" *ngIf="showBeneficiarios" ></app-icon-flecha-arriba>
-            </div>
-        </div>
-      </div>
-      <div
-        class="beneficiarios-seguros-container-body"
-        #acordeonBeneficiarios
-        [style.height.px]="showBeneficiarios === true ? acordeonBeneficiarios.scrollHeight : 0"
-      >
-        <div class="beneficiarios-seguros-container-body-content">
-            <div *ngFor="let beneficiario of seguro.beneficiarios" class="beneficiarios-seguros-container-body-content-item" >
-                <div class="beneficiarios-seguros-container-body-content-item-nombre-mobile">
-                  <span>{{getName(beneficiario.nombre)}}</span>
-                  <span>{{getLastName(beneficiario.nombre)}}</span>
-                </div>
-                <span class="beneficiarios-seguros-container-body-content-item-nombre-desktop">{{beneficiario.nombre}}</span>
-                
-                <span class="beneficiarios-seguros-container-body-content-item-parentesco">{{beneficiario.parentesco}}</span>
-                <span class="beneficiarios-seguros-container-body-content-item-dni">DNI - {{beneficiario.dni}}</span>
-                <span class="beneficiarios-seguros-container-body-content-item-participacion">Participacion {{beneficiario.participacion}}</span>
-            </div>
-        </div>
-      </div>
-  </div> -->
-  <mat-accordion>
-    <mat-expansion-panel class="beneficiarios-seguros-container" [expanded]="true">
-      <mat-expansion-panel-header class="beneficiarios-seguros-container-header">
-        <mat-panel-title  class="beneficiarios-seguros-container-header-title">
-          Beneficiario(s)
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      <div>
-        <div class="beneficiarios-seguros-container-body-content">
-          <div *ngFor="let beneficiario of seguro.beneficiarios" class="beneficiarios-seguros-container-body-content-item" >
-              <div class="beneficiarios-seguros-container-body-content-item-nombre-mobile">
-                <span>{{getName(beneficiario.nombre)}}</span>
-                <span>{{getLastName(beneficiario.nombre)}}</span>
-              </div>
-              <span class="beneficiarios-seguros-container-body-content-item-nombre-desktop">{{beneficiario.nombre}}</span>
-              
-              <span class="beneficiarios-seguros-container-body-content-item-parentesco">{{beneficiario.parentesco}}</span>
-              <span class="beneficiarios-seguros-container-body-content-item-dni">DNI - {{beneficiario.dni}}</span>
-              <span class="beneficiarios-seguros-container-body-content-item-participacion">Participacion {{beneficiario.participacion}}</span>
+<mat-accordion>
+  <mat-expansion-panel class="beneficiarios-seguros-container" [expanded]="true">
+    <mat-expansion-panel-header class="beneficiarios-seguros-container-header">
+      <mat-panel-title class="beneficiarios-seguros-container-header-title">
+        Beneficiario(s)
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div>
+      <div class="beneficiarios-seguros-container-body-content">
+        <div *ngFor="let beneficiario of seguro.beneficiarios"
+          class="beneficiarios-seguros-container-body-content-item">
+          <div class="beneficiarios-seguros-container-body-content-item-nombre-mobile">
+            <span>{{getName(beneficiario.nombre)}}</span>
+            <span>{{getLastName(beneficiario.nombre)}}</span>
           </div>
-      </div>
-      </div>
-    </mat-expansion-panel>
-  </mat-accordion>
+          <span class="beneficiarios-seguros-container-body-content-item-nombre-desktop">{{beneficiario.nombre}}</span>
 
-
-  
+          <span class="beneficiarios-seguros-container-body-content-item-parentesco">{{beneficiario.parentesco}}</span>
+          <span class="beneficiarios-seguros-container-body-content-item-dni">DNI - {{beneficiario.dni}}</span>
+          <span class="beneficiarios-seguros-container-body-content-item-participacion">Participacion
+            {{beneficiario.participacion}}</span>
+        </div>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

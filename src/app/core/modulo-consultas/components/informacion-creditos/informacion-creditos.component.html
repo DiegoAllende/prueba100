@@ -1,34 +1,35 @@
 <div class="inform-credito">
   <div class="inform-credito-titulo">
-    <label class="title3-pri">{{creditoIn.title}}</label>
+    <label class="title3-pri">{{credito?.titulo}}</label>
   </div>
 
   <div class="inform-credito-subtitulo">
     <label class="color-desac">Nro. de crédito:</label>
-    <label>{{creditoIn.numero}}</label>
+    <label>{{credito?.numCuenta}}</label>
   </div>
 
   <div class="inform-credito-main">
     <div class="inform-credito-main-fila">
       <label>Fecha de desembolso</label>
-      <label>11/07/2020</label>
+      <label>{{credito?.fechaDesembolso}}</label>
     </div>
     <div class="inform-credito-main-fila">
       <label>Monto desembolsado</label>
-      <label>S/60,500.00</label>
+      <label>{{credito?.desMontoApertura}}</label>
     </div>
     <div class="inform-credito-main-fila">
       <label>Nro. de cuotas aprobadas</label>
-      <label>59</label>
+      <label>{{creditoIn?.datos?.cuotas}}</label>
     </div>
     <div class="inform-credito-main-fila">
       <label>Nro. de cuotas pagadas</label>
-      <label>19/59</label>
+      <label>{{creditoIn?.datos?.cuotasPagadas}}</label>
     </div>
   </div>
 
   <div class="inform-credito-tabla">
     <mat-accordion>
+      <!-- PROXIMOS VENCIMIENTOS -->
       <mat-expansion-panel [expanded]="true">
         <mat-expansion-panel-header>
           <mat-panel-title>Próximos vencimientos</mat-panel-title>
@@ -49,6 +50,7 @@
           <hr>
         </ng-container>
       </mat-expansion-panel>
+      <!-- ULTIMOS VENCIMIENTOS -->
       <mat-expansion-panel>
         <mat-expansion-panel-header>
           <mat-panel-title>Últimos movimientos</mat-panel-title>

@@ -3,16 +3,19 @@ import { Injectable } from '@angular/core';
 import { CuentaClienteModel, CuentaModel, CuentaMovimientoModel, CuentaRetencionModel, EstadoCuentaModel } from '@shared/models/consultas/consultas.model';
 import { ResponseModel, TraceCMACTModel } from '@shared/models/generico/http.model';
 import { map, of } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CuentasService {
+  base = environment.urlbase;
+  baseCuenta = `${this.base}/random`;
 
   constructor(private http: HttpClient) { }
 
   getCuentasClienteListar() {
-    // return this.http.get<ResponseModel<CuentaClienteModel[]>>('https://animechan.vercel.app/api/random').pipe(
+    // return this.http.get<ResponseModel<CuentaClienteModel[]>>(this.baseCuenta).pipe(
     //   map(x => this.RESP_CUENTAS_CLIENTE)
     // );
 
@@ -23,7 +26,7 @@ export class CuentasService {
     const paramsOut = { ...params, pobjTrace: this.trace };
 
     const aux = Number(paramsOut.pstrCodCta) - 1;
-    // return this.http.get<ResponseModel<CuentaModel>>('https://animechan.vercel.app/api/random').pipe(
+    // return this.http.get<ResponseModel<CuentaModel>>(this.baseCuenta).pipe(
     //   map(x => this.RESP_CUENTA_DATOS[aux])
     // );
 
@@ -32,7 +35,7 @@ export class CuentasService {
 
   getCuentaMovimientosListar(params: any) {
     const paramsOut = { ...params, pobjTrace: this.trace };
-    // return this.http.get<ResponseModel<CuentaMovimientoModel>>('https://animechan.vercel.app/api/random').pipe(
+    // return this.http.get<ResponseModel<CuentaMovimientoModel>>(this.baseCuenta).pipe(
     //   map(x => this.RESP_MOV)
     // );
 
@@ -41,7 +44,7 @@ export class CuentasService {
 
   getCuentaRetencionesListar(params: any) {
     const paramsOut = { ...params, pobjTrace: this.trace };
-    // return this.http.get<ResponseModel<CuentaRetencionModel>>('https://animechan.vercel.app/api/random').pipe(
+    // return this.http.get<ResponseModel<CuentaRetencionModel>>(this.baseCuenta).pipe(
     //   map(x => this.RESP_RETENCIONES)
     // );
 
@@ -50,7 +53,7 @@ export class CuentasService {
 
   getEstadoCuentaObtener(params: any) {
     const paramsOut = { ...params, pobjTrace: this.trace };
-    // return this.http.get<ResponseModel<EstadoCuentaModel>>('https://animechan.vercel.app/api/random').pipe(
+    // return this.http.get<ResponseModel<EstadoCuentaModel>>(this.baseCuenta).pipe(
     //   map(x => this.RESP_ESTADO_CUENTA)
     // );
 
@@ -60,7 +63,7 @@ export class CuentasService {
   trace: TraceCMACTModel = {
     bytIdAplicacion: "40",
     bytIdCanal: "12",
-    dFecha: ">2019-01-01",
+    dFecha: "2019-01-01",
     lngIdSesion: 1,
     sTrace: "1"
   }
@@ -103,22 +106,70 @@ export class CuentasService {
       decMonTran: 3500,
       bytMoneda: 1,
       strSimbolo: "S/",
+      detDetalle: {
+        intNumTran: 1,
+        dtmFecOpe: "2019-01-07",
+        dtmFecProc: "2019-01-08",
+        decMontoOri: 3500,
+        decITFOri: 0,
+        bytMonedaOri: 1,
+        strSimboloOri: "S/",
+        decMontoDest: 3500,
+        decComisionDest: 0,
+        bytMonedaDest: 1,
+        strSimboloDest: "S/",
+        strNumDocDest: "",
+        decTipCambio: 0,
+        strReferencia: "VRM MARKET LIMA PE 1",
+      }
     },
     {
       intNumTran: 2,
       dtmFecTran: "2019-01-06",
       strNomOperacion: "CAPITALIZACION ACTIVA",
-      decMonTran: 16,
+      decMonTran: -2416,
       bytMoneda: 1,
       strSimbolo: "S/",
+      detDetalle: {
+        intNumTran: 2,
+        dtmFecOpe: "2019-01-06",
+        dtmFecProc: "2019-01-05",
+        decMontoOri: -2416,
+        decITFOri: 0,
+        bytMonedaOri: 1,
+        strSimboloOri: "S/",
+        decMontoDest: -2416,
+        decComisionDest: 0,
+        bytMonedaDest: 1,
+        strSimboloDest: "S/",
+        strNumDocDest: "",
+        decTipCambio: 0,
+        strReferencia: "VRM MARKET LIMA PE 2",
+      }
     },
     {
       intNumTran: 3,
       dtmFecTran: "2019-01-05",
       strNomOperacion: "SEGURO MANTENIMIENTO",
-      decMonTran: 16,
+      decMonTran: 165.45,
       bytMoneda: 1,
       strSimbolo: "S/",
+      detDetalle: {
+        intNumTran: 3,
+        dtmFecOpe: "2019-01-05",
+        dtmFecProc: "2019-01-04",
+        decMontoOri: 165.45,
+        decITFOri: 0,
+        bytMonedaOri: 1,
+        strSimboloOri: "S/",
+        decMontoDest: 165.45,
+        decComisionDest: 0,
+        bytMonedaDest: 1,
+        strSimboloDest: "S/",
+        strNumDocDest: "",
+        decTipCambio: 0,
+        strReferencia: "VRM MARKET LIMA PE 3",
+      }
     },
   ];
 

@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CreditoCliente, CreditoDatos, CreditoDatosAll } from '../../models/creditos.interface';
 
 @Component({
   selector: 'app-informacion-creditos',
@@ -6,11 +7,13 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./informacion-creditos.component.scss']
 })
 export class InformacionCreditosComponent implements OnInit {
-  @Input() creditoIn:any;
+  @Input() creditoIn!:CreditoDatosAll;
+  credito!: CreditoCliente;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.credito = this.creditoIn.credito;
   }
 
 }

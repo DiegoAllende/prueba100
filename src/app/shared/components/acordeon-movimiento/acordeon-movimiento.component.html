@@ -16,22 +16,22 @@
     <div class="submenu" #body [style.height.px]="movimiento?.active ? body.scrollHeight : 0">
       <div class="content-body">
         <h5 class="title-detalle">Detalle de la operacion</h5>
-        <p>DEPOSITO EN VENTANILLA</p>
+        <p>{{movimiento?.operacion}}</p>
         <div class="content-detalle">
           <span> Fecha y hora de la peracion</span>
-          <span class="date-desktop">15/05/2022</span>
+          <span class="date-desktop">{{movimiento?.detalle?.fechaOperacion}}</span>
           <div class="dates-body">
-            <span class="date-mobile">15/05/2022</span>
-            <span>25:25:25</span>
+            <span class="date-mobile">{{movimiento?.detalle?.fechaOperacion}}</span>
+            <span>{{movimiento?.detalle?.horaOperacion}}</span>
           </div>
           <span>Fecha y hora del proceso</span>
-          <span class="date-desktop">15/05/2022</span>
+          <span class="date-desktop">{{movimiento?.detalle?.fechaProceso}}</span>
           <div class="dates-body">
-            <span class="date-mobile">15/05/2022</span>
-            <span>25:25:25</span>
+            <span class="date-mobile">{{movimiento?.detalle?.fechaProceso}}</span>
+            <span>{{movimiento?.detalle?.horaProceso}}</span>
           </div>
           <span>Referencia</span>
-          <span class="referencia">VRM MARKET LIMA PE</span>
+          <span class="referencia">{{movimiento?.detalle?.referencia}}</span>
         </div>
       </div>
     </div>

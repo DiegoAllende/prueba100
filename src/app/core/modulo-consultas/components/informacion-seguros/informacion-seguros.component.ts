@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { SeguroCliente, SeguroDatosAll } from '../../models/microseguro.interface';
 
 @Component({
   selector: 'app-informacion-seguros',
@@ -6,13 +7,13 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./informacion-seguros.component.scss']
 })
 export class InformacionSegurosComponent implements OnInit {
-
-  @Output() close: EventEmitter<boolean> = new EventEmitter();
-  @Input() seguro!:any
+  @Input() seguroIn!:SeguroDatosAll;
+  seguro!: SeguroCliente;
 
   constructor() { }
 
   ngOnInit(): void {
+    this.seguro = this.seguroIn.seguro;
   }
 
 
