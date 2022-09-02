@@ -35,7 +35,7 @@ export class MainComponent implements OnInit {
 
   getListPagos() {
     this.listaPagos = [
-      { icono: "servicios", titulo: "Pago de servicios", url: "/main/pagos/servicios" },
+      { icono: "servicios", titulo: "Pago de servicios", url: "/main/pagos-servicios" },
       { icono: "celular", titulo: "Recargas de celular", url: "/main/pagos/recargas" },
       { icono: "Tarjeta", titulo: "Pago de tarjetas a otros bancos", url: "/main/pagos/tarjeta-credito" },
       { icono: "persona1", titulo: "Pago de créditos propios", url: "/main/pagos/creditos-propios" },

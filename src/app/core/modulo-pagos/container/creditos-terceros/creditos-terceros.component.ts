@@ -23,15 +23,13 @@ export class CreditosTercerosComponent implements OnInit {
 
   radioSelected:boolean = true
   ocultarCard: boolean = false;
-
   public formCheck!: FormGroup;
-  coutas:Couta[] = [
+  coutas:any[] = [
       {name: 'Cuota 5',subtitle: 'Vcto. 20/08/2022' , completed: false, color: 'primary'},
       {name: 'Cuota 6',subtitle:'Vcto. 20/08/2022', completed: false, color: 'primary'},
       {name: 'Cuota 7',subtitle:'Vcto. 20/08/2022', completed: false, color: 'primary'},
     ]
   
-
   listaCuentas = [
     { id: "1", cuenta: "Ahorro Sueldo", numero: "156729403782", monto: "2,357.16", mostrar: "156729403782 - S/1,357.16 " },
     { id: "3", cuenta: "Ahorro Total Disponibilidad", numero: "156729403782", monto: "5,357.16", mostrar: "156729403782 - S/58.50" },
@@ -47,7 +45,9 @@ export class CreditosTercerosComponent implements OnInit {
     cuentaOrigen: "1",
     nroCredito: "Nro. 103356729403782",
     moneda: "1",
-    monto:"S/ 1400.00"
+    monto:"S/ 1400.00",
+    cuotas: [],
+    cuotas2:[]
   }
 
   listItemsSecondStep= [
@@ -129,7 +129,7 @@ export class CreditosTercerosComponent implements OnInit {
 
   ngOnInit(): void {
     this.formCheck = this.formBuilder.group({
-      cuotas: this.formBuilder.array([]),
+      items: new FormControl(null)
     });
   }
 
@@ -169,22 +169,6 @@ export class CreditosTercerosComponent implements OnInit {
 
   radioTipoChange(){
     console.log(this.radioSelected)
-  }
-
-  getValue(selectedOption: MatCheckboxChange) {
-    const interests = (<FormArray>(
-      this.formCheck.get('cuotas')
-    )) as FormArray;
-
-    if (selectedOption.checked) {
-      interests.push(new FormControl(selectedOption.source.value));
-    } else {
-      const i = interests.controls.findIndex(
-        (x) => x.value === selectedOption.source.value
-      );
-      interests.removeAt(i);
-    }
-    console.log(this.formCheck.get("cuotas")?.value)
   }
 
 }

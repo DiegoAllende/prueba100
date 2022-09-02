@@ -33,6 +33,10 @@ const routes: Routes = [
         path: 'transferencias',
         loadChildren: () => import('../core/modulo-transferencia/modulo-transferencia.module').then(p=>p.ModuloTransferenciaModule)
       },
+      {
+        path: 'pagos-servicios',
+        loadChildren: () => import('../core/modulo-pagos-servicios/modulo-pagos-servicios.module').then(p=>p.ModuloPagosServiciosModule)
+      }
     ],
     canActivate: [AuthGuard]
   },

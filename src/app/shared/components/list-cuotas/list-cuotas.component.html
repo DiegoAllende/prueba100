@@ -1,0 +1,24 @@
+<form>
+    <ul class="list-cuotas">
+      <li  *ngFor="let couta of cuotas;let i = index" >
+        <mat-checkbox 
+                      [color]="couta.color"
+                      class="checkbox-coutas-pagos"
+                      (change)="getValue($event,i)"
+                      [checked]="couta.completed"
+                      >
+          <div class="list-cuotas-item-left">
+            <p class="list-cuotas-item-left-title">{{couta.name}}</p>
+            <p class="list-cuotas-item-left-subtitle">{{couta.subtitle}}</p>
+          </div>
+          <span class="list-cuotas-item-right-mount">
+            S/ 1323.00
+         </span>
+        </mat-checkbox>    
+      </li>
+      <div class="list-cuotas-total">
+        <span>Total a pagar: </span>
+        <span>S/1,538.30</span>
+      </div>
+    </ul>
+  </form>

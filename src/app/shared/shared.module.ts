@@ -53,6 +53,7 @@ import { DetalleSegundoPasoComponent } from './components/detalle-segundo-paso/d
 import { SelectCuentasComponent } from './components/formulario/select-cuentas/select-cuentas.component';
 import { DetalleTercerPasoComponent } from './components/detalle-tercer-paso/detalle-tercer-paso.component';
 import { SelectSearchEmpresasComponent } from './components/formulario/select-search-empresas/select-search-empresas.component';
+import { ListCuotasComponent } from './components/list-cuotas/list-cuotas.component';
 
 
 @NgModule({
@@ -105,6 +106,7 @@ import { SelectSearchEmpresasComponent } from './components/formulario/select-se
     DetalleSegundoPasoComponent,
     SelectCuentasComponent,
     SelectSearchEmpresasComponent,
+    ListCuotasComponent,
   ],
   imports: [
     CommonModule,
@@ -168,7 +170,8 @@ import { SelectSearchEmpresasComponent } from './components/formulario/select-se
     DetalleSegundoPasoComponent,
     SelectCuentasComponent,
     DetalleTercerPasoComponent,
-    SelectSearchEmpresasComponent
+    SelectSearchEmpresasComponent,
+    ListCuotasComponent
   ]
 })
 export class SharedModule { }

@@ -46,29 +46,8 @@
                 <mat-radio-button class="col-12 col-md-6 mt-4 mt-md-0 px-md-3" color="primary" [value]="false">Pago parcial</mat-radio-button>
             </mat-radio-group>
             <div *ngIf="radioSelected;else parcial" class="mt-2">
-              <form [formGroup]="formCheck"  >
-                <ul class="list-cuotas">
-                  <li  *ngFor="let couta of coutas" >
-                    <mat-checkbox 
-                                  [color]="couta.color"
-                                  class="checkbox-coutas-pagos"
-                                  (change)="getValue($event)"
-                                  [value]="couta.name"
-                                  >
-                      <div class="list-cuotas-item-left">
-                        <p class="list-cuotas-item-left-title">{{couta.name}}</p>
-                        <p class="list-cuotas-item-left-subtitle">{{couta.subtitle}}</p>
-                      </div>
-                      <span class="list-cuotas-item-right-mount">
-                        S/ 1323.00
-                     </span>
-                    </mat-checkbox>    
-                  </li>
-                  <div class="list-cuotas-total">
-                    <span>Total a pagar: </span>
-                    <span>S/1,538.30</span>
-                  </div>
-                </ul>
+              <form [formGroup]="formCheck">
+                <app-list-cuotas formControlName="items" [cuotas]="coutas" ></app-list-cuotas>
               </form>
             </div>
             <ng-template #parcial>
