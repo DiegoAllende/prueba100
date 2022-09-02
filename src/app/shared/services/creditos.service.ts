@@ -16,26 +16,26 @@ export class CreditosService {
 
   getCreditosClienteListar(params: any) {
     const paramsOut = { ...params, pobjTrace: this.trace };
-    // return this.http.get<ResponseModel<CreditoClienteModel[]>>(this.baseCredito).pipe(
-    //   map(x => this.RESP_CREDITOS_CLIENTE)
-    // );
-    return of(this.RESP_CREDITOS_CLIENTE);
+    return this.http.get<ResponseModel<CreditoClienteModel[]>>(this.baseCredito).pipe(
+      map(x => this.RESP_CREDITOS_CLIENTE)
+    );
+    // return of(this.RESP_CREDITOS_CLIENTE);
   }
 
   getCreditosDatosObtener(params: any) {
     const paramsOut = { ...params, pobjTrace: this.trace };
-    // return this.http.get<ResponseModel<CreditoModel>>(this.baseCredito).pipe(
-    //   map(x => this.RESP_CREDITOS_DATOS.find(x => x.strCodCta === paramsOut.pstrCodCta))
-    // );
-    return of(this.RESP_CREDITOS_DATOS.find(x => x.strCodCta === paramsOut.pstrCodCta));
+    return this.http.get<ResponseModel<CreditoModel>>(this.baseCredito).pipe(
+      map(x => this.RESP_CREDITOS_DATOS.find(x => x.strCodCta === paramsOut.pstrCodCta))
+    );
+    // return of(this.RESP_CREDITOS_DATOS.find(x => x.strCodCta === paramsOut.pstrCodCta));
   }
 
-  getCreditoCuotasPagoListar(params: any) {
+  getCreditoCuotasListar(params: any) {
     const paramsOut = { ...params, pobjTrace: this.trace };
-    return this.http.get<ResponseModel<CreditoCuotaModel[]>>(this.baseCredito).pipe(
-      map(x => this.RESP_CREDITO_CUOTA)
-    );
-    // return of(this.RESP_CREDITO_CUOTA);
+    // return this.http.get<ResponseModel<CreditoCuotaModel[]>>(this.baseCredito).pipe(
+    //   map(x => this.RESP_CREDITO_CUOTA)
+    // );
+    return of(this.RESP_CREDITO_CUOTA);
   }
 
   trace: TraceCMACTModel = {
@@ -111,16 +111,64 @@ export class CreditosService {
 
   RESP_CREDITO_CUOTA: CreditoCuotaModel[] = [
     {
-      strEstado: "",
-      strCuotaRango: "40/40",
-      dtmFechaVencimiento: "2019-04-13T00:00:00",
-      intCuota: 0,
-      decMontoCuota: 629.12,
-      decMontoMínimo: 629.12,
+      strEstado: "Vigente",
+      strCuotaRango: "",
+      dtmFechaVencimiento: "2019-04-12T00:00:00",
+      intCuota: 4,
+      decMontoCuota: 258.40,
+      decMontoMínimo: 258.40,
       intNroDiasAtraso: 0,
       bytMoneda: 1,
       strSimbolo: "S/",
-      strCalifica2: "",
+      strCalifica2: "N",
+    },
+    {
+      strEstado: "Vigente",
+      strCuotaRango: "",
+      dtmFechaVencimiento: "2019-05-12T00:00:00",
+      intCuota: 5,
+      decMontoCuota: 358.40,
+      decMontoMínimo: 358.40,
+      intNroDiasAtraso: 0,
+      bytMoneda: 1,
+      strSimbolo: "S/",
+      strCalifica2: "N",
+    },
+    {
+      strEstado: "Vencida",
+      strCuotaRango: "",
+      dtmFechaVencimiento: "2019-03-12T00:00:00",
+      intCuota: 3,
+      decMontoCuota: 458.40,
+      decMontoMínimo: 458.40,
+      intNroDiasAtraso: 15,
+      bytMoneda: 1,
+      strSimbolo: "S/",
+      strCalifica2: "N",
+    },
+    {
+      strEstado: "Cancelada",
+      strCuotaRango: "",
+      dtmFechaVencimiento: "2019-02-12T00:00:00",
+      intCuota: 2,
+      decMontoCuota: 658.40,
+      decMontoMínimo: 658.40,
+      intNroDiasAtraso: 0,
+      bytMoneda: 1,
+      strSimbolo: "S/",
+      strCalifica2: "N",
+    },
+    {
+      strEstado: "Cancelada",
+      strCuotaRango: "",
+      dtmFechaVencimiento: "2019-01-12T00:00:00",
+      intCuota: 1,
+      decMontoCuota: 758.40,
+      decMontoMínimo: 758.40,
+      intNroDiasAtraso: 0,
+      bytMoneda: 1,
+      strSimbolo: "S/",
+      strCalifica2: "N",
     }
   ];
 

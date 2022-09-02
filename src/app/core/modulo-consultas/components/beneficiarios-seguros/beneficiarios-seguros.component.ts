@@ -1,5 +1,6 @@
 import { AfterViewInit } from '@angular/core';
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { SeguroBeneficiario } from '../../models/microseguro.interface';
 
 @Component({
   selector: 'app-beneficiarios-seguros',
@@ -7,22 +8,8 @@ import { Component, Input, OnDestroy, OnInit } from '@angular/core';
   styleUrls: ['./beneficiarios-seguros.component.scss']
 })
 export class BeneficiariosSegurosComponent implements OnInit, OnDestroy, AfterViewInit {
-  seguro = {
-    beneficiarios: [
-      {
-        nombre: 'Carmen Alva Duran Perez',
-        parentesco: 'Hija',
-        dni: '787876',
-        participacion: '20%'
-      },
-      {
-        nombre: 'Juan Carlos Benavides Tenorio',
-        parentesco: 'Hija',
-        dni: '787876',
-        participacion: '20%'
-      }
-    ]
-  }
+  @Input() lista: SeguroBeneficiario[] | undefined = [];
+  
   showBeneficiarios: boolean;
 
   constructor() {
@@ -30,8 +17,7 @@ export class BeneficiariosSegurosComponent implements OnInit, OnDestroy, AfterVi
   }
 
   ngOnInit(): void {
-    console.log("se inicia cada vez", this.showBeneficiarios)
-    this.showBeneficiarios = true
+    this.showBeneficiarios = true;
   }
 
   openAcordeon() {

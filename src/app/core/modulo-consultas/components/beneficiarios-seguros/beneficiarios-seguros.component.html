@@ -7,18 +7,18 @@
     </mat-expansion-panel-header>
     <div>
       <div class="beneficiarios-seguros-container-body-content">
-        <div *ngFor="let beneficiario of seguro.beneficiarios"
+        <div *ngFor="let beneficiario of lista"
           class="beneficiarios-seguros-container-body-content-item">
           <div class="beneficiarios-seguros-container-body-content-item-nombre-mobile">
-            <span>{{getName(beneficiario.nombre)}}</span>
-            <span>{{getLastName(beneficiario.nombre)}}</span>
+            <span>{{beneficiario.nombre}}</span>
+            <span>{{beneficiario.apePaterno + beneficiario.apeMaterno}}</span>
           </div>
-          <span class="beneficiarios-seguros-container-body-content-item-nombre-desktop">{{beneficiario.nombre}}</span>
+          <span class="beneficiarios-seguros-container-body-content-item-nombre-desktop">{{beneficiario.nomCompleto}}</span>
 
           <span class="beneficiarios-seguros-container-body-content-item-parentesco">{{beneficiario.parentesco}}</span>
-          <span class="beneficiarios-seguros-container-body-content-item-dni">DNI - {{beneficiario.dni}}</span>
+          <span class="beneficiarios-seguros-container-body-content-item-dni">DNI - {{beneficiario.numDoi}}</span>
           <span class="beneficiarios-seguros-container-body-content-item-participacion">Participacion
-            {{beneficiario.participacion}}</span>
+            {{beneficiario.desPorcentaje}}</span>
         </div>
       </div>
     </div>

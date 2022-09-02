@@ -1,6 +1,8 @@
 export interface CreditoDatosAll {
   credito: CreditoCliente;
   datos?: CreditoDatos;
+  listaCuotasPendientes?: CreditoCuota[];
+  listaCotasPagadas?: CreditoCuota[];
 }
 
 export interface CreditoCliente {
@@ -26,4 +28,13 @@ export interface CreditoDatos {
   montoCuota: number;
   tea: number;
   califica2: string;
+}
+
+export interface CreditoCuota {
+  estado: string;
+  desEstadoLabel: string;
+  fechaVencimiento: string;
+  numCuota: number;
+  desMontoCuota: string;
+  numDiasAtraso: number;
 }

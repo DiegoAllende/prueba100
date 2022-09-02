@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CreditosService } from '@shared/services/creditos.service';
-import { adapterCreditoDatos, adapterCreditosCliente } from '../../models-adapter/creditos.adapter';
+import { combineLatest } from 'rxjs';
+import { adapterCreditoDatos, adapterCreditosCliente, adapterCreditosCuotas } from '../../models-adapter/creditos.adapter';
 import { CreditoCliente, CreditoDatosAll } from '../../models/creditos.interface';
 
 @Component({
@@ -30,7 +31,7 @@ export class CreditosComponent implements OnInit {
         this.isCredito = false;
       } else {
         const aux = this.listCreditosAll.find(y => y.credito.active);
-        if(aux) this.btnCard(aux);
+        if (aux) this.btnCard(aux);
       }
     }, error => {
       console.log("**error**: ", error);
@@ -42,12 +43,21 @@ export class CreditosComponent implements OnInit {
     return this.creditosService.getCreditosDatosObtener(params);
   }
 
+  getCreditosCuotas(codCuenta: string) {
+    const params = { pstrCodPers: "4900127272", pstrCodCta: codCuenta };
+    return this.creditosService.getCreditoCuotasListar(params);
+  }
+
   btnCard(item: CreditoDatosAll) {
     this.listCreditosAll.forEach((x) => x.credito.active = false);
     item.credito.active = true;
 
-    this.getCreditoDatos(item.credito.numCuenta).subscribe(resp => {
-      if (resp) item.datos = adapterCreditoDatos(resp);
+    combineLatest([
+      this.getCreditoDatos(item.credito.numCuenta),
+      this.getCreditosCuotas(item.credito.numCuenta)
+    ]).subscribe(resp => {
+      if (resp[0]) item.datos = adapterCreditoDatos(resp[0]);
+      if (resp[1]) [item.listaCuotasPendientes, item.listaCotasPagadas] = adapterCreditosCuotas(resp[1]);
     }, error => {
       console.log("**error**: ", error);
     });

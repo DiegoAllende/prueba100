@@ -1,7 +1,7 @@
 <div class="information-insurance-container">
   <p class="title3-pri" style="margin-bottom: 33px;">{{seguro?.titulo}}</p>
   <span class="information-insurance-container-nro">Nro. de seguro:</span><span
-    class="information-insurance-container-value">{{seguro?.numSeguro}}</span>
+    class="information-insurance-container-value">{{seguroIn?.datos?.numSeguro}}</span>
   <div class="information-insurance-container-content">
     <span class="information-insurance-container-content-text">Último pago realizado</span>
     <span class="information-insurance-container-content-text-end">{{seguroIn?.datos?.fechaUltimoPago}}</span>
@@ -13,5 +13,5 @@
     <span class="information-insurance-container-content-text-end">{{seguroIn?.datos?.cuotasTotal}}</span>
   </div>
   <br>
-  <app-beneficiarios-seguros></app-beneficiarios-seguros>
+  <app-beneficiarios-seguros [lista]="seguroIn?.beneficiarios"></app-beneficiarios-seguros>
 </div>

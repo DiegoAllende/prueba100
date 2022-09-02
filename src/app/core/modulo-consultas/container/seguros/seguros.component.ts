@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MicrosegurosService } from '@shared/services/microseguros.service';
-import { adapterSeguroCliente, adapterSeguroDatos } from '../../models-adapter/microseguro.adapter';
+import { combineLatest } from 'rxjs';
+import { adapterSeguroBeneficiario, adapterSeguroCliente, adapterSeguroDatos } from '../../models-adapter/microseguro.adapter';
 import { SeguroDatosAll } from '../../models/microseguro.interface';
 
 @Component({
@@ -37,17 +38,26 @@ export class SegurosComponent implements OnInit {
     });
   }
 
-  getCreditoDatos(codSeguro: string) {
+  getSeguroDatos(codSeguro: string) {
     const params = { pstrCodPers: "4900127272", pstrCodSeguro: codSeguro };
     return this.microsegurosService.getSeguroDatosObtener(params);
+  }
+
+  getSeguroBeneficiario(codSeguro: string) {
+    const params = { pstrCodPers: "4900127272", pstrCodSeguro: codSeguro };
+    return this.microsegurosService.getSeguroBeneficiariosListar(params);
   }
 
   btnCard(item: SeguroDatosAll) {
     this.listaSegurosAll.forEach(x => x.seguro.active = false);
     item.seguro.active = true;
 
-    this.getCreditoDatos(item.seguro.numSeguro).subscribe(resp => {
-      if (resp) item.datos = adapterSeguroDatos(resp);
+    combineLatest([
+      this.getSeguroDatos(item.seguro.numSeguro),
+      this.getSeguroBeneficiario(item.seguro.numSeguro),
+    ]).subscribe(resp => {
+      if (resp[0]) item.datos = adapterSeguroDatos(resp[0]);
+      if (resp[1]) item.beneficiarios = adapterSeguroBeneficiario(resp[1]);
     }, error => {
       console.log("**error**: ", error);
     });

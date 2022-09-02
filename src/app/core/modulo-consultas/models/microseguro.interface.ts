@@ -1,6 +1,7 @@
 export interface SeguroDatosAll {
   seguro: SeguroCliente;
   datos?: SeguroDatos;
+  beneficiarios?: SeguroBeneficiario[];
 }
 
 export interface SeguroCliente {
@@ -16,4 +17,16 @@ export interface SeguroDatos {
   fechaProximoPago: string;
   desPrima: string;
   cuotasTotal: string;
+}
+
+export interface SeguroBeneficiario {
+  nomCompleto: string;
+  nombre: string;
+  apePaterno: string;
+  apeMaterno: string;
+  tipoDoi: number;
+  numDoi: string;
+  parentesco: string;
+  porcentaje: number;
+  desPorcentaje: string;
 }
