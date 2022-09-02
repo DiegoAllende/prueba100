@@ -16,26 +16,26 @@ export class MicrosegurosService {
 
   getCreditosClienteListar(params: any) {
     const paramsOut = { ...params, pobjTrace: this.trace };
-    return this.http.get<ResponseModel<SeguroClienteModel[]>>(this.baseCredito).pipe(
-      map(x => this.RESP_SEGUROS_CLIENTE)
-    );
-    // return of(this.RESP_SEGUROS_CLIENTE);
+    // return this.http.get<ResponseModel<SeguroClienteModel[]>>(this.baseCredito).pipe(
+    //   map(x => this.RESP_SEGUROS_CLIENTE)
+    // );
+    return of(this.RESP_SEGUROS_CLIENTE);
   }
 
   getSeguroDatosObtener(params: any) {
     const paramsOut = { ...params, pobjTrace: this.trace };
-    return this.http.get<ResponseModel<SeguroModel>>(this.baseCredito).pipe(
-      map(x => this.RESP_SEGUROS_DATOS.find(x => x.strNroSol === paramsOut.pstrCodSeguro))
-    );
-    // return of(this.RESP_SEGUROS_DATOS.find(x => x.strCodSeguro === paramsOut.pstrCodSeguro));
+    // return this.http.get<ResponseModel<SeguroModel>>(this.baseCredito).pipe(
+    //   map(x => this.RESP_SEGUROS_DATOS.find(x => x.strNroSol === paramsOut.pstrCodSeguro))
+    // );
+    return of(this.RESP_SEGUROS_DATOS.find(x => x.strNroSol === paramsOut.pstrCodSeguro));
   }
 
   getSeguroBeneficiariosListar(params: any) {
     const paramsOut = { ...params, pobjTrace: this.trace };
-    return this.http.get<ResponseModel<SeguroBeneficiarioModel[]>>(this.baseCredito).pipe(
-      map(x => this.RESP_BENEFICIARIOS)
-    );
-    // return of(this.RESP_BENEFICIARIOS;
+    // return this.http.get<ResponseModel<SeguroBeneficiarioModel[]>>(this.baseCredito).pipe(
+    //   map(x => this.RESP_BENEFICIARIOS)
+    // );
+    return of(this.RESP_BENEFICIARIOS);
   }
 
   trace: TraceCMACTModel = {

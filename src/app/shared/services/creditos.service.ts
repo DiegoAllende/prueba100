@@ -16,18 +16,18 @@ export class CreditosService {
 
   getCreditosClienteListar(params: any) {
     const paramsOut = { ...params, pobjTrace: this.trace };
-    return this.http.get<ResponseModel<CreditoClienteModel[]>>(this.baseCredito).pipe(
-      map(x => this.RESP_CREDITOS_CLIENTE)
-    );
-    // return of(this.RESP_CREDITOS_CLIENTE);
+    // return this.http.get<ResponseModel<CreditoClienteModel[]>>(this.baseCredito).pipe(
+    //   map(x => this.RESP_CREDITOS_CLIENTE)
+    // );
+    return of(this.RESP_CREDITOS_CLIENTE);
   }
 
   getCreditosDatosObtener(params: any) {
     const paramsOut = { ...params, pobjTrace: this.trace };
-    return this.http.get<ResponseModel<CreditoModel>>(this.baseCredito).pipe(
-      map(x => this.RESP_CREDITOS_DATOS.find(x => x.strCodCta === paramsOut.pstrCodCta))
-    );
-    // return of(this.RESP_CREDITOS_DATOS.find(x => x.strCodCta === paramsOut.pstrCodCta));
+    // return this.http.get<ResponseModel<CreditoModel>>(this.baseCredito).pipe(
+    //   map(x => this.RESP_CREDITOS_DATOS.find(x => x.strCodCta === paramsOut.pstrCodCta))
+    // );
+    return of(this.RESP_CREDITOS_DATOS.find(x => x.strCodCta === paramsOut.pstrCodCta));
   }
 
   getCreditoCuotasListar(params: any) {

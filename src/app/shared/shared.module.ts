@@ -54,6 +54,8 @@ import { SelectCuentasComponent } from './components/formulario/select-cuentas/s
 import { DetalleTercerPasoComponent } from './components/detalle-tercer-paso/detalle-tercer-paso.component';
 import { SelectSearchEmpresasComponent } from './components/formulario/select-search-empresas/select-search-empresas.component';
 import { ListCuotasComponent } from './components/list-cuotas/list-cuotas.component';
+import { PlantillaInfoSimpleCardsComponent } from './components/plantilla-info-simple-cards/plantilla-info-simple-cards.component';
+import { IconEstrellaDelgadaComponent } from './components/icons/icon-estrella-delgada/icon-estrella-delgada.component';
 
 
 @NgModule({
@@ -107,6 +109,8 @@ import { ListCuotasComponent } from './components/list-cuotas/list-cuotas.compon
     SelectCuentasComponent,
     SelectSearchEmpresasComponent,
     ListCuotasComponent,
+    PlantillaInfoSimpleCardsComponent,
+    IconEstrellaDelgadaComponent,
   ],
   imports: [
     CommonModule,
@@ -171,7 +175,9 @@ import { ListCuotasComponent } from './components/list-cuotas/list-cuotas.compon
     SelectCuentasComponent,
     DetalleTercerPasoComponent,
     SelectSearchEmpresasComponent,
-    ListCuotasComponent
+    ListCuotasComponent,
+    PlantillaInfoSimpleCardsComponent,
+    IconEstrellaDelgadaComponent
   ]
 })
 export class SharedModule { }

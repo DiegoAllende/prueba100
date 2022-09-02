@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { CreditosService } from '@shared/services/creditos.service';
 import { combineLatest } from 'rxjs';
 import { adapterCreditoDatos, adapterCreditosCliente, adapterCreditosCuotas } from '../../models-adapter/creditos.adapter';
-import { CreditoCliente, CreditoDatosAll } from '../../models/creditos.interface';
+import { CreditoDatosAll } from '../../models/creditos.interface';
 
 @Component({
   selector: 'app-creditos',

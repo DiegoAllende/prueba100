@@ -1,1 +1,21 @@
-<p>pago-servicios-main works!</p>
+<app-plantilla-info-simple-cards>
+
+    <ng-container contentTitulo>
+      <app-icon-billetera size="24"></app-icon-billetera>
+      <label class="title2-pri">Pagos</label>
+    </ng-container>
+  
+    <ng-container contentListCard>
+        <ng-container *ngFor="let item of listaServicios">
+            <app-card-ahorros [icono]="item.icono" [titulo]="item.titulo" (click)="btnIrServicios(item)"></app-card-ahorros>
+        </ng-container>
+    </ng-container>
+  
+    <ng-container contentMain>
+        <div class="ptl-infosimplecard-main-content2-main-info">
+            <app-icon-estrella-delgada size="127"></app-icon-estrella-delgada>
+            <span class="title1-pri" >Favoritos</span>
+            <span class="title3-sec ">Por ahora no dispones de una lista de favoritos</span>
+        </div>
+    </ng-container>
+  </app-plantilla-info-simple-cards>

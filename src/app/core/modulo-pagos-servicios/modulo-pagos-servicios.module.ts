@@ -7,6 +7,7 @@ import { PagoAguaComponent } from './container/pago-agua/pago-agua.component';
 import { PagoEmpresasInstitucionesComponent } from './container/pago-empresas-instituciones/pago-empresas-instituciones.component';
 import { PagoUniversidadesComponent } from './container/pago-universidades/pago-universidades.component';
 import { PagoServiciosMainComponent } from './container/pago-servicios-main/pago-servicios-main.component';
+import { SharedModule } from '@shared/shared.module';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { PagoServiciosMainComponent } from './container/pago-servicios-main/pago
   ],
   imports: [
     CommonModule,
-    ModuloPagosServiciosRoutingModule
+    ModuloPagosServiciosRoutingModule,
+    SharedModule
   ]
 })
 export class ModuloPagosServiciosModule { }

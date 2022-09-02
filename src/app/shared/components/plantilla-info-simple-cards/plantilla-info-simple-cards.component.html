@@ -1,0 +1,20 @@
+<section class="ptl-infosimplecard">
+    <!-- TITULO -->
+    <div class="ptl-infosimplecard-titulo">
+      <ng-content select="[contentTitulo]"></ng-content>
+    </div>
+    <!-- MAIN -->
+    <div class="ptl-infosimplecard-main">
+      <!-- CARD -->
+      <div class="ptl-infosimplecard-main-content1" >
+        <ng-content select="[contentListCard]"></ng-content>
+      </div>
+      <!-- CONTENIDO -->
+      <div class="ptl-infosimplecard-main-content2 " >
+        <!-- CONTENIDO -MAIN -->
+        <div class="ptl-infosimplecard-main-content2-main">
+          <ng-content select="[contentMain]"></ng-content>
+        </div>
+      </div>
+    </div>
+  </section>
