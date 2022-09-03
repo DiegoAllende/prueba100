@@ -3,7 +3,6 @@ import { Subscription } from 'rxjs';
 import { ContadorService } from 'src/app/shared/components/contador/contador.service';
 import { Constantes } from 'src/app/shared/utils/constantes';
 import { Desencriptar, Encriptar } from 'src/app/shared/utils/funcion-crypto';
-import { getformatoTarjeta, getPartesTarjeta, getPosLetraTarjeta, obtenerMask } from 'src/app/shared/utils/funcion-enmascarar';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
