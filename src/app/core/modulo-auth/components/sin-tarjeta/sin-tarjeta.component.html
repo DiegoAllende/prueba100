@@ -6,8 +6,7 @@
   <div class="col-6 select-login" style="padding-left: 0;">
     <mat-form-field appearance="fill" class="w-100">
       <mat-select [(ngModel)]="value.tipoDocumento" required>
-        <mat-option value="1">DNI</mat-option>
-        <mat-option value="2">Carnet de Extranjería</mat-option>
+        <mat-option *ngFor="let item of listaTipoDoi" [value]="item.valor">{{item.label}}</mat-option>
       </mat-select>
     </mat-form-field>
   </div>

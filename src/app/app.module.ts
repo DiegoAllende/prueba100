@@ -12,9 +12,11 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { LoaderInterceptor } from '@shared/interceptors/loader.interceptor';
 import { JwtDecoderService } from '@shared/services/jwt-decoder.service';
+import { LoaderComponent } from '@shared/components/loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnDestroy, OnInit, Input, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ContadorService } from 'src/app/shared/components/contador/contador.service';
 import { Constantes } from 'src/app/shared/utils/constantes';
@@ -8,6 +8,7 @@ import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { JwtDecoderService } from '@shared/services/jwt-decoder.service';
+import { ComboModel } from '@shared/models/generico/generico.models';
 
 @Component({
   selector: 'app-con-tarjeta',
@@ -15,6 +16,7 @@ import { JwtDecoderService } from '@shared/services/jwt-decoder.service';
   styleUrls: ['./con-tarjeta.component.scss']
 })
 export class ConTarjetaComponent implements OnInit, OnDestroy {
+  @Input() listaTipoDoi: ComboModel[] = [];
   @Output() outIngresar: EventEmitter<any> = new EventEmitter();
 
   keyEnCrypto = environment.keyCryptoTarjeta;
@@ -25,7 +27,7 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
   valObs!: Subscription;
   value = {
     numeroTarjeta: "",
-    tipoDocumento: "1",
+    tipoDocumento: 1,
     numeroDocumento: "",
   };
 

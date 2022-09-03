@@ -43,7 +43,6 @@ import { IconArrowRightComponent } from './components/icons/icon-arrow-right/ico
 import { IconFlechaArribaComponent } from './components/icons/icon-flecha-arriba/icon-flecha-arriba.component';
 import { PlantillaInfoSimpleComponent } from './components/plantilla-info-simple/plantilla-info-simple.component';
 import { PlantillaInfoComplejaComponent } from './components/plantilla-info-compleja/plantilla-info-compleja.component';
-import { LoaderComponent } from './components/loader/loader.component';
 import { IconCloseComponent } from './components/icons/icon-close/icon-close.component';
 import { IconEstrellaComponent } from './components/icons/icon-estrella/icon-estrella.component';
 import { AgregarFavoritoComponent } from './components/agregar-favorito/agregar-favorito.component';
@@ -98,7 +97,6 @@ import { IconEstrellaDelgadaComponent } from './components/icons/icon-estrella-d
     IconFlechaArribaComponent,
     PlantillaInfoSimpleComponent,
     PlantillaInfoComplejaComponent,
-    LoaderComponent,
     IconCloseComponent,
     IconEstrellaComponent,
     AgregarFavoritoComponent,
@@ -165,7 +163,6 @@ import { IconEstrellaDelgadaComponent } from './components/icons/icon-estrella-d
     IconFlechaArribaComponent,
     PlantillaInfoSimpleComponent,
     PlantillaInfoComplejaComponent,
-    LoaderComponent,
     IconCloseComponent,
     IconEstrellaComponent,
     AgregarFavoritoComponent,

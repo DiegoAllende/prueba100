@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { ComboModel } from '@shared/models/generico/generico.models';
 
 @Component({
   selector: 'app-sin-tarjeta',
@@ -6,12 +7,13 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./sin-tarjeta.component.scss']
 })
 export class SinTarjetaComponent implements OnInit {
+  @Input() listaTipoDoi: ComboModel[] = [];
   @Output() outIngresarSin: EventEmitter<any> = new EventEmitter();
 
   mensaje = "Para el uso de clientes que solo cuenten con depósito a plazo fijo y/o créditos";
 
   value = {
-    tipoDocumento: "1",
+    tipoDocumento: 1,
     numeroDocumento: "",
   };
 
