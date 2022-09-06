@@ -1,7 +1,7 @@
 <section class="sello-confir">
   <p>¿Tú sello de seguridad es correcto?</p>
   <div>
-    <app-sello-icon [iconNombre]="iconNombre" tamanio="sm"></app-sello-icon>
+    <app-sello-icon [iconByte]="selloAuth.byteSello" tamanio="sm"></app-sello-icon>
   </div>
   <div class="sello-confir-buttons">
     <button mat-raised-button class="btn-principal" (click)="btnRespuesta(true)">Si</button>

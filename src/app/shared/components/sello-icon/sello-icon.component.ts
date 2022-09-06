@@ -6,6 +6,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class SelloIconComponent implements OnInit {
   @Input() iconNombre:string = "Shape.svg";
+  @Input() iconByte:string = "";
   @Input() tamanio:string = "md";
   @Input() check: string = "";
 

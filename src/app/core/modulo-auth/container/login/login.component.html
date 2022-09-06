@@ -1,12 +1,12 @@
 <mat-tab-group mat-align-tabs="center">
   <mat-tab label="CON TARJETA">
     <ng-template matTabContent>
-      <app-con-tarjeta (outIngresar)="ingresar($event)" [listaTipoDoi]="listaTiposDoi"></app-con-tarjeta>
+      <app-con-tarjeta (outIngresar)="btnIngresar($event)" [listaTipoDoi]="listaTiposDoi"></app-con-tarjeta>
     </ng-template>
   </mat-tab>
   <mat-tab label="SIN TARJETA">
     <ng-template matTabContent>
-      <app-sin-tarjeta (outIngresarSin)="ingresarSin($event)" [listaTipoDoi]="listaTiposDoi"></app-sin-tarjeta>
+      <app-sin-tarjeta (outIngresarSin)="btnIngresarSin($event)" [listaTipoDoi]="listaTiposDoi"></app-sin-tarjeta>
     </ng-template>
   </mat-tab>
 </mat-tab-group>
