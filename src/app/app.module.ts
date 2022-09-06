@@ -7,12 +7,13 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {LayoutModule} from "./layout/layout.module";
 import { environment } from '../environments/environment';
-import { TokenAuthInterceptor } from '@shared/interceptors/token-auth.interceptor';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { LoaderInterceptor } from '@shared/interceptors/loader.interceptor';
 import { JwtDecoderService } from '@shared/services/jwt-decoder.service';
 import { LoaderComponent } from '@shared/components/loader/loader.component';
+import { CoreModule } from '@core/core.module';
+import { LoaderInterceptor } from '@core/interceptors/loader.interceptor';
+import { TokenAuthInterceptor } from '@core/interceptors/token-auth.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { LoaderComponent } from '@shared/components/loader/loader.component';
     RecaptchaFormsModule,
     RecaptchaModule,
     HttpClientModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    CoreModule,
   ],
   providers: [
     {
