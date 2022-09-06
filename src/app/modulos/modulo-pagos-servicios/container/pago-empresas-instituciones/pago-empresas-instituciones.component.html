@@ -1,0 +1,101 @@
+<app-plantilla-info-simple [ocultarCard]="ocultarCard">
+    <ng-container contentTitulo>
+      <app-icon-transferencia size="24"></app-icon-transferencia>
+      <label class="title2-pri">Pagos</label>
+    </ng-container>
+  
+    <ng-container contentCard>
+      <app-icon-transferencia size="24"></app-icon-transferencia>
+      <div>
+        <label class="title3-sec mb-1">Pago a empresas e instituciones</label>
+        <label class="subtitle1-secN">Ingresa los datos y completa las opciones para continuar</label>
+      </div>
+    </ng-container>
+  
+    <ng-container contentMain>
+      <ng-container [ngTemplateOutlet]="contentTp"></ng-container>
+    </ng-container>
+
+    <ng-container contentFavorito *ngIf="stepIndex === 2">
+      <app-agregar-favorito></app-agregar-favorito>
+    </ng-container>
+  
+    <ng-container contentAction>
+      <ng-container [ngTemplateOutlet]="actionsTp"></ng-container>
+    </ng-container>
+  </app-plantilla-info-simple>
+  
+  <!-- TEMPLATES -->
+  <ng-template #contentTp>
+    <mat-stepper labelPosition="bottom" linear [selectedIndex]="stepIndex">
+      <mat-step label="Datos">
+        <section>
+          <div class="row">
+            <div class="col-12 col-md-6 ">
+              <label class="label-pri mb-2">Empresa:</label>
+              <app-select-search-empresas [lista]="listEmpresas" (ngModelChange)="changeEmpresa($event)" [(ngModel)]="values.empresa"></app-select-search-empresas>
+            </div>
+            <div class="col-12 col-md-6 ">
+                <label class="label-pri mb-2">Cuenta Origen:</label>
+                <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuenta"></select-cuentas>
+            </div>
+            <div class="col-12 col-md-6 ">
+                <label class="label-pri mb-2">Codigo:</label>
+                <div class="input-search-width-btn">
+                    <input type="text" class="input-search-width-btn-input">
+                    <img src="assets/icons/buscar-white.svg" class="input-search-width-btn-button" alt="" (click)="searchRecibos()">
+                </div>
+            </div>
+            <div class="col-12 col-md-6 pt-3">
+              <app-alerta tipo="user" mensaje="Cliente:" subMensaje="BENAVIDES CHAVEZ RICHARD HAROLD"></app-alerta>
+            </div>
+            <div class="col-12" > 
+                <!-- <ng-container *ngIf="numPaso === PASOS.INI && showRecibos">
+                    <span class="title3-pri mb-2">Monto a pagar</span>
+                    <div  class="container-item-pago-luz p-4">
+                            <div  *ngFor="let recibo of listaTipoRecibosComplejos" class="item-pago-luz">
+                                <p>Fecha vencimiento: {{recibo.fechaVencimiento}}</p>
+                                <mat-radio-group class="col-12" >
+                                    <mat-radio-button class="col-12" color="primary" [value]="true"><span>Pago minimo</span><span>{{recibo.pagoMinimo}}</span></mat-radio-button>
+                                    <mat-radio-button class="col-12" color="primary" [value]="false"><span>Pago total</span><span>{{recibo.pagoTotal}}</span></mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                    </div>
+                </ng-container> -->
+                <!-- <ng-container *ngIf="numPaso === PASOS.FIN && showRecibos"> -->
+                    <span class="title3-pri mb-2">Monto a pagar</span>
+                    <div  class="container-item-radio-simple p-4">
+                            <form class="item-radio-simple" [formGroup]="formRadioSimple"  >
+                                <mat-radio-group formControlName="recibosSimples"  class="col-12" >
+                                    <mat-radio-button *ngFor="let recibo2 of listaTipoRecibosSimples" [ngClass]="{'radios-disabled': recibo2.hidden === true}" class="col-12" color="primary" [value]="recibo2.id">
+                                        <span class="vencimiento">Vcto: {{recibo2.fechaVencimiento}}</span>
+                                        <span>{{recibo2.mount}}</span>
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </form>
+                    </div>
+                <!-- </ng-container> -->
+            </div>
+          </div>
+        </section>
+      </mat-step>
+
+      <mat-step label="Transferencia" [completed]="stepIndex === 0 ? false: true">
+        <app-detalle-segundo-paso  [listItemsSecondStep]="listItemsSecondStep"></app-detalle-segundo-paso>
+        <app-pad-numerico title="Ingresa tu clave de 6 dígitos" [valueDigits]="6"></app-pad-numerico>
+        <app-clave-sms></app-clave-sms>
+      </mat-step>
+  
+      <mat-step label="Resúmen">
+        <app-detalle-tercer-paso [icono]="'pagos'" [titulo]="'¡Tu transferencia se realizó con éxito!'" [numOp]="'123456'" [dataArray]="listItemsThird"></app-detalle-tercer-paso>
+      </mat-step>
+  
+    </mat-stepper>
+  </ng-template>
+  
+  <ng-template #actionsTp>
+    <button mat-stroked-button color="primary" class="btn-pri-out" *ngIf="stepIndex !== 2"
+      (click)="btnRegresar()">Regresar</button>
+    <button mat-raised-button class="btn-principal" (click)="btnContinuar()">{{stepIndex !== 2 ? 'Continuar': 'Ir a
+      transferencias'}}</button>
+  </ng-template>

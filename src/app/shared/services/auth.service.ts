@@ -17,20 +17,19 @@ export class AuthService {
   getPersonaSelloSegAutObtener(params: SelloSegAuthOutModel) {
     const paramsOut = { ...params };
 
-    return this.http.get<ResponseModel<PersonaSelloSegModel>>(this.baseAuth).pipe(
-      map(x => this.RESP_SELLO_AUTH)
-    );
-    // return of(this.RESP_SELLO_AUTH);
+    // return this.http.get<ResponseModel<PersonaSelloSegModel>>(this.baseAuth).pipe(
+    //   map(x => this.RESP_SELLO_AUTH)
+    // );
+    return of(this.RESP_SELLO_AUTH);
   }
 
   postAplicacionAutenticar(params: AppAutenticarOutModel) {
     const paramsOut = { ...params };
-    console.log("params: ", params);
 
-    return this.http.get<ResponseModel<PersonaLoginModel>>(this.baseAuth).pipe(
-      map(x => this.RESP_LOGIN)
-    );
-    // return of(this.RESP_LOGIN);
+    // return this.http.get<ResponseModel<PersonaLoginModel>>(this.baseAuth).pipe(
+    //   map(x => this.RESP_LOGIN)
+    // );
+    return of(this.RESP_LOGIN);
   }
 
   //Data Prueba

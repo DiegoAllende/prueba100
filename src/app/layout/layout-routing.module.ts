@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    loadChildren: () => import('../core/modulo-auth/modulo-auth.module').then(p => p.ModuloAuthModule),
+    loadChildren: () => import('../modulos/modulo-auth/modulo-auth.module').then(p => p.ModuloAuthModule),
   },
   {
     path: 'main',
@@ -19,23 +19,23 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        loadChildren: () => import('../core/modulo-layout/modulo-layout.module').then(p => p.ModuloLayoutModule)
+        loadChildren: () => import('../modulos/modulo-layout/modulo-layout.module').then(p => p.ModuloLayoutModule)
       },
       {
         path: 'consultas',
-        loadChildren: () => import('../core/modulo-consultas/modulo-consultas.module').then(p=>p.ModuloConsultasModule)
+        loadChildren: () => import('../modulos/modulo-consultas/modulo-consultas.module').then(p=>p.ModuloConsultasModule)
       },
       {
         path: 'pagos',
-        loadChildren: () => import('../core/modulo-pagos/modulo-pagos.module').then(p=>p.ModuloPagosModule)
+        loadChildren: () => import('../modulos/modulo-pagos/modulo-pagos.module').then(p=>p.ModuloPagosModule)
       },
       {
         path: 'transferencias',
-        loadChildren: () => import('../core/modulo-transferencia/modulo-transferencia.module').then(p=>p.ModuloTransferenciaModule)
+        loadChildren: () => import('../modulos/modulo-transferencia/modulo-transferencia.module').then(p=>p.ModuloTransferenciaModule)
       },
       {
         path: 'pagos-servicios',
-        loadChildren: () => import('../core/modulo-pagos-servicios/modulo-pagos-servicios.module').then(p=>p.ModuloPagosServiciosModule)
+        loadChildren: () => import('../modulos/modulo-pagos-servicios/modulo-pagos-servicios.module').then(p=>p.ModuloPagosServiciosModule)
       }
     ],
     canActivate: [AuthGuard]

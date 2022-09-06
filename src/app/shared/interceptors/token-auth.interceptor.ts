@@ -21,7 +21,6 @@ export class TokenAuthInterceptor implements HttpInterceptor {
   constructor(private cookieService: CookieService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    // console.log("inter-token");
     
     const token = this.cookieService.get('token_access');
     if (token) {
@@ -30,11 +29,9 @@ export class TokenAuthInterceptor implements HttpInterceptor {
           Authorization: `Bearer ${token}`
         }
       });
-      // console.log('TokenAuthInterceptor: ', token);
     }
     return next.handle(request).pipe(
       catchError((error) => {
-        // console.log("interceptor-error: ", error);
         return throwError(() => this.handelError(error));
       })
     );

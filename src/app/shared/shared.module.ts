@@ -5,7 +5,7 @@ import { SharedRoutingModule } from './shared-routing.module';
 import { MaterialModule } from './material/material.module';
 import { PadNumericoComponent } from './components/pad-numerico/pad-numerico.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RecaptchaComponent } from '../core/modulo-auth/components/recaptcha/recaptcha.component';
+import { RecaptchaComponent } from '../modulos/modulo-auth/components/recaptcha/recaptcha.component';
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { CardAhorrosComponent } from './components/card-ahorros/card-ahorros.component';
 import { ContadorComponent } from './components/contador/contador.component';

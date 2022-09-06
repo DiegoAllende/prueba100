@@ -71,6 +71,28 @@
   }
 }
 
+.cj-alerta.user {
+  background-color: #FEEEEE;
+  border-color: #F90000;
+  color: #F90000;
+  font-size: 16px;
+
+  @media screen and(min-width:768px) {
+      font-size: 18px;
+  }
+
+  .cj-alerta-icon {
+    color: #F90000;
+    height: 20px;
+    width: 20px;
+    @media screen and(min-width:768px) {
+      color: #F90000;
+      height: 25px;
+      width: 25px;
+    }
+  }
+}
+
 .font-700{
   font-weight: 700;
 }

@@ -232,11 +232,12 @@ mat-stepper {
         display: none;
       }
     }
-  }
+  }  
 }
 
 .mat-select-panel{
   .container-search{
+    height: 60px;
     .container-input{
       padding: 15px 10px;
       border: none;
@@ -245,8 +246,110 @@ mat-stepper {
     }
     .container-img{
       width: 15%;
-      padding:  15px;
+      padding:  15px 5px 15px 15px;
       cursor: pointer;
+      height: inherit;
+      @media screen and(min-width:768px) {
+        padding: 10px;
+      }
     }
   }
 }
+.container-item-radio-complejo{
+  border: 1px solid #C6C6C6;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .item-radio-complejo{
+    padding-bottom: 5px;
+    border-bottom: 1px solid #EDEDED;
+    mat-radio-group{
+      mat-radio-button{
+        margin-bottom: 8px;
+        .mat-radio-label-content{
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          span{
+            font-size: 16px;
+            font-weight: 700;
+            @media screen and(min-width:768px) {
+              font-size: 18px;
+            }
+          }
+
+        }
+      }
+    }
+    .mat-radio-button .mat-radio-ripple {
+      display: none;  
+    }
+  }
+
+}
+.container-item-radio-simple{
+  border: 1px solid #C6C6C6;
+  .item-radio-simple{
+    padding-bottom: 5px;
+    mat-radio-group{
+      mat-radio-button{
+        margin-bottom: 8px;
+        .mat-radio-label-content{
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+
+          .vencimiento{
+            font-weight: 400;
+          }
+
+          span{
+            font-size: 16px;
+            font-weight: 700;
+            @media screen and(min-width:768px) {
+              font-size: 18px;
+            }
+          }
+
+        }
+      }
+    }
+    .mat-radio-button .mat-radio-ripple {
+      display: none;  
+    }
+  }
+}
+
+.container-item-pago-luz{
+  .item-pago-luz:last-child {
+    border: none;
+  }
+}
+
+.input-search-width-btn{
+  display: flex;
+  justify-content: space-between;
+  &-input{
+      outline: none;
+      width: 80%;
+      padding: 14px 10px;
+      border: 1px solid #C6C6C6;
+      border-radius: 4px;height: 55px;
+  }
+  &-button{
+      color: white;
+      background-color: red;
+      padding: 14px 10px;
+      width: 15%;
+      border-radius: 4px;
+      height: 55px;
+      cursor: pointer;
+  }
+}
+
+.radios-disabled{
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+

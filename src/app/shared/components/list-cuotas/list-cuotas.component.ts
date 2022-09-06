@@ -1,7 +1,7 @@
 import { Component, ElementRef, forwardRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
-import { Couta } from 'src/app/core/modulo-pagos/container/creditos-terceros/creditos-terceros.component';
+import { Couta } from 'src/app/modulos/modulo-pagos/container/creditos-terceros/creditos-terceros.component';
 
 @Component({
   selector: 'app-list-cuotas',

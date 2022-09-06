@@ -26,7 +26,8 @@ export class AlertaComponent implements OnInit {
     {tipo: "info", nombre:"assets/icons/info-down.svg"},
     {tipo: "warn", nombre:"assets/icons/info-down.svg"},
     {tipo: "error", nombre:"assets/icons/error-triangle.svg"},
-    {tipo: "amount", nombre:"assets/icons/amount.svg"}
+    {tipo: "amount", nombre:"assets/icons/amount.svg"},
+    {tipo: "user", nombre:"assets/icons/user.svg"}
   ];
 
   constructor() {}
