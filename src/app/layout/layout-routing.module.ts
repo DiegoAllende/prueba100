@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainLayoutComponent } from "./container/main-layout/main-layout.component";
 import {IconsComponent} from "../shared/components/icons/icons.component";
-import { AuthGuard } from '@shared/guards/auth.guard';
-import { BlockLoginGuard } from '@shared/guards/block-login.guard';
+import { AuthGuard } from '@core/guards/auth.guard';
+import { BlockLoginGuard } from '@core/guards/block-login.guard';
 
 const routes: Routes = [
   {
@@ -12,6 +12,7 @@ const routes: Routes = [
   {
     path: 'auth',
     loadChildren: () => import('../modulos/modulo-auth/modulo-auth.module').then(p => p.ModuloAuthModule),
+    canActivate: [BlockLoginGuard],
   },
   {
     path: 'main',

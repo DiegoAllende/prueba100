@@ -23,7 +23,7 @@ export class AuthService {
     // return of(this.RESP_SELLO_AUTH);
   }
 
-  postAplicacionAutenticar(params: AppAutenticarOutModel) {
+  getToken(params: AppAutenticarOutModel) {
     const paramsOut = { ...params };
 
     return this.http.get<ResponseModel<PersonaLoginModel>>(this.baseAuth).pipe(
@@ -43,23 +43,12 @@ export class AuthService {
   }
 
   RESP_LOGIN: PersonaLoginModel = {
-    bytTipAut: 1,
-    lngIdSesionApp: 4307271,
-    blnCambiarClave6D: false,
-    blnTarjetaDesactivada: false,
-    objPersona: {
-      strCodPers: "0500462331",
-      strNomCliente: "MATT MAX DAVIE",
-      strApePaterno: "CASTILLO",
-      strApeMaterno: "RODRIGUEZ",
-      bytTipDOI: 1,
-      strDOI: "45604954",
-      strEmail: "mattcastillo@outlook.com",
-      bytOperador: 2,
-      strOperador: "CLARO",
-      strCelular: "51998888946",
-      blnLstNegativa: false,
-    },
+    token_type: "bearer",
+    access_token: "eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTUxMiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9naXZlbm5hbWUiOiJTRUxFTkUgQ0hSSVNURUwgQlVTVEFNQU5URSBDQU5PIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvc2lkIjoiNDMwNzg4OCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiNjAwMDIyOTgxNCIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL2VtYWlsYWRkcmVzcyI6ImFkcnZAY2FqYXRydWppbGxvLmNvbS5wZSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvcm9sZSI6WyJjdXN0b21lci5jYXJkIiwiY3VzdG9tZXIubm9ibGFja2xpc3QiXSwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbW9iaWxlcGhvbmUiOiI1MTk5NzczMDczOSIsImh0dHA6Ly9zY2hlbWFzLm1pY3Jvc29mdC5jb20vd3MvMjAwOC8wNi9pZGVudGl0eS9jbGFpbXMvc2VyaWFsbnVtYmVyIjoiIiwiZXhwIjoxNjYyNDk2MDAwLCJpc3MiOiJodHRwczovL3NlY3VyaXR5dG9rZW5hcGkuY2FqYXRydWppbGxvLmNvbS5wZSIsImF1ZCI6Imh0dHBzOi8vd3d3LmNhamF0cnVqaWxsby5jb20ucGUifQ.4SgAfhVcHCWUsE_NzXUrgxEKi7bg96cLTO5vME9zHorNeg3hfrEciE7fabqHQLusXRogcNZcgXcOSXE1tw12Jg",
+    refresh_token: null,
+    phoneProvider: "4",
+    userProfileId: "1",
+    isNeedChangePassword: "False",
   }
 
 }

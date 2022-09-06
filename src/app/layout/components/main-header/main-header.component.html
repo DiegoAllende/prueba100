@@ -12,8 +12,7 @@
             <div  class="main-menu-desktop-container">
               <app-main-menu-desktop (selected)="changeSelected($event)" (close)="closeAll($event)" [list]="data"></app-main-menu-desktop>    
             </div>
-            <button class="btn-close-sesion">
-              <!-- <mat-icon class="btn-close-sesion-icon d-flex justify-content-center align-items-center" matSuffix>power_settings_new</mat-icon> -->
+            <button class="btn-close-sesion" (click)="btnLogoutOut()">
               <app-icon-power class="btn-close-sesion-icon" color="white" size="24"></app-icon-power> 
               Cerrar Sesión
             </button>

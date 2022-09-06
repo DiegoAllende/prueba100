@@ -29,23 +29,20 @@ export interface AppAutenticarOutModel {
 }
 
 export interface PersonaLoginModel {
-  bytTipAut: number;
-  lngIdSesionApp: number;
-  blnCambiarClave6D: boolean;
-  blnTarjetaDesactivada: boolean;
-  objPersona: PersonaAppModel;
+  token_type: string;
+  access_token: string;
+  refresh_token: string | null;
+  phoneProvider: string;
+  userProfileId: string;
+  isNeedChangePassword: string;
 }
 
-export interface PersonaAppModel {
-  strCodPers: string;
-  strNomCliente: string;
-  strApePaterno: string;
-  strApeMaterno: string;
-  bytTipDOI: number;
-  strDOI: string;
-  strEmail: string;
-  bytOperador: number;
-  strOperador: string;
-  strCelular: string;
-  blnLstNegativa: boolean;
+export interface dataAuthModel {
+  givenname?: string;
+  sid?: string;
+  nameidentifier?: string;
+  emailaddress?: string;
+  role?: string[];
+  mobilephone?: string;
+  serialnumber?: string;
 }

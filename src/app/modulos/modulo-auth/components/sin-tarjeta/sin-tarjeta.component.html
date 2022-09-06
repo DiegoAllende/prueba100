@@ -1,29 +1,33 @@
+<form autocomplete="off" novalidate [formGroup]="formLoginsin" (ngSubmit)="btnIngresar()">
+  <div class="row m-0">
+    <div class="col-12 px-0">
+      <app-alerta [mensaje]="mensaje" tipo="warn"></app-alerta>
+    </div>
+    <div class="col-6 select-login" style="padding-left: 0;">
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-select formControlName="tipoDoi">
+          <mat-option *ngFor="let item of listaTipoDoi" [value]="item.valor">{{item.label}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col-6 px-0">
+      <input-documento formControlName="numDoi"></input-documento>
+    </div>
 
-<div class="row m-0">
-  <div class="col-12 px-0">
-    <app-alerta [mensaje]="mensaje" tipo="warn"></app-alerta>
-  </div>
-  <div class="col-6 select-login" style="padding-left: 0;">
-    <mat-form-field appearance="fill" class="w-100">
-      <mat-select [(ngModel)]="value.tipoDocumento">
-        <mat-option *ngFor="let item of listaTipoDoi" [value]="item.valor">{{item.label}}</mat-option>
-      </mat-select>
-    </mat-form-field>
-  </div>
-  <div class="col-6 px-0">
-    <input-documento [(ngModel)]="value.numeroDocumento"></input-documento>
-  </div>
+    <div>
+      <app-pad-numerico [valueDigits]="4" (valueCod)="getValuePad($event)"
+        title="Ingresa tu clave de internet de 4 dígitos"></app-pad-numerico>
+    </div>
 
-  <div>
-    <app-pad-numerico [valueDigits]="4" (valueCod)="getValuePad($event)" title="Ingresa tu clave de internet de 4 dígitos"></app-pad-numerico>
-  </div>
+    <div class="d-flex justify-content-center">
+      <app-recaptcha (valueRecaptcha)="btnRecaptcha($event)"></app-recaptcha>
+    </div>
 
-  <div class="d-flex justify-content-center">
-    <app-recaptcha (valueRecaptcha)="btnRecaptcha($event)"></app-recaptcha>
-  </div>
+    <div class="col-12 px-0 mb-4 mt-3">
+      <button type="submit" mat-raised-button color="primary" class="btn-principal w-100"
+        [disabled]="formLoginsin.invalid">Ingresar</button>
+        <!-- || !isRecaptcha -->
+    </div>
 
-  <div class="col-12 px-0 mb-4 mt-3">
-    <button id="btn-login-con-tarjeta" mat-raised-button color="primary" class="btn-principal w-100" (click)="btnIngresar()">Ingresar</button>
   </div>
-
-</div>
+</form>

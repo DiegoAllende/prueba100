@@ -14,7 +14,7 @@ export class SelloComponent {
     private router: Router,
     private authLoginStore: AuthLoginStore
   ) {
-    this.selloAuth = this.authLoginStore.getLoginSello();
+    this.selloAuth = this.authLoginStore.getLoginSello;
     if (!this.selloAuth.codigo) this.router.navigate(["/auth"]);
   }
 
