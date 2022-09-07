@@ -40,7 +40,7 @@ export class TokenAuthInterceptor implements HttpInterceptor {
   handelError(error: HttpErrorResponse) {
     if(error.status === 0) {
       this.errorOut.intCodigo = error.status;
-      this.errorOut.strDescripcion = error.error + " - Error Desconocido";
+      this.errorOut.strDescripcion = " Ocurrió algo inesperado. Vuelva a intentar.";
       this.errorOut.strAdicional = error.message;
     } else {
       this.errorOut.intCodigo = error.status;

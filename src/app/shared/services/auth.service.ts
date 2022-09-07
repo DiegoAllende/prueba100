@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AppAutenticarOutModel, PersonaLoginModel, PersonaSelloSegModel, SelloSegAuthOutModel } from '@shared/models/auth/auth.models';
+import { AppAutenticarOutModel, AppGenClaveOlvidoOutModel, AppGenClaveOutModel, AppValidarGenClaveOutModel, PersonaLoginModel, PersonaSelloSegModel, SelloSegAuthOutModel } from '@shared/models/auth/auth.models';
 import { ResponseModel } from '@shared/models/generico/http.model';
 import { map, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -16,7 +16,6 @@ export class AuthService {
 
   getPersonaSelloSegAutObtener(params: SelloSegAuthOutModel) {
     const paramsOut = { ...params };
-
     // return this.http.get<ResponseModel<PersonaSelloSegModel>>(this.baseAuth).pipe(
     //   map(x => this.RESP_SELLO_AUTH)
     // );
@@ -25,11 +24,34 @@ export class AuthService {
 
   getToken(params: AppAutenticarOutModel) {
     const paramsOut = { ...params };
-
     // return this.http.get<ResponseModel<PersonaLoginModel>>(this.baseAuth).pipe(
     //   map(x => this.RESP_LOGIN)
     // );
     return of(this.RESP_LOGIN);
+  }
+
+  appValidarGenerarClave(params: AppValidarGenClaveOutModel) {
+    // const paramsOut = { ...params };
+    // return this.http.get<ResponseModel<number>>(this.baseAuth).pipe(
+    //   map(x => 1)
+    // );
+    return of(1);
+  }
+
+  appGenerarClave(params: AppGenClaveOutModel) {
+    const paramsOut = { ...params };
+    // return this.http.get<ResponseModel<number>>(this.baseAuth).pipe(
+    //   map(x => 1)
+    // );
+    return of(1);
+  }
+
+  appGenerarClaveOlvido(params: AppGenClaveOlvidoOutModel) {
+    const paramsOut = { ...params };
+    // return this.http.get<ResponseModel<number>>(this.baseAuth).pipe(
+    //   map(x => 1)
+    // );
+    return of(1);
   }
 
   //Data Prueba

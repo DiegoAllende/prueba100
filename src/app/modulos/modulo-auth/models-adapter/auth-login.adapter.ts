@@ -1,6 +1,6 @@
-import { AppAutenticarOutModel, PersonaSelloSegModel, SelloSegAuthOutModel } from "@shared/models/auth/auth.models";
+import { AppAutenticarOutModel, AppGenClaveOutModel, AppValidarGenClaveOutModel, PersonaSelloSegModel, SelloSegAuthOutModel } from "@shared/models/auth/auth.models";
 import { Constantes } from "@utils/constantes";
-import { AppAuhtOut, selloSegAuth } from "../models/auth-login.interfaces";
+import { AppAuhtOut, AppGenClaveOut, AppValidarGenClaveOut, selloSegAuth } from "../models/auth-login.interfaces";
 
 export const adapterSelloAuthIn = (dataIn: PersonaSelloSegModel): selloSegAuth => {
   return {
@@ -32,10 +32,31 @@ export const adpaterAppAuth = (dataIn: AppAuhtOut): AppAuhtOut => {
 export const adapterAppAutenticarOut = (dataIn: AppAuhtOut): AppAutenticarOutModel => {
   return {
     pbytTipAut: dataIn.tipoAuth,
-    pstrTarjeta: dataIn.numTarjeta,
+    pstrTarjeta: Constantes.PIN + dataIn.numTarjeta,
     pstrClave: dataIn.clave,
     pbytTipDOI: dataIn.tipoDoi,
     pstrDOI: dataIn.numDoi,
     pstrIP: "",
+  }
+}
+
+export const adapterAppGenClaveOut = (dataIn: AppValidarGenClaveOut): AppValidarGenClaveOutModel => {
+  return {
+    pbytTipDOI: dataIn.tipoDoi,
+    pstrDOI: dataIn.numDoi,
+    pbytOperador: dataIn.tipoOperador,
+    pstrCelular: dataIn.numCelular,
+    pstrTarjeta: Constantes.PIN + dataIn.numTarjeta,
+    pstrClave: dataIn.clave,
+    pstrIP: "",
+  }
+}
+
+export const adapterAppClaveOut = (dataIn: AppGenClaveOut): AppGenClaveOutModel => {
+  return {
+    pstrCodPers: dataIn.codPers,
+    plngCodValidaDatos: dataIn.codValid,
+    pstrTarjeta: Constantes.PIN + dataIn.numTarjeta,
+    pstrClave: dataIn.clave,
   }
 }

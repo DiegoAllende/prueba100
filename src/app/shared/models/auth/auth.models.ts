@@ -46,3 +46,31 @@ export interface dataAuthModel {
   mobilephone?: string;
   serialnumber?: string;
 }
+
+export interface AppValidarGenClaveOutModel {
+  pbytTipDOI: number;
+  pstrDOI: string;
+  pbytOperador: number;
+  pstrCelular: string;
+  pstrTarjeta: string;
+  pstrClave: string;
+  pstrIP: string;
+  pobjTrace?: TraceCMACTModel;
+}
+
+export interface AppGenClaveOutModel {
+  pstrCodPers: string;
+  plngCodValidaDatos: string;
+  pstrTarjeta: string;
+  pstrClave: string;
+  pobjTrace?: TraceCMACTModel;
+}
+
+export interface AppGenClaveOlvidoOutModel {
+  pstrTarjeta: string;
+  pbytTipDOI: number;
+  pstrDOI: string;
+  pstrClave4D: string;
+  pstrClave6D: string;
+  pobjTrace?: TraceCMACTModel;
+}
