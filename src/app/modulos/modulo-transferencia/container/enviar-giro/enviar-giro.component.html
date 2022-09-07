@@ -1,1 +1,120 @@
-<p>enviar-giro works!</p>
+<app-plantilla-info-simple [ocultarCard]="ocultarCard">
+    <ng-container contentTitulo>
+      <app-icon-transferencia size="24"></app-icon-transferencia>
+      <label class="title2-pri">Transferencias</label>
+    </ng-container>
+  
+    <ng-container contentCard>
+      <app-icon-transferencia size="24"></app-icon-transferencia>
+      <div>
+        <label class="title3-sec mb-1">Envíos de giros</label>
+        <label class="subtitle1-secN">Ingresa los datos y completa las opciones para continuar</label>
+      </div>
+    </ng-container>
+  
+    <ng-container contentMain>
+      <ng-container [ngTemplateOutlet]="contentTp"></ng-container>
+    </ng-container>
+
+    <ng-container contentFavorito *ngIf="stepIndex === 2">
+      <app-agregar-favorito></app-agregar-favorito>
+    </ng-container>
+  
+    <ng-container contentAction>
+      <ng-container [ngTemplateOutlet]="actionsTp"></ng-container>
+    </ng-container>
+  </app-plantilla-info-simple>
+  
+  <!-- TEMPLATES -->
+  <ng-template #contentTp>
+    <mat-stepper labelPosition="bottom" linear [selectedIndex]="stepIndex">
+      <mat-step label="Datos">
+        <section>
+          <div class="row">
+            <!-- <div class="col-12 col-md-6 ">
+              <label class="label-pri mb-2">Empresa:</label>
+              <app-select-search-empresas [lista]="listEmpresas" (ngModelChange)="changeEmpresa($event)" [(ngModel)]="values.empresa"></app-select-search-empresas>
+            </div> -->
+            <div class="col-12 col-md-6 ">
+                <label class="label-pri mb-2">Cuenta Origen:</label>
+                <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuenta"></select-cuentas>
+            </div>
+            <div class="col-12 col-md-6">
+                <label class="label-pri mb-1">Nombres del beneficiario</label>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <input matInput autocomplete="off" [(ngModel)]="values.nombre">
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-md-6">
+                <label class="label-pri mb-1">Apellido Paterno del beneficiario</label>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <input matInput autocomplete="off" [(ngModel)]="values.apePaterno">
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-md-6">
+                <label class="label-pri mb-1">Apellido Materno del beneficiario</label>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <input matInput autocomplete="off" [(ngModel)]="values.apeMaterno">
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <label class="label-pri mb-1">Documento de identidad</label>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                <mat-select [(ngModel)]="values.tipoDocumento">
+                  <mat-option value="1">dni</mat-option>
+                </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-6">
+                <label class="label-pri mb-1">Número de documento</label>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <input matInput autocomplete="off" [(ngModel)]="values.apeMaterno">
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-md-6">
+                <label class="label-pri mb-1">Generar clave del giro</label>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <input matInput autocomplete="off" [(ngModel)]="values.clave">
+                </mat-form-field>
+            </div>
+            <div class="col-12 col-md-6">
+                <app-alerta tipo="warn" mensaje="Recuerda compartir con el beneficiario la clave generada. Sin ella no se podrá realizar el retiro del dinero." ></app-alerta>
+            </div>
+            <div class="col-6">
+                <label class="label-pri mb-1">Moneda</label>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                  <mat-select [(ngModel)]="values.moneda">
+                    <mat-option value="1">Soles</mat-option>
+                    <mat-option value="2">Dolares</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <label class="label-pri mb-1">Monto a transferir</label>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                  <input matInput autocomplete="off" [(ngModel)]="values.monto">
+                </mat-form-field>
+              </div>
+          </div>
+        </section>
+      </mat-step>
+
+      <mat-step label="Transferencia" [completed]="stepIndex === 0 ? false: true">
+        <app-detalle-segundo-paso  [listItemsSecondStep]="listItemsSecondStep"></app-detalle-segundo-paso>
+        <app-pad-numerico title="Ingresa tu clave de 6 dígitos" [valueDigits]="6"></app-pad-numerico>
+        <app-clave-sms></app-clave-sms>
+      </mat-step>
+  
+      <mat-step label="Resúmen">
+        <app-detalle-tercer-paso [icono]="'transferencia'" [titulo]="'¡Tu transferencia se realizó con éxito!'" [numOp]="'123456'" [dataArray]="listItemsThird"></app-detalle-tercer-paso>
+      </mat-step>
+  
+    </mat-stepper>
+  </ng-template>
+  
+  <ng-template #actionsTp>
+    <button mat-stroked-button color="primary" class="btn-pri-out" *ngIf="stepIndex !== 2"
+      (click)="btnRegresar()">Regresar</button>
+    <button mat-raised-button class="btn-principal" (click)="btnContinuar()">{{stepIndex !== 2 ? 'Continuar': 'Ir a
+      transferencias'}}</button>
+  </ng-template>

@@ -301,6 +301,7 @@ mat-stepper {
 
           .vencimiento{
             font-weight: 400;
+            display: block;
           }
 
           span{
@@ -316,6 +317,12 @@ mat-stepper {
     }
     .mat-radio-button .mat-radio-ripple {
       display: none;  
+    }
+
+    mat-radio-group{
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
     }
   }
 }
