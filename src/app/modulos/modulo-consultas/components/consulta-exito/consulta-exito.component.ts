@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { INTER_ROUTES } from '@utils/const-rutas';
 
 @Component({
   selector: 'app-consulta-exito',
@@ -21,6 +22,6 @@ export class ConsultaExitoComponent implements OnInit {
   }
 
   btnRegresar() {
-    this.router.navigate(["/auth/login"]);
+    this.router.navigate([INTER_ROUTES.AUTH]);
   }
 }

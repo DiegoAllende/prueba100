@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ROLES } from '@utils/constantes';
 import { CreditosPropiosComponent } from './container/creditos-propios/creditos-propios.component';
 import { CreditosTercerosComponent } from './container/creditos-terceros/creditos-terceros.component';
 import { PagoServiciosComponent } from './container/pago-servicios/pago-servicios.component';
@@ -12,23 +13,28 @@ const routes: Routes = [
   },
   {
     path: 'servicios',
-    component: PagoServiciosComponent
+    component: PagoServiciosComponent,
+    data: {blockRoles: [ROLES.CON_CARD]}
   },
   {
     path: 'recargas',
-    component: RecargasCelularComponent
+    component: RecargasCelularComponent,
+    data: {blockRoles: [ROLES.CON_CARD]}
   },
   {
     path: 'tarjeta-credito',
-    component: TarjetaCreditoComponent
+    component: TarjetaCreditoComponent,
+    data: {blockRoles: [ROLES.CON_CARD]}
   },
   {
     path: 'creditos-propios',
-    component: CreditosPropiosComponent
+    component: CreditosPropiosComponent,
+    data: {blockRoles: [ROLES.CON_CARD, ROLES.LISTA_NEGRA_NO]}
   },
   {
     path: 'creditos-terceros',
-    component: CreditosTercerosComponent
+    component: CreditosTercerosComponent,
+    data: {blockRoles: [ROLES.CON_CARD]}
   },
 ];
 

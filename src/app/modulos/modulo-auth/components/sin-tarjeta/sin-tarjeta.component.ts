@@ -1,5 +1,6 @@
-import { Component, EventEmitter, OnInit, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AppAuhtOut } from '@modulos/modulo-auth/models/auth-login.interfaces';
 import { ComboModel } from '@shared/models/generico/generico.models';
 
 @Component({
@@ -7,19 +8,14 @@ import { ComboModel } from '@shared/models/generico/generico.models';
   templateUrl: './sin-tarjeta.component.html',
   styleUrls: ['./sin-tarjeta.component.scss']
 })
-export class SinTarjetaComponent implements OnInit {
+export class SinTarjetaComponent {
   @Input() listaTipoDoi: ComboModel[] = [];
   @Output() outIngresarSin: EventEmitter<any> = new EventEmitter();
 
   mensaje = "Para el uso de clientes que solo cuenten con depósito a plazo fijo y/o créditos";
-
-  value = {
-    tipoDocumento: 1,
-    numeroDocumento: "",
-  };
-
   formLoginsin!: FormGroup;
   isRecaptcha = false;
+  dataOut!: AppAuhtOut;
 
   constructor(
     private fb: FormBuilder,
@@ -43,25 +39,18 @@ export class SinTarjetaComponent implements OnInit {
     return this.formLoginsin.get("clave");
   }
 
-  ngOnInit(): void {
-    console.log('SinTarjetaComponent');
-  }
-
-  getValuePad(val:number){
-    if (!!val) {
-      this.frClave?.setValue(""+val);
-    } else {
-      this.frClave?.setValue("");
-    }
+  getValuePad(val: number) {
+    if (!!val) this.frClave?.setValue("" + val);
+    else this.frClave?.setValue("");
   }
 
   btnRecaptcha(resp: boolean) {
-    console.log("recaptcha: ", resp);
     this.isRecaptcha = resp;
   }
 
   btnIngresar() {
-    this.outIngresarSin.emit({});
+    this.dataOut = { ...this.formLoginsin.value };
+    this.outIngresarSin.emit(this.dataOut);
   }
-  
+
 }

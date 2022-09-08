@@ -8,6 +8,7 @@ import { ComboModel } from '@shared/models/generico/generico.models';
 import { ErrorRespModel } from '@shared/models/generico/http.model';
 import { AuthService } from '@shared/services/auth.service';
 import { GenericoService } from '@shared/services/generico.service';
+import { INTER_ROUTES } from '@utils/const-rutas';
 import { Constantes, PASOS } from '@utils/constantes';
 
 @Component({
@@ -116,7 +117,7 @@ export class GenPasswordComponent implements OnInit {
   }
 
   btnRegresar1() {
-    this.router.navigate(["/auth"]);
+    this.router.navigate([INTER_ROUTES.AUTH]);
   }
 
   //FUNCIONES

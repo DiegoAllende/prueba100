@@ -10,27 +10,28 @@ import { LoginLayoutComponent } from './layout/login-layout/login-layout.compone
 import { OlvidoClaveComponent } from "./container/olvido-clave/olvido-clave.component";
 import { SelloGenerarComponent } from './container/sello-generar/sello-generar.component';
 import { CambioClaveTemporalComponent } from './container/cambio-clave-temporal/cambio-clave-temporal.component';
+import { INTER_PATHS } from '@utils/const-rutas';
 
 const routes: Routes = [
   {
     path: '',
     component: LoginLayoutComponent,
     children: [
-      { path: '', redirectTo: '/auth/login', pathMatch: 'full' },
-      { path: 'login', component: LoginComponent },
-      { path: 'sello', component: SelloComponent },
-      { path: 'clave', component: ClaveComponent },
+      { path: '', redirectTo: INTER_PATHS.AUTH_LOGIN, pathMatch: 'full' },
+      { path: INTER_PATHS.AUTH_LOGIN, component: LoginComponent },
+      { path: INTER_PATHS.AUTH_SELLO, component: SelloComponent },
+      { path: INTER_PATHS.AUTH_CLAVE, component: ClaveComponent },
     ]
   },
   {
-    path: 'generar',
+    path: INTER_PATHS.GENERAR_DEFAULT,
     component: GenerarLayoutComponent,
     children: [
       { path: '', component: AuthFooterComponent },
-      { path: 'clave-internet', component: GenPasswordComponent },
-      { path: 'olvide-clave', component: OlvidoClaveComponent },
-      { path: 'sello', component: SelloGenerarComponent },
-      { path: 'cambiar-clave-temporal',component:CambioClaveTemporalComponent}
+      { path: INTER_PATHS.GENERAR_CLAVE_INTERNET, component: GenPasswordComponent },
+      { path: INTER_PATHS.GENERAR_CLAVE_OLVIDE, component: OlvidoClaveComponent },
+      { path: INTER_PATHS.GENERAR_SELLO, component: SelloGenerarComponent },
+      { path: INTER_PATHS.GENERAR_CLAVE_CAMBIAR_TEMP,component:CambioClaveTemporalComponent}
     ]
   }
 ];

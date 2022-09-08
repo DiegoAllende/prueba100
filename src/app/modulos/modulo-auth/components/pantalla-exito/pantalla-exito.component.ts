@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { INTER_ROUTES } from '@utils/const-rutas';
 
 @Component({
   selector: 'app-pantalla-exito',
@@ -10,8 +11,8 @@ export class PantallaExitoComponent implements OnInit {
   @Input () Titulo!: string;
   @Input () Icon!: string;
   @Input () Mensaje!: string;
-  @Input () Ruta:string = "/auth/login"
-  @Input () TituloBoton:string = "Regresa a tu Home Banking"
+  @Input () Ruta:string = INTER_ROUTES.AUTH;
+  @Input () TituloBoton:string = "Regresa a tu Home Banking";
 
   constructor(private router: Router) { }
 

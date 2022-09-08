@@ -1,7 +1,9 @@
 <section class="auth-clave">
   <div class="auth-clave-titulo">
     <label class="title3-sec">Sello de seguridad</label>
-    <app-sello-icon [iconByte]="selloAuth.byteSello" tamanio="xs"></app-sello-icon>
+    <ng-container *ngIf="selloAuth.codigo">
+      <app-sello-icon [iconByte]="selloAuth.byteSello" tamanio="xs"></app-sello-icon>
+    </ng-container>
   </div>
   <app-pad-numerico [valueDigits]="6" (valueCod)="vlidarClave($event)" title="Ingresa tu clave de internet de 6 dígitos"></app-pad-numerico>
   <div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@shared/services/auth.service';
+import { INTER_ROUTES } from '@utils/const-rutas';
 import { Constantes } from '@utils/constantes';
 import { CookieService } from 'ngx-cookie-service';
 import { adapterAppAutenticarOut } from '../../models-adapter/auth-login.adapter';
@@ -26,7 +27,7 @@ export class ClaveComponent implements OnInit {
   ) {
     this.selloAuth = this.authLoginStore.getLoginSello;
     this.reqAppLogin = this.authLoginStore.getLoginForm;
-    if (!this.selloAuth.codigo) this.router.navigate(["/auth"]);
+    if (!this.reqAppLogin.numTarjeta) this.router.navigate([INTER_ROUTES.AUTH]);
   }
 
   ngOnInit(): void {
@@ -41,7 +42,7 @@ export class ClaveComponent implements OnInit {
       this.authLoginStore.transformarDataToken(this.cookieService.get(Constantes.TOKEN_ACCESS));
       if(resp.isNeedChangePassword === "True") {
         //ruta de cambiar clave
-        this.router.navigateByUrl('/auth/generar/cambiar-clave-temporal')
+        this.router.navigateByUrl(INTER_ROUTES.GENERAR_CLAVE_CAMBIAR_TEMP);
       } else {
         if(this.selloAuth.codigo) {
           this.authLoginStore.login();
@@ -67,7 +68,7 @@ export class ClaveComponent implements OnInit {
   }
 
   btnOlvideCalve() {
-    this.router.navigate(["/auth/generar/olvide-clave"]);
+    this.router.navigateByUrl(INTER_ROUTES.GENERAR_CLAVE_OLVIDO);
   }
 
 }

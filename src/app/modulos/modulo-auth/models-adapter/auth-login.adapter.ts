@@ -43,7 +43,7 @@ export const adpaterAppAuth = (dataIn: AppAuhtOut): AppAuhtOut => {
 export const adapterAppAutenticarOut = (dataIn: AppAuhtOut): AppAutenticarOutModel => {
   return {
     pbytTipAut: dataIn.tipoAuth,
-    pstrTarjeta: Constantes.PIN + dataIn.numTarjeta,
+    pstrTarjeta: dataIn?.numTarjeta ? (Constantes.PIN + dataIn.numTarjeta) : "",
     pstrClave: dataIn.clave,
     pbytTipDOI: dataIn.tipoDoi,
     pstrDOI: dataIn.numDoi,

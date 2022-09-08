@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { dataAuthModel } from '@shared/models/auth/auth.models';
 import { JwtDecoderService } from '@shared/services/jwt-decoder.service';
+import { INTER_ROUTES } from '@utils/const-rutas';
 import { Constantes } from '@utils/constantes';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AppAuhtOut, selloSegAuth } from '../models/auth-login.interfaces';
@@ -46,21 +47,16 @@ export class AuthLoginStore {
   setLogout() {
     localStorage.removeItem(Constantes.PROFILE_DATA);
     this.dataAuth$.next(null);
-    this.router.navigate(["/auth"]);
+    this.router.navigate([INTER_ROUTES.AUTH]);
   }
 
   // terminarSesionObs$(): Observable<boolean> {
   //   return this.loginSelloStore$.asObservable();
   // }
 
-  // setTerminoSesion(val: boolean) {
-  //   this.loginSelloStore$.next(val);
-  // }
-
   transformarDataToken(token: string): void {
     let newData: { name: string, data: string }[] = [];
     const data = this.jwtService.DecodeToken(token);
-    console.log('Esta es la data Jwt🔑', data);
     Object.keys(data).forEach((key: any) => {
 
       if (key.startsWith('http://schemas.microsoft.com/ws/2008/06/identity/claims/')) {
@@ -96,6 +92,6 @@ export class AuthLoginStore {
 
   login() {
     localStorage.setItem(Constantes.PROFILE_DATA, JSON.stringify(this.dataAuth$.value));
-    this.router.navigate(["/main"]);
+    this.router.navigate([INTER_ROUTES.MAIN]);
   }
 }

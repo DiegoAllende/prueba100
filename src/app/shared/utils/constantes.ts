@@ -24,3 +24,12 @@ export enum ESTADOS_CUOTA {
   VENCIDA = "Vencida",
   CANCELADA = "Cancelada",
 }
+
+export enum ROLES {
+  CON_CARD = "customer.card",
+  SIN_CARD = "customer.nocard",
+  LISTA_NEGRA_NO = "customer.noblacklist",
+  LISTA_NEGRA_SI = "customer.blacklist",
+  BLOQUEO_TEMP_NO = "customer.noblocktemp",
+  BLOQUEO_TEMP_SI = "customer.blocktemp",
+}
