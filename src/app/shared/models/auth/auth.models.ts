@@ -75,3 +75,13 @@ export interface AppGenClaveOlvidoOutModel {
   pstrIP: string;
   pobjTrace?: TraceCMACTModel;
 }
+
+export interface AppClaveCambiarOutModel {
+  pblnPrimerCambioClave6D : boolean;
+  pstrCodPers: string;
+  pstrTarjeta: string;
+  pstrClave6D: string;
+  pstrClaveNueva6D: string;
+  pstrIP: string;
+  pobjTrace?: TraceCMACTModel;
+}

@@ -10,6 +10,8 @@ export class PantallaExitoComponent implements OnInit {
   @Input () Titulo!: string;
   @Input () Icon!: string;
   @Input () Mensaje!: string;
+  @Input () Ruta:string = "/auth/login"
+  @Input () TituloBoton:string = "Regresa a tu Home Banking"
 
   constructor(private router: Router) { }
 
@@ -18,7 +20,7 @@ export class PantallaExitoComponent implements OnInit {
   }
 
   btnRegresar() {
-    this.router.navigate(["/auth/login"]);
+    this.router.navigate([this.Ruta]);
   }
 
 }

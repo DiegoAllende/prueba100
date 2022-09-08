@@ -9,6 +9,7 @@ import { GenerarLayoutComponent } from './layout/generar-layout/generar-layout.c
 import { LoginLayoutComponent } from './layout/login-layout/login-layout.component';
 import { OlvidoClaveComponent } from "./container/olvido-clave/olvido-clave.component";
 import { SelloGenerarComponent } from './container/sello-generar/sello-generar.component';
+import { CambioClaveTemporalComponent } from './container/cambio-clave-temporal/cambio-clave-temporal.component';
 
 const routes: Routes = [
   {
@@ -29,6 +30,7 @@ const routes: Routes = [
       { path: 'clave-internet', component: GenPasswordComponent },
       { path: 'olvide-clave', component: OlvidoClaveComponent },
       { path: 'sello', component: SelloGenerarComponent },
+      { path: 'cambiar-clave-temporal',component:CambioClaveTemporalComponent}
     ]
   }
 ];

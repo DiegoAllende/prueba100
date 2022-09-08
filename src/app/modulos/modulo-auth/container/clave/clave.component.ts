@@ -36,9 +36,19 @@ export class ClaveComponent implements OnInit {
   //SERVICIOS
   appAutenticarServ() {
     this.authService.getToken(adapterAppAutenticarOut(this.reqAppLogin)).subscribe(resp => {
-      console.log("LOGIN: ", resp);
+      console.log("cual sera esta respues",resp)
       this.cookieService.set(Constantes.TOKEN_ACCESS, resp.access_token, 1, '/');
       this.authLoginStore.transformarDataToken(this.cookieService.get(Constantes.TOKEN_ACCESS));
+      if(resp.isNeedChangePassword === "True") {
+        //ruta de cambiar clave
+        this.router.navigateByUrl('/auth/generar/cambiar-clave-temporal')
+      } else {
+        if(this.selloAuth.codigo) {
+          this.authLoginStore.login();
+        } else {
+          //ruta de sello
+        }
+      }
     });
   }
 

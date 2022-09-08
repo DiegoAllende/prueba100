@@ -38,3 +38,12 @@ export interface AppGenClaveOlvidoOut {
   clave6D: string;
   numIp: string;
 }
+
+export interface AppClaveCambiarOut {
+  primerCambioClave6D:boolean;
+  codPers: string;
+  numTarjeta: string;
+  clave6D: string;
+  nuevaClave6D:string;
+  numIp: string;
+}

@@ -19,6 +19,7 @@ import { PantallaExitoComponent } from './components/pantalla-exito/pantalla-exi
 import { SelloGenerarComponent } from './container/sello-generar/sello-generar.component';
 import { InputTarjetaComponent } from './components/input-tarjeta/input-tarjeta.component';
 import { InputDocumentoComponent } from './components/input-documento/input-documento.component';
+import { CambioClaveTemporalComponent } from './container/cambio-clave-temporal/cambio-clave-temporal.component';
 
 
 @NgModule({
@@ -38,7 +39,8 @@ import { InputDocumentoComponent } from './components/input-documento/input-docu
     PantallaExitoComponent,
     SelloGenerarComponent,
     InputTarjetaComponent,
-    InputDocumentoComponent
+    InputDocumentoComponent,
+    CambioClaveTemporalComponent
   ],
   imports: [
     CommonModule,

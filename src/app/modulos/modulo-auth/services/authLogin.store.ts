@@ -36,7 +36,7 @@ export class AuthLoginStore {
   }
 
   setDataAuth(data: dataAuthModel | null) {
-    this.dataAuth$.next(data ? {...this.dataAuth$.value, ...data} : null);
+    this.dataAuth$.next(data ? { ...this.dataAuth$.value, ...data } : null);
   }
 
   get getDataAuth() {
@@ -84,8 +84,6 @@ export class AuthLoginStore {
     });
 
     this.dataAuth$.next(this.tranformarDataTokenObject(newData));
-    localStorage.setItem(Constantes.PROFILE_DATA, JSON.stringify(this.dataAuth$.value));
-    this.router.navigate(["/main"]);
   }
 
   tranformarDataTokenObject(val: any[]) {
@@ -96,4 +94,8 @@ export class AuthLoginStore {
     return auxData;
   }
 
+  login() {
+    localStorage.setItem(Constantes.PROFILE_DATA, JSON.stringify(this.dataAuth$.value));
+    this.router.navigate(["/main"]);
+  }
 }

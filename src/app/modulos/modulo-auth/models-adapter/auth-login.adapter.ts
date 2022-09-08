@@ -1,6 +1,7 @@
-import { AppAutenticarOutModel, AppGenClaveOlvidoOutModel, AppGenClaveOutModel, AppValidarGenClaveOutModel, PersonaSelloSegModel, SelloSegAuthOutModel } from "@shared/models/auth/auth.models";
+import { AppAutenticarOutModel, AppClaveCambiarOutModel, AppGenClaveOlvidoOutModel, AppGenClaveOutModel, AppValidarGenClaveOutModel, PersonaSelloSegModel, SelloSegAuthOutModel } from "@shared/models/auth/auth.models";
+import { SelloSeguridadModel } from "@shared/models/generico/generico.models";
 import { Constantes } from "@utils/constantes";
-import { AppAuhtOut, AppGenClaveOlvidoOut, AppGenClaveOut, AppValidarGenClaveOut, selloSegAuth } from "../models/auth-login.interfaces";
+import { AppAuhtOut, AppClaveCambiarOut, AppGenClaveOlvidoOut, AppGenClaveOut, AppValidarGenClaveOut, selloSegAuth } from "../models/auth-login.interfaces";
 
 export const adapterSelloAuthIn = (dataIn: PersonaSelloSegModel): selloSegAuth => {
   return {
@@ -8,6 +9,16 @@ export const adapterSelloAuthIn = (dataIn: PersonaSelloSegModel): selloSegAuth =
     nombre: dataIn.sello.strDescripcion,
     byteSello: dataIn.sello.bytSello,
   }
+}
+
+export const adapterSelloListaIn = (dataIn: SelloSeguridadModel[]): selloSegAuth[] => {
+  return dataIn.map(sello=>{
+    return{
+      codigo: sello.intCodSello,
+      nombre:sello.strDescripcion,
+      byteSello:sello.bytSello
+    }
+  })
 }
 
 export const adapterSelloAuthOut = (dataIn: AppAuhtOut): SelloSegAuthOutModel => {
@@ -71,3 +82,16 @@ export const adapterAppGenClaveOlvOut = (dataIn: AppGenClaveOlvidoOut): AppGenCl
     pstrIP: "",
   }
 }
+
+export const adapterAppClaveCambiarOut = (dataIn: AppClaveCambiarOut): AppClaveCambiarOutModel => {
+  return {
+    pblnPrimerCambioClave6D: dataIn.primerCambioClave6D,
+    pstrCodPers: dataIn.codPers,
+    pstrTarjeta: dataIn.numTarjeta,
+    pstrClave6D: dataIn.clave6D,
+    pstrClaveNueva6D: dataIn.nuevaClave6D,
+    pstrIP: dataIn.numIp,
+  }
+}
+
+

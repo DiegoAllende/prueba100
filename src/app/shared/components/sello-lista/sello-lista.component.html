@@ -3,6 +3,7 @@
     <ng-container *ngFor="let item of listaSellos">
       <div class="sello-lista-main-item" (click)="seleccionarSello(item)">
         <app-sello-icon [iconNombre]="item.nombre" [check]="item.check?'click-select':''" tamanio="sm"></app-sello-icon>
+        <!-- [iconByte]="selloAuth.byteSello" -->
       </div>
     </ng-container>
   </div>
