@@ -47,7 +47,7 @@ export class ClaveComponent implements OnInit {
         if(this.selloAuth.codigo) {
           this.authLoginStore.login();
         } else {
-          //ruta de sello
+          this.router.navigateByUrl(INTER_ROUTES.GENERAR_SELLO);
         }
       }
     });

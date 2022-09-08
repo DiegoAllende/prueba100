@@ -27,7 +27,7 @@
       <label class="title3-sec">Tu sello de seguridad fue asignado.</label>
     </div>
     <div class="sello-generar-main">
-      <app-sello-icon [iconNombre]="selloIn.nombre" tamanio="lg"></app-sello-icon>
+      <app-sello-icon [iconByte]="selloIn.byteSello" tamanio="lg"></app-sello-icon>
     </div>
     <div class="sello-generar-subtitulo text-center">
       <label class="subtitle1-sec">Desde ahora, al realizar tus operaciones por nuestro <span class="color-pri">Canal de
@@ -44,7 +44,9 @@
 
   <ng-container *ngIf="numeroPaso === PASOS.FIN">
     <app-pantalla-exito [Titulo]="'Sello de seguridad generado con éxito'"
-      [Icon]="'./../../../../../assets/icons/SelloDeSeguridad.svg'"
-      [Mensaje]="'Ahora ya puedes ingresar a tu banca por internet con tu sello'"></app-pantalla-exito>
+      [Icon]="'assets/icons/SelloDeSeguridad.svg'"
+      [Mensaje]="'Ahora ya puedes ingresar a tu banca por internet con tu sello'"
+      [Ruta]="'/main'"
+      ></app-pantalla-exito>
   </ng-container>
 </section>

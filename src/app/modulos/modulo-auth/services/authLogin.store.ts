@@ -57,6 +57,7 @@ export class AuthLoginStore {
   transformarDataToken(token: string): void {
     let newData: { name: string, data: string }[] = [];
     const data = this.jwtService.DecodeToken(token);
+    console.log('Esta es la data Jwt🔑', data);
     Object.keys(data).forEach((key: any) => {
 
       if (key.startsWith('http://schemas.microsoft.com/ws/2008/06/identity/claims/')) {
@@ -93,5 +94,8 @@ export class AuthLoginStore {
   login() {
     localStorage.setItem(Constantes.PROFILE_DATA, JSON.stringify(this.dataAuth$.value));
     this.router.navigate([INTER_ROUTES.MAIN]);
+  }
+  loginSetData() {
+    localStorage.setItem(Constantes.PROFILE_DATA, JSON.stringify(this.dataAuth$.value));
   }
 }

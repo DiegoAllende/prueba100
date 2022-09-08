@@ -1,10 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { selloSegAuth } from '@modulos/modulo-auth/models/auth-login.interfaces';
 
-interface selloLista {
-  id: number;
-  nombre: string;
-  check: boolean;
-}
 
 @Component({
   selector: 'app-sello-lista',
@@ -12,15 +8,15 @@ interface selloLista {
   styleUrls: ['./sello-lista.component.scss']
 })
 export class SelloListaComponent implements OnInit {
-  @Input() listaSellos: selloLista[] = [];
-  @Output() valueSello: EventEmitter<selloLista> = new EventEmitter();
+  @Input() listaSellos: selloSegAuth[] = [];
+  @Output() valueSello: EventEmitter<selloSegAuth> = new EventEmitter();
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  seleccionarSello(item: selloLista) {
+  seleccionarSello(item: selloSegAuth) {
     this.listaSellos.forEach(element => {
       element.check = false;
     });

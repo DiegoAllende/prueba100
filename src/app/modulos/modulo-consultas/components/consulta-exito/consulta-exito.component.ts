@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { INTER_ROUTES } from '@utils/const-rutas';
 
@@ -7,7 +7,7 @@ import { INTER_ROUTES } from '@utils/const-rutas';
   templateUrl: './consulta-exito.component.html',
   styleUrls: ['./consulta-exito.component.scss']
 })
-export class ConsultaExitoComponent implements OnInit {
+export class ConsultaExitoComponent {
   @Input () Titulo!: string;
   @Input () Icon!: string;
   @Input () btn_1!: string;
@@ -16,10 +16,6 @@ export class ConsultaExitoComponent implements OnInit {
   constructor(
     private router: Router,
   ) { }
-
-  ngOnInit(): void {
-    console.log('Hola');
-  }
 
   btnRegresar() {
     this.router.navigate([INTER_ROUTES.AUTH]);

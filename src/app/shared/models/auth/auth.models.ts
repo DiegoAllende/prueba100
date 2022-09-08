@@ -85,3 +85,9 @@ export interface AppClaveCambiarOutModel {
   pstrIP: string;
   pobjTrace?: TraceCMACTModel;
 }
+
+export interface AppSelloInsertarOutModel{
+  pstrCodPers:string;
+  pintCodSello: number;
+  pobjTrace?:TraceCMACTModel
+}

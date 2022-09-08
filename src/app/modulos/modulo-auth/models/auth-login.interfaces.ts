@@ -1,7 +1,8 @@
 export interface selloSegAuth {
   codigo: number;
   nombre: string;
-  byteSello: string; 
+  byteSello: string;
+  check?:boolean;
 }
 
 export interface AppAuhtOut {
@@ -46,4 +47,9 @@ export interface AppClaveCambiarOut {
   clave6D: string;
   nuevaClave6D:string;
   numIp: string;
+}
+
+export interface AppSelloInsertarOut {
+  codPers: string;
+  codSello :number
 }

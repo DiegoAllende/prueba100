@@ -45,9 +45,6 @@ export class LoginComponent implements OnInit {
       
       this.authLoginStore.setLoginSello(adapterSelloAuthIn(resp));
       this.authLoginStore.setLoginForm(adpaterAppAuth(data));
-      console.log("aaa: ", this.authLoginStore.getLoginSello);
-      console.log("bbb: ", this.authLoginStore.getLoginForm);
-      
 
       if(this.authLoginStore.getLoginSello.codigo)this.router.navigate([INTER_ROUTES.AUTH_SELLO]);
       else this.router.navigate([INTER_ROUTES.AUTH_CLAVE]);
@@ -55,8 +52,6 @@ export class LoginComponent implements OnInit {
   }
 
   appAutenticarServ(data: AppAuhtOut) {
-    console.log("dataOut: ", adapterAppAutenticarOut(data));
-
     this.authService.getToken(adapterAppAutenticarOut(data)).subscribe(resp => {
       this.cookieService.set(Constantes.TOKEN_ACCESS, resp.access_token, 1, '/');
       this.authLoginStore.transformarDataToken(this.cookieService.get(Constantes.TOKEN_ACCESS));
@@ -69,8 +64,6 @@ export class LoginComponent implements OnInit {
   }
 
   btnIngresarSin(data: AppAuhtOut) {
-    console.log("dataIn: ", data);
-    
     this.appAutenticarServ(data);
   }
 
