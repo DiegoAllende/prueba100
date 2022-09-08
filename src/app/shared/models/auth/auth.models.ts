@@ -67,10 +67,11 @@ export interface AppGenClaveOutModel {
 }
 
 export interface AppGenClaveOlvidoOutModel {
-  pstrTarjeta: string;
   pbytTipDOI: number;
   pstrDOI: string;
+  pstrTarjeta: string;
   pstrClave4D: string;
-  pstrClave6D: string;
+  pstrClaveNueva6D: string;
+  pstrIP: string;
   pobjTrace?: TraceCMACTModel;
 }

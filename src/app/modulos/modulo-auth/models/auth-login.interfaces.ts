@@ -29,3 +29,12 @@ export interface AppGenClaveOut {
   numTarjeta: string;
   clave: string;
 }
+
+export interface AppGenClaveOlvidoOut {
+  numTarjeta: string;
+  tipoDoi: number;
+  numDoi: string;
+  clave4D: string;
+  clave6D: string;
+  numIp: string;
+}

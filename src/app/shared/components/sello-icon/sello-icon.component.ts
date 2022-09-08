@@ -11,7 +11,7 @@ export class SelloIconComponent implements OnInit {
   @Input() check: string = "";
 
   iconUrl = "assets/icons/sellos/";
-  validarTamaño = ["xs", "sm", "md", "lg"];
+  validarTamaño = ["xxs", "xs", "sm", "md", "lg"];
 
   tamanioaux = "sello-icon-";
 

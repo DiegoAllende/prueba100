@@ -8,7 +8,7 @@ import { ComboModel } from '@shared/models/generico/generico.models';
 import { ErrorRespModel } from '@shared/models/generico/http.model';
 import { AuthService } from '@shared/services/auth.service';
 import { GenericoService } from '@shared/services/generico.service';
-import { PASOS } from '@utils/constantes';
+import { Constantes, PASOS } from '@utils/constantes';
 
 @Component({
   selector: 'app-gen-password',
@@ -147,7 +147,7 @@ export class GenPasswordComponent implements OnInit {
       if (this.valClave6D_1 === this.valClave6D_2) {
         this.isValidClaves = true;
       } else {
-        this.mensajeError = "las claves deben ser iguales. Vuelva a ingresar las claves, por favor.";
+        this.mensajeError = Constantes.MSJ_CLAVES_DIF ;
       }
     }
   }

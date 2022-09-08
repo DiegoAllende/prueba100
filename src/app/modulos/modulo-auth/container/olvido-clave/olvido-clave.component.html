@@ -1,49 +1,54 @@
 <section class="olvide-clave-generar">
   <ng-container *ngIf="numeroPaso === PASOS.INI">
-    <section class="olvide-clave-generar-datos">
-      <div class="olvide-clave-generar-datos-titulo">
-        <app-icon-lock-square size="24"></app-icon-lock-square>
-        <label class="title3-pri">¿Olvidaste tu clave?</label>
-      </div>
-
-      <div>
-        <label class="title3-pri">Número de tarjeta</label>
-        <input-tarjeta [(ngModel)]="value.numeroTarjeta"></input-tarjeta>
-      </div>
-
-      <div class="row m-0">
-        <div class="col-6 select-login" style="padding-left: 0;">
-          <mat-form-field appearance="fill" class="w-100">
-            <mat-select [(ngModel)]="value.tipoDocumento" required>
-              <mat-option value="1">DNI</mat-option>
-              <mat-option value="2">Carnet de Extranjería</mat-option>
-            </mat-select>
-          </mat-form-field>
+    <form autocomplete="off" novalidate [formGroup]="formClaveOlv">
+      <section class="olvide-clave-generar-datos">
+        <div class="olvide-clave-generar-datos-titulo">
+          <app-icon-lock-square size="24"></app-icon-lock-square>
+          <label class="title3-pri">¿Olvidaste tu clave?</label>
         </div>
-        <div class="col-6 px-0">
-          <input-documento [(ngModel)]="value.numeroDocumento"></input-documento>
-        </div>
-      </div>
 
-      <div>
-        <app-pad-numerico [valueDigits]="4" title="Ingresa tu clave de 4 dígitos"></app-pad-numerico>
-      </div>
-    </section>
+        <div>
+          <label class="title3-pri">Número de tarjeta</label>
+          <input-tarjeta formControlName="numTarjeta"></input-tarjeta>
+        </div>
+
+        <div class="row m-0">
+          <div class="col-6 select-login" style="padding-left: 0;">
+            <mat-form-field appearance="fill" class="w-100">
+              <mat-select formControlName="tipoDoi">
+                <mat-option *ngFor="let item of listaTiposDoi" [value]="item.valor">{{item.label}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div class="col-6 px-0">
+            <input-documento formControlName="numDoi"></input-documento>
+          </div>
+        </div>
+
+        <div>
+          <app-pad-numerico [valueDigits]="4" title="Ingresa tu clave de 4 dígitos" (valueCod)="vlidarClave4D($event)">
+          </app-pad-numerico>
+        </div>
+      </section>
+    </form>
 
     <section class="olvide-clave-generar-clave">
-      <app-pad-numerico [valueDigits]="6" title="Ingresa tu nueva clave de 6 dígitos"></app-pad-numerico>
-      <app-pad-numerico [valueDigits]="6" title="Confirma tu nueva clave de 6 dígitos"></app-pad-numerico>
+      <app-pad-numerico [valueDigits]="6" title="Ingresa tu nueva clave de 6 dígitos" (valueCod)="validarClave6D($event, 1)"></app-pad-numerico>
+      <app-pad-numerico [valueDigits]="6" title="Confirma tu nueva clave de 6 dígitos" (valueCod)="validarClave6D($event, 2)"></app-pad-numerico>
     </section>
 
     <div class="olvide-clave-generar-accion">
-      <button mat-raised-button color="primary" class="btn-principal" [disabled]="false"
+      <button mat-raised-button color="primary" class="btn-principal" [disabled]="formClaveOlv.invalid"
         (click)="btnAceptarClave()">Aceptar</button>
     </div>
-
+    
+    <div class="mt-4">
+      <app-alerta *ngIf="!!mensajeError" [mensaje]="mensajeError" tipo="error"></app-alerta>
+    </div>
   </ng-container>
 
   <ng-container *ngIf="numeroPaso === PASOS.FIN">
-    <app-pantalla-exito [Titulo]="'Recuperación de clave exitosa'" [Icon]="'./../../../../../assets/icons/lock-square.svg'"
+    <app-pantalla-exito [Titulo]="'Recuperación de clave exitosa'" [Icon]="'assets/icons/lock-square-full.svg'"
       [Mensaje]="'Ahora ya puedes ingresar a tu banca por internet con tu nueva clave'"></app-pantalla-exito>
   </ng-container>
 </section>

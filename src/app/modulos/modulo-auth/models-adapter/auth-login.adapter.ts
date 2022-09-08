@@ -1,6 +1,6 @@
-import { AppAutenticarOutModel, AppGenClaveOutModel, AppValidarGenClaveOutModel, PersonaSelloSegModel, SelloSegAuthOutModel } from "@shared/models/auth/auth.models";
+import { AppAutenticarOutModel, AppGenClaveOlvidoOutModel, AppGenClaveOutModel, AppValidarGenClaveOutModel, PersonaSelloSegModel, SelloSegAuthOutModel } from "@shared/models/auth/auth.models";
 import { Constantes } from "@utils/constantes";
-import { AppAuhtOut, AppGenClaveOut, AppValidarGenClaveOut, selloSegAuth } from "../models/auth-login.interfaces";
+import { AppAuhtOut, AppGenClaveOlvidoOut, AppGenClaveOut, AppValidarGenClaveOut, selloSegAuth } from "../models/auth-login.interfaces";
 
 export const adapterSelloAuthIn = (dataIn: PersonaSelloSegModel): selloSegAuth => {
   return {
@@ -58,5 +58,16 @@ export const adapterAppClaveOut = (dataIn: AppGenClaveOut): AppGenClaveOutModel 
     plngCodValidaDatos: dataIn.codValid,
     pstrTarjeta: Constantes.PIN + dataIn.numTarjeta,
     pstrClave: dataIn.clave,
+  }
+}
+
+export const adapterAppGenClaveOlvOut = (dataIn: AppGenClaveOlvidoOut): AppGenClaveOlvidoOutModel => {
+  return {
+    pbytTipDOI: dataIn.tipoDoi,
+    pstrDOI: dataIn.numDoi,
+    pstrTarjeta: dataIn.numTarjeta,
+    pstrClave4D: dataIn.clave4D,
+    pstrClaveNueva6D: dataIn.clave6D,
+    pstrIP: "",
   }
 }

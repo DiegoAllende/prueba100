@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { AuthLoginStore } from '@modulos/modulo-auth/services/authLogin.store';
+import { Constantes } from '@utils/constantes';
 
 @Component({
   selector: 'app-auth-header',
@@ -6,12 +8,14 @@ import { Component, Input, OnInit } from '@angular/core';
   styleUrls: ['./auth-header.component.scss']
 })
 export class AuthHeaderComponent implements OnInit {
+  @Input() typeDesign!:number;
+  selloByte: string = "";
 
-  @Input() typeDesign!:number
-
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
+    this.selloByte = localStorage.getItem(Constantes.SELLO_ACTUAL) ? JSON.parse(""+localStorage.getItem(Constantes.SELLO_ACTUAL)) : "";
   }
 
 }

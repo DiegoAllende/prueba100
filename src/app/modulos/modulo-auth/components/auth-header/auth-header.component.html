@@ -6,10 +6,9 @@
         <p  class="header-container-title">HOME BANKING</p>
         <div class="header-container-sello">
             <span>Sello de seguridad</span>
-            <div class="header-container-content-sello">
-                <img src="assets/icons/Shape.svg" alt="">
-            </div>
-
+            <ng-container *ngIf="!!selloByte">
+                <app-sello-icon [iconByte]="selloByte" tamanio="xxs"></app-sello-icon>
+            </ng-container>
         </div>
     </div>
 

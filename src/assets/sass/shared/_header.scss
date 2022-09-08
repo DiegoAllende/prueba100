@@ -2,7 +2,7 @@
     padding-top: 40px;
     padding-left: 20px;
     height: 105px;
-    background-color: red;
+    background-color: $color-primario;
     .header-container-logo{
         width: 120px;
         height: 40px;
@@ -13,7 +13,7 @@
     }
 }
 .header-container-generar{
-    background-color: red;
+    background-color: $color-primario;
     padding: 30px 30px 20px 20px;
 
     .header-container-logo{
@@ -45,22 +45,6 @@
                 display: flex;
                 align-items: center;
                 gap: 5px;
-    
-                .header-container-content-sello{
-                    width: 30px;
-                    height: 30px;
-                    padding: 8px;
-                    background-color: white;
-                    border: 2px solid #D6D6D6;
-                    display: flex;
-                    align-items: center;
-                    justify-content: center;
-                    border-radius: 8px;
-                    img{
-                        width: 100%;
-                        height: 100%;
-                    }
-                }
             }
         }
       }

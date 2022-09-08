@@ -48,10 +48,10 @@ export class AuthService {
 
   appGenerarClaveOlvido(params: AppGenClaveOlvidoOutModel) {
     const paramsOut = { ...params };
-    // return this.http.get<ResponseModel<number>>(this.baseAuth).pipe(
-    //   map(x => 1)
-    // );
-    return of(1);
+    return this.http.get<ResponseModel<number>>(this.baseAuth).pipe(
+      map(x => 1)
+    );
+    // return of(1);
   }
 
   //Data Prueba
