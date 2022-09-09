@@ -3,7 +3,7 @@
   <article class="dashboard2">
     <div class="dashboard2-titulo">
       <app-icon-billetera size="24"></app-icon-billetera>
-      <label class="title2-pri">Ahorros</label>
+      <label class="title2-pri">{{isConCard ? 'Ahorros' : 'Plazo Fijo'}}</label>
     </div>
     <div class="dashboard2-content">
       <div class="dashboard2-content-cards">
@@ -17,20 +17,22 @@
   </article>
 
   <article class="dashboard2">
-    <div class="dashboard2-titulo">
-      <app-icon-pagos size="24"></app-icon-pagos>
-      <label class="title2-pri">Pagos</label>
-    </div>
-    <div class="dashboard2-content">
-      <div class="dashboard2-content-cards">
-        <ng-container *ngFor="let item of listaPagos">
-          <app-card-ahorros [icono]="item.icono" [titulo]="item.titulo" (click)="btnIrPagos(item)"></app-card-ahorros>
-        </ng-container>
+    <ng-container *ngIf="isConCard">
+      <div class="dashboard2-titulo">
+        <app-icon-pagos size="24"></app-icon-pagos>
+        <label class="title2-pri">Pagos</label>
       </div>
-    </div>
+      <div class="dashboard2-content">
+        <div class="dashboard2-content-cards">
+          <ng-container *ngFor="let item of listaPagos">
+            <app-card-ahorros [icono]="item.icono" [titulo]="item.titulo" (click)="btnIrPagos(item)"></app-card-ahorros>
+          </ng-container>
+        </div>
+      </div>
+    </ng-container>
   </article>
 
-  <article class="dashboard2">
+  <article class="dashboard2" *ngIf="isConCard">
     <div class="dashboard2-titulo">
       <app-icon-transferencia size="24"></app-icon-transferencia>
       <label class="title2-pri">Transferencias</label>

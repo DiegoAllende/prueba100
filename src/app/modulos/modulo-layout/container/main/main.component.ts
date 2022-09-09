@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { AuthLoginStore } from '@modulos/modulo-auth/services/authLogin.store';
 import { CuentasService } from '@shared/services/cuentas.service';
+import { INTER_PATHS, INTER_ROUTES } from '@utils/const-rutas';
+import { ROLES } from '@utils/constantes';
 import { adapterListaCuentas } from '../../models-adapter/inicio.adapter';
 import { ListaCuenta } from '../../models/lista-cuenta.model';
 
@@ -15,10 +18,15 @@ export class MainComponent implements OnInit {
   listaPagos: any = [];
   listaTansf: any = [];
 
+  isConCard: boolean = true;
+
   constructor(
     private router: Router,
     private cuentasService: CuentasService,
-  ) { }
+    private authLoginStore: AuthLoginStore,
+  ) {
+    // this.isConCard = this.authLoginStore.getDataAuth.role.includes(ROLES.CON_CARD);
+  }
 
   ngOnInit(): void {
     this.getListAhorros();
@@ -35,20 +43,20 @@ export class MainComponent implements OnInit {
 
   getListPagos() {
     this.listaPagos = [
-      { icono: "servicios", titulo: "Pago de servicios", url: "/main/pagos-servicios" },
-      { icono: "celular", titulo: "Recargas de celular", url: "/main/pagos/recargas" },
-      { icono: "Tarjeta", titulo: "Pago de tarjetas a otros bancos", url: "/main/pagos/tarjeta-credito" },
-      { icono: "persona1", titulo: "Pago de créditos propios", url: "/main/pagos/creditos-propios" },
-      { icono: "personas", titulo: "Pago de créditos a terceros", url: "/main/pagos/creditos-terceros" },
+      { icono: "servicios", titulo: "Pago de servicios", url: INTER_ROUTES.MAIN_PAGOS_SERVICIOS },
+      { icono: "celular", titulo: "Recargas de celular", url: INTER_ROUTES.PAGO_RECARGA },
+      { icono: "Tarjeta", titulo: "Pago de tarjetas a otros bancos", url: INTER_ROUTES.PAGO_CREDITO_TARJETA },
+      { icono: "persona1", titulo: "Pago de créditos propios", url: INTER_ROUTES.PAGO_CREDITO_PROPIO },
+      { icono: "personas", titulo: "Pago de créditos a terceros", url: INTER_ROUTES.PAGO_CREDITO_TERCERO },
     ];
   }
 
   getListTransferencia() {
     this.listaTansf = [
-      { icono: "persona1", titulo: "A cuentas propias", url: "/main/transferencias/cuentas-propias" },
-      { icono: "personas", titulo: "A cuentas de terceros", url: "/main/transferencias/cuentas-terceros" },
-      { icono: "banco", titulo: "A otros bancos", url: "/main/transferencias/cuentas-otros-bancos" },
-      { icono: "dinero", titulo: "Envíos de giros", url: "/main/transferencias/enviar-giro" },
+      { icono: "persona1", titulo: "A cuentas propias", url: INTER_ROUTES.TRAN_CUENTA_PROPIA },
+      { icono: "personas", titulo: "A cuentas de terceros", url: INTER_ROUTES.TRAN_CUENTA_TERCERO },
+      { icono: "banco", titulo: "A otros bancos", url: INTER_ROUTES.TRAN_CUENTA_OTRO_BAMCO },
+      { icono: "dinero", titulo: "Envíos de giros", url: INTER_ROUTES.TRAN_ENVIAR_GIRO },
     ];
   }
 

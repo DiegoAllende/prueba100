@@ -17,20 +17,19 @@ export class AuthGuard implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     // const isLoginToken = this.cookieService.check(Constantes.TOKEN_ACCESS);
-    if (route.data['blockRoles']) {
-      const conPermiso = this.authLoginStore.hasAccess(route.data['blockRoles']);
-      if(conPermiso) {
-        console.log("con permiso");
-      } else {
-        console.log("sin permiso");
-        return false;
-      }
-    } else {
-      console.log("acceso fulll");
-    }
+    
 
     const isLocalAuth = !!localStorage.getItem(Constantes.PROFILE_DATA);
     if (isLocalAuth) {
+      if (route.data['miroles']) {
+        const conPermiso = this.authLoginStore.hasAccess(route.data['miroles']);
+        if(conPermiso) {
+          console.log("con permiso");
+        } else {
+          console.log("sin permiso");
+          return false;
+        }
+      }
       return true;
     } else {
       this.router.navigateByUrl(INTER_ROUTES.AUTH);

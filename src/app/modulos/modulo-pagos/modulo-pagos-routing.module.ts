@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from '@core/guards/auth.guard';
-import { INTER_PATHS, INTER_ROUTES } from '@utils/const-rutas';
+import { INTER_PATHS, INTER_ROUTES, ROLES_RESOLVE } from '@utils/const-rutas';
 import { ROLES } from '@utils/constantes';
 import { CreditosPropiosComponent } from './container/creditos-propios/creditos-propios.component';
 import { CreditosTercerosComponent } from './container/creditos-terceros/creditos-terceros.component';
@@ -21,19 +21,19 @@ const routes: Routes = [
     path: INTER_PATHS.PAGO_CREDITO_TARJETA,
     component: TarjetaCreditoComponent,
     canActivate: [AuthGuard],
-    data: {blockRoles: [ROLES.SIN_CARD, ROLES.LISTA_NEGRA_SI, ROLES.BLOQUEO_TEMP_SI]}
+    data: {miroles: ROLES_RESOLVE.PAGO_CREDITO_TARJETA}
   },
   {
     path: INTER_PATHS.PAGO_CREDITO_PROPIO,
     component: CreditosPropiosComponent,
     canActivate: [AuthGuard],
-    data: {blockRoles: [ROLES.SIN_CARD, ROLES.BLOQUEO_TEMP_SI]}
+    data: {miroles: ROLES_RESOLVE.PAGO_CREDITO_PROPIO}
   },
   {
     path: INTER_PATHS.PAGO_CREDITO_TERCERO,
     component: CreditosTercerosComponent,
     canActivate: [AuthGuard],
-    data: {blockRoles: [ROLES.SIN_CARD, ROLES.LISTA_NEGRA_SI, ROLES.BLOQUEO_TEMP_SI]}
+    data: {miroles: ROLES_RESOLVE.PAGO_CREDITO_TERCERO}
   },
 ];
 

@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { dataAuthModel } from '@shared/models/auth/auth.models';
 import { JwtDecoderService } from '@shared/services/jwt-decoder.service';
 import { INTER_ROUTES } from '@utils/const-rutas';
-import { Constantes } from '@utils/constantes';
+import { Constantes, ROLES } from '@utils/constantes';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AppAuhtOut, selloSegAuth } from '../models/auth-login.interfaces';
 
@@ -109,9 +109,18 @@ export class AuthLoginStore {
   }
 
   hasAccess(rolesRuta: string[]): boolean {
-    let isValid = false;
+    let isValid = true;
     if(this.dataAuth$.value.role.length > 0) {
-      isValid = !this.dataAuth$.value.role.some(x => rolesRuta.includes(x));
+      // isValid = this.dataAuth$.value.role.some(x => rolesRuta.includes(x));
+      this.dataAuth$.value.role.forEach(x => {
+        if( x === ROLES.LISTA_NEGRA_SI && !rolesRuta.includes(x) ) {
+          isValid = false;
+        } else if( x === ROLES.BLOQUEO_TEMP_SI && !rolesRuta.includes(x) ) {
+          isValid = false;
+        } else if( x === ROLES.SIN_CARD && !rolesRuta.includes(x) ) {
+          isValid = false;
+        }
+      })
     }
     return isValid;
   }
