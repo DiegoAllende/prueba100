@@ -35,9 +35,9 @@ export class OlvidoClaveComponent implements OnInit, OnDestroy {
   ) {
     this.initForm();
 
-    this.selloByte = authLoginStore.getLoginSello.byteSello;
+    this.selloByte = this.authLoginStore.getLoginSello.byteSello;
     if (this.selloByte) {
-      localStorage.setItem(Constantes.SELLO_ACTUAL, JSON.stringify(authLoginStore.getLoginSello.byteSello))
+      localStorage.setItem(Constantes.SELLO_ACTUAL, JSON.stringify(this.selloByte))
     }
   }
 

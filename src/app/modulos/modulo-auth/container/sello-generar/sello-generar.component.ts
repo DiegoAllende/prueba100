@@ -4,14 +4,9 @@ import { AppSelloInsertarOut, selloSegAuth } from '@modulos/modulo-auth/models/a
 import { AuthLoginStore } from '@modulos/modulo-auth/services/authLogin.store';
 import { dataAuthModel } from '@shared/models/auth/auth.models';
 import { AuthService } from '@shared/services/auth.service';
+import { INTER_ROUTES } from '@utils/const-rutas';
 import { PASOS } from '@utils/constantes';
-import {adapterAppSelloInsertarOut, adapterSelloListaIn} from '../../models-adapter/auth-login.adapter'
-
-interface selloLista {
-  id: number;
-  nombre: string;
-  check: boolean;
-}
+import { adapterAppSelloInsertarOut, adapterSelloListaIn } from '../../models-adapter/auth-login.adapter'
 
 @Component({
   selector: 'app-sello-generar',
@@ -20,48 +15,38 @@ interface selloLista {
 })
 export class SelloGenerarComponent implements OnInit {
   selloIn!: selloSegAuth;
-  listaSellos:selloSegAuth[] =[]
-  datosUsuario :dataAuthModel
-  
+  listaSellos: selloSegAuth[] = []
+  datosUsuario: dataAuthModel
 
   PASOS = PASOS;
   numeroPaso: number = PASOS.INI;
 
   constructor(
-      private authService:AuthService,
-      private authLoginStore:AuthLoginStore,
-      private router:Router,
-
-      
-    ) { 
-    this.datosUsuario = authLoginStore.getDataAuth
-    if(!this.datosUsuario?.sid){
-      router.navigate(['/auth'])
-    }
+    private authService: AuthService,
+    private authLoginStore: AuthLoginStore,
+    private router: Router,
+  ) {
+    this.datosUsuario = this.authLoginStore.getDataAuth
+    if (!this.datosUsuario?.sid) this.router.navigateByUrl(INTER_ROUTES.AUTH)
   }
 
   ngOnInit(): void {
     this.getListaSellos()
   }
 
-  getListaSellos(){
-    this.authService.appGeListaSellos().subscribe(resp=>{
+  getListaSellos() {
+    this.authService.appGeListaSellos().subscribe(resp => {
       this.listaSellos = adapterSelloListaIn(resp)
     })
   }
 
   valueSello(sello: any) {
     this.selloIn = sello;
-    console.log("este es el sello selecionado",this.selloIn)
   }
 
   btnAceptarSello() {
-    if (!this.selloIn) {
-      console.log("Selecione un sello");
-      return;
-    }
+    if (!this.selloIn) return;
     this.numeroPaso = PASOS.DOS;
-    
   }
 
   btnRegresar() {
@@ -74,13 +59,11 @@ export class SelloGenerarComponent implements OnInit {
       codSello: this.selloIn.codigo
     };
 
-    this.authService.appPersonaSelloInsertar(adapterAppSelloInsertarOut(params)).subscribe(resp=>{
-      if(resp > 0){
+    this.authService.appPersonaSelloInsertar(adapterAppSelloInsertarOut(params)).subscribe(resp => {
+      if (resp > 0) {
+        this.authLoginStore.loginSetData();
         this.numeroPaso = PASOS.FIN;
-        this.authLoginStore.loginSetData()
       }
     })
-    
   }
-
 }

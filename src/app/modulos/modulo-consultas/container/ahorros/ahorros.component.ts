@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CuentasService } from '@shared/services/cuentas.service';
+import { INTER_ROUTES } from '@utils/const-rutas';
 import { PASOS } from '@utils/constantes';
 import * as moment from 'moment';
 import { adapterDatosCuenta } from '../../models-adapter/ahorro.adapter';
@@ -83,7 +84,7 @@ export class AhorrosComponent implements OnInit {
   }
   
   btnRegresar() {
-    if(this.numPaso === PASOS.INI) this.router.navigate(["/main"]);
+    if(this.numPaso === PASOS.INI) this.router.navigateByUrl(INTER_ROUTES.MAIN);
     this.numPaso = PASOS.INI;
   }
 

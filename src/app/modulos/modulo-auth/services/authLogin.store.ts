@@ -12,11 +12,20 @@ import { AppAuhtOut, selloSegAuth } from '../models/auth-login.interfaces';
   providedIn: 'root'
 })
 export class AuthLoginStore {
+  valInit: dataAuthModel = {
+    sid: "",
+    givenname: "",
+    nameidentifier: "",
+    emailaddress: "",
+    mobilephone: "",
+    serialnumber: "",
+    role: [],
+    exp: 0,
+  };
+
   private loginSelloStore: selloSegAuth = { codigo: 0, nombre: "", byteSello: "" };
   private loginAppAuthStore: AppAuhtOut = { tipoAuth: 0, numTarjeta: "", clave: "", tipoDoi: 0, numDoi: "", numIp: "" };
-  private dataAuth$: BehaviorSubject<any> = new BehaviorSubject(null);
-  // private dataAuth: dataAuthModel | null = null;
-
+  private dataAuth$: BehaviorSubject<dataAuthModel> = new BehaviorSubject<dataAuthModel>(this.valInit);
 
   constructor(private router: Router, private jwtService: JwtDecoderService) { }
 
@@ -36,17 +45,17 @@ export class AuthLoginStore {
     return { ...this.loginAppAuthStore };
   }
 
-  setDataAuth(data: dataAuthModel | null) {
-    this.dataAuth$.next(data ? { ...this.dataAuth$.value, ...data } : null);
+  setDataAuth(data: dataAuthModel) {
+    this.dataAuth$.next({ ...this.dataAuth$.value, ...data });
   }
 
   get getDataAuth() {
-    return this.dataAuth$.value ? { ...this.dataAuth$.value } : null;
+    return { ...this.dataAuth$.value };
   }
 
   setLogout() {
     localStorage.removeItem(Constantes.PROFILE_DATA);
-    this.dataAuth$.next(null);
+    this.dataAuth$.next(this.valInit);
     this.router.navigate([INTER_ROUTES.AUTH]);
   }
 
@@ -98,4 +107,13 @@ export class AuthLoginStore {
   loginSetData() {
     localStorage.setItem(Constantes.PROFILE_DATA, JSON.stringify(this.dataAuth$.value));
   }
+
+  hasAccess(rolesRuta: string[]): boolean {
+    let isValid = false;
+    if(this.dataAuth$.value.role.length > 0) {
+      isValid = !this.dataAuth$.value.role.some(x => rolesRuta.includes(x));
+    }
+    return isValid;
+  }
+
 }

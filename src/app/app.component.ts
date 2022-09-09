@@ -14,8 +14,8 @@ export class AppComponent {
     private contadorService: ContadorService,
     private authLoginStore: AuthLoginStore,
   ) {
-    if (!authLoginStore.getDataAuth) {
-      const aux = localStorage.getItem(Constantes.PROFILE_DATA) ? JSON.parse("" + localStorage.getItem(Constantes.PROFILE_DATA)) : null;
+    if (!this.authLoginStore.getDataAuth.sid) {
+      const aux = localStorage.getItem(Constantes.PROFILE_DATA) ? JSON.parse("" + localStorage.getItem(Constantes.PROFILE_DATA)) : {};
       authLoginStore.setDataAuth(aux);
     }
     console.log("appDataAuth: ", authLoginStore.getDataAuth);

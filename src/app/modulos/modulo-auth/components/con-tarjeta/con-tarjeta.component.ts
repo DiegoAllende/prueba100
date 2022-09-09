@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { ComboModel } from '@shared/models/generico/generico.models';
 import { AppAuhtOut } from '../../models/auth-login.interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { INTER_ROUTES } from '@utils/const-rutas';
 
 @Component({
   selector: 'app-con-tarjeta',
@@ -104,7 +105,7 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
   }
 
   generatePassword() {
-    this.router.navigate(['auth/generar/clave-internet']);
+    this.router.navigateByUrl(INTER_ROUTES.GENERAR_CLAVE_INTERNET);
   }
 
 }

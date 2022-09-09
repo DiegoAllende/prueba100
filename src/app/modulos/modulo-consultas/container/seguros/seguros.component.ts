@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MicrosegurosService } from '@shared/services/microseguros.service';
+import { INTER_ROUTES } from '@utils/const-rutas';
 import { combineLatest } from 'rxjs';
 import { adapterSeguroBeneficiario, adapterSeguroCliente, adapterSeguroDatos } from '../../models-adapter/microseguro.adapter';
 import { SeguroDatosAll } from '../../models/microseguro.interface';
@@ -64,7 +65,7 @@ export class SegurosComponent implements OnInit {
   }
 
   btnRegresar() {
-    this.router.navigate(["/main"]);
+    this.router.navigateByUrl(INTER_ROUTES.MAIN)
   }
 
   btnPagar() {

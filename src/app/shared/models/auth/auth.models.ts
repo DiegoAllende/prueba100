@@ -38,13 +38,14 @@ export interface PersonaLoginModel {
 }
 
 export interface dataAuthModel {
-  givenname?: string;
-  sid?: string;
-  nameidentifier?: string;
-  emailaddress?: string;
-  role?: string[];
-  mobilephone?: string;
-  serialnumber?: string;
+  sid: string | null;
+  givenname: string;
+  nameidentifier: string;
+  emailaddress: string;
+  role: string[];
+  mobilephone: string;
+  serialnumber: string;
+  exp: number;
 }
 
 export interface AppValidarGenClaveOutModel {

@@ -6,7 +6,8 @@ import { AuthLoginStore } from '@modulos/modulo-auth/services/authLogin.store';
 import { dataAuthModel } from '@shared/models/auth/auth.models';
 import { ErrorRespModel } from '@shared/models/generico/http.model';
 import { AuthService } from '@shared/services/auth.service';
-import { PASOS } from '@utils/constantes';
+import { INTER_ROUTES } from '@utils/const-rutas';
+import { Constantes, PASOS } from '@utils/constantes';
 
 @Component({
   selector: 'app-cambio-clave-temporal',
@@ -29,23 +30,17 @@ export class CambioClaveTemporalComponent implements OnInit {
     private authLoginStore:AuthLoginStore
   ) { 
     this.datosUsuario = authLoginStore.getDataAuth
-    if(!this.datosUsuario?.sid){
-      router.navigate(['/auth'])
-    }
-    console.log("data",authLoginStore.getLoginForm)
-    
+    if(!this.datosUsuario?.sid) this.router.navigateByUrl(INTER_ROUTES.AUTH)
   }
 
   ngOnInit(): void {
   }
 
   regresarIni() {
-    this.router.navigate(["/auth"]);
+    this.router.navigateByUrl(INTER_ROUTES.AUTH)
   }
 
   cambiarClaveTemporal(){
-    
-    console.log("debemos obtener las nuevas claves")
     const params: AppClaveCambiarOut = {
       primerCambioClave6D: true,
       codPers: this.datosUsuario.sid! ,
@@ -55,26 +50,17 @@ export class CambioClaveTemporalComponent implements OnInit {
       numIp: ""
     };
 
-    console.log("params correcots",params)
-
-    console.log("conectarse al servicio y dependiendo de la respuesta pasar a la parte 3")
     this.authService.appClaveCambiar(adapterAppClaveCambiarOut(params)).subscribe(resp => {
-      if (resp > 0) {
-        this.numeroPaso = PASOS.FIN;
-      }
+      if (resp > 0) this.numeroPaso = PASOS.FIN;
     }, (error: ErrorRespModel) => this.mensajeError = error.strDescripcion);
-    
   }
 
   getClave6D(val: number, tipo: number) {
     switch (tipo) {
-      case 1:
-        this.valClave6D_1 = val;
+      case 1: this.valClave6D_1 = val;
         break;
-      case 2:
-        this.valClave6D_2 = val;
+      case 2: this.valClave6D_2 = val;
         break;
-
       default:
         break;
     }
@@ -88,13 +74,8 @@ export class CambioClaveTemporalComponent implements OnInit {
       if (this.valClave6D_1 === this.valClave6D_2) {
         this.isValidClaves = true;
       } else {
-        this.mensajeError = "las claves deben ser iguales. Vuelva a ingresar las claves, por favor.";
+        this.mensajeError = Constantes.MSJ_CLAVES_DIF;
       }
     }
   }
-
-  // irSellos(){
-  //   this.router.navigate(["/auth/generar/sello"]);
-  // }
-
 }

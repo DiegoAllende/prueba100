@@ -1,40 +1,39 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from '@core/guards/auth.guard';
+import { INTER_PATHS, INTER_ROUTES } from '@utils/const-rutas';
 import { ROLES } from '@utils/constantes';
 import { CreditosPropiosComponent } from './container/creditos-propios/creditos-propios.component';
 import { CreditosTercerosComponent } from './container/creditos-terceros/creditos-terceros.component';
-import { PagoServiciosComponent } from './container/pago-servicios/pago-servicios.component';
 import { RecargasCelularComponent } from './container/recargas-celular/recargas-celular.component';
 import { TarjetaCreditoComponent } from './container/tarjeta-credito/tarjeta-credito.component';
 
 const routes: Routes = [
   {
-    path: "", redirectTo: "/main", pathMatch: "full"
+    path: "", redirectTo: INTER_ROUTES.MAIN, pathMatch: "full"
   },
   {
-    path: 'servicios',
-    component: PagoServiciosComponent,
-    data: {blockRoles: [ROLES.CON_CARD]}
-  },
-  {
-    path: 'recargas',
+    path: INTER_PATHS.PAGO_RECARGA,
     component: RecargasCelularComponent,
-    data: {blockRoles: [ROLES.CON_CARD]}
+    canActivate: [AuthGuard],
   },
   {
-    path: 'tarjeta-credito',
+    path: INTER_PATHS.PAGO_CREDITO_TARJETA,
     component: TarjetaCreditoComponent,
-    data: {blockRoles: [ROLES.CON_CARD]}
+    canActivate: [AuthGuard],
+    data: {blockRoles: [ROLES.SIN_CARD, ROLES.LISTA_NEGRA_SI, ROLES.BLOQUEO_TEMP_SI]}
   },
   {
-    path: 'creditos-propios',
+    path: INTER_PATHS.PAGO_CREDITO_PROPIO,
     component: CreditosPropiosComponent,
-    data: {blockRoles: [ROLES.CON_CARD, ROLES.LISTA_NEGRA_NO]}
+    canActivate: [AuthGuard],
+    data: {blockRoles: [ROLES.SIN_CARD, ROLES.BLOQUEO_TEMP_SI]}
   },
   {
-    path: 'creditos-terceros',
+    path: INTER_PATHS.PAGO_CREDITO_TERCERO,
     component: CreditosTercerosComponent,
-    data: {blockRoles: [ROLES.CON_CARD]}
+    canActivate: [AuthGuard],
+    data: {blockRoles: [ROLES.SIN_CARD, ROLES.LISTA_NEGRA_SI, ROLES.BLOQUEO_TEMP_SI]}
   },
 ];
 

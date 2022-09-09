@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CreditosService } from '@shared/services/creditos.service';
+import { INTER_ROUTES } from '@utils/const-rutas';
 import { combineLatest } from 'rxjs';
 import { adapterCreditoDatos, adapterCreditosCliente, adapterCreditosCuotas } from '../../models-adapter/creditos.adapter';
 import { CreditoDatosAll } from '../../models/creditos.interface';
@@ -64,7 +65,7 @@ export class CreditosComponent implements OnInit {
   }
 
   btnRegresar() {
-    this.router.navigate(["/main"]);
+    this.router.navigateByUrl(INTER_ROUTES.MAIN)
   }
 
   btnPagar() {

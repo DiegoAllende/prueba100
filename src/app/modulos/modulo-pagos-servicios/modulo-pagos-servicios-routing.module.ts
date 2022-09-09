@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { INTER_PATHS } from '@utils/const-rutas';
 import { PagoAguaComponent } from './container/pago-agua/pago-agua.component';
 import { PagoEmpresasInstitucionesComponent } from './container/pago-empresas-instituciones/pago-empresas-instituciones.component';
 import { PagoLuzComponent } from './container/pago-luz/pago-luz.component';
@@ -7,25 +8,24 @@ import { PagoServiciosMainComponent } from './container/pago-servicios-main/pago
 import { PagoUniversidadesComponent } from './container/pago-universidades/pago-universidades.component';
 
 const routes: Routes = [
-  
   {
     path: '',
     component: PagoServiciosMainComponent
   },
   {
-    path: 'luz',
+    path: INTER_PATHS.PAGOSEV_LUZ,
     component: PagoLuzComponent
   },
   {
-    path: 'agua',
+    path: INTER_PATHS.PAGOSEV_AGUA,
     component: PagoAguaComponent
   },
   {
-    path: 'empresas-instituciones',
+    path: INTER_PATHS.PAGOSEV_EMPRESA_INST,
     component: PagoEmpresasInstitucionesComponent
   },
   {
-    path: 'universidades',
+    path: INTER_PATHS.PAGOSEV_UNIVERSIDAD,
     component: PagoUniversidadesComponent
   },
 ];
