@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AppSelloInsertarOut, selloSegAuth } from '@modulos/modulo-auth/models/auth-login.interfaces';
 import { AuthLoginStore } from '@modulos/modulo-auth/services/authLogin.store';
 import { dataAuthModel } from '@shared/models/auth/auth.models';
