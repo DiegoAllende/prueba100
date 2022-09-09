@@ -2,7 +2,7 @@ import { CuentaClienteModel } from "@shared/models/consultas/consultas.model";
 import { ListaCuenta } from "../models/lista-cuenta.model";
 
 export const adapterListaCuentas = (dataIn: CuentaClienteModel[]): ListaCuenta[] => {
-  return dataIn.map(x => {
+  return dataIn.map((x, index) => {
     return {
       codCuenta: x.strCodCta,
       icono: "billetera",
@@ -10,6 +10,7 @@ export const adapterListaCuentas = (dataIn: CuentaClienteModel[]): ListaCuenta[]
       subTitulo: "Saldo  disponible",
       monto: x.strMonSimbolo + x.decSaldoDisp,
       url: "/main/consultas/ahorros",
+      active: index === 0 ? true : false,
     }
   });
 }

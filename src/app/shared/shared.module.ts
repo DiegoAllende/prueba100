@@ -9,7 +9,7 @@ import { RecaptchaComponent } from '../modulos/modulo-auth/components/recaptcha/
 import { RecaptchaFormsModule, RecaptchaModule } from 'ng-recaptcha';
 import { CardAhorrosComponent } from './components/card-ahorros/card-ahorros.component';
 import { ContadorComponent } from './components/contador/contador.component';
-import { AcordeonMovimientoComponent } from './components/acordeon-movimiento/acordeon-movimiento.component';
+import { AcordeonMovimientoComponent } from './components/movimientos/acordeon-movimiento/acordeon-movimiento.component';
 import { SelloIconComponent } from './components/sello-icon/sello-icon.component';
 import { IconsComponent } from './components/icons/icons.component';
 import { IconLockSquareComponent } from './components/icons/icon-lock-square/icon-lock-square.component';
@@ -55,6 +55,8 @@ import { SelectSearchEmpresasComponent } from './components/formulario/select-se
 import { ListCuotasComponent } from './components/list-cuotas/list-cuotas.component';
 import { PlantillaInfoSimpleCardsComponent } from './components/plantilla-info-simple-cards/plantilla-info-simple-cards.component';
 import { IconEstrellaDelgadaComponent } from './components/icons/icon-estrella-delgada/icon-estrella-delgada.component';
+import { ChequesRetencionesComponent } from './components/movimientos/cheques-retenciones/cheques-retenciones.component';
+import { MisMovimientosComponent } from './components/movimientos/mis-movimientos/mis-movimientos.component';
 
 
 @NgModule({
@@ -109,6 +111,8 @@ import { IconEstrellaDelgadaComponent } from './components/icons/icon-estrella-d
     ListCuotasComponent,
     PlantillaInfoSimpleCardsComponent,
     IconEstrellaDelgadaComponent,
+    ChequesRetencionesComponent,
+    MisMovimientosComponent,
   ],
   imports: [
     CommonModule,
@@ -174,7 +178,9 @@ import { IconEstrellaDelgadaComponent } from './components/icons/icon-estrella-d
     SelectSearchEmpresasComponent,
     ListCuotasComponent,
     PlantillaInfoSimpleCardsComponent,
-    IconEstrellaDelgadaComponent
+    IconEstrellaDelgadaComponent,
+    ChequesRetencionesComponent,
+    MisMovimientosComponent,
   ]
 })
 export class SharedModule { }

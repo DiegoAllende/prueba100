@@ -1,0 +1,137 @@
+.movimientos {
+  &-container {
+    display: flex;
+    flex-direction: column;
+
+    @media screen and(min-width: 780px) {
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+    }
+
+    &-filters {
+      margin-bottom: 15px;
+
+      @media screen and(min-width: 780px) {
+        width: 32%;
+        margin: 0px;
+      }
+
+      &-filter {
+        width: 45%;
+      }
+    }
+
+    &-search {
+      width: 80%;
+      margin: auto;
+
+      @media screen and(min-width: 780px) {
+        display: block;
+        width: 17%;
+        margin: 0px;
+      }
+    }
+
+    &-filters-pdf {
+      margin-top: 20px;
+      padding-bottom: 20px;
+
+      @media screen and(min-width: 780px) {
+        width: 100%;
+      }
+
+      &-content {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+
+        @media screen and(min-width:780px) {
+          flex-direction: row;
+          justify-content: space-between;
+        }
+      }
+
+      &-filter {
+        width: 100%;
+
+        @media screen and(min-width:780px) {
+          width: 47%;
+        }
+      }
+
+      &-btn {
+        width: 80%;
+        height: 45px;
+        margin: auto;
+
+        @media screen and(min-width:780px) {
+          width: 47%;
+          margin: 0px;
+          height: 60px;
+        }
+      }
+    }
+  }
+
+  &-tabla {
+    margin-top: 30px;
+
+    &-header {
+      padding-right: 10%;
+      width: 100%;
+      background-color: #FEEEEE;
+      border-bottom: 1px solid #F90000;
+      display: flex;
+
+      &-operation {
+        width: 50%;
+        padding: 12px 25px;
+
+        @media screen and(min-width: 780px) {
+          width: 33.3%;
+        }
+
+      }
+
+
+      &-date {
+        width: 50%;
+        padding: 12px;
+        text-align: end;
+
+        @media screen and(min-width: 780px) {
+          display: none;
+        }
+
+      }
+
+      &-date-desktop {
+        display: none;
+
+        @media screen and(min-width: 780px) {
+          display: block;
+          width: 33.3%;
+          padding: 12px 15px 12px 60px;
+          text-align: center;
+        }
+      }
+
+      &-mounth-desktop {
+        display: none;
+
+        @media screen and(min-width: 780px) {
+          display: block;
+          width: 33.3%;
+          padding: 12px 25px;
+          text-align: end;
+        }
+      }
+    }
+
+    &-body {
+      padding: 0 15px;
+    }
+  }
+}

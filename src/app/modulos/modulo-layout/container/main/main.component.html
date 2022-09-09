@@ -1,4 +1,4 @@
-<section class="dashboard">
+<section class="dashboard" *ngIf="isConCard">
 
   <article class="dashboard2">
     <div class="dashboard2-titulo">
@@ -32,7 +32,7 @@
     </ng-container>
   </article>
 
-  <article class="dashboard2" *ngIf="isConCard">
+  <article class="dashboard2">
     <div class="dashboard2-titulo">
       <app-icon-transferencia size="24"></app-icon-transferencia>
       <label class="title2-pri">Transferencias</label>
@@ -40,10 +40,75 @@
     <div class="dashboard2-content">
       <div class="dashboard2-content-cards">
         <ng-container *ngFor="let item of listaTansf">
-          <app-card-ahorros [icono]="item.icono" [titulo]="item.titulo" (click)="btnIrTransferencia(item)"></app-card-ahorros>
+          <app-card-ahorros [icono]="item.icono" [titulo]="item.titulo" (click)="btnIrTransferencia(item)">
+          </app-card-ahorros>
         </ng-container>
       </div>
     </div>
   </article>
 
 </section>
+
+<section *ngIf="!isConCard">
+  <app-plantilla-info-compleja>
+    <ng-container contentTitulo>
+      <app-icon-credito size="24"></app-icon-credito>
+      <label class="title2-pri">Plazo fijo</label>
+    </ng-container>
+
+    <ng-container contentMain>
+      <ng-container *ngFor="let item of listaAhorros">
+        <div class="ptl-infocom-main-content" [ngClass]="item.active ? 'active': ''">
+          <div class="ptl-infocom-main-content-card" (click)="btnCard(item)">
+            <!-- Colocar contenido del card -->
+            <div class="ptl-infocom-main-content-card-content">
+              <app-icon-credito size="24"></app-icon-credito>
+              <div class="ptl-infocom-main-content-card-content-info">
+                <span class="title3-sec">{{item.titulo}}</span>
+                <div [ngClass]="item.active ? 'tran-expand-active' : 'tran-expand'">
+                  <div *ngIf="item.active">
+                    <label class="subtitle1-secN">Nro. de cuenta: {{cuenta?.numCuenta}}</label>
+                    <label class="subtitle1-secN mb-2">Código Interbancario (CCI): {{cuenta?.numCCI}}</label>
+                    <label class="subtitle1-secN">Saldo Contable</label>
+                    <label class="title3-sec">S/ {{cuenta?.saldoContable}}</label>
+                    <label class="subtitle1-secN">Saldo Disponible</label>
+                    <label class="title3-sec">S/ {{cuenta?.saldoDisponible}}</label>
+                  </div>
+                </div>
+              </div>
+              <div class="ptl-infocom-main-content-card-content-flecha">
+                <app-icon-flecha-derecha *ngIf="!item.active" size="18"></app-icon-flecha-derecha>
+              </div>
+            </div>
+          </div>
+
+          <div class="ptl-infocom-main-content-main">
+            <div class="ptl-infocom-main-content-main-info">
+              <!-- Colocar informacion -->
+              <ng-container *ngIf="numPaso === PASOS.INI">
+                <app-mis-movimientos [lista]="listaMovimientos" (eVerPdf)="btnEstadoCuenta($event)"></app-mis-movimientos>
+              </ng-container>
+              <ng-container *ngIf="numPaso === PASOS.FIN">
+                <app-cheques-retenciones [lista]="listaRetenciones"></app-cheques-retenciones>
+              </ng-container>
+              <div class="ptl-infocom-main-content-main-info-actions">
+                <!-- Colocar botones -->
+                <div class="ptl-infocom-main-content-main-info-actions-botones">
+                  <ng-container [ngTemplateOutlet]="actionsTp"></ng-container>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </ng-container>
+      
+    </ng-container>
+  </app-plantilla-info-compleja>
+</section>
+
+<ng-template #actionsTp>
+  <button mat-stroked-button color="primary" class="btn-pri-out" (click)="btnRegresar()" *ngIf="numPaso === PASOS.FIN">Regresar</button>
+  <button mat-raised-button class="btn-principal" (click)="btnChequesRet()" *ngIf="numPaso === PASOS.INI">Cheques y
+    retenciones</button>
+</ng-template>

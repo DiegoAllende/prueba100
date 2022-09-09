@@ -1,0 +1,37 @@
+<div class="movimientos">
+  <div class="movimientos-titulo">
+    <label class="title3-pri">Mis movimientos</label>
+  </div>
+
+  <div class="movimientos-container">
+    <div class="movimientos-container-filters-pdf">
+      <label class="subtitle2-sec">Estado de cuenta :</label>
+      <div class="movimientos-container-filters-pdf-content ">
+        <div class="movimientos-container-filters-pdf-filter">
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-select [(ngModel)]="mesAnio" placeholder="Mes/Año">
+              <mat-option *ngFor="let date of listDates" [value]="date.stringMuestra">
+                {{date.stringMuestra | titlecase}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <button mat-stroked-button class="btn-principal movimientos-container-filters-pdf-btn" (click)="btnVerPdf()">Ver
+          PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="movimientos-tabla">
+    <div class="movimientos-tabla-header">
+      <span class="subtitle3-pri movimientos-tabla-header-operation">Operación</span>
+      <span class="subtitle3-pri movimientos-tabla-header-date-desktop">Fecha</span>
+      <span class="subtitle3-pri movimientos-tabla-header-mounth-desktop">Monto</span>
+      <span class="subtitle3-pri movimientos-tabla-header-date">Fecha/monto</span>
+    </div>
+    <div class="movimientos-tabla-body">
+      <app-acordeon-movimiento *ngFor="let item of lista" [movimiento]="item">
+      </app-acordeon-movimiento>
+    </div>
+  </div>
+</div>

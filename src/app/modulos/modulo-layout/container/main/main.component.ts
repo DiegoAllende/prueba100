@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthLoginStore } from '@modulos/modulo-auth/services/authLogin.store';
+import { adapterDatosCuenta } from '@modulos/modulo-consultas/models-adapter/ahorro.adapter';
+import { adapterMovimientos } from '@modulos/modulo-consultas/models-adapter/movimientos.adapter';
+import { adapterRetenciones } from '@modulos/modulo-consultas/models-adapter/retenciones.adapter';
+import { CuentaDatos } from '@modulos/modulo-consultas/models/cuenta-datos.model';
+import { Movimientos } from '@modulos/modulo-consultas/models/movimientos.model';
+import { Retenciones } from '@modulos/modulo-consultas/models/retenciones.model';
 import { CuentasService } from '@shared/services/cuentas.service';
-import { INTER_PATHS, INTER_ROUTES } from '@utils/const-rutas';
-import { ROLES } from '@utils/constantes';
+import { INTER_ROUTES } from '@utils/const-rutas';
+import { PASOS, ROLES } from '@utils/constantes';
+import { combineLatest } from 'rxjs';
 import { adapterListaCuentas } from '../../models-adapter/inicio.adapter';
 import { ListaCuenta } from '../../models/lista-cuenta.model';
 
@@ -14,18 +21,28 @@ import { ListaCuenta } from '../../models/lista-cuenta.model';
   styleUrls: ['./main.component.scss']
 })
 export class MainComponent implements OnInit {
+  codigoPers = "";
+
   listaAhorros: ListaCuenta[] = [];
   listaPagos: any = [];
   listaTansf: any = [];
 
-  isConCard: boolean = true;
+  isConCard: boolean = false;
+  isCuentas: boolean = false;
+  cuenta!: CuentaDatos;
+  listaMovimientos: Movimientos[] = [];
+  listaRetenciones: Retenciones[] = [];
+
+  PASOS = PASOS;
+  numPaso: number = PASOS.INI;
 
   constructor(
     private router: Router,
     private cuentasService: CuentasService,
     private authLoginStore: AuthLoginStore,
   ) {
-    // this.isConCard = this.authLoginStore.getDataAuth.role.includes(ROLES.CON_CARD);
+    this.isConCard = this.authLoginStore.getDataAuth.role.includes(ROLES.CON_CARD);
+    this.codigoPers = this.authLoginStore.getDataAuth.sid || "";
   }
 
   ngOnInit(): void {
@@ -38,7 +55,47 @@ export class MainComponent implements OnInit {
   getListAhorros() {
     this.cuentasService.getCuentasClienteListar().subscribe(resp => {
       this.listaAhorros = adapterListaCuentas(resp);
+      if (this.listaAhorros.length === 0) {
+        this.isCuentas = false;
+      } else {
+        const aux = this.listaAhorros.find(y => y.active);
+        if (aux) this.btnCard(aux);
+      }
     }, error => console.log("**error**: ", error));
+  }
+
+  getDatosCuenta(params: any) {
+    return this.cuentasService.getCuentaDatosObtener(params);
+  }
+
+  getMovimientos(params: any) {
+    return this.cuentasService.getCuentaMovimientosListar(params);
+  }
+
+  getRetenciones(params: any) {
+    return this.cuentasService.getCuentaRetencionesListar(params);
+  }
+
+  btnCard(item: ListaCuenta) {
+    this.listaMovimientos = [];
+    this.listaRetenciones = [];
+
+    this.numPaso = PASOS.INI;
+    this.listaAhorros.forEach((x) => x.active = false);
+    item.active = true;
+
+    const params = {pstrCodPers: this.codigoPers, pstrCodCta: item.codCuenta};
+    combineLatest([
+      this.getDatosCuenta(params),
+      this.getMovimientos(params),
+      this.getRetenciones(params)
+    ]).subscribe(resp => {
+      if (resp[0]) this.cuenta = adapterDatosCuenta(resp[0]);
+      if (resp[1]) this.listaMovimientos = adapterMovimientos(resp[1]);
+      if (resp[2]) this.listaRetenciones = adapterRetenciones(resp[2]);
+    }, error => {
+      console.log("**error**: ", error);
+    });
   }
 
   getListPagos() {
@@ -59,7 +116,6 @@ export class MainComponent implements OnInit {
       { icono: "dinero", titulo: "Envíos de giros", url: INTER_ROUTES.TRAN_ENVIAR_GIRO },
     ];
   }
-
   
   //BOTONES
   btnIrAhorros(item: ListaCuenta) {
@@ -75,6 +131,18 @@ export class MainComponent implements OnInit {
   btnIrTransferencia(item: any) {
     if (!item.url) return;
     this.router.navigate([item.url]);
+  }
+
+  btnEstadoCuenta(val: any) {
+    console.log("val: ", val);
+  }
+
+  btnChequesRet() {
+    this.numPaso = PASOS.FIN;
+  }
+  
+  btnRegresar() {
+    this.numPaso = PASOS.INI;
   }
 
 }

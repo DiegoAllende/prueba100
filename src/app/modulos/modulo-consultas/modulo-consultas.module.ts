@@ -6,7 +6,6 @@ import { ConsultasLayoutComponent } from './layout/consultas-layout/consultas-la
 import { AhorrosComponent } from './container/ahorros/ahorros.component';
 import { CreditosComponent } from './container/creditos/creditos.component';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { ChequesRetencionesComponent } from './components/cheques-retenciones/cheques-retenciones.component';
 import { SegurosComponent } from './container/seguros/seguros.component';
 import { ListSegurosMobileComponent } from './components/list-seguros-mobile/list-seguros-mobile.component';
 import { ListSegurosDesktopComponent } from './components/list-seguros-desktop/list-seguros-desktop.component';
@@ -21,7 +20,6 @@ import { InformacionCreditosComponent } from './components/informacion-creditos/
     ConsultasLayoutComponent,
     AhorrosComponent,
     CreditosComponent,
-    ChequesRetencionesComponent,
     SegurosComponent,
     ListSegurosMobileComponent,
     ListSegurosDesktopComponent,

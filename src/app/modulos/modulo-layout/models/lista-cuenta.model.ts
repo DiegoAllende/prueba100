@@ -5,4 +5,5 @@ export interface ListaCuenta {
   subTitulo: string;
   icono: string;
   url: string;
+  active: boolean;
 }

@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Retenciones } from '../../models/retenciones.model';
+import { Retenciones } from '@modulos/modulo-consultas/models/retenciones.model';
 
 @Component({
   selector: 'app-cheques-retenciones',

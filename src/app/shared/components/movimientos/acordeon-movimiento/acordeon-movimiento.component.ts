@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Movimientos } from 'src/app/modulos/modulo-consultas/models/movimientos.model';
+import { Movimientos } from '@modulos/modulo-consultas/models/movimientos.model';
 
 @Component({
   selector: 'app-acordeon-movimiento',

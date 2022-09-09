@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthLoginStore } from '@modulos/modulo-auth/services/authLogin.store';
 import { CuentasService } from '@shared/services/cuentas.service';
 import { INTER_ROUTES } from '@utils/const-rutas';
 import { PASOS } from '@utils/constantes';
-import * as moment from 'moment';
 import { adapterDatosCuenta } from '../../models-adapter/ahorro.adapter';
 import { adapterMovimientos } from '../../models-adapter/movimientos.adapter';
 import { adapterRetenciones } from '../../models-adapter/retenciones.adapter';
@@ -18,15 +18,10 @@ import { Retenciones } from '../../models/retenciones.model';
 })
 export class AhorrosComponent implements OnInit {
   codigoCuenta = "";
+  codigoPers = "";
   cuenta!: CuentaDatos;
   listaRetenciones: Retenciones[] = [];
   listaMovimientos: Movimientos[] = [];
-
-  listDates!:any[]
-  year:string = ''
-  month:string = ''
-  yearPdf:string = ''
-  movementsList:any[]=[];
 
   PASOS = PASOS;
   numPaso: number = PASOS.INI;
@@ -35,20 +30,21 @@ export class AhorrosComponent implements OnInit {
     private router:Router,
     private activeRoute: ActivatedRoute,
     private cuentasService: CuentasService,
+    private authLoginStore: AuthLoginStore,
   ) {
     this.codigoCuenta = this.activeRoute.snapshot.paramMap.get('codCuenta') || "";
+    this.codigoPers = this.authLoginStore.getDataAuth.sid || "";
   }
 
   ngOnInit(): void {
     this.getDatosCuenta();
     this.getMovimientos();
     this.getRetenciones();
-    this.getDates(12);
   }
 
   //SERVICIOS
   getDatosCuenta() {
-    const params = {pstrCodPers: "4900127272", pstrCodCta: this.codigoCuenta};
+    const params = {pstrCodPers: this.codigoPers, pstrCodCta: this.codigoCuenta};
     this.cuentasService.getCuentaDatosObtener(params).subscribe(resp => {
       this.cuenta = adapterDatosCuenta(resp);
     }, error => {
@@ -57,7 +53,7 @@ export class AhorrosComponent implements OnInit {
   }
 
   getMovimientos() {
-    const params = {pstrCodPers: "4900127272", pstrCodCta: this.codigoCuenta};
+    const params = {pstrCodPers: this.codigoPers, pstrCodCta: this.codigoCuenta};
     this.cuentasService.getCuentaMovimientosListar(params).subscribe(resp => {
       this.listaMovimientos = adapterMovimientos(resp);
     }, error => {
@@ -66,7 +62,7 @@ export class AhorrosComponent implements OnInit {
   }
 
   getRetenciones() {
-    const params = {pstrCodPers: "4900127272", pstrCodCta: this.codigoCuenta};
+    const params = {pstrCodPers: this.codigoPers, pstrCodCta: this.codigoCuenta};
     this.cuentasService.getCuentaRetencionesListar(params).subscribe(resp => {
       this.listaRetenciones = adapterRetenciones(resp);
     }, error => {
@@ -74,8 +70,8 @@ export class AhorrosComponent implements OnInit {
     });
   }
 
-  btnVerPdf() {
-    console.log("estado de cuenta");
+  btnEstadoCuenta(val: any) {
+    console.log("val: ", val);
   }
 
   btnChequesRet() {
@@ -86,22 +82,5 @@ export class AhorrosComponent implements OnInit {
   btnRegresar() {
     if(this.numPaso === PASOS.INI) this.router.navigateByUrl(INTER_ROUTES.MAIN);
     this.numPaso = PASOS.INI;
-  }
-
-  getDates(number:number){
-    let date = new Date()
-    let startDate = moment(date).locale('es-es');;
-    const result = [];
-
-    for(let i=0; i < number;i++ ){
-      startDate.subtract(1,'month')
-      let obj = {
-        mes: startDate.format('MMMM'),
-        anio: startDate.format('YYYY'),
-        stringMuestra: `${startDate.format('MMMM')} / ${startDate.format('YYYY')}`
-      }
-      result.push(obj)
-    }
-    this.listDates = result
   }
 }
