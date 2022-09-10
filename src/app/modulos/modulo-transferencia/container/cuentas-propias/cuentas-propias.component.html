@@ -35,34 +35,36 @@
   <mat-stepper labelPosition="bottom" linear [selectedIndex]="stepIndex">
     <mat-step label="Datos">
       <ng-template matStepContent>
+        <form [formGroup]="formTransCuentasPropias">
         <section>
           <div class="row" style="align-items: flex-end;">
             <div class="col-12 col-sm-6">
               <label class="label-pri mb-2">Cuenta origen:</label>
-              <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaOrigen"></select-cuentas>
+              <select-cuentas [lista]="listaCuentasOrigen" formControlName="cuentaOrigen"></select-cuentas>
             </div>
             <div class="col-12 col-sm-6">
               <label class="label-pri mb-2">Cuenta destino:</label>
-              <select-cuentas [lista]="listaCuentas" [(ngModel)]="values.cuentaDestino"></select-cuentas>
+              <select-cuentas [lista]="listaCuentasDestino" formControlName="cuentaDestino"></select-cuentas>
             </div>
   
             <div class="col-6">
               <label class="label-secN">Moneda</label>
               <mat-form-field appearance="outline" style="width: 100%;">
-                <mat-select [(ngModel)]="values.moneda">
-                  <mat-option value="1">Soles</mat-option>
-                  <mat-option value="2">Dolares</mat-option>
+                <mat-select formControlName="tipoMoneda">
+                  <mat-option *ngFor="let moneda of listaMoneda" [value]="moneda.valor">{{moneda.label}}</mat-option>
+                  
                 </mat-select>
               </mat-form-field>
             </div>
             <div class="col-6">
               <label class="label-secN">Monto a transferir</label>
               <mat-form-field appearance="outline" style="width: 100%;">
-                <input matInput autocomplete="off" [(ngModel)]="values.monto">
+                <input matInput autocomplete="off" formControlName="monto">
               </mat-form-field>
             </div>
           </div>
         </section>
+      </form>
       </ng-template>
     </mat-step>
 
@@ -85,6 +87,6 @@
 <ng-template #actionsTp>
   <button mat-stroked-button color="primary" class="btn-pri-out" *ngIf="stepIndex !== 2"
     (click)="btnRegresar()">Regresar</button>
-  <button mat-raised-button class="btn-principal" (click)="btnContinuar()">{{stepIndex !== 2 ? 'Continuar': 'Ir a
+  <button mat-raised-button class="btn-principal" (click)="btnContinuar()" [disabled]="formTransCuentasPropias.invalid">{{stepIndex !== 2 ? 'Continuar': 'Ir a
     transferencias'}}</button>
 </ng-template>

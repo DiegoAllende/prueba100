@@ -1,14 +1,12 @@
 import { Component, EventEmitter, OnDestroy, OnInit, Input, Output } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ContadorService } from 'src/app/shared/components/contador/contador.service';
-import { Constantes } from 'src/app/shared/utils/constantes';
+import { Constantes, TIPO_AUTH } from 'src/app/shared/utils/constantes';
 import { Desencriptar, Encriptar } from 'src/app/shared/utils/funcion-crypto';
 import { environment } from 'src/environments/environment';
-import { Router } from '@angular/router';
 import { ComboModel } from '@shared/models/generico/generico.models';
 import { AppAuhtOut } from '../../models/auth-login.interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { INTER_ROUTES } from '@utils/const-rutas';
 
 @Component({
   selector: 'app-con-tarjeta',
@@ -18,6 +16,7 @@ import { INTER_ROUTES } from '@utils/const-rutas';
 export class ConTarjetaComponent implements OnInit, OnDestroy {
   @Input() listaTipoDoi: ComboModel[] = [];
   @Output() outIngresar: EventEmitter<AppAuhtOut> = new EventEmitter();
+  @Output() eGenPass: EventEmitter<boolean> = new EventEmitter();
 
   keyEnCrypto = environment.keyCryptoTarjeta;
   PIN = Constantes.PIN;
@@ -29,11 +28,9 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
   isRecuerdame = false;
   isRecaptcha = false;
 
-
   constructor(
     private fb: FormBuilder,
     private contadorService: ContadorService,
-    private router: Router,
   ) {
     this.initForm();
     this.valObs = this.contadorService.terminarSesionObs$().subscribe(resp => {
@@ -44,15 +41,18 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
   initForm() {
     this.formSelloAuth = this.fb.group({
       numTarjeta: ["", [Validators.required, Validators.minLength(10)]],
-      tipoDoi: [1, [Validators.required]],
+      tipoDoi: [null, [Validators.required]],
       numDoi: ["", [Validators.required, Validators.minLength(8)]],
       checkRecuerdame: false,
-      tipoAuth: 1,
+      tipoAuth: TIPO_AUTH.CON_CARD,
     });
   }
 
   get frNumTarjeta() {
     return this.formSelloAuth.get("numTarjeta");
+  }
+  get frTipoDoi() {
+    return this.formSelloAuth.get("tipoDoi");
   }
   get frNumDoi() {
     return this.formSelloAuth.get("numDoi");
@@ -62,6 +62,7 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
+    if(this.listaTipoDoi.length > 0) this.frTipoDoi?.setValue(this.listaTipoDoi[0].valor);
     this.obtenerNumTarjeta();
   }
 
@@ -105,7 +106,7 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
   }
 
   generatePassword() {
-    this.router.navigateByUrl(INTER_ROUTES.GENERAR_CLAVE_INTERNET);
+    this.eGenPass.emit(true);
   }
 
 }

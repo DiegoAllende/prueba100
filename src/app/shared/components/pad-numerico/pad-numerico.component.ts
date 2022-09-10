@@ -8,7 +8,7 @@ export class PadNumericoComponent implements OnInit {
 
   @Input() title:string= ''
   @Input() valueDigits:number = 0
-  @Output() valueCod: EventEmitter<number> = new EventEmitter();
+  @Output() valueCod: EventEmitter<any> = new EventEmitter();
 
   public listNumbers: number[] = []
   public arrayInput:string[] =[]
@@ -37,17 +37,17 @@ export class PadNumericoComponent implements OnInit {
     if(this.arrayInput.length === this.valueDigits) return;
     this.arrayInput.push(itemSelected)
     this.valueInput = this.replaceAll(this.arrayInput.toString(),',','')
-    if(this.valueInput.length === this.valueDigits) this.valueCod.emit(parseInt(this.valueInput));
+    if(this.valueInput.length === this.valueDigits) this.valueCod.emit(this.valueInput);
   }
 
   deleteLastInput(){
-    this.valueCod.emit(0)
+    this.valueCod.emit("")
     this.arrayInput.pop()
     this.valueInput = this.replaceAll(this.arrayInput.toString(),',','')
   }
 
   deleteAllInput(){
-    this.valueCod.emit(0)
+    this.valueCod.emit("")
     this.arrayInput = []
     this.valueInput = ''
   }

@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthLoginStore } from '@modulos/modulo-auth/services/authLogin.store';
+import { adapterCuentasListIn, adapterParamsgetCuentasOut } from '@modulos/modulo-transferencia/models-adapter/transferencias.adapter';
+import { appCuentaSaldoIn, AppParamsListCuentasOut } from '@modulos/modulo-transferencia/models/transferencias-model.interfaces';
+import { dataAuthModel } from '@shared/models/auth/auth.models';
+import { GenericoService } from '@shared/services/generico.service';
 
 @Component({
   selector: 'app-creditos-propios',
@@ -8,10 +13,8 @@ import { Router } from '@angular/router';
 })
 export class CreditosPropiosComponent implements OnInit {
 
-  listaCuentas = [
-    { id: "1", cuenta: "Ahorro Sueldo", numero: "156729403782", monto: "2,357.16", mostrar: "156729403782 - S/1,357.16 " },
-    { id: "2", cuenta: "Ahorro Total Disponibilidad", numero: "156729403782", monto: "5,357.16", mostrar: "156729403782 - S/58.50" },
-  ];
+  datosUsuario: dataAuthModel
+  listaCuentas!: appCuentaSaldoIn[]
 
   listItemsSecondStep= [
     {
@@ -104,8 +107,8 @@ export class CreditosPropiosComponent implements OnInit {
   ]
 
   values = {
-    cuentaOrigen: "1",
-    cuentaDestino: "2",
+    cuentaOrigen: "156729403782",
+    cuentaDestino: "156729403782",
     moneda: "1",
     monto: "",
     pagocuota: null
@@ -117,11 +120,16 @@ export class CreditosPropiosComponent implements OnInit {
   ocultarCard: boolean = false;
 
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private genericoService: GenericoService,
+    private authService: AuthLoginStore
+  ) { 
+    this.datosUsuario = authService.getDataAuth
+  }
 
   ngOnInit(): void {
     console.log("cuenta propia init");
+    this.getCuentasAhorro()
   }
 
   stepIndex = 0;
@@ -157,5 +165,17 @@ export class CreditosPropiosComponent implements OnInit {
   selectPagoParcial(){
     this.pagoParcial = true;
     this.cuotasPago = false;
+  }
+
+  getCuentasAhorro(){
+    const params: AppParamsListCuentasOut = {
+      codPers: this.datosUsuario.sid!,
+      canalAtencion: 1
+    };
+    this.genericoService.getCuentaOrigenListar(adapterParamsgetCuentasOut(params)).subscribe(
+     resp=>{
+      this.listaCuentas = adapterCuentasListIn(resp)
+     }
+    )
   }
 }

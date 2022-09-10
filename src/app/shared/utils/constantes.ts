@@ -7,8 +7,14 @@ export class Constantes {
   //PIN TARJETA
   public static PIN = "444686";
   public static PIN_MASK = "4446-86";
-  //MENSAJES
+  /* --------MENSAJES------- */
+  // MENSAJES VALIDACIONES
   public static MSJ_CLAVES_DIF = "las claves deben ser iguales. Vuelva a ingresar las claves, por favor.";
+  // MENSAJES HTTP
+  public static MSJ_ERROR_DESCONOCIDO = "Ocurrió algo inesperado. Vuelva a intentar.";
+  //MENSAJES UI
+  public static MSJ_INFO_SIN_TARJETA = "Para el uso de clientes que solo cuenten con depósito a plazo fijo y/o créditos";
+
 }
 
 export enum PASOS {
@@ -17,6 +23,16 @@ export enum PASOS {
   TRES = 3,
   CUATRO = 4,
   FIN = 99,
+}
+
+export enum TIPO_AUTH {
+  CON_CARD = 1,
+  SIN_CARD = 2,
+}
+
+export enum TIPO_PERSONA {
+  NATURAL = 1,
+  JURIDICA = 2,
 }
 
 export enum ESTADOS_CUOTA {

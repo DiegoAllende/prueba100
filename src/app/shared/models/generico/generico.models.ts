@@ -1,3 +1,5 @@
+import { TraceCMACTModel } from "./http.model";
+
 export interface ComboModel {
   label: string;
   valor: string | number | boolean;
@@ -23,4 +25,30 @@ export interface SelloSeguridadModel {
   strDescripcion: string;
   bytSello: any;
 }
+
+export interface TipoCuentaSaldoInModel{
+  strCodProd: string;
+  strProducto: string;
+  strCodCta: string;
+  strSubProducto: string;
+  bytMoneda: number;
+  strMonSimbolo: string;
+  decSaldoDisp: number;
+  blnOrigen: boolean
+}
+
+export interface ParamsListaCuentasOutModel{
+  pstrCodPers:string;
+  pintCanalAtencion : number;
+  pobjTrace?:TraceCMACTModel;
+}
+
+export  interface TipoMonedaInModel{
+  strCodeMon: number;
+  strMoneda: string;
+}
+
+
+
+
 

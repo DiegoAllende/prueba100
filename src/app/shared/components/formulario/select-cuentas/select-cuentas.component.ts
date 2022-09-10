@@ -1,5 +1,6 @@
 import { Component, forwardRef, Input, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { appCuentaSaldoIn } from '@modulos/modulo-transferencia/models/transferencias-model.interfaces';
 
 @Component({
   selector: 'select-cuentas',
@@ -14,13 +15,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
   ]
 })
 export class SelectCuentasComponent implements ControlValueAccessor {
-  @Input() lista: {
-    id: string,
-    cuenta: string,
-    numero: string,
-    monto: string,
-    mostrar: string
-  }[] = [];
+  @Input() lista:appCuentaSaldoIn[] = [];
 
   labelSelect = "Seleccione";
   currentValue = "";
@@ -53,7 +48,8 @@ export class SelectCuentasComponent implements ControlValueAccessor {
   }
 
   changeSelect(val: any) {
-    this.labelSelect = this.lista.find(x => x.id === val.value)?.cuenta || "";
+    console.log(val)
+    this.labelSelect = this.lista.find(x => x.codigoCuenta === val.value)?.descripcionSubProducto || "";
     this.setNewValue(val.value);
   }
 

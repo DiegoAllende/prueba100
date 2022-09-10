@@ -39,7 +39,7 @@ export class ClaveComponent implements OnInit {
     this.authService.getToken(adapterAppAutenticarOut(this.reqAppLogin)).subscribe(resp => {
       console.log("cual sera esta respues",resp)
       this.cookieService.set(Constantes.TOKEN_ACCESS, resp.access_token, 1, '/');
-      this.authLoginStore.transformarDataToken(this.cookieService.get(Constantes.TOKEN_ACCESS));
+      this.authLoginStore.transformarDataToken(resp.access_token);
       if(resp.isNeedChangePassword === "True") {
         //ruta de cambiar clave
         this.router.navigateByUrl(INTER_ROUTES.GENERAR_CLAVE_CAMBIAR_TEMP);

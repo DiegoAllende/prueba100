@@ -2,6 +2,7 @@ export const environment = {
   production: false,
   urlbase: "https://animechan.vercel.app/api",
 
+  urlCommon: "http://192.170.3.7/common/api/v1/common/",
   urlToken: "http://192.170.3.7/securitytoken", //  /oauth2/token
   urlAccount: "http://192.170.3.7/account/api/v1/", // 
   urlChannels: "http://192.170.3.8/channels/api/v1/channels/",

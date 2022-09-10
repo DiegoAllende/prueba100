@@ -3,6 +3,11 @@ import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { ThemePalette } from '@angular/material/core';
 import { Router } from '@angular/router';
+import { AuthLoginStore } from '@modulos/modulo-auth/services/authLogin.store';
+import { adapterCuentasListIn, adapterParamsgetCuentasOut } from '@modulos/modulo-transferencia/models-adapter/transferencias.adapter';
+import { appCuentaSaldoIn, AppParamsListCuentasOut } from '@modulos/modulo-transferencia/models/transferencias-model.interfaces';
+import { dataAuthModel } from '@shared/models/auth/auth.models';
+import { GenericoService } from '@shared/services/generico.service';
 
 export interface Couta {
   name: string;
@@ -21,6 +26,9 @@ export class CreditosTercerosComponent implements OnInit {
   labelSelect1 = "Ahorro Sueldo";
   labelSelect2 = "Ahorro Total Disponibilidad";
 
+  datosUsuario: dataAuthModel
+  listaCuentas!: appCuentaSaldoIn[]
+
   radioSelected:boolean = true
   ocultarCard: boolean = false;
   public formCheck!: FormGroup;
@@ -29,11 +37,6 @@ export class CreditosTercerosComponent implements OnInit {
       {name: 'Cuota 6',subtitle:'Vcto. 20/08/2022', completed: false, color: 'primary'},
       {name: 'Cuota 7',subtitle:'Vcto. 20/08/2022', completed: false, color: 'primary'},
     ]
-  
-  listaCuentas = [
-    { id: "1", cuenta: "Ahorro Sueldo", numero: "156729403782", monto: "2,357.16", mostrar: "156729403782 - S/1,357.16 " },
-    { id: "3", cuenta: "Ahorro Total Disponibilidad", numero: "156729403782", monto: "5,357.16", mostrar: "156729403782 - S/58.50" },
-  ];
 
   empresas = [
     {name:"Luz del Sur", id:"1"},
@@ -42,7 +45,7 @@ export class CreditosTercerosComponent implements OnInit {
     {name:"Gas natural", id:"4"}
   ]
   values = {
-    cuentaOrigen: "1",
+    cuentaOrigen: "156729403782",
     nroCredito: "Nro. 103356729403782",
     moneda: "1",
     monto:"S/ 1400.00",
@@ -121,24 +124,19 @@ export class CreditosTercerosComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private genericoService: GenericoService,
+    private authService: AuthLoginStore
   ) { 
     console.log("cuenta propia init");
-    
+    this.datosUsuario = authService.getDataAuth
   }
 
   ngOnInit(): void {
     this.formCheck = this.formBuilder.group({
       items: new FormControl(null)
     });
-  }
-
-  changeSelect(val: any) {
-    this.labelSelect1 = this.listaCuentas.find(x => x.id === val.value)?.cuenta || "";
-  }
-
-  changeSelect2(val: any) {
-    this.labelSelect2 = this.listaCuentas.find(x => x.id === val.value)?.cuenta || "";
+    this.getCuentasAhorro()
   }
 
   stepIndex = 0;
@@ -170,5 +168,18 @@ export class CreditosTercerosComponent implements OnInit {
   radioTipoChange(){
     console.log(this.radioSelected)
   }
+
+  
+getCuentasAhorro(){
+  const params: AppParamsListCuentasOut = {
+    codPers: this.datosUsuario.sid!,
+    canalAtencion: 1
+  };
+  this.genericoService.getCuentaOrigenListar(adapterParamsgetCuentasOut(params)).subscribe(
+   resp=>{
+    this.listaCuentas = adapterCuentasListIn(resp)
+   }
+  )
+}
 
 }

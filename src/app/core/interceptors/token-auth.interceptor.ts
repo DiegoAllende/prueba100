@@ -8,15 +8,18 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { ErrorRespModel } from '@shared/models/generico/http.model';
+import { ErrorRespModel, ResponseModel } from '@shared/models/generico/http.model';
+import { Constantes } from '@utils/constantes';
 
 @Injectable()
 export class TokenAuthInterceptor implements HttpInterceptor {
-  errorOut: ErrorRespModel = {
-    intCodigo: 0,
-    strDescripcion: "",
-    strAdicional: ""
-  }
+  errorOut: ResponseModel<any> = {
+    isSuccess: false,
+    message: "",
+    messageCode: null,
+    messageType: null,
+    data: null,
+  };
 
   constructor(private cookieService: CookieService) {}
 
@@ -32,20 +35,25 @@ export class TokenAuthInterceptor implements HttpInterceptor {
     }
     return next.handle(request).pipe(
       catchError((error) => {
+        console.log("EROR: ", error);
         return throwError(() => this.handelError(error));
       })
     );
   }
   
-  handelError(error: HttpErrorResponse) {
-    if(error.status === 0) {
-      this.errorOut.intCodigo = error.status;
-      this.errorOut.strDescripcion = " Ocurrió algo inesperado. Vuelva a intentar.";
-      this.errorOut.strAdicional = error.message;
+  handelError(e: HttpErrorResponse): ResponseModel<any> {
+    if(e.status === 0) {
+      this.errorOut.isSuccess = false;
+      this.errorOut.message = Constantes.MSJ_ERROR_DESCONOCIDO;
+      this.errorOut.data = null;
+      this.errorOut.messageCode = -1;
+      this.errorOut.messageType = null;
     } else {
-      this.errorOut.intCodigo = error.status;
-      this.errorOut.strDescripcion = error.error;
-      this.errorOut.strAdicional = error.message;
+      this.errorOut.isSuccess = e.error.IsSuccess || false;
+      this.errorOut.message =  e.error.Message || Constantes.MSJ_ERROR_DESCONOCIDO;
+      this.errorOut.data = null;
+      this.errorOut.messageCode = e.error.MessageCode || -1;
+      this.errorOut.messageType = e.error.MessageType || null;
     }
 
     return this.errorOut;

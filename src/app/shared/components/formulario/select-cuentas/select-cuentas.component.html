@@ -2,7 +2,7 @@
   <mat-form-field appearance="fill" floatLabel="always">
     <mat-label>{{labelSelect}}</mat-label>
     <mat-select (selectionChange)="changeSelect($event)" [(ngModel)]="currentValue">
-      <mat-option *ngFor="let item of lista" [value]="item?.id">{{item?.mostrar}}</mat-option>
+      <mat-option *ngFor="let item of lista" [value]="item?.codigoCuenta">{{item?.codigoCuenta}} - {{item.monedaSimbolo}}{{item.saldoDisponible}}</mat-option>
     </mat-select>
   </mat-form-field>
 </div>

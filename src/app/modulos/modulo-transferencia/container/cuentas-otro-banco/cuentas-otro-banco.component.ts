@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthLoginStore } from '@modulos/modulo-auth/services/authLogin.store';
+import { adapterCuentasListIn, adapterParamsgetCuentasOut } from '@modulos/modulo-transferencia/models-adapter/transferencias.adapter';
+import { appCuentaSaldoIn, AppParamsListCuentasOut } from '@modulos/modulo-transferencia/models/transferencias-model.interfaces';
+import { dataAuthModel } from '@shared/models/auth/auth.models';
+import { GenericoService } from '@shared/services/generico.service';
 
 @Component({
   selector: 'app-cuentas-otro-banco',
@@ -10,14 +15,16 @@ export class CuentasOtroBancoComponent implements OnInit {
   ocultarCard: boolean = false;
   stepIndex = 0;
   numCard = 1;
+  datosUsuario: dataAuthModel
+  listaCuentas!: appCuentaSaldoIn[]
 
-  listaCuentas = [
-    { id: "1", cuenta: "Ahorro Sueldo", numero: "156729403782", monto: "2,357.16", mostrar: "156729403782 - S/1,357.16 " },
-    { id: "2", cuenta: "Ahorro Total Disponibilidad", numero: "156729403782", monto: "5,357.16", mostrar: "156729403782 - S/58.50" },
-  ];
+  // listaCuentas = [
+  //   { id: "1", cuenta: "Ahorro Sueldo", numero: "156729403782", monto: "2,357.16", mostrar: "156729403782 - S/1,357.16 " },
+  //   { id: "2", cuenta: "Ahorro Total Disponibilidad", numero: "156729403782", monto: "5,357.16", mostrar: "156729403782 - S/58.50" },
+  // ];
 
   valuesDiferido = {
-    cuentaOrigen: "1",
+    cuentaOrigen: "156729403782",
     cuentaDestino: "",
     tipo: "1",
     moneda: "1",
@@ -27,7 +34,7 @@ export class CuentasOtroBancoComponent implements OnInit {
   }
 
   valuesInmediata = {
-    cuentaOrigen: "1",
+    cuentaOrigen: "156729403782",
     cuentaDestino: "",
     tipo: "1",
     moneda: "1",
@@ -38,12 +45,16 @@ export class CuentasOtroBancoComponent implements OnInit {
   mensajesValid: string = "Asegurate de ingresar todos los digitos del codigo recibido por SMS";
 
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private genericoService: GenericoService,
+    private authService: AuthLoginStore
+  ) {
+    this.datosUsuario = authService.getDataAuth
+   }
 
   ngOnInit(): void {
     this.getCreditosOtrosBancos();
-
+    this.getCuentasAhorro()
   }
 
   btnCard(item: any) {
@@ -160,5 +171,18 @@ export class CuentasOtroBancoComponent implements OnInit {
       title: 'Monto cargado',
       data: 'S/100.00'
     }];
+
+
+    getCuentasAhorro(){
+      const params: AppParamsListCuentasOut = {
+        codPers: this.datosUsuario.sid!,
+        canalAtencion: 1
+      };
+      this.genericoService.getCuentaOrigenListar(adapterParamsgetCuentasOut(params)).subscribe(
+       resp=>{
+        this.listaCuentas = adapterCuentasListIn(resp)
+       }
+      )
+    }
 
 }

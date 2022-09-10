@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthLoginStore } from '@modulos/modulo-auth/services/authLogin.store';
+import { adapterCuentasListIn, adapterParamsgetCuentasOut } from '@modulos/modulo-transferencia/models-adapter/transferencias.adapter';
+import { appCuentaSaldoIn, AppParamsListCuentasOut } from '@modulos/modulo-transferencia/models/transferencias-model.interfaces';
+import { dataAuthModel } from '@shared/models/auth/auth.models';
+import { GenericoService } from '@shared/services/generico.service';
 
 @Component({
   selector: 'app-enviar-giro',
@@ -12,6 +17,9 @@ export class EnviarGiroComponent implements OnInit {
   stepComplete: boolean = false;
   isEditable: boolean = true;
   ocultarCard: boolean = false;
+
+  datosUsuario: dataAuthModel
+  listaCuentas!: appCuentaSaldoIn[]
 
   listItemsSecondStep= [
     {
@@ -60,14 +68,8 @@ export class EnviarGiroComponent implements OnInit {
     }
   ]
 
-  listaCuentas = [
-    { id: "1", cuenta: "Ahorro Sueldo", numero: "156729403782", monto: "2,357.16", mostrar: "156729403782 - S/1,357.16 " },
-    { id: "3", cuenta: "Ahorro Total Disponibilidad", numero: "156729403782", monto: "5,357.16", mostrar: "156729403782 - S/58.50" },
-  ];
-
-
   values = {
-    cuenta:"1",
+    cuenta:"156729403782",
     nombre:"Sergio",
     apePaterno:"Luna",
     apeMaterno:"Flores",
@@ -77,9 +79,16 @@ export class EnviarGiroComponent implements OnInit {
     monto:"S/50"
   }
 
-  constructor(private router:Router) { }
+  constructor(
+    private router:Router,
+    private genericoService: GenericoService,
+    private authService: AuthLoginStore
+    ) {
+      this.datosUsuario = authService.getDataAuth
+     }
 
   ngOnInit(): void {
+    this.getCuentasAhorro()
   }
 
   btnRegresar() {
@@ -102,6 +111,18 @@ export class EnviarGiroComponent implements OnInit {
     if(this.stepIndex === 2) {
       this.ocultarCard = true;
     }
+  }
+
+  getCuentasAhorro(){
+    const params: AppParamsListCuentasOut = {
+      codPers: this.datosUsuario.sid!,
+      canalAtencion: 1
+    };
+    this.genericoService.getCuentaOrigenListar(adapterParamsgetCuentasOut(params)).subscribe(
+     resp=>{
+      this.listaCuentas = adapterCuentasListIn(resp)
+     }
+    )
   }
 
 }

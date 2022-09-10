@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthLoginStore } from '@modulos/modulo-auth/services/authLogin.store';
+import { adapterCuentasListIn, adapterParamsgetCuentasOut } from '@modulos/modulo-transferencia/models-adapter/transferencias.adapter';
+import { appCuentaSaldoIn, AppParamsListCuentasOut } from '@modulos/modulo-transferencia/models/transferencias-model.interfaces';
+import { dataAuthModel } from '@shared/models/auth/auth.models';
+import { GenericoService } from '@shared/services/generico.service';
 
 @Component({
   selector: 'app-pago-agua',
@@ -13,11 +18,13 @@ export class PagoAguaComponent implements OnInit {
   stepComplete: boolean = false;
   isEditable: boolean = true;
   ocultarCard: boolean = false;
+  datosUsuario: dataAuthModel
+  listaCuentas!: appCuentaSaldoIn[]
   public formRadioSimple!: FormGroup;
 
   values = {
     empresa: "",
-    cuenta:"1",
+    cuenta:"156729403782",
   }
 
   listEmpresas= [
@@ -99,17 +106,20 @@ export class PagoAguaComponent implements OnInit {
     {id:6, fechaVencimiento:'08/07/2022',mount:"S/20.16",hidden:true}
   ]
 
-  listaCuentas = [
-    { id: "1", cuenta: "Ahorro Sueldo", numero: "156729403782", monto: "2,357.16", mostrar: "156729403782 - S/1,357.16 " },
-    { id: "3", cuenta: "Ahorro Total Disponibilidad", numero: "156729403782", monto: "5,357.16", mostrar: "156729403782 - S/58.50" },
-  ];
-
-  constructor(private router: Router,private formBuilder: FormBuilder) { }
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private genericoService: GenericoService,
+    private authService: AuthLoginStore  
+  ) {
+    this.datosUsuario = authService.getDataAuth
+   }
 
   ngOnInit(): void {
     this.formRadioSimple = this.formBuilder.group({
       recibosSimples: ['']
     });
+    this.getCuentasAhorro()
   }
 
   btnRegresar() {
@@ -140,5 +150,17 @@ export class PagoAguaComponent implements OnInit {
 
   searchRecibos(){
     console.log("evento buscar recibos")
+  }
+
+  getCuentasAhorro(){
+    const params: AppParamsListCuentasOut = {
+      codPers: this.datosUsuario.sid!,
+      canalAtencion: 1
+    };
+    this.genericoService.getCuentaOrigenListar(adapterParamsgetCuentasOut(params)).subscribe(
+     resp=>{
+      this.listaCuentas = adapterCuentasListIn(resp)
+     }
+    )
   }
 }

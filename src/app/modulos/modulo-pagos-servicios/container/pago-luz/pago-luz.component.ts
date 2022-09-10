@@ -2,6 +2,11 @@ import { ConditionalExpr } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthLoginStore } from '@modulos/modulo-auth/services/authLogin.store';
+import { adapterCuentasListIn, adapterParamsgetCuentasOut } from '@modulos/modulo-transferencia/models-adapter/transferencias.adapter';
+import { appCuentaSaldoIn, AppParamsListCuentasOut } from '@modulos/modulo-transferencia/models/transferencias-model.interfaces';
+import { dataAuthModel } from '@shared/models/auth/auth.models';
+import { GenericoService } from '@shared/services/generico.service';
 import { PASOS } from '@utils/constantes';
 
 @Component({
@@ -11,11 +16,21 @@ import { PASOS } from '@utils/constantes';
 })
 export class PagoLuzComponent implements OnInit {
 
-  constructor(private router:Router,private formBuilder: FormBuilder) { }
+   
+  constructor(
+    private router:Router,
+    private formBuilder: FormBuilder,
+    private genericoService: GenericoService,
+    private authService: AuthLoginStore
+  ) {
+    this.datosUsuario = authService.getDataAuth
+  }
 
   PASOS= PASOS
   numPaso: null | number = null
   showRecibos:boolean = false
+  datosUsuario: dataAuthModel
+  listaCuentas!: appCuentaSaldoIn[]
 
   listEmpresas= [
     {id:"1",name:"HIDRANDINA"},
@@ -23,11 +38,6 @@ export class PagoLuzComponent implements OnInit {
     {id:"3",name:"ELECTRONOROESTE"},
     {id:"4",name:"ELECTRORIENTE"}
   ]
-
-  listaCuentas = [
-    { id: "1", cuenta: "Ahorro Sueldo", numero: "156729403782", monto: "2,357.16", mostrar: "156729403782 - S/1,357.16 " },
-    { id: "3", cuenta: "Ahorro Total Disponibilidad", numero: "156729403782", monto: "5,357.16", mostrar: "156729403782 - S/58.50" },
-  ];
 
   listItemsSecondStep= [
     {
@@ -101,7 +111,7 @@ export class PagoLuzComponent implements OnInit {
 
   values= {
     empresa:"",
-    cuenta:"1",
+    cuenta:"156729403782",
     suministro:""
   }
   
@@ -146,6 +156,20 @@ export class PagoLuzComponent implements OnInit {
     this.formRadioSimple = this.formBuilder.group({
       recibosSimples: ['']
     });
+
+    this.getCuentasAhorro()
+  }
+
+  getCuentasAhorro(){
+    const params: AppParamsListCuentasOut = {
+      codPers: this.datosUsuario.sid!,
+      canalAtencion: 1
+    };
+    this.genericoService.getCuentaOrigenListar(adapterParamsgetCuentasOut(params)).subscribe(
+     resp=>{
+      this.listaCuentas = adapterCuentasListIn(resp)
+     }
+    )
   }
   
 

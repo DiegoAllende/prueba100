@@ -1,5 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthLoginStore } from '@modulos/modulo-auth/services/authLogin.store';
+import { adapterCuentasListIn, adapterParamsgetCuentasOut } from '@modulos/modulo-transferencia/models-adapter/transferencias.adapter';
+import { appCuentaSaldoIn, AppParamsListCuentasOut } from '@modulos/modulo-transferencia/models/transferencias-model.interfaces';
+import { adpaterComboMoneda } from '@shared/models-adapter/generico.adapter';
+import { dataAuthModel } from '@shared/models/auth/auth.models';
+import { ComboModel } from '@shared/models/generico/generico.models';
+import { GenericoService } from '@shared/services/generico.service';
 
 @Component({
   selector: 'app-cuentas-propias',
@@ -9,27 +17,51 @@ import { Router } from '@angular/router';
 export class CuentasPropiasComponent implements OnInit {
   ocultarCard: boolean = false;
   stepIndex = 0;
+  datosUsuario: dataAuthModel
 
-  listaCuentas = [
-    { id: "1", cuenta: "Ahorro Sueldo", numero: "156729403782", monto: "2,357.16", mostrar: "156729403782 - S/1,357.16 " },
-    { id: "2", cuenta: "Ahorro Total Disponibilidad", numero: "156729403782", monto: "5,357.16", mostrar: "156729403782 - S/58.50" },
-  ];
+  formTransCuentasPropias!: FormGroup;
+  listaCuentasOrigen!: appCuentaSaldoIn[]
+  listaCuentasDestino!: appCuentaSaldoIn[]
+  listaMoneda!: ComboModel[]
 
   values = {
-    cuentaOrigen: "1",
-    cuentaDestino: "2",
-    moneda: "1",
+    cuentaOrigen: "156729403782",
+    cuentaDestino: "156729403782",
+    moneda: 1,
     monto: "",
   }
 
   mensajesValid: string = "La cuenta origen no posee saldo suficiente para realizar esta transacción";
 
   constructor(
-    private router: Router
-  ) { }
+    private router: Router,
+    private genericoService: GenericoService,
+    private authService: AuthLoginStore,
+    private fb: FormBuilder
+  ) {
+    this.datosUsuario = authService.getDataAuth
+    this.initForm();
+   }
+
+   initForm() {
+    this.formTransCuentasPropias = this.fb.group({
+      cuentaOrigen: ["", [Validators.required]],
+      cuentaDestino: ["", [Validators.required]],
+      tipoMoneda: ["", [Validators.required]],
+      monto: [null,[Validators.required]],
+    });
+  }
+
+  get frCuentaorigen(){
+    return this.formTransCuentasPropias.get('cuentaOrigen')
+  }
 
   ngOnInit(): void {
     console.log("cuenta propia init");
+    this.getCuentasOrigen()
+    this.getCuentasDestino()
+    this.getTiposMoneda()
+
   }
 
   btnRegresar() {
@@ -42,9 +74,15 @@ export class CuentasPropiasComponent implements OnInit {
   }
 
   btnContinuar() {
+
+    console.log("step",this.stepIndex)
+
+
     console.log("continuar");
     if (this.stepIndex < 2) {
       this.stepIndex++;
+      //llamar servicio aca
+
     } else {
       this.router.navigate(["/main"]);
     }
@@ -52,6 +90,8 @@ export class CuentasPropiasComponent implements OnInit {
     if (this.stepIndex === 2) {
       this.ocultarCard = true;
     }
+
+    console.log("step",this.stepIndex)
   }
 
   detalleDos = [
@@ -98,5 +138,36 @@ export class CuentasPropiasComponent implements OnInit {
       title: 'Monto cargado',
       data: 'S/100.00'
     }];
+
+    getCuentasOrigen(){
+      const params: AppParamsListCuentasOut = {
+        codPers: this.datosUsuario.sid!,
+        canalAtencion: 1
+      };
+      this.genericoService.getCuentaOrigenListar(adapterParamsgetCuentasOut(params)).subscribe(
+       resp=>{
+        this.listaCuentasOrigen = adapterCuentasListIn(resp)
+        this.frCuentaorigen?.setValue(this.listaCuentasOrigen[0].codigoCuenta)
+       }
+      )
+    }
+
+    getCuentasDestino(){
+      const params: AppParamsListCuentasOut = {
+        codPers: this.datosUsuario.sid!,
+        canalAtencion: 1
+      };
+      this.genericoService.getCuentaDestinoListar(adapterParamsgetCuentasOut(params)).subscribe(
+       resp=>{
+        this.listaCuentasDestino = adapterCuentasListIn(resp)
+       }
+      )
+    }
+
+    getTiposMoneda() {
+      this.genericoService.getMonedaListar(1).subscribe(resp => {
+        this.listaMoneda = adpaterComboMoneda(resp);
+      });
+    }
 
 }

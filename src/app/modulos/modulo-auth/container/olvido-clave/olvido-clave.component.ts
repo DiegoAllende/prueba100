@@ -71,7 +71,7 @@ export class OlvidoClaveComponent implements OnInit, OnDestroy {
   //SERVICIOS
   getTiposDoiServ() {
     this.genericoService.getTipoDoiListar(1).subscribe(resp => {
-      this.listaTiposDoi = adpaterComboDni(resp);
+      this.listaTiposDoi = adpaterComboDni(resp.data);
     });
   }
 
