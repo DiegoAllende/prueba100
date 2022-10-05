@@ -76,7 +76,7 @@ export class InputDocumentoComponent implements OnInit, OnDestroy, ControlValueA
       if (!String(e.key).match(this.regex)) {
         e.preventDefault();
       } else {
-        clearTimeout(this.tiempoMaskDocumento);
+        // clearTimeout(this.tiempoMaskDocumento);
         this.value.numDocumentoMask = obtenerMask(this.value.numDocumentoMask);
       }
     }
@@ -97,9 +97,9 @@ export class InputDocumentoComponent implements OnInit, OnDestroy, ControlValueA
       let objPartes = getPartesTarjeta(this.value.numDocumento, objLetra.pos, objLetra.letra);
       this.value.numDocumentoMask = objPartes.valorMask;
       this.value.numDocumento = objPartes.valor;
-      this.tiempoMaskDocumento = setTimeout(() => {
+      // this.tiempoMaskDocumento = setTimeout(() => {
         this.value.numDocumentoMask = obtenerMask(valLimpio);
-      }, 500);
+      // }, 500);
 
       this.setNewValue(this.value.numDocumento);
     }
