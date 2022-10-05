@@ -126,7 +126,7 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
     // this.event += '\n Touch (start): '+ `${i}`
     // this.pressed[i]=1;
     console.log("touchstart: ", i);
-    alert("touchstart: ")
+    // alert("touchstart: ")
     
   }
 
@@ -139,7 +139,7 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
 
   logClick(i: any) {
     console.log("click: ", i);
-    alert("click: ")
+    // alert("click: ")
     // this.event += '\n Click: '+`${i}` 
     // this.pressed[i]=1;
   }
