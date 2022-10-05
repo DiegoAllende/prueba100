@@ -1,4 +1,4 @@
-<mat-form-field class="input-tarjeta" appearance="fill" floatLabel="never">
+<!-- <mat-form-field class="input-tarjeta" appearance="fill" floatLabel="never">
   <span matPrefix class="input-tarjeta-pin">
     <app-icon-tarjeta></app-icon-tarjeta>
     <span class="input-tarjeta-pin-num input-size">{{PIN_MASK}}</span>
@@ -9,4 +9,19 @@
   <app-icon-ojo-abierto *ngIf="isVerTarjeta" matSuffix (click)="mostrarOcultarTarjeta()">
   </app-icon-ojo-abierto>
   <app-icon-ojo-cerrado *ngIf="!isVerTarjeta && !isDisabled" matSuffix (click)="mostrarOcultarTarjeta()"></app-icon-ojo-cerrado>
+</mat-form-field> -->
+
+<mat-form-field class="input-tarjeta" appearance="fill" floatLabel="never">
+  <span matPrefix class="input-tarjeta-pin">
+    <app-icon-tarjeta></app-icon-tarjeta>
+    <span class="input-tarjeta-pin-num input-size">{{PIN_MASK}}</span>
+  </span>
+  <input *ngIf="!isVerTarjeta" matInput inputmode="numeric" [hiddenInput]="true" mask="XX-XXXX-XXXX"
+    [(ngModel)]="valorResp" (ngModelChange)="changemodel()">
+  <input *ngIf="isVerTarjeta" matInput inputmode="numeric" [hiddenInput]="false" mask="XX-XXXX-XXXX"
+    [(ngModel)]="valorResp" (ngModelChange)="changemodel()">
+  <app-icon-ojo-abierto *ngIf="isVerTarjeta" matSuffix (click)="mostrarOcultarTarjeta()">
+  </app-icon-ojo-abierto>
+  <app-icon-ojo-cerrado *ngIf="!isVerTarjeta && !isDisabled" matSuffix (click)="mostrarOcultarTarjeta()">
+  </app-icon-ojo-cerrado>
 </mat-form-field>

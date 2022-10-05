@@ -72,7 +72,7 @@ export class InputTarjetaComponent implements OnDestroy, ControlValueAccessor {
   keyIn: string = "";
   isDelete: boolean = false;
   tiempoMaskNum: any;
-  isVerTarjeta: boolean = false;
+  isVerTarjeta: boolean = true;
   listaSaltos = [2, 3, 7, 8];
 
   keyDownTarjeta(e: any) {
@@ -127,12 +127,16 @@ export class InputTarjetaComponent implements OnDestroy, ControlValueAccessor {
     }
   }
 
+  valorResp = "";
+  changemodel() {
+    this.setNewValue(this.valorResp);
+  }
   mostrarOcultarTarjeta() {
     this.isVerTarjeta = !this.isVerTarjeta;
-    if (this.isVerTarjeta) this.value.numTarjetaMask = this.value.numTarjeta;
-    else {
-      this.value.numTarjetaMask = this.maskNum(this.value.numTarjeta);
-    }
+    // if (this.isVerTarjeta) this.value.numTarjetaMask = this.value.numTarjeta;
+    // else {
+    //   this.value.numTarjetaMask = this.maskNum(this.value.numTarjeta);
+    // }
   }
 
   getformatoTarjeta(texto: string): string {
