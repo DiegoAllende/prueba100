@@ -111,9 +111,10 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
   }
 
   key1Prueba(val: any) {
-    console.log("val: ", val);
+    console.log("val: ", val.data);
+    alert("val: " + val.data)
     
-    alert("valor: " + val.key + " code: " + val.code + " keycode: " + val.keyCode)
+    // alert("valor: " + val.key + " code: " + val.code + " keycode: " + val.keyCode)
   }
 
 }
