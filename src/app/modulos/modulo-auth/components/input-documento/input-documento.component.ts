@@ -15,6 +15,7 @@ import { getPartesTarjeta, getPosLetraTarjeta, obtenerMask } from '@utils/funcio
   ]
 })
 export class InputDocumentoComponent implements OnInit, OnDestroy, ControlValueAccessor {
+  private regex: RegExp = new RegExp(/[0-9]/g);
   teclasPermitidas = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "ArrowLeft", "ArrowRight"];
   teclasPermitidasAll = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "ArrowLeft", "ArrowRight", "Backspace", "Delete"];
 
@@ -70,7 +71,9 @@ export class InputDocumentoComponent implements OnInit, OnDestroy, ControlValueA
   // DOCUMENTO
   keyDownDocumento(e: any) {
     if (!this.isVerDocumento) {
-      if (!this.teclasPermitidas.includes(e.key)) {
+
+      // if (!this.teclasPermitidas.includes(e.key)) {
+      if (!String(e.key).match(this.regex)) {
         e.preventDefault();
       } else {
         clearTimeout(this.tiempoMaskDocumento);
