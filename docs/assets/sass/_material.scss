@@ -1,0 +1,362 @@
+// Estilo para la cabecera de los tabs de material
+.mat-tab-group {
+  .mat-tab-header {
+    .mat-tab-label-container .mat-tab-labels {
+      .mat-tab-label-content {
+        color: #b3b1b1;
+        font-size: $size-titulo3;
+        line-height: 28px;
+        font-weight: 700;
+
+        @include media-down(md) {
+          font-size: 16px;
+        }
+      }
+
+      .mat-tab-label-active .mat-tab-label-content {
+        color: $color-principal1;
+      }
+
+    }
+  }
+}
+
+// Estilo para la cabecera de los acordiones de material
+.mat-accordion {
+  .mat-expansion-panel {
+    margin-bottom: 5px;
+    box-shadow: none;
+
+    .mat-expansion-panel-header {
+      font-size: $size-titulo3;
+      background-color: $color-error  !important;
+      font-weight: 500;
+      height: 40px;
+
+      @include media-down(md) {
+        font-size: 14px;
+        height: 30px;
+      }
+
+      .mat-expansion-panel-header-title {
+        color: $color-principal1;
+      }
+    }
+
+    .mat-expansion-panel-header:hover {
+      background: $color-error;
+    }
+
+    .mat-expansion-panel-body {
+      padding-top: 18px;
+      padding-bottom: 18px;
+    }
+  }
+}
+
+// Estilo para el Stepper de material
+mat-stepper {
+  .mat-horizontal-content-container {
+    padding: 0px;
+  }
+
+  .mat-step-header {
+    pointer-events: none;
+
+    .mat-step-icon-state-number:not(.mat-step-icon-selected) {
+      color: $color-title-small;
+      font-weight: 700;
+      background-color: white;
+      border: 2px solid $color-title-small;
+    }
+
+    .mat-step-icon-state-edit .mat-step-icon-content,
+    .mat-step-icon-state-done .mat-step-icon-content {
+      width: 100%;
+      height: 100%;
+      background-image: url("/assets/icons/doneStep.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 12px;
+    }
+
+    .mat-step-icon .mat-icon {
+      display: none;
+    }
+
+    .mat-step-label {
+      padding: 6px 0 0 0 !important;
+    }
+
+    &:first-child {
+      padding-left: 0px;
+    }
+
+    &:not(:last-child) {
+      .mat-step-icon-selected {
+        color: $color-primario;
+        font-weight: 700;
+        background-color: white;
+        border: 2px solid $color-primario;
+      }
+    }
+
+    &:last-child {
+      padding-right: 0px;
+
+      .mat-step-icon-selected {
+        .mat-step-icon-content {
+          width: 100%;
+          height: 100%;
+          background-image: url("/assets/icons/doneStep.svg");
+          background-repeat: no-repeat;
+          background-position: center;
+          background-size: 12px;
+
+          span {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+// FORM FIELD
+.mat-form-field-appearance-fill,
+.mat-form-field-appearance-outline {
+  .mat-form-field-flex {
+    background-color: transparent;
+    .mat-form-field-outline {
+      color: $color-desactivado;
+    }
+    .mat-select, .mat-input-element {
+      font-size: $size-form;
+
+      @include media-down(md) {
+        font-size: 16px;
+
+      }
+    }
+  }
+
+  .mat-form-field-underline::before {
+    background-color: $color-principal1;
+  }
+}
+
+.mat-form-field-appearance-outline .mat-select-arrow-wrapper,
+.mat-form-field-appearance-fill .mat-select-arrow-wrapper {
+  transform: translateY(10%) !important;
+}
+
+.mat-checkbox .mat-checkbox-frame {
+  border: 1.5px solid $color-principal1;
+}
+
+.mat-expansion-indicator::after {
+  color: $color-principal1;
+}
+
+//PERSONALIZADO
+.select-login {
+  .mat-form-field-appearance-fill {
+    .mat-select-arrow-wrapper .mat-select-arrow {
+      color: $color-acento;
+    }
+
+    .mat-select-value {
+      color: $color-principal1;
+      font-weight: 600;
+    }
+  }
+}
+
+.select-cuenta {
+  .mat-form-field-appearance-fill {
+    width: 100%;
+    padding-bottom: 18.813px;
+    margin-bottom: 3.500px;
+    .mat-form-field-flex {
+      padding-top: 8.5px;
+    }
+    .mat-form-field-wrapper {
+      padding-bottom: 0px;
+      border: 1px solid $color-desactivado;
+      border-radius: 4px;
+
+      .mat-form-field-label {
+        font-size: 16px;
+      }
+
+      .mat-form-field-underline {
+        display: none;
+      }
+    }
+  }
+}
+
+.checkbox-coutas-pagos{
+  width: 100%;
+  .mat-checkbox-layout{
+        width: 100%;
+        .mat-checkbox-label{
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+  }
+  .mat-ripple{
+    display: none;
+  } 
+}
+
+.select-search-empresas {
+  .mat-form-field-appearance-fill {
+    width: 100%;
+    padding-bottom: 18.813px;
+    margin-bottom: 3.500px;
+    .mat-form-field-flex {
+      padding-top: 8.5px;
+    }
+    .mat-form-field-wrapper {
+      padding-bottom: 0px;
+      border: 1px solid $color-desactivado;
+      border-radius: 4px;
+
+      .mat-form-field-label {
+        font-size: 16px;
+      }
+
+      .mat-form-field-underline {
+        display: none;
+      }
+    }
+  }  
+}
+
+.mat-select-panel{
+  .container-search{
+    height: 60px;
+    .container-input{
+      padding: 15px 10px;
+      border: none;
+      outline: none;
+      width: 85%;
+    }
+    .container-img{
+      width: 15%;
+      padding:  15px 5px 15px 15px;
+      cursor: pointer;
+      height: inherit;
+      @media screen and(min-width:768px) {
+        padding: 10px;
+      }
+    }
+  }
+}
+.container-item-radio-complejo{
+  border: 1px solid #C6C6C6;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  .item-radio-complejo{
+    padding-bottom: 5px;
+    border-bottom: 1px solid #EDEDED;
+    mat-radio-group{
+      mat-radio-button{
+        margin-bottom: 8px;
+        .mat-radio-label-content{
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          span{
+            font-size: 16px;
+            font-weight: 700;
+            @media screen and(min-width:768px) {
+              font-size: 18px;
+            }
+          }
+
+        }
+      }
+    }
+    .mat-radio-button .mat-radio-ripple {
+      display: none;  
+    }
+  }
+
+}
+.container-item-radio-simple{
+  border: 1px solid #C6C6C6;
+  .item-radio-simple{
+    padding-bottom: 5px;
+    mat-radio-group{
+      mat-radio-button{
+        margin-bottom: 8px;
+        .mat-radio-label-content{
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+
+          .vencimiento{
+            font-weight: 400;
+            display: block;
+          }
+
+          span{
+            font-size: 16px;
+            font-weight: 700;
+            @media screen and(min-width:768px) {
+              font-size: 18px;
+            }
+          }
+
+        }
+      }
+    }
+    .mat-radio-button .mat-radio-ripple {
+      display: none;  
+    }
+
+    mat-radio-group{
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+  }
+}
+
+.container-item-pago-luz{
+  .item-pago-luz:last-child {
+    border: none;
+  }
+}
+
+.input-search-width-btn{
+  display: flex;
+  justify-content: space-between;
+  &-input{
+      outline: none;
+      width: 80%;
+      padding: 14px 10px;
+      border: 1px solid #C6C6C6;
+      border-radius: 4px;height: 55px;
+  }
+  &-button{
+      color: white;
+      background-color: red;
+      padding: 14px 10px;
+      width: 15%;
+      border-radius: 4px;
+      height: 55px;
+      cursor: pointer;
+  }
+}
+
+.radios-disabled{
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+

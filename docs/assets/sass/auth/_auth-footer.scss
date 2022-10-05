@@ -1,0 +1,13 @@
+.auth-footer {
+  background-color: $color-secundario1;
+  border-radius: 6px;
+  padding: 16px;
+  margin-top: 58px;
+  text-align: justify;
+  line-height: 16px;
+  
+  p, span {
+    margin: 0;
+    line-height: inherit;
+  }
+}

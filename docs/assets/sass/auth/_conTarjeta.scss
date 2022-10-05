@@ -1,0 +1,47 @@
+// .form-label {
+//   color: $color-principal1;
+//   font-size: $size-titulo3;
+//   font-weight: 700;
+//   line-height: 28px;
+// }
+
+.form-input-tarjeta {
+  width: 100%;
+  min-height: 100%;
+
+  input {
+    letter-spacing: 2px;
+    // padding-left: 12px;
+  }
+
+  span {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    letter-spacing: 2px;
+  }
+}
+
+.form-input-doc {
+  width: 100%;
+
+  input {
+    letter-spacing: 2px;
+  }
+}
+
+.pin-mask {
+  font-size: 20px;
+}
+
+.form-btn {
+  width: 100%;
+  font-size: $size-titulo3;
+  font-weight: 700;
+}
+
+.form-recuerdame {
+  width: 100%;
+  font-size: $size-sub-titulo1;
+  color: $color-principal1;
+}

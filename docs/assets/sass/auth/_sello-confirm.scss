@@ -1,0 +1,34 @@
+.sello-confir {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+
+  p {
+    font-size: $size-titulo3;
+    color: $color-texto;
+    line-height: 28px;
+    font-weight: 700;
+  }
+
+  &-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 60px;
+    width: 100%;
+    height: auto;
+
+    button {
+      width: 100%;
+    }
+  }
+}
+
+@include media-down(sm) {
+  .sello-confir {
+    &-buttons {
+      gap: 20px;
+    }
+  }
+}

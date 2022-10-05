@@ -1,0 +1,59 @@
+.sello-icon-xxs {
+  border: 2px solid $color-secundario3;
+  border-radius: 5px;
+  padding: 3px;
+  background-color: white;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+.sello-icon-xs {
+  border: 3px solid $color-secundario3;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: white;
+
+  img {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.sello-icon-sm {
+  border: 3px solid $color-secundario3;
+  border-radius: 12px;
+  padding: 20px;
+  background-color: white;
+
+  img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.sello-icon-md {
+  border: 3px solid $color-secundario3;
+  border-radius: 16px;
+  padding: 25px;
+  background-color: white;
+
+  img {
+    width: 45px;
+    height: 45px;
+  }
+}
+
+.sello-icon-lg {
+  border: 3px solid $color-secundario3;
+  border-radius: 16px;
+  padding: 50px;
+  background-color: white;
+
+  img {
+    width: 90px;
+    height: 90px;
+  }
+}
