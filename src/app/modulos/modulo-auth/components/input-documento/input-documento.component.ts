@@ -99,7 +99,7 @@ export class InputDocumentoComponent implements OnInit, OnDestroy, ControlValueA
       this.value.numDocumento = objPartes.valor;
       this.tiempoMaskDocumento = setTimeout(() => {
         this.value.numDocumentoMask = obtenerMask(valLimpio);
-      }, 1000);
+      }, 500);
 
       this.setNewValue(this.value.numDocumento);
     }
