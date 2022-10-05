@@ -1,0 +1,12 @@
+{
+  "keyPublic": "-----BEGIN PUBLIC KEY-----MIIBojANBgkqhkiG9w0BAQEFAAOCAY8AMIIBigKCAYEAqQeXjmuy5OagBU59vgBXfNz2g9YQtAyhiyeLxFbo9sPVGFMC7eXroTIYZHz4jsf9iK9my3dgpolUBWUGHtBp9g7snMproN2zCwmt9knuXtQUKZpbDUCs7eJXWDT53att/ZrILVr8IQDU7/SulCn2K2PKxeU3SVgMZQA16UjxKuvYqDcy39O0J1Y9gIj4PPOCljBo7uqeFUwKww4ImaJFi+fc2thiY0OMyso5G+cjt5pGn9qVKUNX1OWLnAJx8ltAnB1Ek7EuOCJjEGB8iTDsTe7QDWPmnkwTBbzFt4/VeVriSk0fW9tAMEA6IAFGK+/rvJ6LNTye705F1C8/OHszEr6hAL/B/Is7UqwK0bmRGaYYectFElp6jbqZzhWzXQ9UM37d602COL8eDgTmzwvcm5nfQy5BtC/Ix/STOzjxtJwhKO6pnJYZguYKqzJ0IS7ptwsrSuIwyMyIZaWihW5gwBc64PtJ+M9qykX32mmpImIul8ZNM+gIJ2W5/6VS7JUzAgMBAAE=-----END PUBLIC KEY-----",
+  "pin": {
+    "val": "444686",
+    "valmask": "4446-86"
+  },
+  "baseUrl": "http://192.170.3.7/account/api/v1",
+  "tipoauth": {
+    "contarjeta": 1,
+    "sintarjeta": 2
+  }
+}

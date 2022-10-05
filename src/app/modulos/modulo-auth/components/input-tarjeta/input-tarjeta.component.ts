@@ -1,6 +1,8 @@
 import { Component, forwardRef, OnDestroy, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { GlobalService } from '@core/services/global.service';
 import { getformatoTarjeta, getPartesTarjeta, getPosLetraTarjeta, obtenerMask } from '@shared/utils/funcion-enmascarar';
+import { Constantes } from '@utils/constantes';
 
 @Component({
   selector: 'input-tarjeta',
@@ -17,8 +19,8 @@ import { getformatoTarjeta, getPartesTarjeta, getPosLetraTarjeta, obtenerMask } 
 export class InputTarjetaComponent implements OnInit, OnDestroy, ControlValueAccessor {
   teclasPermitidas = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "ArrowLeft", "ArrowRight"];
   teclasPermitidasAll = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "ArrowLeft", "ArrowRight", "Backspace", "Delete"];
-  PIN = "444686";
-  PIN_MASK = "4446-86";
+  PIN = GlobalService.data.pin.val;
+  PIN_MASK = GlobalService.data.pin.valmask;
   value = {
     numTarjeta: "",
     numTarjetaMask: "",

@@ -1,14 +1,14 @@
 <app-plantilla-info-simple [ocultarCard]="ocultarCard">
   <ng-container contentTitulo>
     <app-icon-transferencia size="24"></app-icon-transferencia>
-    <label class="title2-pri">Transferencias</label>
+    <label class="title2-pri">{{CONST_UI.titulo.transf}}</label>
   </ng-container>
 
   <ng-container contentCard>
     <app-icon-transferencia size="24"></app-icon-transferencia>
     <div>
-      <label class="title3-sec mb-1">A cuentas propias</label>
-      <label class="subtitle1-secN">Ingresa los datos y completa las opciones para continuar</label>
+      <label class="title3-sec mb-1">{{CONST_UI.card.titTransf}}</label>
+      <label class="subtitle1-secN">{{CONST_UI.card.subTitOperac}}</label>
     </div>
   </ng-container>
 
@@ -16,7 +16,7 @@
     <ng-container [ngTemplateOutlet]="contentTp"></ng-container>
   </ng-container>
 
-  <ng-container contentFavorito *ngIf="stepIndex === 2">
+  <ng-container contentFavorito *ngIf="stepIndex === this.CONST_UI.steps.codPaso3">
     <app-agregar-favorito></app-agregar-favorito>
   </ng-container>
 
@@ -25,7 +25,7 @@
   </ng-container>
 
   <ng-container contentAlerts>
-    <app-alerta [mensaje]="mensajesValid" tipo="error"></app-alerta>
+    <app-alerta [mensaje]="this.CONST_UI.error.sinSaldo" tipo="error"></app-alerta>
   </ng-container>
 
 </app-plantilla-info-simple>
@@ -33,50 +33,49 @@
 <!-- TEMPLATES -->
 <ng-template #contentTp>
   <mat-stepper labelPosition="bottom" linear [selectedIndex]="stepIndex">
-    <mat-step label="Datos">
+    <mat-step label="{{CONST_UI.steps.desPaso1}}">
       <ng-template matStepContent>
         <form [formGroup]="formTransCuentasPropias">
-        <section>
-          <div class="row" style="align-items: flex-end;">
-            <div class="col-12 col-sm-6">
-              <label class="label-pri mb-2">Cuenta origen:</label>
-              <select-cuentas [lista]="listaCuentasOrigen" formControlName="cuentaOrigen"></select-cuentas>
+          <section>
+            <div class="row" style="align-items: flex-end;">
+              <div class="col-12 col-sm-6">
+                <label class="label-pri mb-2">{{CONST_UI.label.ctaOrigen}}:</label>
+                <select-cuentas [lista]="listaCuentasOrigen" formControlName="cuentaOrigen"></select-cuentas>
+              </div>
+              <div class="col-12 col-sm-6">
+                <label class="label-pri mb-2">{{CONST_UI.label.ctaDestino}}:</label>
+                <select-cuentas [lista]="listaCuentasDestino" formControlName="cuentaDestino"></select-cuentas>
+              </div>
+
+              <div class="col-6">
+                <label class="label-secN">{{CONST_UI.label.moneda}}:</label>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                  <mat-select formControlName="tipoMoneda">
+                    <mat-option *ngFor="let moneda of listaMoneda" [value]="moneda.valor">{{moneda.label}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-6">
+                <label class="label-secN">{{CONST_UI.label.monto}}:</label>
+                <mat-form-field appearance="outline" style="width: 100%;">
+                  <input matInput autocomplete="off" formControlName="monto">
+                </mat-form-field>
+              </div>
             </div>
-            <div class="col-12 col-sm-6">
-              <label class="label-pri mb-2">Cuenta destino:</label>
-              <select-cuentas [lista]="listaCuentasDestino" formControlName="cuentaDestino"></select-cuentas>
-            </div>
-  
-            <div class="col-6">
-              <label class="label-secN">Moneda</label>
-              <mat-form-field appearance="outline" style="width: 100%;">
-                <mat-select formControlName="tipoMoneda">
-                  <mat-option *ngFor="let moneda of listaMoneda" [value]="moneda.valor">{{moneda.label}}</mat-option>
-                  
-                </mat-select>
-              </mat-form-field>
-            </div>
-            <div class="col-6">
-              <label class="label-secN">Monto a transferir</label>
-              <mat-form-field appearance="outline" style="width: 100%;">
-                <input matInput autocomplete="off" formControlName="monto">
-              </mat-form-field>
-            </div>
-          </div>
-        </section>
-      </form>
+          </section>
+        </form>
       </ng-template>
     </mat-step>
 
-    <mat-step label="Transferencia" [completed]="stepIndex === 0 ? false: true">
+    <mat-step label="{{CONST_UI.steps.desPaso2}}" [completed]="stepIndex === this.CONST_UI.steps.codPaso1 ? false: true">
       <ng-template matStepContent>
         <app-detalle-segundo-paso [listItemsSecondStep]="detalleDos"></app-detalle-segundo-paso>
       </ng-template>
     </mat-step>
-    
-    <mat-step label="Resúmen">
+
+    <mat-step label="{{CONST_UI.steps.desPaso3}}">
       <ng-template matStepContent>
-        <app-detalle-tercer-paso icono="transferencia" titulo="'¡Tu transferencia se realizó con éxito!'"
+        <app-detalle-tercer-paso icono="transferencia" titulo="{{CONST_UI.msj.transfExito}}"
           [numOp]="'56054'" [dataArray]="detalleTres"></app-detalle-tercer-paso>
       </ng-template>
     </mat-step>
@@ -85,8 +84,9 @@
 </ng-template>
 
 <ng-template #actionsTp>
-  <button mat-stroked-button color="primary" class="btn-pri-out" *ngIf="stepIndex !== 2"
-    (click)="btnRegresar()">Regresar</button>
-  <button mat-raised-button class="btn-principal" (click)="btnContinuar()" [disabled]="formTransCuentasPropias.invalid">{{stepIndex !== 2 ? 'Continuar': 'Ir a
-    transferencias'}}</button>
+  <button mat-stroked-button color="primary" class="btn-pri-out" *ngIf="stepIndex !== this.CONST_UI.steps.codPaso3"
+    (click)="btnRegresar()">{{CONST_UI.btn.regresar}}</button>
+    
+  <button mat-raised-button class="btn-principal" (click)="btnContinuar()" [disabled]="formTransCuentasPropias.invalid">
+    {{stepIndex !== this.CONST_UI.steps.codPaso3 ? CONST_UI.btn.continuar : CONST_UI.btn.irTransf}}</button>
 </ng-template>

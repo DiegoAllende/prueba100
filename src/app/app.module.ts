@@ -14,6 +14,9 @@ import { LoaderComponent } from '@shared/components/loader/loader.component';
 import { CoreModule } from '@core/core.module';
 import { TokenAuthInterceptor } from '@core/interceptors/token-auth.interceptor';
 import { LoaderInterceptor } from '@core/interceptors/loader.interceptor';
+import { AppConfigProvider } from './app-config.provider';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +34,7 @@ import { LoaderInterceptor } from '@core/interceptors/loader.interceptor';
     CoreModule,
   ],
   providers: [
+    AppConfigProvider,
     {
       provide: RECAPTCHA_SETTINGS,
       useValue: {
@@ -51,8 +55,11 @@ import { LoaderInterceptor } from '@core/interceptors/loader.interceptor';
       useClass: LoaderInterceptor,
       multi: true
     },
-    JwtDecoderService
+    JwtDecoderService,
+    
   ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

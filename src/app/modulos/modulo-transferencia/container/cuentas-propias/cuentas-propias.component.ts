@@ -8,6 +8,7 @@ import { adpaterComboMoneda } from '@shared/models-adapter/generico.adapter';
 import { dataAuthModel } from '@shared/models/auth/auth.models';
 import { ComboModel } from '@shared/models/generico/generico.models';
 import { GenericoService } from '@shared/services/generico.service';
+import { ConstUI } from '@utils/const-ui';
 
 @Component({
   selector: 'app-cuentas-propias',
@@ -15,23 +16,15 @@ import { GenericoService } from '@shared/services/generico.service';
   styleUrls: ['./cuentas-propias.component.scss']
 })
 export class CuentasPropiasComponent implements OnInit {
+  public CONST_UI = ConstUI.getConstOperaciones();
+  stepIndex = this.CONST_UI.steps.codPaso1;
   ocultarCard: boolean = false;
-  stepIndex = 0;
-  datosUsuario: dataAuthModel
+  datosUsuario: dataAuthModel;
 
   formTransCuentasPropias!: FormGroup;
   listaCuentasOrigen!: appCuentaSaldoIn[]
   listaCuentasDestino!: appCuentaSaldoIn[]
   listaMoneda!: ComboModel[]
-
-  values = {
-    cuentaOrigen: "156729403782",
-    cuentaDestino: "156729403782",
-    moneda: 1,
-    monto: "",
-  }
-
-  mensajesValid: string = "La cuenta origen no posee saldo suficiente para realizar esta transacción";
 
   constructor(
     private router: Router,
@@ -39,7 +32,7 @@ export class CuentasPropiasComponent implements OnInit {
     private authService: AuthLoginStore,
     private fb: FormBuilder
   ) {
-    this.datosUsuario = authService.getDataAuth
+    this.datosUsuario = this.authService.getDataAuth
     this.initForm();
    }
 
@@ -57,16 +50,13 @@ export class CuentasPropiasComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("cuenta propia init");
     this.getCuentasOrigen()
     this.getCuentasDestino()
     this.getTiposMoneda()
-
   }
 
   btnRegresar() {
-    console.log("regresar");
-    if (this.stepIndex > 0) {
+    if (this.stepIndex > this.CONST_UI.steps.codPaso1) {
       this.stepIndex--;
     } else {
       this.router.navigate(["/main"]);
@@ -74,41 +64,32 @@ export class CuentasPropiasComponent implements OnInit {
   }
 
   btnContinuar() {
-
-    console.log("step",this.stepIndex)
-
-
-    console.log("continuar");
-    if (this.stepIndex < 2) {
+    if (this.stepIndex < this.CONST_UI.steps.codPaso3) {
       this.stepIndex++;
-      //llamar servicio aca
-
     } else {
       this.router.navigate(["/main"]);
     }
 
-    if (this.stepIndex === 2) {
+    if (this.stepIndex === this.CONST_UI.steps.codPaso3) {
       this.ocultarCard = true;
     }
-
-    console.log("step",this.stepIndex)
   }
 
   detalleDos = [
     {
-      title: "Cuenta origen", value: "",
+      title: this.CONST_UI.label.ctaOrigen, value: "",
       subtitles: [
         { subtitle: " Ahorro Sueldo  156729403782 - Soles ", value: "" },
       ]
     },
     {
-      title: "Cuenta destino", subtitles: [
+      title: this.CONST_UI.label.ctaDestino, subtitles: [
         { subtitle: " Ahorro Total Disponibilidad  156729403782 - Soles ", value: "" },
       ]
     },
     {
       title: "", subtitles: [
-        { subtitle: "Monto a transferir", value: "S/100.00", diferent: true },
+        { subtitle: this.CONST_UI.label.montoTransf, value: "S/100.00", diferent: true },
       ]
     }
   ];

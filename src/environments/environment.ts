@@ -10,5 +10,6 @@ export const environment = {
   recaptcha: {
     siteKey: '6LcYlAIhAAAAAFJEJH1SvOS6NgdsXvBPdW07R7sU',
   },
-  keyCryptoTarjeta: "rewrew343erw34er"
+  keyCryptoTarjeta: "rewrew343erw34er",
+  keyPublic: ``
 };

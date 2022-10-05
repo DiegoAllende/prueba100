@@ -7,6 +7,7 @@ import { environment } from 'src/environments/environment';
 import { ComboModel } from '@shared/models/generico/generico.models';
 import { AppAuhtOut } from '../../models/auth-login.interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { downLoadLocal } from '@utils/funciones';
 
 @Component({
   selector: 'app-con-tarjeta',

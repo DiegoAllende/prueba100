@@ -42,7 +42,8 @@
               "includePaths": ["src/assets/sass"]
             },
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/jsencrypt.min.js"
             ]
           },
           "configurations": {

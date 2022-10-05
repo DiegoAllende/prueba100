@@ -2,12 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { adpaterComboDni } from '@shared/models-adapter/generico.adapter';
 import { ComboModel } from '@shared/models/generico/generico.models';
-import { ResponseModel } from '@shared/models/generico/http.model';
 import { AuthService } from '@shared/services/auth.service';
 import { GenericoService } from '@shared/services/generico.service';
 import { INTER_ROUTES } from '@utils/const-rutas';
 import { Constantes, TIPO_PERSONA } from '@utils/constantes';
+import { encryptWithPublicKey, encryptWithPublicKey3 } from '@utils/funcion-crypto';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from 'src/environments/environment';
 import { adapterAppAutenticarOut, adapterSelloAuthIn, adapterSelloAuthOut, adpaterAppAuth } from '../../models-adapter/auth-login.adapter';
 import { AppAuhtOut } from '../../models/auth-login.interfaces';
 import { AuthLoginStore } from '../../services/authLogin.store';
@@ -20,6 +21,8 @@ import { AuthLoginStore } from '../../services/authLogin.store';
 export class LoginComponent implements OnInit {
   listaTiposDoi: ComboModel[] = [];
   mensajeError: string = "";
+
+  
 
   constructor(
     private router: Router,
@@ -63,7 +66,9 @@ export class LoginComponent implements OnInit {
 
   //BOTONES
   btnIngresar(data: AppAuhtOut) {
-    this.getSelloAuthServ(data);
+    console.log("cifrado1: ", encryptWithPublicKey("peru", environment.keyPublic));
+    console.log("cifrado3: ", encryptWithPublicKey3("mexico", environment.keyPublic));
+    // this.getSelloAuthServ(data);
   }
 
   btnIngresarSin(data: AppAuhtOut) {
