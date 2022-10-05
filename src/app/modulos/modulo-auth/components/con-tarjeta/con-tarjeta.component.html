@@ -1,6 +1,6 @@
 <form autocomplete="off" novalidate [formGroup]="formSelloAuth" (ngSubmit)="btnIngresar()">
   <div class="row m-0 mt-4">
-    <label class="title3-pri">Número de tarjeta 5</label>
+    <label class="title3-pri">Número de tarjeta 6</label>
     <div class="col-12 px-0 ">
       <input-tarjeta formControlName="numTarjeta" [disabled]="isRecuerdame"></input-tarjeta>
     </div>
@@ -22,7 +22,7 @@
 
     <div class="col-6 px-0">
       <mat-form-field appearance="fill">
-        <input matInput type="text" (keydown)="key1Prueba($event)">
+        <input matInput type="text" (keyup)="key1Prueba($event)">
       </mat-form-field>
     </div>
 

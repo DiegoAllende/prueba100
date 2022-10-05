@@ -110,7 +110,9 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
     this.eGenPass.emit(true);
   }
 
-  key1Prueba(val: KeyboardEvent) {
+  key1Prueba(val: any) {
+    console.log("val: ", val);
+    
     alert("valor: " + val.key + " code: " + val.code + " keycode: " + val.keyCode)
   }
 
