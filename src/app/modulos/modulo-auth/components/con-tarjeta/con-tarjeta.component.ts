@@ -46,6 +46,7 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
       numDoi: ["", [Validators.required, Validators.minLength(8)]],
       checkRecuerdame: false,
       tipoAuth: TIPO_AUTH.CON_CARD,
+      prueba: "",
     });
   }
 
@@ -60,6 +61,10 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
   }
   get frCheckRec() {
     return this.formSelloAuth.get("checkRecuerdame");
+  }
+
+  get frPrueba() {
+    return this.formSelloAuth.get("prueba");
   }
 
   ngOnInit(): void {
@@ -111,8 +116,8 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
   }
 
   key1Prueba(val: any) {
-    console.log("val: ", val);
-    alert("val: " + val.data)
+    console.log("val: ", val, " model: ", this.frPrueba?.value);
+    alert("val: " + val)
     
     // alert("valor: " + val.key + " code: " + val.code + " keycode: " + val.keyCode)
   }
