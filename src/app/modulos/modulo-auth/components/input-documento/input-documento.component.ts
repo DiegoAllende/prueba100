@@ -1,6 +1,5 @@
-import { Component, forwardRef, OnDestroy, OnInit } from '@angular/core';
+import { Component, forwardRef, Input, OnDestroy, OnInit } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { getPartesTarjeta, getPosLetraTarjeta, obtenerMask } from '@utils/funcion-enmascarar';
 
 @Component({
   selector: 'input-documento',
@@ -15,9 +14,12 @@ import { getPartesTarjeta, getPosLetraTarjeta, obtenerMask } from '@utils/funcio
   ]
 })
 export class InputDocumentoComponent implements OnInit, OnDestroy, ControlValueAccessor {
-  teclasPermitidas = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "ArrowLeft", "ArrowRight"];
-  teclasPermitidasAll = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "ArrowLeft", "ArrowRight", "Backspace", "Delete"];
+  @Input() isDisabled: boolean = false;
+  @Input() maxLength: number = 8;
+  isDisabled2: boolean = false;
+  teclasPermitidas = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "ArrowLeft", "ArrowRight", "Backspace"];
 
+  currentValue = "";
   value = {
     numDocumento: "",
     numDocumentoMask: "",
@@ -25,11 +27,10 @@ export class InputDocumentoComponent implements OnInit, OnDestroy, ControlValueA
 
   isVerDocumento = false;
   tiempoMaskDocumento: any;
-  currentValue = "";
-  isDisabled: boolean = false;
 
-  constructor() { }
-
+  constructor() {
+    // this.currentValue = "";
+  }
   ngOnInit(): void {
   }
 
@@ -38,18 +39,19 @@ export class InputDocumentoComponent implements OnInit, OnDestroy, ControlValueA
   }
 
   //Inicio: Implementar metodos de Form
-  onChange = (_: any) => {};
+  onChange = (_: any) => { };
   onTouched = () => { };
 
   writeValue(value: any): void {
     if (value) {
       this.currentValue = value;
       this.value.numDocumento = value;
-      this.value.numDocumentoMask = obtenerMask(value);
+      this.value.numDocumentoMask = this.maskNum(this.value.numDocumento);
     } else {
+      this.currentValue = "";
       this.value.numDocumento = "";
       this.value.numDocumentoMask = "";
-    };
+    }
   }
   registerOnTouched(fn: () => void): void {
     this.onTouched = fn;
@@ -57,48 +59,69 @@ export class InputDocumentoComponent implements OnInit, OnDestroy, ControlValueA
   registerOnChange(fn: (_: any) => {}): void {
     this.onChange = fn;
   }
-  setDisabledState(isDisabled: boolean): void {
-    this.isDisabled = isDisabled;
+  setDisabledState(isDisabled2: boolean): void {
+    this.isDisabled2 = isDisabled2;
   }
-  
+
   setNewValue(value: string) {  // metodo para enviar el nuevo valor
     this.currentValue = value;
     this.onChange(this.currentValue);
   }
+
+  marcarTouched() { // metodo para marcar como touched
+    this.onTouched();
+  }
   //Fin
 
-  // DOCUMENTO
+  keyIn: string = "";
+  isDelete: boolean = false;
+
   keyDownDocumento(e: any) {
-    console.log("val: ", this.value.numDocumentoMask);
-    
-    if (!this.isVerDocumento) {
-      if (!this.teclasPermitidas.includes(e.key)) {
-        e.preventDefault();
-      } else {
-        clearTimeout(this.tiempoMaskDocumento);
-        this.value.numDocumentoMask = obtenerMask(this.value.numDocumentoMask);
-      }
-    }
-    if (this.isVerDocumento && !this.teclasPermitidasAll.includes(e.key)) {
+    this.keyIn = e.key;
+    this.isDelete = this.keyIn === "Backspace";
+    if (!this.teclasPermitidas.includes(e.key)) {
       e.preventDefault();
     }
   }
 
-  changeInputDocumento(valInput: string) {
-    let valLimpio = valInput;
-    if (this.isVerDocumento) {
-      this.value.numDocumentoMask = valLimpio;
-      this.value.numDocumento = valLimpio;
+  eInput(eInputVal: HTMLInputElement) {
+    clearTimeout(this.tiempoMaskDocumento);
+    this.validarResp(eInputVal);
+  }
+
+  validarResp(eInput2: HTMLInputElement) {
+    let pos = Number(eInput2.selectionStart);
+    let auxAr = this.value.numDocumento.split("");
+
+    if (this.isDelete) {
+      auxAr.splice(pos, 1);
+      let valUnido = this.unirNum(auxAr);
+
+      this.value.numDocumento = valUnido;
+      eInput2.value = this.isVerDocumento ? this.value.numDocumento : this.maskNum(this.value.numDocumento);
+
+      eInput2.selectionStart = pos;
+      eInput2.selectionEnd = pos;
 
       this.setNewValue(this.value.numDocumento);
+
     } else {
-      let objLetra = getPosLetraTarjeta(valLimpio);
-      let objPartes = getPartesTarjeta(this.value.numDocumento, objLetra.pos, objLetra.letra);
-      this.value.numDocumentoMask = objPartes.valorMask;
-      this.value.numDocumento = objPartes.valor;
-      this.tiempoMaskDocumento = setTimeout(() => {
-        this.value.numDocumentoMask = obtenerMask(valLimpio);
-      }, 1000);
+      auxAr.splice(pos - 1, 0, this.keyIn);
+      let valUnido = this.unirNum(auxAr);
+
+      this.value.numDocumento = valUnido;
+      eInput2.value = this.isVerDocumento ? valUnido : this.maskNumAux(this.maskNum(valUnido), pos - 1, this.keyIn);
+
+      if (!this.isVerDocumento) {
+        this.tiempoMaskDocumento = setTimeout(() => {
+          eInput2.value = this.maskNum(this.value.numDocumento);
+          eInput2.selectionStart = pos;
+          eInput2.selectionEnd = pos;
+        }, 800);
+      }
+
+      eInput2.selectionStart = pos;
+      eInput2.selectionEnd = pos;
 
       this.setNewValue(this.value.numDocumento);
     }
@@ -107,7 +130,24 @@ export class InputDocumentoComponent implements OnInit, OnDestroy, ControlValueA
   mostrarOcultarDocumento() {
     this.isVerDocumento = !this.isVerDocumento;
     if (this.isVerDocumento) this.value.numDocumentoMask = this.value.numDocumento;
-    else this.value.numDocumentoMask = obtenerMask(this.value.numDocumento);
+    else {
+      this.value.numDocumentoMask = this.maskNum(this.value.numDocumento);
+    }
+  }
+
+  maskNumAux(val: string, pos: number, key: string): string {
+    let aux = val.split("");
+    aux.splice(pos, 1);
+    aux.splice(pos, 0, key);
+    return this.unirNum(aux);
+  }
+
+  maskNum(val: string): string {
+    return val.replace(/[0-9a-zA-Z]/g, "*");
+  }
+
+  unirNum(val: string[]): string {
+    return val.join("");
   }
 
 }

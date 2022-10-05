@@ -1,10 +1,12 @@
 <mat-form-field class="input-tarjeta" appearance="fill" floatLabel="never">
   <span matPrefix class="input-tarjeta-pin">
     <app-icon-tarjeta></app-icon-tarjeta>
-    <span class="">{{PIN_MASK}}</span>
+    <span class="input-tarjeta-pin-num input-size">{{PIN_MASK}}</span>
   </span>
-  <input matInput type="text" autocomplete="off" [(ngModel)]="value.numTarjetaMask" (keydown)="keyDownTarjeta($event)"
-    (ngModelChange)="changeInputTarjeta($event)" maxlength="12" [disabled]="isDisabled">
-  <app-icon-ojo-abierto *ngIf="isVerTarjeta" matSuffix (click)="mostrarOcultarTarjeta()"></app-icon-ojo-abierto>
-  <app-icon-ojo-cerrado *ngIf="!isVerTarjeta" matSuffix (click)="mostrarOcultarTarjeta()"></app-icon-ojo-cerrado>
+  <input matInput type="text" autocomplete="off" [(ngModel)]="value.numTarjetaMask" #idInputCard
+    (keydown)="keyDownTarjeta($event)" (input)="eInput(idInputCard)" (blur)="marcarTouched()" maxlength="12"
+    [disabled]="isDisabled">
+  <app-icon-ojo-abierto *ngIf="isVerTarjeta" matSuffix (click)="mostrarOcultarTarjeta()">
+  </app-icon-ojo-abierto>
+  <app-icon-ojo-cerrado *ngIf="!isVerTarjeta && !isDisabled" matSuffix (click)="mostrarOcultarTarjeta()"></app-icon-ojo-cerrado>
 </mat-form-field>

@@ -1,7 +1,7 @@
 <mat-form-field appearance="fill" class="input-documento">
-  <input matInput type="text" autocomplete="off" [(ngModel)]="value.numDocumentoMask"
-    (keydown)="keyDownDocumento($event)" (ngModelChange)="changeInputDocumento($event)" maxlength="8"
-    placeholder="Nro. de documento">
+  <input matInput type="text" autocomplete="off" [(ngModel)]="value.numDocumentoMask" #idInputDoc
+    (keydown)="keyDownDocumento($event)" (input)="eInput(idInputDoc)" (blur)="marcarTouched()"
+    placeholder="Nro. de documento" [disabled]="isDisabled" [maxlength]="maxLength">
   <app-icon-ojo-abierto *ngIf="isVerDocumento" matSuffix (click)="mostrarOcultarDocumento()"></app-icon-ojo-abierto>
   <app-icon-ojo-cerrado *ngIf="!isVerDocumento" matSuffix (click)="mostrarOcultarDocumento()"></app-icon-ojo-cerrado>
 </mat-form-field>

@@ -15,6 +15,7 @@ import { CoreModule } from '@core/core.module';
 import { TokenAuthInterceptor } from '@core/interceptors/token-auth.interceptor';
 import { LoaderInterceptor } from '@core/interceptors/loader.interceptor';
 import { AppConfigProvider } from './app-config.provider';
+// import { NgxMaskModule } from 'ngx-mask';
 
 
 @NgModule({
@@ -32,6 +33,7 @@ import { AppConfigProvider } from './app-config.provider';
     HttpClientModule,
     MatProgressSpinnerModule,
     CoreModule,
+    // NgxMaskModule.forRoot(),
   ],
   providers: [
     AppConfigProvider,

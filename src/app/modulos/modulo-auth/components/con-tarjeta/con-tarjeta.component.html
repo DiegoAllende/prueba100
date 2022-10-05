@@ -28,14 +28,14 @@
 
     <div class="col-12 px-0">
       <mat-form-field appearance="fill">
-        <input matInput inputmode="numeric"
-        >
+        <input matInput inputmode="numeric">
       </mat-form-field>
     </div>
 
     <div class="col-12 px-0">
       <mat-form-field appearance="fill">
-        <input matInput type="password">
+        <!-- <input matInput type="password"> -->
+        <input matInput [hiddenInput]="true" mask="XX-XXXX-XXXX" formControlName="prueba">
       </mat-form-field>
     </div>
 
@@ -54,3 +54,5 @@
 
   </div>
 </form>
+
+<pre>{{formSelloAuth.value | json}}</pre>
