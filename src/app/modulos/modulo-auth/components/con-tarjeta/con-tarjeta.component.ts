@@ -116,10 +116,32 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
   }
 
   key1Prueba(val: any) {
-    console.log("val: ", val, " model: ", this.frPrueba?.value);
-    alert("val: " + val)
+    console.log("val: ", val.data, " model: ", this.frPrueba?.value);
+    alert("val: " + val.data)
     
     // alert("valor: " + val.key + " code: " + val.code + " keycode: " + val.keyCode)
+  }
+
+  logTouchstart(i: any) {
+    // this.event += '\n Touch (start): '+ `${i}`
+    // this.pressed[i]=1;
+    console.log("touchstart: ", i);
+    alert("touchstart: ")
+    
+  }
+
+  logPan(evt: any) {
+    console.log("pan: ", evt);
+    alert("pan: ")
+    // this.event += '\n Touch Pan: '+ `(${evt.center.x}, ${evt.center.y}, ${document.elementFromPoint(evt.center.x, evt.center.y).id})`
+    // this.pressed[document.elementFromPoint(evt.center.x, evt.center.y).id]=1;
+  }
+
+  logClick(i: any) {
+    console.log("click: ", i);
+    alert("click: ")
+    // this.event += '\n Click: '+`${i}` 
+    // this.pressed[i]=1;
   }
 
 }

@@ -15,7 +15,6 @@ import { getPartesTarjeta, getPosLetraTarjeta, obtenerMask } from '@utils/funcio
   ]
 })
 export class InputDocumentoComponent implements OnInit, OnDestroy, ControlValueAccessor {
-  private regex: RegExp = new RegExp(/[0-9]/g);
   teclasPermitidas = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "ArrowLeft", "ArrowRight"];
   teclasPermitidasAll = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "ArrowLeft", "ArrowRight", "Backspace", "Delete"];
 
@@ -70,13 +69,13 @@ export class InputDocumentoComponent implements OnInit, OnDestroy, ControlValueA
 
   // DOCUMENTO
   keyDownDocumento(e: any) {
+    console.log("val: ", this.value.numDocumentoMask);
+    
     if (!this.isVerDocumento) {
-
-      // if (!this.teclasPermitidas.includes(e.key)) {
-      if (!String(e.key).match(this.regex)) {
+      if (!this.teclasPermitidas.includes(e.key)) {
         e.preventDefault();
       } else {
-        // clearTimeout(this.tiempoMaskDocumento);
+        clearTimeout(this.tiempoMaskDocumento);
         this.value.numDocumentoMask = obtenerMask(this.value.numDocumentoMask);
       }
     }
@@ -97,9 +96,9 @@ export class InputDocumentoComponent implements OnInit, OnDestroy, ControlValueA
       let objPartes = getPartesTarjeta(this.value.numDocumento, objLetra.pos, objLetra.letra);
       this.value.numDocumentoMask = objPartes.valorMask;
       this.value.numDocumento = objPartes.valor;
-      // this.tiempoMaskDocumento = setTimeout(() => {
+      this.tiempoMaskDocumento = setTimeout(() => {
         this.value.numDocumentoMask = obtenerMask(valLimpio);
-      // }, 500);
+      }, 1000);
 
       this.setNewValue(this.value.numDocumento);
     }

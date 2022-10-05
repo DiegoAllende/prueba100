@@ -22,13 +22,17 @@
 
     <div class="col-12 px-0">
       <mat-form-field appearance="fill">
-        <input matInput type="text" formControlName="prueba" (ngModelChange)="key1Prueba($event)">
+        <input matInput type="text" formControlName="prueba" (input)="key1Prueba($event)">
       </mat-form-field>
     </div>
 
     <div class="col-12 px-0">
       <mat-form-field appearance="fill">
-        <input matInput inputmode="numeric" >
+        <input matInput 
+        (pan)="logPan($event)"
+        (touchstart)="logTouchstart($event)"
+        (click)="logClick($event)"
+        >
       </mat-form-field>
     </div>
 
