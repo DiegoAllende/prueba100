@@ -27,14 +27,21 @@
     </div>
 
     <div class="col-12 px-0">
+      <label>solo numeros</label>
       <mat-form-field appearance="fill">
-        <input matInput inputmode="numeric">
+        <input matInput dirNumero maxlength="10">
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 px-0">
+      <label>max 10</label>
+      <mat-form-field appearance="fill">
+        <input matInput inputmode="numeric" maxlength="10">
       </mat-form-field>
     </div>
 
     <div class="col-12 px-0">
       <mat-form-field appearance="fill">
-        <!-- <input matInput type="password"> -->
         <input matInput inputmode="numeric" [hiddenInput]="true" mask="XX-XXXX-XXXX" formControlName="prueba">
       </mat-form-field>
     </div>
@@ -54,5 +61,3 @@
 
   </div>
 </form>
-
-<pre>{{formSelloAuth.value | json}}</pre>

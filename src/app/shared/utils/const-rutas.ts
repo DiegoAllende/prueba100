@@ -167,3 +167,105 @@ export const ROLES_RESOLVE = {
   TRAN_CUENTA_OTRO_BAMCO: `${ROUTES_PATHS.MAIN.TRANSFERENCIA.CUENTA_OTRO_BAMCO.roles}`,
   TRAN_ENVIAR_GIRO: `${ROUTES_PATHS.MAIN.TRANSFERENCIA.ENVIAR_GIRO.roles}`,
 }
+
+
+/*
+
+export const ROUTES_PATHS = {
+  AUTH: {
+    DEFAULT: "auth",
+    LOGIN: "login",
+    SELLO: "sello",
+    CLAVE: "clave",
+  },
+
+  GENERAR: {
+    DEFAULT: "generar",
+    CLAVE_INTERNET: "clave-internet",
+    CLAVE_OLVIDE: "olvide-clave",
+    SELLO: "sello",
+    CLAVE_CAMBIAR_TEMP: "cambiar-clave-temporal",
+    TERMINOS_CONDI: "terminos-condiciones",
+  },
+
+  MAIN: {
+    DEFAULT: "main",
+
+    CONSULTAS: {
+      DEFAULT: "consultas",
+      AHORRO: {
+        path: "ahorros",
+        roles: [ROLES.CON_CARD, ROLES.SIN_CARD, ROLES.LISTA_NEGRA_SI, ROLES.BLOQUEO_TEMP_SI]
+      },
+      CREDITO: {
+        path: "creditos",
+        roles: [ROLES.CON_CARD, ROLES.SIN_CARD, ROLES.LISTA_NEGRA_SI, ROLES.BLOQUEO_TEMP_SI]
+      },
+      SEGURO: {
+        path: "seguros",
+        roles: [ROLES.CON_CARD, ROLES.SIN_CARD, ROLES.LISTA_NEGRA_SI, ROLES.BLOQUEO_TEMP_SI]
+      }
+    },
+
+    PAGOS: {
+      DEFAULT: "pagos",
+      RECARGAS: {
+        path: "recargas",
+        roles: [ROLES.CON_CARD]
+      },
+      CREDITO_TARJETA: {
+        path: "tarjeta-credito",
+        roles: [ROLES.CON_CARD]
+      },
+      CREDITO_PROPIO: {
+        path: "creditos-propios",
+        roles: [ROLES.CON_CARD, ROLES.LISTA_NEGRA_SI]
+      },
+      CREDITO_TERCERO: {
+        path: "creditos-terceros",
+        roles: [ROLES.CON_CARD]
+      },
+    },
+
+    TRANSFERENCIA: {
+      DEFAULT: "transferencias",
+
+      CUENTA_PROPIA: {
+        path: "cuentas-propias",
+        roles: [ROLES.CON_CARD]
+      },
+      CUENTA_TERCEROS: {
+        path: "cuentas-terceros",
+        roles: [ROLES.CON_CARD]
+      },
+      CUENTA_OTRO_BAMCO: {
+        path: "cuentas-otros-bancos",
+        roles: [ROLES.CON_CARD, ROLES.LISTA_NEGRA_SI]
+      },
+      ENVIAR_GIRO: {
+        path: "enviar-giro",
+        roles: [ROLES.CON_CARD]
+      },
+    },
+
+    PAGOS_SERVICIOS: {
+      DEFAULT: "pagos-servicios",
+      LUZ: "luz",
+      AGUA: "agua",
+      EMPRESA_INSTITUCION: "empresas-instituciones",
+      UNIVERSIDAD: "universidades",
+    },
+    CONFIGURACION:{
+      DEFAULT: "configuracion",
+      CAMBIO_CLAVE: "cambio-clave",
+      ACTIVAR_DESACTIVAR_CLAVES: "activar-desactivar-claves",
+      BLOQUEO_TOTAL_TARJETA: "bloqueo-total-tarjeta",
+      CAMBIO_SELLO_SEGURIDAD: "cambio-sello-seguridad",
+      CONFIGURACION_TARJETA: "configuracion-tarjeta",
+      ENVIO_NOTIFICACIONES: "envio-notificaciones",
+      LIMITE_OPERACIONES:"limite-operaciones"
+    }
+  },
+}
+
+*/

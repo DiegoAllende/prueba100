@@ -20,12 +20,6 @@ import { SelloGenerarComponent } from './container/sello-generar/sello-generar.c
 import { InputTarjetaComponent } from './components/input-tarjeta/input-tarjeta.component';
 import { InputDocumentoComponent } from './components/input-documento/input-documento.component';
 import { CambioClaveTemporalComponent } from './container/cambio-clave-temporal/cambio-clave-temporal.component';
-import { IConfig, NgxMaskModule } from 'ngx-mask';
-// import { NgxMaskModule } from 'ngx-mask';
-// import { NgxMaskModule, IConfig } from 'ngx-mask';
-const maskConfig: Partial<IConfig> = {
-  validation: false,
-};
 
 
 @NgModule({
@@ -49,7 +43,6 @@ const maskConfig: Partial<IConfig> = {
     CambioClaveTemporalComponent
   ],
   imports: [
-    NgxMaskModule.forRoot(maskConfig),
     CommonModule,
     ModuloAuthRoutingModule,
     SharedModule,

@@ -40,13 +40,15 @@ export class InputTarjetaComponent implements OnDestroy, ControlValueAccessor {
   writeValue(value: any): void {  
     
     if (value) {
-      this.currentValue = value;
-      this.value.numTarjeta = this.getformatoTarjeta(value);
-      this.value.numTarjetaMask = this.maskNumInit(this.value.numTarjeta);
+      this.valorResp = value;
+      // this.currentValue = value;
+      // this.value.numTarjeta = this.getformatoTarjeta(value);
+      // this.value.numTarjetaMask = this.maskNumInit(this.value.numTarjeta);
     } else {
-      this.currentValue = "";
-      this.value.numTarjeta = "";
-      this.value.numTarjetaMask = "";
+      this.valorResp = "";
+      // this.currentValue = "";
+      // this.value.numTarjeta = "";
+      // this.value.numTarjetaMask = "";
     }
   }
   registerOnTouched(fn: () => void): void {
@@ -69,10 +71,22 @@ export class InputTarjetaComponent implements OnDestroy, ControlValueAccessor {
   }
   //Fin
 
+  valorResp: string = "";
+  isVerTarjeta: boolean = false;
+
+  changemodel() {
+    this.setNewValue(this.valorResp);
+  }
+  mostrarOcultar() {
+    this.isVerTarjeta = !this.isVerTarjeta;
+  }
+
+
+  /* **************************************** */ 
+
   keyIn: string = "";
   isDelete: boolean = false;
   tiempoMaskNum: any;
-  isVerTarjeta: boolean = true;
   listaSaltos = [2, 3, 7, 8];
 
   keyDownTarjeta(e: any) {
@@ -127,16 +141,12 @@ export class InputTarjetaComponent implements OnDestroy, ControlValueAccessor {
     }
   }
 
-  valorResp = "";
-  changemodel() {
-    this.setNewValue(this.valorResp);
-  }
   mostrarOcultarTarjeta() {
     this.isVerTarjeta = !this.isVerTarjeta;
-    // if (this.isVerTarjeta) this.value.numTarjetaMask = this.value.numTarjeta;
-    // else {
-    //   this.value.numTarjetaMask = this.maskNum(this.value.numTarjeta);
-    // }
+    if (this.isVerTarjeta) this.value.numTarjetaMask = this.value.numTarjeta;
+    else {
+      this.value.numTarjetaMask = this.maskNum(this.value.numTarjeta);
+    }
   }
 
   getformatoTarjeta(texto: string): string {

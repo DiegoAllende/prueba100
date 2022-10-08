@@ -20,7 +20,7 @@ export class GlobalService {
   setData(dataGlobal: DataGlobal, key: string) {
     environment.keyPublic = key;
     GlobalService.data = dataGlobal;
-    ConstUI.setValues(this.dataUI);
+    // ConstUI.setValues(this.dataUI);
   }
 
 }

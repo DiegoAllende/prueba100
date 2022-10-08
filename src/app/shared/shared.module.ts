@@ -57,6 +57,8 @@ import { IconEstrellaDelgadaComponent } from './components/icons/icon-estrella-d
 import { ChequesRetencionesComponent } from './components/movimientos/cheques-retenciones/cheques-retenciones.component';
 import { MisMovimientosComponent } from './components/movimientos/mis-movimientos/mis-movimientos.component';
 import { AcordeonMovimientoComponent } from './components/movimientos/acordeon-movimiento/acordeon-movimiento.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { DirectivasModule } from './directivas/directivas.module';
 
 
 @NgModule({
@@ -122,6 +124,8 @@ import { AcordeonMovimientoComponent } from './components/movimientos/acordeon-m
     ReactiveFormsModule,
     RecaptchaFormsModule,
     RecaptchaModule,
+    DirectivasModule,
+    NgxMaskModule.forRoot(),
   ],
   exports: [
     MaterialModule,
@@ -181,6 +185,9 @@ import { AcordeonMovimientoComponent } from './components/movimientos/acordeon-m
     IconEstrellaDelgadaComponent,
     ChequesRetencionesComponent,
     MisMovimientosComponent,
+    NgxMaskModule,
+    DirectivasModule,
+
   ]
 })
 export class SharedModule { }
