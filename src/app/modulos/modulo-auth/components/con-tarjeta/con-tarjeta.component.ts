@@ -19,6 +19,9 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
   @Output() outIngresar: EventEmitter<AppAuhtOut> = new EventEmitter();
   @Output() eGenPass: EventEmitter<boolean> = new EventEmitter();
 
+  maxDni = 8;
+  public customPatterns = { 'C': { pattern: new RegExp('\[-a-zA-Z0-9\]')} };
+
   keyEnCrypto = environment.keyCryptoTarjeta;
   PIN = Constantes.PIN;
   PIN_MASK = Constantes.PIN_MASK;
@@ -47,6 +50,11 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
       checkRecuerdame: false,
       tipoAuth: TIPO_AUTH.CON_CARD,
       prueba: "",
+      prueba1: "",
+      prueba2: "",
+      prueba3: "",
+      prueba4: "",
+      mascarCard: "",
     });
   }
 
@@ -115,13 +123,6 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
     this.eGenPass.emit(true);
   }
 
-  key1Prueba(val: any) {
-    console.log("val: ", val.data, " model: ", this.frPrueba?.value);
-    alert("val: " + val.data)
-    
-    // alert("valor: " + val.key + " code: " + val.code + " keycode: " + val.keyCode)
-  }
-
   logTouchstart(i: any) {
     // this.event += '\n Touch (start): '+ `${i}`
     // this.pressed[i]=1;
@@ -144,4 +145,35 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
     // this.pressed[i]=1;
   }
 
+  BANKS: Bank[] = [
+    {name: 'Bank A (Switzerland)', id: 'A'},
+    {name: 'Bank B (Switzerland)', id: 'B'},
+    {name: 'Bank C (France)', id: 'C'},
+    {name: 'Bank D (France)', id: 'D'},
+    {name: 'Bank E (France)', id: 'E'},
+    {name: 'Bank F (Italy)', id: 'F'},
+    {name: 'Bank G (Italy)', id: 'G'},
+    {name: 'Bank H (Italy)', id: 'H'},
+    {name: 'Bank I (Italy)', id: 'I'},
+    {name: 'Bank J (Italy)', id: 'J'},
+    {name: 'Bank Kolombia (United States of America)', id: 'K'},
+    {name: 'Bank L (Germany)', id: 'L'},
+    {name: 'Bank M (Germany)', id: 'M'},
+    {name: 'Bank N (Germany)', id: 'N'},
+    {name: 'Bank O (Germany)', id: 'O'},
+    {name: 'Bank P (Germany)', id: 'P'},
+    {name: 'Bank Q (Germany)', id: 'Q'},
+    {name: 'Bank R (Germany)', id: 'R'}
+  ];
+
+}
+
+export interface Bank {
+  id: string;
+  name: string;
+}
+
+export interface BankGroup {
+  name: string;
+  banks: Bank[];
 }

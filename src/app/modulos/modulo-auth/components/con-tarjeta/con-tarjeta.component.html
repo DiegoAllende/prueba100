@@ -21,28 +21,36 @@
     </div>
 
     <div class="col-12 px-0">
+      <label>Numero con mask</label>
       <mat-form-field appearance="fill">
-        <input matInput type="text" formControlName="prueba" (input)="key1Prueba($event)">
+        <input matInput [mask]="'0{'+maxDni+'}'" formControlName="prueba1">
       </mat-form-field>
     </div>
 
     <div class="col-12 px-0">
-      <label>solo numeros</label>
+      <label>Decimal con mask</label>
       <mat-form-field appearance="fill">
-        <input matInput dirNumero maxlength="10">
+        <input matInput mask="separator.2" thousandSeparator="," separatorLimit="100000" formControlName="prueba2">
       </mat-form-field>
     </div>
 
     <div class="col-12 px-0">
-      <label>max 10</label>
+      <label>Letras y Numeros con mask</label>
       <mat-form-field appearance="fill">
-        <input matInput inputmode="numeric" maxlength="10">
+        <input matInput [mask]="'A{'+maxDni+'}'" formControlName="prueba3">
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 px-0">
+      <label>Suministro con mask</label>
+      <mat-form-field appearance="fill">
+        <input matInput [patterns]="customPatterns" mask="C{12}" formControlName="prueba4">
       </mat-form-field>
     </div>
 
     <div class="col-12 px-0">
       <mat-form-field appearance="fill">
-        <input matInput inputmode="numeric" [hiddenInput]="true" mask="XX-XXXX-XXXX" formControlName="prueba">
+        <input matInput inputmode="numeric" [hiddenInput]="true" mask="XX-XXXX-XXXX" formControlName="mascarCard">
       </mat-form-field>
     </div>
 
@@ -51,8 +59,8 @@
     </div>
 
     <div class="col-12 px-0 mb-4 mt-3">
-      <button id="btn-login-con-tarjeta" type="submit" mat-raised-button color="primary" class="btn-principal w-100"
-        >Ingresar</button> 
+      <button id="btn-login-con-tarjeta" type="submit" mat-raised-button color="primary"
+        class="btn-principal w-100">Ingresar</button>
     </div>
 
     <div class="sub-link">
@@ -61,3 +69,5 @@
 
   </div>
 </form>
+
+<pre>{{formSelloAuth.value | json}}</pre>
