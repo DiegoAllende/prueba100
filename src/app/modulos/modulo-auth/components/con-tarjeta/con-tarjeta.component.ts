@@ -7,7 +7,6 @@ import { environment } from 'src/environments/environment';
 import { ComboModel } from '@shared/models/generico/generico.models';
 import { AppAuhtOut } from '../../models/auth-login.interfaces';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { downLoadLocal } from '@utils/funciones';
 
 @Component({
   selector: 'app-con-tarjeta',
@@ -21,6 +20,7 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
 
   maxDni = 8;
   public customPatterns = { 'C': { pattern: new RegExp('\[-a-zA-Z0-9\]')} };
+  public customPatterns2 = { 'D': { pattern: new RegExp('\[-a-zA-Z \]')} };
 
   keyEnCrypto = environment.keyCryptoTarjeta;
   PIN = Constantes.PIN;
@@ -36,6 +36,8 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private contadorService: ContadorService,
   ) {
+    console.log("CON TARJETA")
+
     this.initForm();
     this.valObs = this.contadorService.terminarSesionObs$().subscribe(resp => {
       // if (resp) this.value.numDoi = "";
@@ -54,6 +56,7 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
       prueba2: "",
       prueba3: "",
       prueba4: "",
+      prueba5: "",
       mascarCard: "",
     });
   }
@@ -123,26 +126,10 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
     this.eGenPass.emit(true);
   }
 
-  logTouchstart(i: any) {
-    // this.event += '\n Touch (start): '+ `${i}`
-    // this.pressed[i]=1;
-    console.log("touchstart: ", i);
-    // alert("touchstart: ")
+  abriPrueba() {
+    console.log("aaa");
     
-  }
-
-  logPan(evt: any) {
-    console.log("pan: ", evt);
-    alert("pan: ")
-    // this.event += '\n Touch Pan: '+ `(${evt.center.x}, ${evt.center.y}, ${document.elementFromPoint(evt.center.x, evt.center.y).id})`
-    // this.pressed[document.elementFromPoint(evt.center.x, evt.center.y).id]=1;
-  }
-
-  logClick(i: any) {
-    console.log("click: ", i);
-    // alert("click: ")
-    // this.event += '\n Click: '+`${i}` 
-    // this.pressed[i]=1;
+    window.open("https://www.google.com.mx/");
   }
 
   BANKS: Bank[] = [

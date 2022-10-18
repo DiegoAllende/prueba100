@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     private authLoginStore: AuthLoginStore,
     private cookieService: CookieService,
   ) {
-    console.log('constructor login');
+    // console.log('constructor login');
   }
 
   ngOnInit(): void {

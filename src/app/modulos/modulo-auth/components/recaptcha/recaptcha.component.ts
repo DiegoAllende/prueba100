@@ -9,7 +9,7 @@ export class RecaptchaComponent implements OnInit {
   @Output() valueRecaptcha = new EventEmitter<boolean>();
 
   ngOnInit(): void {
-    console.log('ngOnInit recaptcha')
+    // console.log('ngOnInit recaptcha')
   }
 
   resolved(captchaResponse: string) {

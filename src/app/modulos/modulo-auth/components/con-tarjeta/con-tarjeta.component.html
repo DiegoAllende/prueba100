@@ -20,6 +20,13 @@
       <input-documento formControlName="numDoi"></input-documento>
     </div>
 
+    <div>
+      <button type="button" (click)="abriPrueba()">Prueba</button>
+    </div>
+    <div>
+      <a href="https://www.google.com.mx/" target="_self">Prueba 2</a>
+    </div>
+
     <div class="col-12 px-0">
       <label>Numero con mask</label>
       <mat-form-field appearance="fill">
@@ -30,7 +37,7 @@
     <div class="col-12 px-0">
       <label>Decimal con mask</label>
       <mat-form-field appearance="fill">
-        <input matInput mask="separator.2" thousandSeparator="," separatorLimit="100000" formControlName="prueba2">
+        <input matInput inputmode="numeric" mask="separator.2" thousandSeparator="," separatorLimit="100000" formControlName="prueba2">
       </mat-form-field>
     </div>
 
@@ -45,6 +52,13 @@
       <label>Suministro con mask</label>
       <mat-form-field appearance="fill">
         <input matInput [patterns]="customPatterns" mask="C{12}" formControlName="prueba4">
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 px-0">
+      <label>Nombres con mask</label>
+      <mat-form-field appearance="fill">
+        <input matInput [patterns]="customPatterns2" mask="D{10}" formControlName="prueba5">
       </mat-form-field>
     </div>
 

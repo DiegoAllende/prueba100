@@ -28,6 +28,5 @@ export function downLoadLocal(ruta: string, nombre: string) {
 }
 
 function aaa() {
-  console.log("aaaaa");
   
 }

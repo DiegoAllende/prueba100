@@ -75,7 +75,6 @@ export class MainHeaderComponent implements OnInit, OnDestroy {
 
   closeAll(value: boolean) {
     this.data = this.data.map((item: any) => { return { ...item, active: value } })
-    console.log(this.data)
   }
 
   ngOnDestroy(): void {

@@ -15,19 +15,16 @@ export class NumerosDirective {
 
   //VALIDAR SI SE DIGITO UN NUMERO
   @HostListener('keypress', ['$event']) onKeyPress(e: KeyboardEvent) {
-    console.log("keypres");
     this.isTecla = true;
     // if (!String(e.key).match(/[0-9]/g)) e.preventDefault();
   }
   //VALIDAR SI SE REALIZO UN CTRL-V O PEGAR CON EL MOUSE
   @HostListener('paste', ['$event']) onPaste() {
-    console.log("paste");
 
     this.isPaste = true;
   }
   //AL PEGAR EL VALOR, OBTENER SOLO LOS NUMEROS Y ACTUALIZAR EL INPUT
   @HostListener('ngModelChange', ['$event']) onInput(val: string) {
-    console.log("ngModelChange: ", val);
 
     if (this.isTecla || this.isPaste) {
       this.isPaste = false;

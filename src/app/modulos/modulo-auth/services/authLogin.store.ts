@@ -66,7 +66,7 @@ export class AuthLoginStore {
   transformarDataToken(token: string): void {
     let newData: { name: string, data: string }[] = [];
     const data = this.jwtService.DecodeToken(token);
-    console.log('Esta es la data Jwt🔑', data);
+    // console.log('Esta es la data Jwt🔑', data);
     Object.keys(data).forEach((key: any) => {
 
       if (key.startsWith('http://schemas.microsoft.com/ws/2008/06/identity/claims/')) {

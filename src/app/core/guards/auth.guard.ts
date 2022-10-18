@@ -24,9 +24,9 @@ export class AuthGuard implements CanActivate {
       if (route.data['miroles']) {
         const conPermiso = this.authLoginStore.hasAccess(route.data['miroles']);
         if(conPermiso) {
-          console.log("con permiso");
+          // console.log("con permiso");
         } else {
-          console.log("sin permiso");
+          // console.log("sin permiso");
           return false;
         }
       }

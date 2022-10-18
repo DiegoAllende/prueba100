@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class BlockLoginGuard implements CanActivate {
 
   constructor(private cookieService: CookieService, private router: Router) {
-    console.log("guard_blocklogin");
+    // console.log("guard_blocklogin");
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
