@@ -9,7 +9,7 @@ export class LoginLayoutComponent {
   mensajeTime = "";
 
   constructor() {
-    this.tiempoSesion = 45;
+    this.tiempoSesion = 120;
     this.mensajeTime = "Esta ventana se cerrará";
   }
 
