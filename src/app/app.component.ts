@@ -45,6 +45,15 @@ export class AppComponent implements OnInit, OnDestroy {
       }
     });
 
+    window.addEventListener("beforeunload", (evento: any) => {
+      console.log("beforeunload");
+      
+      if (this.isSesion) {
+        console.log("beforeunload cerrar");
+        localStorage.removeItem("only3")
+      }
+    });
+
     window.addEventListener("pagehide", (evento: any) => {
       console.log("pagehide ");
       
