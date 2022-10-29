@@ -20,12 +20,12 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router
 
   ) {
-    if (localStorage.getItem("only3") === "1") {
+    if (localStorage.getItem("only4") === "1") {
       alert("Ya tiene una pestaña abierta")
       // router.navigateByUrl("icons")
       window.location.href = "https://google.com";
     } else {
-      localStorage.setItem("only3", "1");
+      localStorage.setItem("only4", "1");
       this.isSesion = true;
       console.log("setLocal: ", this.isSesion)
     }
@@ -41,7 +41,7 @@ export class AppComponent implements OnInit, OnDestroy {
       
       if (this.isSesion) {
         console.log("unload cerrar");
-        localStorage.removeItem("only3")
+        localStorage.removeItem("only4")
       }
     });
 
@@ -50,7 +50,7 @@ export class AppComponent implements OnInit, OnDestroy {
       
       if (this.isSesion) {
         console.log("beforeunload cerrar");
-        localStorage.removeItem("only3")
+        localStorage.removeItem("only4")
       }
     });
 
@@ -59,7 +59,16 @@ export class AppComponent implements OnInit, OnDestroy {
       
       if (this.isSesion) {
         console.log("pagehide cerrar");
-        localStorage.removeItem("only3")
+        localStorage.removeItem("only4")
+      }
+    });
+
+    window.addEventListener("pageshow", (evento: any) => {
+      console.log("pageshow ");
+      
+      if (this.isSesion) {
+        console.log("pageshow cerrar");
+        localStorage.removeItem("only4")
       }
     });
 
