@@ -20,19 +20,19 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router
 
   ) {
-    if (localStorage.getItem("only4") === "1") {
+    if (sessionStorage.getItem("only5") === "1") {
       alert("Ya tiene una pestaña abierta")
       // router.navigateByUrl("icons")
       window.location.href = "https://google.com";
     } else {
-      localStorage.setItem("only4", "1");
+      sessionStorage.setItem("only5", "1");
       this.isSesion = true;
       console.log("setLocal: ", this.isSesion)
     }
 
 
     if (!this.authLoginStore.getDataAuth.sid) {
-      const aux = localStorage.getItem(Constantes.PROFILE_DATA) ? JSON.parse("" + localStorage.getItem(Constantes.PROFILE_DATA)) : {};
+      const aux = sessionStorage.getItem(Constantes.PROFILE_DATA) ? JSON.parse("" + sessionStorage.getItem(Constantes.PROFILE_DATA)) : {};
       authLoginStore.setDataAuth(aux);
     }
 
@@ -41,7 +41,7 @@ export class AppComponent implements OnInit, OnDestroy {
       
       if (this.isSesion) {
         console.log("unload cerrar");
-        localStorage.removeItem("only4")
+        sessionStorage.removeItem("only5")
       }
     });
 
@@ -50,7 +50,7 @@ export class AppComponent implements OnInit, OnDestroy {
       
       if (this.isSesion) {
         console.log("beforeunload cerrar");
-        localStorage.removeItem("only4")
+        sessionStorage.removeItem("only5")
       }
     });
 
@@ -59,7 +59,7 @@ export class AppComponent implements OnInit, OnDestroy {
       
       if (this.isSesion) {
         console.log("pagehide cerrar");
-        localStorage.removeItem("only4")
+        sessionStorage.removeItem("only5")
       }
     });
 
@@ -68,7 +68,7 @@ export class AppComponent implements OnInit, OnDestroy {
       
       if (this.isSesion) {
         console.log("pageshow cerrar");
-        localStorage.removeItem("only4")
+        sessionStorage.removeItem("only5")
       }
     });
 
@@ -97,7 +97,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   }
   ngOnDestroy(): void {
-    // localStorage.removeItem("only")
+    // sessionStorage.removeItem("only")
   }
 
   @HostListener('document:keydown', ['$event'])
