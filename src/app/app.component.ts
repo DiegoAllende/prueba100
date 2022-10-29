@@ -20,12 +20,12 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router
 
   ) {
-    if (localStorage.getItem("only") === "1") {
+    if (localStorage.getItem("only2") === "1") {
       alert("Ya tiene una pestaña abierta")
       // router.navigateByUrl("icons")
       window.location.href = "https://google.com";
     } else {
-      localStorage.setItem("only", "1");
+      localStorage.setItem("only2", "1");
       this.isSesion = true;
       console.log("setLocal: ", this.isSesion)
     }
@@ -41,7 +41,7 @@ export class AppComponent implements OnInit, OnDestroy {
       
       if (this.isSesion) {
         console.log("unload");
-        localStorage.removeItem("only")
+        localStorage.removeItem("only2")
       }
     });
 
