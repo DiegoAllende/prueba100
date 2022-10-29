@@ -20,17 +20,16 @@ export class AppComponent implements OnInit, OnDestroy {
     private router: Router
 
   ) {
-    console.log("aaa: ", localStorage.getItem("only"));
-
-    if(localStorage.getItem("only") === "1") {
-      this.router.navigateByUrl("icons")
-      // window.location.href = "https://outlook.live.com/owa/";
+    if (localStorage.getItem("only") === "1") {
+      alert("Ya tiene una pestaña abierta")
+      // router.navigateByUrl("icons")
+      window.location.href = "https://google.com";
     } else {
       localStorage.setItem("only", "1");
       this.isSesion = true;
+      console.log("setLocal: ", this.isSesion)
     }
 
-    console.log("XXXXXXXXXXXX")
 
     if (!this.authLoginStore.getDataAuth.sid) {
       const aux = localStorage.getItem(Constantes.PROFILE_DATA) ? JSON.parse("" + localStorage.getItem(Constantes.PROFILE_DATA)) : {};
@@ -38,9 +37,10 @@ export class AppComponent implements OnInit, OnDestroy {
     }
 
     window.addEventListener("unload", (evento: any) => {
-    console.log("ZZZZZ")
-
-      if(this.isSesion) {
+      console.log("unload");
+      
+      if (this.isSesion) {
+        console.log("unload");
         localStorage.removeItem("only")
       }
     });
@@ -67,7 +67,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
   ngOnInit(): void {
     console.log("INIT");
-    
+
   }
   ngOnDestroy(): void {
     // localStorage.removeItem("only")

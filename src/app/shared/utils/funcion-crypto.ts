@@ -1,5 +1,6 @@
 import * as CryptoJS from 'crypto-js';
 import * as Forge from 'node-forge';
+import { environment } from 'src/environments/environment';
 declare var JSEncrypt: any;
 
 export function Encriptar(value: any, keys: any): string {
@@ -12,16 +13,21 @@ export function Desencriptar(value: any, keys: any): string {
   return dsencrypted.toString(CryptoJS.enc.Utf8);
 }
 
-export function encryptWithPublicKey(valueToEncrypt: string, keyPublic: string): string {
-  const rsaPK = Forge.pki.publicKeyFromPem(keyPublic);
-  return window.btoa(rsaPK.encrypt(valueToEncrypt));
+export function encryptWithPublicKey(valueToEncrypt: string): string {
+  const rsaPK = Forge.pki.publicKeyFromPem(environment.keyPublic);
+  const encryptedText = rsaPK.encrypt(valueToEncrypt, 'RSA-OAEP', {
+    md: Forge.md.sha256.create(),
+  });
+
+  return encodeURIComponent(Forge.util.encode64(encryptedText));
+  // return encodeURIComponent(window.btoa(encryptedText));
 }
 
-export function encryptWithPublicKey3(valueToEncrypt: string, keyPublic: string): string {
+export function _encryptWithPublicKey(valueToEncrypt: string): string {  
   let encryptedText = "";
   const jsEncrypt = new JSEncrypt();
-  jsEncrypt.setPublicKey(keyPublic);
-  encryptedText = jsEncrypt.encrypt(valueToEncrypt);
-  return encryptedText;
+  jsEncrypt.setPublicKey(environment.keyPublic);
+  encryptedText = jsEncrypt.encrypt(valueToEncrypt, true);
+  return encodeURIComponent(encryptedText);
 }
 

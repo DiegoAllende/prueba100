@@ -19,9 +19,8 @@ export class CongifService {
   loadConfig() {
     return new Promise((resolve) => {
       combineLatest([this.getDataInit(), this.getKeyPublic()]).subscribe(resp => {
-        resolve(true);
         this.globalService.setData(resp[0], resp[1]);
-        // console.log("back: ", resp[2]);
+        resolve(true);
       }, () => {
         alert("Verifique los archivos de configuracion")
       });
@@ -38,7 +37,7 @@ export class CongifService {
 
   getKeyPublic() {
     let header = new HttpHeaders({ "Content-Type": "text/plain; charset=utf-8" })
-    return this.http.get('assets/configs/posvendor.pub.pem', {headers: header, responseType: "text"});
+    return this.http.get('assets/configs/prueba.pem', {headers: header, responseType: "text"});
   }
 
 }

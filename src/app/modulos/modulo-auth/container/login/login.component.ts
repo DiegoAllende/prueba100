@@ -6,9 +6,8 @@ import { AuthService } from '@shared/services/auth.service';
 import { GenericoService } from '@shared/services/generico.service';
 import { INTER_ROUTES } from '@utils/const-rutas';
 import { Constantes, TIPO_PERSONA } from '@utils/constantes';
-import { encryptWithPublicKey, encryptWithPublicKey3 } from '@utils/funcion-crypto';
+import { encryptWithPublicKey, _encryptWithPublicKey } from '@utils/funcion-crypto';
 import { CookieService } from 'ngx-cookie-service';
-import { environment } from 'src/environments/environment';
 import { adapterAppAutenticarOut, adapterSelloAuthIn, adapterSelloAuthOut, adpaterAppAuth } from '../../models-adapter/auth-login.adapter';
 import { AppAuhtOut } from '../../models/auth-login.interfaces';
 import { AuthLoginStore } from '../../services/authLogin.store';
@@ -66,9 +65,8 @@ export class LoginComponent implements OnInit {
 
   //BOTONES
   btnIngresar(data: AppAuhtOut) {
-    console.log("cifrado1: ", encryptWithPublicKey("peru", environment.keyPublic));
-    console.log("cifrado3: ", encryptWithPublicKey3("mexico", environment.keyPublic));
-    // this.getSelloAuthServ(data);
+    console.log("cifrado1: ", encryptWithPublicKey("999999"));
+    console.log("cifrado2: ", _encryptWithPublicKey("999999"));
   }
 
   btnIngresarSin(data: AppAuhtOut) {
