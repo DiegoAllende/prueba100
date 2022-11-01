@@ -36,8 +36,6 @@ export class ConTarjetaComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     private contadorService: ContadorService,
   ) {
-    console.log("CON TARJETA")
-
     this.initForm();
     this.valObs = this.contadorService.terminarSesionObs$().subscribe(resp => {
       // if (resp) this.value.numDoi = "";
