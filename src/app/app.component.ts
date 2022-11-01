@@ -36,14 +36,14 @@ export class AppComponent implements OnInit, OnDestroy{
     //   localStorage.setItem("only7", JSON.stringify(1));
     // }
 
-    if (localStorage.getItem("only8") === "1") {
+    if (localStorage.getItem("only11") === "1") {
       // alert("Ya tiene una pestaña abierta")
       // router.navigateByUrl("icons")
       window.location.href = "https://google.com";
     } else {
-      localStorage.setItem("only8", "1");
+      localStorage.setItem("only11", "1");
       this.isSesion = true;
-      console.log("setLocal: ", this.isSesion)
+      console.log("setLocal X: ", this.isSesion)
     }
    
     
@@ -113,7 +113,14 @@ export class AppComponent implements OnInit, OnDestroy{
   @HostListener('window:unload')
   unload(): void {
       if (this.isSesion) {
-        localStorage.removeItem("only8")
+        localStorage.removeItem("only11")
+      }
+  }
+
+  @HostListener('window:onunload')
+  onunload(): void {
+      if (this.isSesion) {
+        localStorage.removeItem("only11")
       }
   }
   
