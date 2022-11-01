@@ -9,10 +9,12 @@ import { ContadorService } from './shared/components/contador/contador.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit, OnDestroy{
+export class AppComponent implements OnInit, OnDestroy {
   title = 'cajaTrujilloApp';
   isSesion: boolean = false;
   cont: number = 1;
+
+  auxTitulo: string = "antes";
 
   constructor(
     private contadorService: ContadorService,
@@ -36,17 +38,17 @@ export class AppComponent implements OnInit, OnDestroy{
     //   localStorage.setItem("only7", JSON.stringify(1));
     // }
 
-    if (localStorage.getItem("only11") === "1") {
+    if (localStorage.getItem("only12") === "1") {
       // alert("Ya tiene una pestaña abierta")
       // router.navigateByUrl("icons")
       window.location.href = "https://google.com";
     } else {
-      localStorage.setItem("only11", "1");
+      localStorage.setItem("only12", "1");
       this.isSesion = true;
       console.log("setLocal X: ", this.isSesion)
     }
-   
-    
+
+
 
     if (!this.authLoginStore.getDataAuth.sid) {
       const aux = localStorage.getItem(Constantes.PROFILE_DATA) ? JSON.parse("" + localStorage.getItem(Constantes.PROFILE_DATA)) : {};
@@ -55,7 +57,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
     // window.addEventListener("unload", (evento: any) => {
     //   console.log("unload");
-      
+
     //   if (this.isSesion) {
     //     console.log("unload cerrar");
     //     localStorage.removeItem("only6")
@@ -64,7 +66,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
     // window.addEventListener("beforeunload", (evento: any) => {
     //   console.log("beforeunload");
-      
+
     //   if (this.isSesion) {
     //     console.log("beforeunload cerrar");
     //     localStorage.removeItem("only6")
@@ -73,7 +75,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
     // window.addEventListener("pagehide", (evento: any) => {
     //   console.log("pagehide ");
-      
+
     //   if (this.isSesion) {
     //     console.log("pagehide cerrar");
     //     localStorage.removeItem("only6")
@@ -82,7 +84,7 @@ export class AppComponent implements OnInit, OnDestroy{
 
     // window.addEventListener("pageshow", (evento: any) => {
     //   console.log("pageshow ");
-      
+
     //   if (this.isSesion) {
     //     console.log("pageshow cerrar");
     //     localStorage.removeItem("only6")
@@ -110,20 +112,21 @@ export class AppComponent implements OnInit, OnDestroy{
     // };
   }
 
-  @HostListener('window:unload')
-  unload(): void {
-      if (this.isSesion) {
-        localStorage.removeItem("only11")
-      }
+  // @HostListener('window:unload')
+  // unload(): void {
+  //   this.auxTitulo = "Despues";
+  //   if (this.isSesion) {
+  //     localStorage.removeItem("only12");
+  //   }
+  // }
+
+  @HostListener('window:beforeunload')
+  beforeunload(): void {
+    if (this.isSesion) {
+      localStorage.removeItem("only12")
+    }
   }
 
-  @HostListener('window:onunload')
-  onunload(): void {
-      if (this.isSesion) {
-        localStorage.removeItem("only11")
-      }
-  }
-  
 
   ngOnInit(): void {
     console.log("INIT");
